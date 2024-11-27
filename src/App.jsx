@@ -57,28 +57,13 @@ const App = () => {
 					path: "profile",
 					element: <Profile />,
 				}
-				,{
-					path: "register",
-					element: <Register/>,
-				},
-				,{
-					path: "nextsignup",
-					element: <BussinessDetaile/>,
-				},
+				
 				
 			],
 		},
 		{
 			path: "/",
 			element: <Home/>,
-		},
-		,{
-			path: "register",
-			element: <Register/>,
-		},
-		,{
-			path: "nextsignup",
-			element: <BussinessDetaile/>,
 		},
 		{
 			path: "/login",
@@ -91,6 +76,10 @@ const App = () => {
 		{
 			path: "/signup",
 			element: <Signup />,
+		},
+		,{
+			path: "nextsignup",
+			element: <BussinessDetaile/>,
 		},
 		{
 			path: "*",
