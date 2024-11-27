@@ -5,26 +5,89 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Courses from './Courses/Course'
 import Signup from './components/Signup'
 import Contect from './contect/Contect'
-import Login from './components/Login'
+// import Login from './components/Login'
 import BussinessDetaile from './components/BussinessDetaile'
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import {
+	Dashboard,
+	Layout,
+	NftMarketplace,
+	Users,
+	CreateUser,
+	EditUser,
+	Profile,
+	Register,
+	PageNotFound,
+	
+
+} from "./adminpages/index";
+import Login from './components/Login'
+
 const App = () => {
-  return (
-   <>
-   <div className='dark:bg-slate-900 dark:text-white'>
-   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/nextsignup" element={<BussinessDetaile/>}/>
-      <Route path="/login" element={<Login/>}/>  
-      <Route path="/contect" element={<Contect/>}/>
+	const router = createBrowserRouter([
+		{
+			path: "/dashboard",
+			element: <Layout />,	
+			children: [
+
+				{
+					path: "/dashboard",
+					element: <Dashboard />,
+				},
+				{
+					path: "nft-marketplace",
+					element: <NftMarketplace />,
+				},
+				{
+					path: "users",
+					element: <Users />,
+				},
+				{
+					path: "createUser",
+					element: <CreateUser />,
+				},
+				{
+					path: "editUser",
+					element: <EditUser />,
+				},
+				{
+					path: "profile",
+					element: <Profile />,
+				}
+				,{
+					path: "register",
+					element: <Register/>,
+				},
+				
+			],
+		},
+		{
+			path: "/",
+			element: <Home/>,
+		},
+		{
+			path: "/login",
+			element: <Login />,
+		},
+		{
+			path: "/contect",
+			element: <Contect />,
+		},
+		{
+			path: "/signup",
+			element: <Signup />,
+		},
+		{
+			path: "*",
+			element: <PageNotFound />,
+		},
+	]);
+	
      
-    </Routes>
-   </BrowserRouter>
-   </div>
-   </>
-  )
+	return <RouterProvider router={router} />;
+
 }
 
 export default App
