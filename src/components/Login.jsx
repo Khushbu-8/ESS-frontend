@@ -23,7 +23,7 @@ const Login = ()  =>{
           },
           method: 'POST',
           body: JSON.stringify({ email, password }),
-          credentials:"include"
+          credentials: 'include', // Ensures cookies are included in the request
         });
         console.log(response);
       if (response.ok) {
