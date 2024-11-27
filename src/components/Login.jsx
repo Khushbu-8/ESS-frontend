@@ -12,30 +12,33 @@ const Login = ()  =>{
   const handleSubmit = async (event) => {
     event.preventDefault();
     // const backend_API = "http://localhost:4000"
-    const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app"
+    const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app/auth/loginUserweb"
 
     try {
-      const response = await fetch('https://shepherd-classic-giraffe.ngrok-free.app/auth/registerUserweb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: 'include', // Send cookies
-      });
-    
+      const response = await fetch(`${backend_API}`,
+       {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          credentials: 'include', // Ensures cookies are included in the request
+        });
+        console.log(response);
       if (response.ok) {
-        console.log('Request successful:', await response.json());
-        navigate('/dashboard');
+        // window.location.href = '/dashboard';
+        naviget('/')
+        console.log('Login successful!');
       } else {
+        // Handle error responses
         const errorData = await response.json();
-        console.error('Error response:', errorData);
-        setErrorMessage(errorData.message || 'An error occurred.');
+        setErrorMessage(errorData.message || 'Invalid credentials');
       }
+      
     } catch (error) {
-      console.error('Fetch error:', error);
-      setErrorMessage('Network error. Please try again.');
+      console.log(error,"login fetch error")
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
 
