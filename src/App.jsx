@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Courses from './Courses/Course'
 import Signup from './components/Signup'
 import Contect from './contect/Contect'
+import Login from './components/Login'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/login" element={<Login/>}/>  
       <Route path="/contect" element={<Contect/>}/>
      
     </Routes>
