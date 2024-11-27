@@ -5,9 +5,7 @@ import Navebar from '../components/Navebar'
 const Home = () => {
   return (
     <>
-    <Navebar/>
-    
-   
+    <Navebar/> 
     
    </>
   )
