@@ -11,7 +11,7 @@ const Users = () => {
 
   const FetchData = async () => {
     try {
-      const response = await fetch(`https://shepherd-classic-giraffe.ngrok-free.app/auth/getuser`, {
+      const response = await fetch(`https://ees-121-backend.vercel.app/auth/getuser`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
