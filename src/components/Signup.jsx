@@ -8,15 +8,15 @@ const Signup =() => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cpassword, setCpassword] = useState('');
-  const [contact, setContact] = useState('');
+  const [confirmpassword, setConfirmpassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const navigete = useNavigate();
 
   const handleSubmits = async (e) => {
     e.preventDefault();
 navigete('/nextsignup', {
-  state: { name, email, password,cpassword, contact,address }
+  state: { name, email, password,confirmpassword, phone,address }
 });
   }
 
@@ -68,12 +68,12 @@ navigete('/nextsignup', {
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="password" placeholder="Password" />
                     <input
-                      value={cpassword}
-                      onChange={(e) => setCpassword(e.target.value)}
+                      value={confirmpassword}
+                      onChange={(e) => setConfirmpassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="password" placeholder="Confirm Password" />
                     <input
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="contet" placeholder="Contect" />
 
                     <input

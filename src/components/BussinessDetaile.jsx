@@ -6,8 +6,8 @@ import logo from "../../public/ees-logo.png"
 
 const BussinessDetaile = () => {
     const [businessName, setBusinessName] = useState('');
-    const [businessAddress, setBusinessAddress] = useState('');
-    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [businessAddress , setBusinessAddress] = useState('');
+    const [businessCategory, setBusinessCategory] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const navigete = useNavigate();
     const location = useLocation();
@@ -167,10 +167,10 @@ const BussinessDetaile = () => {
         "YOGA CLASSES"
     ]
     const toggleSelection = (category) => {
-        if (selectedCategories.includes(category)) {
-            setSelectedCategories(selectedCategories.filter((c) => c !== category));
+        if (businessCategory.includes(category)) {
+            setBusinessCategory(businessCategory.filter((c) => c !== category));
         } else {
-            setSelectedCategories([...selectedCategories, category]);
+            setBusinessCategory([...businessCategory, category]);
         }
     };
     //  const backend_API = "http://localhost:4000"
@@ -181,7 +181,7 @@ const BussinessDetaile = () => {
         const fullData = {
             ...location.state, // Data from the first page
             businessName,
-            selectedCategories,
+            businessCategory,
             businessAddress,
         };
         console.log(fullData);
@@ -254,8 +254,8 @@ const BussinessDetaile = () => {
                                             className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" placeholder="businessName" />
                                         <div className="mt-2">
                                             <div className="border border-gray-300 rounded-md p-2 bg-white">
-                                                {selectedCategories.length > 0 ? (
-                                                    selectedCategories.map((category, i) => (
+                                                {businessCategory.length > 0 ? (
+                                                    businessCategory.map((category, i) => (
                                                         <span
                                                             key={++i}
                                                             className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
@@ -271,7 +271,7 @@ const BussinessDetaile = () => {
                                                 {categories.map((category, i) => (
                                                     <li
                                                         key={++i}
-                                                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${selectedCategories.includes(category) ? "bg-green-200" : ""
+                                                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
                                                             }`}
                                                         onClick={() => toggleSelection(category)}
                                                     >
@@ -282,8 +282,8 @@ const BussinessDetaile = () => {
                                         </div>
                                         <input
                                             type="text"
-                                            value={businessAddress}
-                                            onChange={(e) => setBusinessAddress(e.target.value)}
+                                            value={businessAddress }
+                                            onChange={(e) => setBusinessAddress (e.target.value)}
                                             className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" placeholder="businessAddress" />
                                         <button type='submit' className="mt-5 tracking-wide font-semibold bg-green-400 text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                             <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">

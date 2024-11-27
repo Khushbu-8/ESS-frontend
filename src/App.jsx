@@ -25,6 +25,7 @@ import {
 } from "./adminpages/index";
 import Login from './components/Login'
 
+
 const App = () => {
 	const router = createBrowserRouter([
 		{
@@ -60,12 +61,24 @@ const App = () => {
 					path: "register",
 					element: <Register/>,
 				},
+				,{
+					path: "nextsignup",
+					element: <BussinessDetaile/>,
+				},
 				
 			],
 		},
 		{
 			path: "/",
 			element: <Home/>,
+		},
+		,{
+			path: "register",
+			element: <Register/>,
+		},
+		,{
+			path: "nextsignup",
+			element: <BussinessDetaile/>,
 		},
 		{
 			path: "/login",
