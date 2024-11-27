@@ -174,7 +174,7 @@ const BussinessDetaile = () => {
         }
     };
     //  const backend_API = "http://localhost:4000"
-    const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app/auth/registerUserweb"
+    const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
