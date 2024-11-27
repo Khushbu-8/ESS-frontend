@@ -11,49 +11,13 @@ const Signup =() => {
   const [cpassword, setCpassword] = useState('');
   const [contact, setContact] = useState('');
   const [address, setAddress] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const navigete = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmits = async (e) => {
     e.preventDefault();
-    // const newdata = { name, email, password,confirmPassword, role, contact, address };
-// const backend_API = "http://localhost:4000"
-const backend_API = "https://ess-backend.vercel.app"
-
-    try {
-      const response = await fetch(`${backend_API}/register`,
-        {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              name:name,
-              email:email,
-              password:password,
-              cpassword:cpassword,
-              contact:contact,
-              address:address,
-              
-              })
-      })
-
-      const data = await response.data;
-      console.log(data);
-      if (response.ok) {
-        window.location.href = '/';
-        navigete('/')
-        console.log('Register successful!');
-      } else {
-        // Handle error responses
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Invalid credentials');
-      }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-
+navigete('/nextsignup', {
+  state: { name, email, password,cpassword, contact,address }
+});
   }
 
 
@@ -87,7 +51,7 @@ const backend_API = "https://ess-backend.vercel.app"
 
                   </div>
                 </div>
-                <form action="" onSubmit={handleSubmit}>
+                <form action="" onSubmit={handleSubmits}>
                   <div className="mx-auto max-w-xs">
                     <input
                       type="text"
@@ -124,7 +88,7 @@ const backend_API = "https://ess-backend.vercel.app"
                         <path d="M20 8v6M23 11h-6" />
                       </svg>
                       <span className="ml-4">
-                        Sign Up
+                        Sign Up Next
                       </span>
                     </button>
                     <p className="mt-4 text-sm text-center text-gray-600">
