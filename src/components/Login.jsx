@@ -26,6 +26,8 @@ const Login = ()  =>{
           credentials: 'include', // Ensures cookies are included in the request
         });
         console.log(response);
+        naviget('/')
+        console.log('Login successful!');
       if (response.ok) {
         // window.location.href = '/dashboard';
         naviget('/')
