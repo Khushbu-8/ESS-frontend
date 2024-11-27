@@ -246,7 +246,7 @@ const BussinessDetaile = () => {
                                     </div>
                                 </div>
                                 <form action="" onSubmit={handleSubmit}>
-                                    <h1>Bussiness Detaile</h1>
+                                    <h1 className='text-center'>Bussiness Detaile</h1>
                                     <div className="mx-auto max-w-xs">
                                         <input
                                             type="text"
