@@ -15,16 +15,15 @@ const Login = ()  =>{
     const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app"
 
     try {
-      const response = await fetch(`${backend_API}/auth/registerUserweb`,
-       {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          credentials: 'include', // Ensures cookies are included in the request
-        });
+     const response = await fetch('/auth/registerUserweb', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(email,password),
+  credentials: 'include',
+});
+
         console.log(response);
       if (response.ok) {
         // window.location.href = '/dashboard';
