@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Login from './Login';
 
 
@@ -9,30 +10,44 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [cpassword, setCpassword] = useState('');
     const [contact, setContact] = useState('');
+    const [address, setAddress] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigete = useNavigate();
     const handleSubmit = async (e) => {
       e.preventDefault();
       // const newdata = { name, email, password,confirmPassword, role, contact, address };
   
+      const backend_API = "https://ess-backend.vercel.app"
+
       try {
-        const record = await axios.post(`https://ess-backend.vercel.app/register`, {
-            name: name,
-            email: email,
-            password: password,
-            cpassword: cpassword,
-            role: role,
-            contact: contact,
-            address: address
-        }, {
+        const response = await fetch(`${backend_API}/register`,
+          {
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await record.data;
-        console.log(data);
-        alert('User Added Successfully');
-        navigete('/')
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name:name,
+                email:email,
+                password:password,
+                cpassword:cpassword,
+                contact:contact,
+                address:address,
+                
+                })
+        })
   
+        const data = await response.data;
+        console.log(data);
+        if (response.ok) {
+          window.location.href = '/';
+          navigete('/')
+          console.log('Register successful!');}
+          else {
+            // Handle error responses
+            const errorData = await response.json();
+            setErrorMessage(errorData.message || 'Invalid credentials');
+          }
     } catch (error) {
         console.log(error);
         return false;
