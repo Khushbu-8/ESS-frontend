@@ -185,6 +185,7 @@ const EditUser = () => {
     const newBusiness = { name, email, password, contact, address, selectedCategories, businessName, businessAddress };
 
     try {
+      
       const record = await fetch(`${backend_API}/admin/updateUser`, {
         method: 'PUT',
         headers: {

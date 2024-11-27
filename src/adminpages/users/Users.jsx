@@ -11,10 +11,17 @@ const Users = () => {
 
   const FetchData = async () => {
     try {
+      const token = getCookie('token');
       const response = await fetch(`https://ees-121-backend.vercel.app/auth/getuser`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+         },
+        credentials: 'include',
+        
       });
+      console.log(token);
+      
       const data = await response.json();
       console.log(data);
       
