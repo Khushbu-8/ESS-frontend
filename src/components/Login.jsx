@@ -15,29 +15,27 @@ const Login = ()  =>{
     const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app"
 
     try {
-     const response = await fetch('/auth/registerUserweb', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(email,password),
-  credentials: 'include',
-});
-
-        console.log(response);
+      const response = await fetch('https://shepherd-classic-giraffe.ngrok-free.app/auth/registerUserweb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include', // Send cookies
+      });
+    
       if (response.ok) {
-        // window.location.href = '/dashboard';
-        naviget('/')
-        console.log('Login successful!');
+        console.log('Request successful:', await response.json());
+        navigate('/dashboard');
       } else {
-        // Handle error responses
         const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Invalid credentials');
+        console.error('Error response:', errorData);
+        setErrorMessage(errorData.message || 'An error occurred.');
       }
-      
     } catch (error) {
-      console.log(error,"login fetch error")
-      setErrorMessage('An error occurred. Please try again later.');
+      console.error('Fetch error:', error);
+      setErrorMessage('Network error. Please try again.');
     }
   };
 
