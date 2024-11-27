@@ -199,8 +199,7 @@ const BussinessDetaile = () => {
             const data = await response.data;
             console.log(data);
             if (response.ok) {
-                window.location.href = '/';
-                navigete('/')
+                navigete('/login')
                 console.log('Register successful!');
             } else {
                 // Handle error responses
