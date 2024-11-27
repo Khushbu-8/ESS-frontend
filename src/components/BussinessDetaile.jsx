@@ -174,7 +174,7 @@ const BussinessDetaile = () => {
         }
     };
     //  const backend_API = "http://localhost:4000"
-    const backend_API = "https://ess-backend.vercel.app"
+    const backend_API = "https://shepherd-classic-giraffe.ngrok-free.app/auth/registerUserweb"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -187,7 +187,7 @@ const BussinessDetaile = () => {
         console.log(fullData);
 
         try {
-            const response = await fetch(`${backend_API}/register`,
+            const response = await fetch(`${backend_API}`,
                 {
                     method: 'POST',
                     headers: {
