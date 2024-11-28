@@ -13,10 +13,10 @@ const Login = ()  =>{
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
-
+    
   try {
+    const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
+
     const response = await axios.post(backend_API, {
       phone,
       password
@@ -33,7 +33,6 @@ const Login = ()  =>{
       console.log(error);
       
     }
-  };
 
   return (
     <>
