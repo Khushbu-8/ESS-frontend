@@ -25,7 +25,6 @@ const Login = ()  =>{
           body: JSON.stringify({ email, password }),
           credentials: 'include', // Ensures cookies are included in the request
         });
-        console.log(response);
       if (response.ok) {
         // window.location.href = '/dashboard';
         naviget('/')
