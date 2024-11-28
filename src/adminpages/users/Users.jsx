@@ -8,9 +8,19 @@ const Users = () => {
 	const [record,setRecord] = useState([])
   const navigete = useNavigate();
   //  const backend_API = "http://localhost:4000"
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
   
-  const token = Cookies.get('token'); 
-  console.log('Token from cookie:', token);
+  // Usage
+  const token = getCookie('token'); // Replace 'authToken' with the actual cookie name
+  console.log('Token:', token);
+
+  // const token = Cookies.get('token'); 
+  // console.log('Token from cookie:', token);
   const FetchData = async () => {
     try {
       const response = await fetch(`https://ees-121-backend.vercel.app/auth/getuser`, {
