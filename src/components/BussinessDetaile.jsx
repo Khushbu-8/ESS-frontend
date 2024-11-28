@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 
-
+import axios from 'axios';
 
 const BussinessDetaile = () => {
     const [businessName, setBusinessName] = useState('');
@@ -187,8 +187,7 @@ const BussinessDetaile = () => {
         console.log(fullData);
 
         try {
-            const response = await fetch(`${backend_API}`,
-                {
+            const response = await axios.post(backend_API, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
