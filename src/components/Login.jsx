@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
+import  axios from "axios"
 
 const Login = ()  =>{
   const [phone, setPhone] = useState('');
@@ -15,7 +16,7 @@ const Login = ()  =>{
     const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb"
 
     try {
-      const response = await axios.get(${backend_API},
+      const response = await axios.get(`${backend_API}`,
        {
           headers: {
             'Content-Type': 'application/json',
