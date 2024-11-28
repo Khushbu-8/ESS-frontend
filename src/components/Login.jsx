@@ -24,12 +24,12 @@ const Login = () => {
             })
             
             console.log(response.data, "data");
-            // console.log(response.data, "data");
+            console.log(response.data.token, "token");
           
             if (response.status === 200) {
                 localStorage.setItem('token', JSON.stringify(res.data.token))
                 navigate("/profile")
-                navigate("/"); // Corrected 'naviget' to 'navigate'
+                 // Corrected 'naviget' to 'navigate'
                 console.log("Login Successful...");
             }
         } catch (error) {
