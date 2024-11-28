@@ -14,24 +14,28 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
+        const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
 
-      const response = await axios.post(backend_API, {
-        phone,
-        password,
-    }, { withCredentials: true, });
-      console.log(response.data);
+        const response = await axios.post(backend_API, {
+            phone,
+            password,
+        }, {
+            withCredentials: true, // Important: send cookies with the request
+        });
 
-      if (response.status === 200) {
-        naviget("/");
-        console.log("Login Successfull...");
+        console.log(response.data);
+        console.log(JSON.stringify(response?.data));
+        
 
-      }
-
+        if (response.status === 200) {
+            navigate("/"); // Corrected 'naviget' to 'navigate'
+            console.log("Login Successful...");
+        }
     } catch (error) {
-      console.log(error, "fetch error")
+        console.log(error, "fetch error");
     }
-  };
+};
+
 
   return (
     <>
