@@ -25,7 +25,7 @@ const Login = () => {
         
 
         if (response.status === 200) {
-            navigate("/"); // Corrected 'naviget' to 'navigate'
+            navigate("/home"); // Corrected 'naviget' to 'navigate'
             console.log("Login Successful...");
         }
     } catch (error) {
