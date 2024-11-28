@@ -2,10 +2,19 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 import axios from 'axios';
-  const Login = () => {
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
+
+
+const Login = ()  =>{
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const location = useLocation();
+  const naviget = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
 
   try {
     const response = await axios.post(backend_API, {
@@ -15,26 +24,17 @@ const handleSubmit = async (event) => {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true // Ensure cookies are included if required
     });
+    console.log(response.data);
+    if (response.ok) {
+      console.log('Login successful!'); // Save token in cookies
+      naviget('/home');
+    }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  };
 
-    if (response.status === 200) {
-      console.log('Login successful!');
-      Cookies.set('token', response.data.token, { expires: 7 }); // Save token in cookies
-      naviget('/');
-    }
-  } catch (error) {
-    if (error.response) {
-      // Server responded with a status code outside the 2xx range
-      console.error('Login failed:', error.response.data);
-      setErrorMessage(error.response.data.message || 'An error occurred.');
-    } else if (error.request) {
-      // Request was made but no response received
-      console.error('No response from server:', error.request);
-    } else {
-      // Something else caused the error
-      console.error('Error:', error.message);
-    }
-  }
-}
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
