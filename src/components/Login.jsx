@@ -20,12 +20,16 @@ const Login = () => {
         phone,
         password
       }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true // Ensure cookies are included if required
-      });
-      console.log(response.data);
-      naviget("/home");
+        headers: { 'Content-Type': 'application/json',
+         },
+        withCredentials: true,
+        });
+        console.log(response.data);
 
+        if (response.status === 200) {
+          naviget("/");
+          }
+   
 
     } catch (error) {
       console.log(error, "fetch error");
