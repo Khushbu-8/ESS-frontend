@@ -1,29 +1,32 @@
-import React from 'react'
-import Home from './Home/Home'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./components/Home"
+import Header from "./components/Header"
+import Login from "./components/Login"
+import Registration from "./components/Registration"
+import Profile from "./components/Profile"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from "./components/ProtectedRoute"
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Signup from './components/Signup'
-import Contect from './contect/Contect'
-import Login from './components/Login'
-import BussinessDetaile from './components/BussinessDetaile'
+export default function App() {
 
-const App = () => {
   return (
-   <>
-   <div className='dark:bg-slate-900 dark:text-white'>
-   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/nextsignup" element={<BussinessDetaile/>}/>
-      <Route path="/contect" element={<Contect/>}/>
-     
-    </Routes>
-   </BrowserRouter>
-   </div>
-   </>
+    <>
+      <ToastContainer />
+      <Router>
+        <Header />
+        <Routes>
+          {/* protected rout */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+
+    </>
   )
 }
-
-export default App
