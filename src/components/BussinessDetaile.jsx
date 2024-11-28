@@ -187,13 +187,11 @@ const BussinessDetaile = () => {
         console.log(fullData);
 
         try {
-            const response = await axios.post(backend_API, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(fullData),
-                })
+            const response = await axios.post(backend_API, fullData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
             const data = await response.data;
             console.log(data);

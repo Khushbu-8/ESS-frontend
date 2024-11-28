@@ -7,7 +7,7 @@ import axios from 'axios';
 const Login = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+ 
   const location = useLocation();
   const naviget = useNavigate();
 
@@ -31,11 +31,9 @@ const Login = () => {
           console.log("Login Successfull...");
           
           }
-   
-
+  
     } catch (error) {
-      console.log(error, "fetch error");
-
+      console.log(error, "fetch error")
     }
   };
 
