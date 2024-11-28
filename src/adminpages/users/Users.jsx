@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { AiTwotoneDelete } from "react-icons/ai";
 import { CiEdit } from "react-icons/ci";
+import Cookies from 'js-cookie';
 
 import { Link, useNavigate } from 'react-router-dom';
 const Users = () => {
 	const [record,setRecord] = useState([])
   const navigete = useNavigate();
   //  const backend_API = "http://localhost:4000"
-  const backend_API = "https://ess-backend.vercel.app"
-
+  
+  const token = Cookies.get('token'); 
+  console.log('Token from cookie:', token);
   const FetchData = async () => {
     try {
-      const token = getCookie('token');
       const response = await fetch(`https://ees-121-backend.vercel.app/auth/getuser`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
