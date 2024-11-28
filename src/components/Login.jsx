@@ -16,16 +16,13 @@ const Login = ()  =>{
     const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb"
 
     try {
-      const response = await axios.post(`${backend_API}`,
-       {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          method: 'POST',
-          body: JSON.stringify({ phone,password }),
-          withCredentials: true,  // Ensures cookies are included in the request
-        });
+      const response = await axios.post(backend_API, {
+        phone,
+        password
+      }, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true // Ensure cookies are included if required
+      });
         if (response.ok && data.token) {
           // Save the token in cookies
           Cookies.set('token', data.token, { expires: 7 }); // Set token with a 7-day expiry
