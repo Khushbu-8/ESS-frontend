@@ -180,9 +180,9 @@ const BussinessDetaile = () => {
         e.preventDefault();
         const fullData = {
             ...location.state, // Data from the first page
-            businessName,
-            businessCategory,
-            businessAddress,
+            businessName : businessAddress,
+            businessCategory :businessCategory,
+            businessAddress :businessAddress,
         };
         console.log(fullData);
 

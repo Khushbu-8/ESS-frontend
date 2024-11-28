@@ -16,7 +16,7 @@ const Signup =() => {
   const handleSubmits = async (e) => {
     e.preventDefault();
 navigete('/nextsignup', {
-  state: { name, email, password,confirmpassword, phone,address }
+  state: { name :name, email :email, password :password,confirmpassword :password, phone:phone,address:address }
 });
   }
 
