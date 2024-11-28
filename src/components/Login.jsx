@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 import axios from 'axios';
@@ -10,6 +10,7 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  document.cookie = "token=yourTokenValue; path=/; max-age=3600; secure; samesite=strict";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +37,13 @@ const Login = () => {
     }
 };
 
-
+useEffect(() => {
+  const cookies = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('token='));
+  const token = cookies ? cookies.split('=')[1] : null;
+  console.log('Token:', token);
+}, []);
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
