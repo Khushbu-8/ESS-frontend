@@ -16,7 +16,7 @@ const Login = ()  =>{
     const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb"
 
     try {
-      const response = await axios.get(`${backend_API}`,
+      const response = await axios.post(`${backend_API}`,
        {
           headers: {
             'Content-Type': 'application/json',
