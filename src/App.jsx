@@ -1,28 +1,25 @@
-import React from 'react'
-import Home from './Home/Home'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Add from './Pages/Add'
+import Edit from './Pages/Edit'
+import Login from './Pages/Login'
+import SignUp from './Pages/SignUp'
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Signup from './components/Signup'
-import Contect from './contect/Contect'
-import Login from './components/Login'
-import BussinessDetaile from './components/BussinessDetaile'
 
-const App = () => {
+function App() {
+
+  
+
   return (
-   <>
-   <div className='dark:bg-slate-900 dark:text-white'>
-   <BrowserRouter>
+  <>
+   <div align='center'>
+    <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/nextsignup" element={<BussinessDetaile/>}/>
-      <Route path="/contect" element={<Contect/>}/>
-     
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
-   </BrowserRouter>
+    </BrowserRouter>
    </div>
-   </>
+  </>
   )
 }
 
