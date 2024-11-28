@@ -30,7 +30,7 @@ const Login = () => {
     const token =  JSON.stringify(response?.data?.token);
       
         if (response.status === 200) {
-          localStorage.setItem("token",cookie)
+          localStorage.setItem("token",token)
             navigate("/"); // Corrected 'naviget' to 'navigate'
             console.log("Login Successful...");
         }
