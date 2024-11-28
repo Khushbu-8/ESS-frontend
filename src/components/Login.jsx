@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 const Login = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
- 
+
   const location = useLocation();
   const naviget = useNavigate();
 
@@ -18,25 +18,19 @@ const Login = () => {
 
       const response = await axios.post(backend_API, {
         phone,
-        password
-      }, {
-        headers: { 'Content-Type': 'application/json',
-         },
-        withCredentials: true,
-        });
-        console.log(response.data);
+        password,
+    }, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,  // Ensure credentials are sent along with the request
+    });
+      console.log(response.data);
 
-        if (response.status === 200) {
-          const { token } = response.data;
-console.log(token);
+      if (response.status === 200) {
+        naviget("/");
+        console.log("Login Successfull...");
 
-      // Store token in a cookie
-      Cookies.set('token', token, { expires: 7 });
-          naviget("/");
-          console.log("Login Successfull...");
-          
-          }
-  
+      }
+
     } catch (error) {
       console.log(error, "fetch error")
     }
