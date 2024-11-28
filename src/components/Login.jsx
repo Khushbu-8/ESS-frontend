@@ -11,7 +11,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const cookie = localStorage.getItem("token")
-  console.log(cookie);
+  
   
 
   const handleSubmit = async (event) => {
@@ -27,7 +27,7 @@ const Login = () => {
         })
         
         console.log(response.data);
-    const token =  JSON.stringify(response?.data?.token);
+    const token =  JSON.stringify(response?.data?.refreshToken);
       
         if (response.status === 200) {
           localStorage.setItem("token",token)
