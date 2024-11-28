@@ -1,0 +1,82 @@
+[
+    {
+        "id" :1,
+        "name" : "food book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "food",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :2,
+        "name" : "movie book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "movie",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :3,
+        "name" : "comedy book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "comedy",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :4,
+        "name" : "sport book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "sport",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :5,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :6,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :7,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :8,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :9,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    },
+    {
+        "id" :10,
+        "name" : "Story book",
+        "description" : "This is a story book.",
+        "price" : 10.99,
+        "category" : "free",
+        "image" : "https://img.freepik.com/free-vector/books-stack-realistic_1284-4735.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid"
+    }
+]
