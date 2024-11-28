@@ -27,7 +27,6 @@ const Login = () => {
         
 
         if (response.status === 200) {
-          localStorage.setItem("token",)
             navigate("/"); // Corrected 'naviget' to 'navigate'
             console.log("Login Successful...");
         }
