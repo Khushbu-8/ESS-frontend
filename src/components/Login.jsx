@@ -74,7 +74,7 @@ const Login = ()  =>{
           <form action=""  onSubmit={handleSubmit}>
                 <div className="mx-auto max-w-xs">
                   <input
-                    type="email"
+                    type="text"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white " placeholder="Email" />
