@@ -28,6 +28,8 @@ const Login = () => {
 
         if (response.status === 200) {
           naviget("/");
+          console.log("Login Successfull...");
+          
           }
    
 
