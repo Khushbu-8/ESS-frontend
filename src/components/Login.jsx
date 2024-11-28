@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [phone, setPhone] = useState('');
@@ -27,6 +27,10 @@ const Login = () => {
         console.log(response.data);
 
         if (response.status === 200) {
+          const { token } = response.data;
+
+      // Store token in a cookie
+      Cookies.set('authToken', token, { expires: 7 });
           naviget("/");
           console.log("Login Successfull...");
           
