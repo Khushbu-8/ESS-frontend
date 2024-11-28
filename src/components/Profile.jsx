@@ -8,26 +8,26 @@ const Profile = () => {
 
     const token = JSON.parse(localStorage.getItem('token'))
 
-    const fetchData = () => {
-
-        const header = {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-
-        axios.post('https://ees-121-backend.vercel.app/auth/getUser', {}, header)
-            .then((res) => {
-                setLoading(false)
-                setData(res.data.data)
-                console.log("User data fetched", res);
-            })
-            .catch((err) => {
-                console.log("Error while fetch data", err)
-                setLoading(false)
-            })
+    const fetchData =async() => {
+        try {
+            const response = await fetch(`https://ees-121-backend.vercel.app/auth/getUser`, {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' ,
+               Authorization: `Bearer ${token}`
+              },
+            });
+            const data = await response.json();
+            console.log(data);
+            
+      
+         // Parse manually to catch issues
+            if (data.success) {
+              setRecord(data.user);
+            } 
+          } catch (err) {
+            console.log('Error fetching users:', err.message);
+          }
     }
-
     console.log("data", data)
 
     useEffect(() => {
