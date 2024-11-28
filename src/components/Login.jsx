@@ -8,6 +8,8 @@ const Login = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const cookies = document.cookie
+  console.log(cookies)
+  
   .split('; ')
   .find(row => row.startsWith('token='));
 const token = cookies ? cookies.split('=')[1] : null;
