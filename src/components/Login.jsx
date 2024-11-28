@@ -23,6 +23,7 @@ const Login = ()  =>{
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true // Ensure cookies are included if required
       });
+      console.log(response.data);
       if (response.ok) {
         console.log('Login successful!');
         
