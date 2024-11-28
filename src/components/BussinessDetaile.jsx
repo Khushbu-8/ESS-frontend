@@ -195,10 +195,10 @@ const BussinessDetaile = () => {
 
             const data = await response.data;
             console.log(data);
-            if (response.ok) {
-                navigete('/login')
+            if (response.status === 200) {
+                navigete('/login');
                 console.log('Register successful!');
-            } else {
+            }else {
                 // Handle error responses
                 const errorData = await response.json();
                 setErrorMessage(errorData.message || 'Invalid credentials');
