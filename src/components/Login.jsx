@@ -3,42 +3,37 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 import axios from 'axios';
 
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
 
-const Login = ()  =>{
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const location = useLocation();
-  const naviget = useNavigate();
+  try {
+    const response = await axios.post(backend_API, {
+      phone,
+      password
+    }, {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true // Ensure cookies are included if required
+    });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // const backend_API = "http://localhost:4000"
-    const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb"
-
-    try {
-      const response = await axios.post(backend_API, {
-        phone,
-        password
-      }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true // Ensure cookies are included if required
-      });
-      if (response.ok) {
-        // window.location.href = '/dashboard';
-        naviget('/')
-        console.log('Login successful!');
-      } else {
-        // Handle error responses
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Invalid credentials');
-      }
-      
-    } catch (error) {
-      console.log(error,"login fetch error")
-      setErrorMessage('An error occurred. Please try again later.');
+    if (response.status === 200) {
+      console.log('Login successful!');
+      Cookies.set('token', response.data.token, { expires: 7 }); // Save token in cookies
+      naviget('/');
     }
-  };
+  } catch (error) {
+    if (error.response) {
+      // Server responded with a status code outside the 2xx range
+      console.error('Login failed:', error.response.data);
+      setErrorMessage(error.response.data.message || 'An error occurred.');
+    } else if (error.request) {
+      // Request was made but no response received
+      console.error('No response from server:', error.request);
+    } else {
+      // Something else caused the error
+      console.error('Error:', error.message);
+    }
+  }
 
   return (
     <>
