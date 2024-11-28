@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 const Profile = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState('')
-
+    const [record,setRecord] = useState([])
 
     const token = JSON.parse(localStorage.getItem('token'))
 
@@ -17,13 +17,7 @@ const Profile = () => {
               },
             });
             const data = await response.json();
-            console.log(data);
-            
-      
-         // Parse manually to catch issues
-            if (data.success) {
-              setRecord(data.user);
-            } 
+            console.log(data);      
           } catch (err) {
             console.log('Error fetching users:', err.message);
           }
