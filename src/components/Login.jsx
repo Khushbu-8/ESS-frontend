@@ -22,11 +22,11 @@ const Login = () => {
         }, {
             withCredentials: true, // Important: send cookies with the request
         })
-        const result = response.Json()
+        
         console.log(response.data);
         console.log(JSON.stringify(response?.data?.token));
         
-const {token,success} = result
+const {token,success} = result;
         if (response.status === 200) {
           localStorage.setItem("token",token)
             navigate("/"); // Corrected 'naviget' to 'navigate'
