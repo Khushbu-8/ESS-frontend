@@ -21,13 +21,11 @@ const Login = () => {
                 password,
             }, {
                 withCredentials: true, // Important: send cookies with the request
-            })
-            
+            })   
             console.log(response.data);
-        const token =  JSON.stringify(response?.data?.refreshToken);
-          
+       
             if (response.status === 200) {
-              localStorage.setItem("token",token)
+                toast("Login Successful");
                 navigate("/"); // Corrected 'naviget' to 'navigate'
                 console.log("Login Successful...");
             }
