@@ -7,10 +7,14 @@ import Cookies from 'js-cookie';
 const Login = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const cookies = document.cookie
+  .split('; ')
+  .find(row => row.startsWith('token='));
+const token = cookies ? cookies.split('=')[1] : null;
+console.log('Token:', token);
 
   const location = useLocation();
   const navigate = useNavigate();
-  document.cookie = "token=yourTokenValue; path=/; max-age=3600; secure; samesite=strict";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,14 +40,6 @@ const Login = () => {
         console.log(error, "fetch error");
     }
 };
-
-useEffect(() => {
-  const cookies = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('token='));
-  const token = cookies ? cookies.split('=')[1] : null;
-  console.log('Token:', token);
-}, []);
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
