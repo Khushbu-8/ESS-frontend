@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const location = useLocation();
-  const naviget = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,13 +21,13 @@ const Login = () => {
             password,
         }, {
             withCredentials: true, // Important: send cookies with the request
-        });
-
+        })
         console.log(response.data);
         console.log(JSON.stringify(response?.data));
         
 
         if (response.status === 200) {
+          localStorage.setItem("token",)
             navigate("/"); // Corrected 'naviget' to 'navigate'
             console.log("Login Successful...");
         }
