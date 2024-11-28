@@ -1,6 +1,4 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Add from './Pages/Add'
-import Edit from './Pages/Edit'
 import Login from './Pages/Login'
 import SignUp from './Pages/SignUp'
 
