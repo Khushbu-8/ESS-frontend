@@ -8,12 +8,12 @@ const Users = () => {
 	const [record,setRecord] = useState([])
   const navigete = useNavigate();
   //  const backend_API = "http://localhost:4000"
-  const token = getCookie('token'); // Ensure 'token' matches the actual cookie name
-if (!token) {
-  console.error('Token is missing or not found in cookies.');
-} else {
-  console.log('Token:', token);
-}
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null; // Return null if the cookie doesn't exist
+  }
 
   const FetchData = async () => {
     try {
