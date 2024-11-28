@@ -21,16 +21,19 @@ const Login = () => {
                 password,
             }, {
                 withCredentials: true, // Important: send cookies with the request
-            })   
-            console.log(response.data);
-       
+            })
+            
+            console.log(response.data, "data");
+            // console.log(response.data, "data");
+          
             if (response.status === 200) {
-                toast("Login Successful");
+                localStorage.setItem('token', JSON.stringify(res.data.token))
+                navigate("/profile")
                 navigate("/"); // Corrected 'naviget' to 'navigate'
                 console.log("Login Successful...");
             }
         } catch (error) {
-            toast("Login Failed");
+            toast("Login faild")
             console.log(error, "fetch error");
         }
     };
@@ -41,9 +44,9 @@ const Login = () => {
                 <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">phone</label>
                         <input
-                            type="text"
+                            type="phone"
                             id="phone"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
