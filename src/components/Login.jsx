@@ -10,6 +10,9 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const cookie = localStorage.getItem("token")
+  console.log(cookie);
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,17 +39,6 @@ const Login = () => {
     }
 };
 
-useEffect(() => {
-  const cookies = document.cookie
-   if (cookies) {
-    const token = cookies.split("=")[1];
-    if (token) {
-      navigate("/");
-      }
-      }
-  const token = cookies ? cookies.split('=')[1] : null;
-  console.log('Token:', token);
-}, []);
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
