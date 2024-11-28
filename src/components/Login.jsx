@@ -28,9 +28,10 @@ const Login = () => {
 
         if (response.status === 200) {
           const { token } = response.data;
+console.log(token);
 
       // Store token in a cookie
-      Cookies.set('authToken', token, { expires: 7 });
+      Cookies.set('token', token, { expires: 7 });
           naviget("/");
           console.log("Login Successfull...");
           
