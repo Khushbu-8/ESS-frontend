@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 import axios from 'axios';
-
+  const Login = () => {
 const handleSubmit = async (event) => {
   event.preventDefault();
   const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
@@ -34,7 +34,7 @@ const handleSubmit = async (event) => {
       console.error('Error:', error.message);
     }
   }
-
+}
   return (
     <>
       <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
