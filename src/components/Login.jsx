@@ -19,10 +19,7 @@ const Login = () => {
       const response = await axios.post(backend_API, {
         phone,
         password,
-    }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,  // Ensure credentials are sent along with the request
-    });
+    }, { withCredentials: true, });
       console.log(response.data);
 
       if (response.status === 200) {
