@@ -9,48 +9,47 @@ const Users = () => {
   const navigete = useNavigate();
   //  const backend_API = "http://localhost:4000"
 
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    console.log(value);
-    
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-  
-  // Usage
-  const token = getCookie('token'); // Replace 'authToken' with the actual cookie name
-  console.log('Token:', token);
-
-  // const token = Cookies.get('token'); 
-  // console.log('Token from cookie:', token);
   const FetchData = async () => {
     try {
+      const token = getCookie('token');
+      if (!token) {
+        throw new Error('No token found. Please log in.');
+      }
+  
       const response = await fetch(`https://ees-121-backend.vercel.app/auth/getuser`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json',
+        headers: {
+          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-         },
-        credentials: 'include',
-        
+        },
+        credentials: 'include', // Include cookies if required
       });
-      console.log(token);
-      
-      const data = await response.json();
-      console.log(data);
-      
-
-   // Parse manually to catch issues
-      if (data.success) {
-        setRecord(data.user);
-      } 
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+  
+        if (data.success) {
+          setRecord(data.user);
+        }
+      } else {
+        const errorData = await response.json();
+        console.error('Error response from server:', errorData);
+      }
     } catch (err) {
-      console.log('Error fetching users:', err.message);
+      console.error('Error fetching users:', err.message);
     }
   };
+  
  
- 
-   useEffect(() =>{
-    FetchData();
+  useEffect(() => {
+    const token = getCookie('token');
+    if (!token) {
+      console.warn('No token found, redirecting to login...');
+      navigete('/login');
+    } else {
+      FetchData();
+    }
   }, []);
   
   const DeletUser = async(id) =>{
