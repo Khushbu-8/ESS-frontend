@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
 
 const Login = ()  =>{
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const location = useLocation();
@@ -22,7 +22,7 @@ const Login = ()  =>{
             'Accept': 'application/json',
           },
           method: 'POST',
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ email, phone }),
           credentials: 'include', // Ensures cookies are included in the request
         });
       if (response.ok) {
@@ -75,8 +75,8 @@ const Login = ()  =>{
                 <div className="mx-auto max-w-xs">
                   <input
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white " placeholder="Email" />
                   <input
                     value={password}
