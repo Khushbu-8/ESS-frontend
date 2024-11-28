@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from "../../public/ees-logo.png"
-import  axios from "axios"
+import axios from 'axios';
+
 
 const Login = ()  =>{
   const [phone, setPhone] = useState('');
@@ -23,13 +24,9 @@ const Login = ()  =>{
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true // Ensure cookies are included if required
       });
-        if (response.ok && data.token) {
-          // Save the token in cookies
-          Cookies.set('token', data.token, { expires: 7 }); // Set token with a 7-day expiry
-          console.log('Token saved in cookies:', data.token);
-    
-          // Navigate to the dashboard or home page
-          naviget('/');
+      if (response.ok) {
+        // window.location.href = '/dashboard';
+        naviget('/')
         console.log('Login successful!');
       } else {
         // Handle error responses
