@@ -3,34 +3,50 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 
 function Registration() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userName, setUserName] = useState('')
+    const [confirmpassword, setConfirmpassword] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false)
 
     // const notify = () => toast("Registration Successful");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         setLoading(true)
         e.preventDefault();
-
-        const payload = {
-            name: userName,
+        const fullData = {
+            name: name,
             email: email,
-            password: password
-        }
+            password: password,
+            confirmpassword: password,
+            phone: phone,
+            address: address
+        };
+        const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
 
-        axios.post('https://ees-121-backend.vercel.app/auth/registerUserweb', payload)
-            .then((res) => {
-                setLoading(false)
-                toast("Registration Successful");
-                console.log("User register", res);
-            })
-            .catch((err) => {
-                toast("Registration Failed");
-                console.log("Error while reiteration", err)
-                setLoading(false)
-            })
+        try {
+            const response = await axios.post(backend_API, fullData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.data;
+            console.log(data);
+            if (response.status === 200) {
+                navigete('/login');
+                console.log('Register successful!');
+            } else {
+                // Handle error responses
+                const errorData = await response.json();
+                setErrorMessage(errorData.message || 'Invalid credentials');
+            }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
 
     };
 
@@ -46,8 +62,8 @@ function Registration() {
                             <input
                                 type="text"
                                 id="userName"
-                                value={userName}
-                                onChange={(e) => setUserName(e.target.value)}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
@@ -70,6 +86,50 @@ function Registration() {
                                 id="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                            <input
+                                type="confirmpassword"
+                                id="confirmpassword"
+                                value={confirmpassword}
+                                onChange={(e) => setConfirmpassword(e.target.value)}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                            <input
+                                type="phone"
+                                id="phone"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                required
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                            <input
+                                type="address"
+                                id="address"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                                 required
                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
