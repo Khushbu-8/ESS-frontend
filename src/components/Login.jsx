@@ -22,7 +22,7 @@ const Login = ()  =>{
             'Accept': 'application/json',
           },
           method: 'POST',
-          body: JSON.stringify({ email, phone }),
+          body: JSON.stringify({ phone,password }),
           credentials: 'include', // Ensures cookies are included in the request
         });
       if (response.ok) {
