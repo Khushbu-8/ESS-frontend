@@ -8,7 +8,6 @@ const Users = () => {
 	const [record,setRecord] = useState([])
   const navigete = useNavigate();
   //  const backend_API = "http://localhost:4000"
-  
   const token = getCookie('token'); // Ensure 'token' matches the actual cookie name
 if (!token) {
   console.error('Token is missing or not found in cookies.');
