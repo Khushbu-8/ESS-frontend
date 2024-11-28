@@ -16,7 +16,7 @@ const Profile = () => {
             }
         }
 
-        axios.post('http://localhost:3000/user/profile', {}, header)
+        axios.post('https://ees-121-backend.vercel.app/auth/getUser', {}, header)
             .then((res) => {
                 setLoading(false)
                 setData(res.data.data)
