@@ -3,7 +3,6 @@ import React from 'react'
 const EditProfile = () => {
   return (
     <>
-    <h1>Edit profile</h1>
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-md rounded-lg p-6 w-96">
         {/* Profile Picture */}
