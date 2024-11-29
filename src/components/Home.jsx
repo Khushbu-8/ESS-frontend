@@ -7,7 +7,7 @@ const Home = () => {
    <>
    
     <Navebar/>
-    <Header/>
+    {/* <Header/> */}
    </>
   
     
