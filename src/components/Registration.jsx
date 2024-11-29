@@ -18,6 +18,7 @@ function Registration() {
       return <Navigate to="/" />;
   }
     // const notify = () => toast("Registration Successful");
+    const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
 
     const handleSubmit = async (e) => {
         setLoading(true)
@@ -30,8 +31,6 @@ function Registration() {
             phone: phone,
             address: address
         };
-        const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
-
         try {
             const response = await axios.post(backend_API, fullData, {
                 headers: {
