@@ -14,13 +14,12 @@ export default function App() {
     <>
       <ToastContainer />
       <Router>
-      
+      <Home/>
         <Routes>
           {/* protected rout */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
-          <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
         </Routes>
