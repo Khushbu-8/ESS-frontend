@@ -20,37 +20,15 @@ const Profile = () => {
         const userId = decodedPayload.id;
         const email = decodedPayload.user.email;
         const name = decodedPayload.user.name;
+        setData(decodedPayload.user)
         console.log("User ID:", userId);
         console.log("Email:", email);
         console.log("Name:",name);
     } else {
         console.error("No token found.");
     }
-    const fetchData = () => {
-
-        const header = {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-
-        axios.post('https://ees-121-backend.vercel.app/auth/getUser', {}, header)
-            .then((res) => {
-                setLoading(false)
-                setData(res.data.data)
-                console.log("User data fetched", res);
-            })
-            .catch((err) => {
-                console.log("Error while fetch data", err)
-                setLoading(false)
-            })
-    }
-
+   
     console.log("data", data)
-
-    useEffect(() => {
-        fetchData()
-    }, [])
 
     return (
         <div>
