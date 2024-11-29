@@ -7,7 +7,7 @@ import Profile from "./components/Profile"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from "./components/ProtectedRoute"
-import Editprofile from "./pages/Editprofile"
+import EditProfile from "./components/EditProfile"
 
 export default function App() {
 
@@ -20,7 +20,7 @@ export default function App() {
           {/* protected rout */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/editprofile" element={<Editprofile />} />
+            <Route path="/editprofile" element={<EditProfile />} />
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
