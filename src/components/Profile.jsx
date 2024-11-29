@@ -17,7 +17,7 @@ const Profile = () => {
         console.log("Decoded Token:", decodedPayload);
     
         // Access specific values
-        const userId = decodedPayload.userId;
+        const userId = decodedPayload.id;
         const email = decodedPayload.email;
         console.log("User ID:", userId);
         console.log("Email:", email);
