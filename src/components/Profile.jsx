@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode'
 
 const Profile = () => {
     const [loading, setLoading] = useState(false)
@@ -9,18 +9,21 @@ const Profile = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     console.log(token, "token");
     if (token) {
-        const decoded = jwtDecode(token);
-        console.log("Decoded Token:", decoded);
+        // Split the token into its components
+        const payload = token.split('.')[1];
+    
+        // Decode the Base64 URL-encoded payload
+        const decodedPayload = JSON.parse(atob(payload));
+        console.log("Decoded Token:", decodedPayload);
     
         // Access specific values
-        const userId = decoded.userId;
-        const email = decoded.email;
+        const userId = decodedPayload.userId;
+        const email = decodedPayload.email;
         console.log("User ID:", userId);
         console.log("Email:", email);
     } else {
         console.error("No token found.");
     }
-
     const fetchData = () => {
 
         const header = {
