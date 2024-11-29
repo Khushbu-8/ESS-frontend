@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import logo from "../../public/ees-logo.png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Registration() {
     const [name, setName] = useState('');
@@ -13,6 +13,7 @@ function Registration() {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false)
     const isAuthenticated = localStorage.getItem("token");
+    const navigete = useNavigate();
     if (isAuthenticated) {
       // Redirect to a protected page if already logged in
       return <Navigate to="/" />;
