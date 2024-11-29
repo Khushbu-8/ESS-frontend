@@ -33,7 +33,7 @@ const Login = () => {
           
             if (response.status === 200) {
                 localStorage.setItem('token', JSON.stringify(response.data.token))
-                localStorage.setItem("Users",JSON.stringify(data.user))
+                localStorage.setItem("Users",JSON.stringify(response.data.user))
                 navigate("/")
                  // Corrected 'naviget' to 'navigate'
                 console.log("Login Successful...");
