@@ -9,7 +9,7 @@ function Header() {
     }
 
     return (
-        <div className='border border-b border-gray-400 bg-gray-100 h-12 flex items-center space-x-5'>
+        <div className='border border-b mt-10 border-gray-400 bg-gray-100 h-12 flex items-center space-x-5'>
             <Link to="/" >Home</Link>
             <Link to="/login" >Login</Link>
             <Link to="/profile" >Profile</Link>
