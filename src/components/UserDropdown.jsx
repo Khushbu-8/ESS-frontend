@@ -50,7 +50,7 @@ useEffect(() => {
         <img
           src={user.profilePhoto}
           alt="Profile"
-          className="w-10 h-10 rounded-1 border-2 border-gray-300"
+          className="w-50 h-10 rounded-1 border-2 border-gray-300"
         />
       </button>
 
