@@ -26,25 +26,40 @@ const Profile = () => {
     } else {
         console.error("No token found.");
     }
-    const fetchData = () => {
+    const fetchData = async() => {
 
-        const header = {
-            headers: {
-                Authorization: `Bearer ${token}`
+       
+
+        try {
+            // const header = {
+            //     headers: {
+            //         Authorization: `Bearer ${token}`
+            //     }
+            // }
+            const backend_API = "https://ees-121-backend.vercel.app/auth/getUser"; // Replace with your endpoint
+            const token = JSON.parse(localStorage.getItem('token')); // Retrieve the token from localStorage
+            
+            if (!token) {
+                throw new Error("No token found, please log in.");
             }
+    
+            const response = await axios.get(backend_API, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Send the token in the Authorization header
+                },
+                withCredentials: true, // Include cookies if needed
+            });
+    
+            if (response.status === 200) {
+                console.log(response.data, "User data fetched successfully");
+                return response.data; // Return the fetched user data
+            }
+        } catch (error) {
+            console.log(error, "Error fetching user data");
+            toast.error("Failed to fetch user data"); // Display error to the user
         }
-
-        axios.post('https://ees-121-backend.vercel.app/auth/getUser', {}, header)
-            .then((res) => {
-                setLoading(false)
-                setData(res.data.data)
-                console.log("User data fetched", res);
-            })
-            .catch((err) => {
-                console.log("Error while fetch data", err)
-                setLoading(false)
-            })
     }
+    
 
     console.log("data", data)
 
