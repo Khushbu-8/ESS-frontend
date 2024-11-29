@@ -47,7 +47,7 @@ useEffect(() => {
         onClick={() => setIsOpen(!isOpen)}
         className="focus:outline-none"
       >
-        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" width={50} />
       </button>
 
       {/* Dropdown Menu */}
