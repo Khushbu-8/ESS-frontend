@@ -3,6 +3,7 @@ import logo from "../../public/ess-121.png"
 import { Link } from 'react-router-dom';
 
 const Navebar = () => {
+    
     const [sticky,setSticky] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('theme')?localStorage.getItem('theme'): 'light');
     const element = document.documentElement;

@@ -19,12 +19,11 @@ export default function App() {
           {/* protected rout */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/home" element={<Home />} />
           </Route>
 
-         
+          <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
 
