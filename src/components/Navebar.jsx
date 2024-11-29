@@ -135,7 +135,7 @@ return() =>{
                         </div>
                         
                            {
-                            useAuth?<Logout/> :
+                            auth?<Logout/> :
                             <div className="">
                             <Link to={"/login"} className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>
                          
