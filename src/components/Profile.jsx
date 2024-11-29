@@ -49,6 +49,7 @@ const Profile = () => {
                 },
                 withCredentials: true, // Include cookies if needed
             });
+    console.log(response.data);
     
             if (response.status === 200) {
                 console.log(response.data, "User data fetched successfully");
@@ -72,9 +73,9 @@ const Profile = () => {
             <p className='text-center font-semibold mt-3'>{loading && "Data is loading..."}</p>
             <div className="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 <div className="p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {data.name}</h2>
-                    <p className="text-gray-700 text-base mb-2">Email: {data.email}</p>
-                    <p className="text-gray-700 text-base">ID: {data.id}</p>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {name}</h2>
+                    <p className="text-gray-700 text-base mb-2">Email: {email}</p>
+                    <p className="text-gray-700 text-base">ID: {userId}</p>
                 </div>
 
             </div>
