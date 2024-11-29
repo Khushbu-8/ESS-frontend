@@ -6,7 +6,7 @@ import Home from './Home';
 const ProtectedRoute = () => {
     const token = localStorage.getItem('token');
 
-    return token ? <Home /> : <Navigate to="login" />
+    return token ? <Outlet /> : <Navigate to="login" />
 }
 
 export default ProtectedRoute
