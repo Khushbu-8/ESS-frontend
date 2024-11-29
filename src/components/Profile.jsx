@@ -1,13 +1,25 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import jwtDecode from 'jwt-decode';
 
 const Profile = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState('')
 
     const token = JSON.parse(localStorage.getItem('token'))
-    console.log(token);
+    console.log(token, "token");
+    if (token) {
+        const decoded = jwtDecode(token);
+        console.log("Decoded Token:", decoded);
     
+        // Access specific values
+        const userId = decoded.userId;
+        const email = decoded.email;
+        console.log("User ID:", userId);
+        console.log("Email:", email);
+    } else {
+        console.error("No token found.");
+    }
 
     const fetchData = () => {
 
