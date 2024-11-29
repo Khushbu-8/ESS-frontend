@@ -18,6 +18,11 @@ const Profile = () => {
             // Decode the Base64 URL-encoded payload
             const decodedPayload = JSON.parse(atob(payload));
             console.log("Decoded Token:", decodedPayload);
+        
+            // Access specific values
+            const userId = decodedPayload.id;
+            const email = decodedPayload.user.email;
+            const name = decodedPayload.user.name;
             setData(decodedPayload.user)
             console.log("User ID:", userId);
             console.log("Email:", email);
