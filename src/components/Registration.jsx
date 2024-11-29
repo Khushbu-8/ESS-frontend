@@ -23,7 +23,7 @@ function Registration() {
     const handleSubmit = async (e) => {
         setLoading(true)
         e.preventDefault();
-        const fullData = { name, email, password,confirmpassword, phone, address };
+        const fullData = { name :name, email :email, password :password,confirmpassword :password, phone:phone,address:address };
 
         console.log(fullData);
         try {
