@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 const Profile = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState('')
-    const [record,setRecord] = useState([])
 
     const token = JSON.parse(localStorage.getItem('token'))
 
