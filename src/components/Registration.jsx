@@ -23,17 +23,11 @@ function Registration() {
     const handleSubmit = async (e) => {
         setLoading(true)
         e.preventDefault();
-        const fullData = {
-            name: name,
-            email: email,
-            password: password,
-            confirmpassword: confirmpassword,
-            phone: phone,
-            address: address
-        };
+        const fullData = { name, email, password,confirmpassword, phone, address };
+
         console.log(fullData);
         try {
-            const response = await axios.post(backend_API, fullData, {
+            const response = await axios.post("https://ees-121-backend.vercel.app/auth/registerUserweb", fullData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
