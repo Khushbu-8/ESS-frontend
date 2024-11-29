@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 
@@ -8,7 +8,12 @@ const Login = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem("token");
+    if (isAuthenticated) {
+      // Redirect to a protected page if already logged in
+      return <Navigate to="/" />;
+  }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
