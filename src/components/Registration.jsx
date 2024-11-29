@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import logo from "../../public/ees-logo.png"
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { json, Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Registration() {
     const [name, setName] = useState('');
@@ -37,6 +37,8 @@ function Registration() {
             const data = await response.data;
             console.log(data);
             if (response.status === 200) {
+              localStorage.setItem("Users",JSON.stringify(data.user))
+              // localStorage.setItem("Users",token)
                 navigete('/login');
                 console.log('Register successful!');
             }else {
