@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 // import jwtDecode from 'jwt-decode'
+import { RiStarSFill } from "react-icons/ri";
+import Navebar from './Navebar';
 
 const Profile = () => {
     const [loading, setLoading] = useState(false)
@@ -40,18 +42,49 @@ const Profile = () => {
     }, [])
 
     return (
-        <div>
-            <p className='text-center font-semibold mt-3'>{loading && "Data is loading..."}</p>
-            <div className="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-                <div className="p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {data.name}</h2>
-                    <p className="text-gray-700 text-base mb-2">Email: {data.email}</p>
-                    <p className="text-gray-700 text-base">ID: {data.id}</p>
-                    <Link to={"/editprofile"} >Edit</Link>
-                </div>
-
-            </div>
+       <>
+       <Navebar/>
+     <div className=''>
+     <div className="bg-gray-200 mx-auto  max-w-full  pt-20 flex items-center   justify-center ">
+      <div className="w-[600px] bg-white h-[700px] rounded-lg overflow-hidden shadow-md mt-5">
+        <div className="w-full h-[160px] bg-red-600 flex items-center justify-center">
+        <div className="avatar">
+  <div className="ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
+    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+  </div>
+</div>
         </div>
+        <div className="py-3 px-6 grid grid-cols-1 gap-6">
+          <div className="flex flex-col items-center">
+            <span>UserId</span>
+            <h3 className="text-3xl font-semibold text-red-600">user name</h3>
+          </div>
+         <div>
+        <div>
+        <p className="font-semibold text-gray-700">bussiness category:</p>
+         <button className="bg-red-600 text-white px-8 py-3 px-2 rounded-1 font-semibold uppercase text-sm">
+          ADVOCATE
+            </button>
+        </div>
+         </div>
+         <p className="font-semibold text-gray-700">Contect :</p>
+         <p className="font-semibold text-gray-700">Address :</p>
+          <div className="">
+          <p className="font-semibold text-gray-700">User Service rating :</p>
+        <span><RiStarSFill /></span>
+          </div>
+          <div className="flex">
+            <Link to={"/editprofile"} className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">
+             Edit
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+     </div>
+
+
+       </>
     )
 }
 
