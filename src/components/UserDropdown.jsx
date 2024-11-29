@@ -41,17 +41,13 @@ useEffect(() => {
   };
 
   return (
-    <div className="relative ">
+    <div className="relative">
       {/* Profile Photo Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="focus:outline-none"
       >
-        <img
-          src={user.profilePhoto}
-          alt="Profile"
-          className="w-1000 h-10 rounded-1 border-2 border-gray-300"
-        />
+        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </button>
 
       {/* Dropdown Menu */}
