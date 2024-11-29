@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 // import jwtDecode from 'jwt-decode'
 
 const Profile = () => {
@@ -46,6 +47,7 @@ const Profile = () => {
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {data.name}</h2>
                     <p className="text-gray-700 text-base mb-2">Email: {data.email}</p>
                     <p className="text-gray-700 text-base">ID: {data.id}</p>
+                    <Link to={"/editprofile"} >Edit</Link>
                 </div>
 
             </div>

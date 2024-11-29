@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import logo from "../../public/ees-logo.png"
-import { json, Link, Navigate, useNavigate } from 'react-router-dom';
+import {  Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Registration() {
     const [name, setName] = useState('');
