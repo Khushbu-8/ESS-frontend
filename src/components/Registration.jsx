@@ -20,7 +20,7 @@ function Registration() {
     // const notify = () => toast("Registration Successful");
     const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
 
-    const handleSubmit = async (e) => {
+    const handleSubmits = async (e) => {
         setLoading(true)
         e.preventDefault();
         const fullData = { name :name, email :email, password :password,confirmpassword :password, phone:phone,address:address };
@@ -82,7 +82,7 @@ function Registration() {
 
                   </div>
                 </div>
-                <form action="" onSubmit={handleSubmit}>
+                <form action="" onSubmit={handleSubmits}>
                   <div className="mx-auto max-w-xs">
                     <input
                       type="text"
@@ -105,7 +105,7 @@ function Registration() {
                     <input
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="contet" placeholder="Contect" />
+                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="text" placeholder="Contect" />
 
                     <input
                       value={address}
