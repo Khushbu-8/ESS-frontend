@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 import { Link } from 'react-router-dom';
 
@@ -11,6 +10,7 @@ function Registration() {
     const [confirmpassword, setConfirmpassword] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false)
     const isAuthenticated = localStorage.getItem("token");
     if (isAuthenticated) {
@@ -44,11 +44,16 @@ function Registration() {
             if (response.status === 200) {
                 navigete('/login');
                 console.log('Register successful!');
+            }else {
+                // Handle error responses
+                const errorData = await response.json();
+                setErrorMessage(errorData.message || 'Invalid credentials');
             }
         } catch (error) {
             console.log(error);
             return false;
         }
+
 
     };
 
