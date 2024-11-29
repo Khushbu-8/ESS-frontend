@@ -41,7 +41,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Profile Photo Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -50,7 +50,7 @@ useEffect(() => {
         <img
           src={user.profilePhoto}
           alt="Profile"
-          className="w-50 h-10 rounded-1 border-2 border-gray-300"
+          className="w-1000 h-10 rounded-1 border-2 border-gray-300"
         />
       </button>
 
