@@ -45,9 +45,8 @@ useEffect(() => {
       {/* Profile Photo Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="focus:outline-none"
       >
-        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" width={50} />
+        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" width={150} />
       </button>
 
       {/* Dropdown Menu */}
