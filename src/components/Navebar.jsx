@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import logo from "../../public/ess-121.png"
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
+import { useAuth } from '../context/Authprovider';
 
 const Navebar = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-const[auth,setAuth] = useState(false)
+const[auth,setAuth] = useAuth()
     const [sticky,setSticky] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('theme')?localStorage.getItem('theme'): 'light');
     const element = document.documentElement;
@@ -133,10 +134,13 @@ return() =>{
                             </label>
                         </div>
                         
+                           {
+                            useAuth?<Logout/> :
                             <div className="">
-                                <Link to={"/login"} className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>
-                             
-                            </div>
+                            <Link to={"/login"} className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>
+                         
+                        </div>
+                           }
                         
                     </div>
                 </div>
