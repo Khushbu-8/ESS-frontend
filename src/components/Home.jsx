@@ -9,7 +9,6 @@ const Home = () => {
    
     <Navebar/>
     {/* <Header/> */}
-    <EditProfile/>
    </>
   
     
