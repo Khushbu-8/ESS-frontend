@@ -19,10 +19,8 @@ export default function App() {
       <Router>
       
         <Routes>
-          {/* protected rout */}
-          
+          {/* protected rout */}  
             <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
-         
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
