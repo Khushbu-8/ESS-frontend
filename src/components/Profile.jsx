@@ -15,7 +15,7 @@ const Profile = () => {
         // Decode the Base64 URL-encoded payload
         const decodedPayload = JSON.parse(atob(payload));
         console.log("Decoded Token:", decodedPayload);
-    
+    setData(decodedPayload.user)
         // Access specific values
         const userId = decodedPayload.id;
         const email = decodedPayload.user.email;
@@ -73,9 +73,9 @@ const Profile = () => {
             <p className='text-center font-semibold mt-3'>{loading && "Data is loading..."}</p>
             <div className="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden">
                 <div className="p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {name}</h2>
-                    <p className="text-gray-700 text-base mb-2">Email: {email}</p>
-                    <p className="text-gray-700 text-base">ID: {userId}</p>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Name : {data.name}</h2>
+                    <p className="text-gray-700 text-base mb-2">Email: {data.email}</p>
+                    <p className="text-gray-700 text-base">ID: {data._id}</p>
                 </div>
 
             </div>
