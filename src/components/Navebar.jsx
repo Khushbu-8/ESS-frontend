@@ -5,7 +5,7 @@ import Logout from './Logout';
 
 const Navebar = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-
+const[auth,setAuth] = useState(false)
     const [sticky,setSticky] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('theme')?localStorage.getItem('theme'): 'light');
     const element = document.documentElement;
@@ -33,6 +33,15 @@ return() =>{
     window.removeEventListener("scroll",handlScroll)
 }
     },[])
+    useEffect(()=>{
+        if(token){
+            setAuth(true)
+            }else{
+                setAuth(false)
+                }
+
+
+    },[token])
 
     const NaveItems = (
         <>
@@ -123,11 +132,13 @@ return() =>{
                                 </svg>
                             </label>
                         </div>
-                        token ? <Logout/> :
-                        <div className="">
-                            <Link to={"/login"} className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>
-                         
-                        </div>
+                        {
+                            auth ? <Logout/> :
+                            <div className="">
+                                <Link to={"/login"} className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>
+                             
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
