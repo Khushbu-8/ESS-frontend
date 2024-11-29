@@ -18,9 +18,11 @@ const Profile = () => {
     
         // Access specific values
         const userId = decodedPayload.id;
-        const email = decodedPayload.email;
+        const email = decodedPayload.user.email;
+        const name = decodedPayload.user.name;
         console.log("User ID:", userId);
         console.log("Email:", email);
+        console.log("Name:", name);
     } else {
         console.error("No token found.");
     }
