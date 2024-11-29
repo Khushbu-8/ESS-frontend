@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import logo from "../../public/ess-121.png"
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
+import { useAuth } from '../context/Authprovider';
 
 const Navebar = () => {
-    const token = JSON.parse(localStorage.getItem('token'))
-const[auth,setAuth] = useState(false)
+const[auth,setAuth] = useAuth()
     const [sticky,setSticky] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('theme')?localStorage.getItem('theme'): 'light');
     const element = document.documentElement;
@@ -33,20 +33,11 @@ return() =>{
     window.removeEventListener("scroll",handlScroll)
 }
     },[])
-    useEffect(()=>{
-        if(token){
-            setAuth(true)
-            }else{
-                setAuth(false)
-                }
-
-
-    },[token])
 
     const NaveItems = (
         <>
             <li><a href='/'>Home</a></li>
-            <li><a href='/'>Course</a></li>
+            <li><a href='/profile'>profile</a></li>
             <li><a href='/contect'>Contect</a></li>
         </>
     )
