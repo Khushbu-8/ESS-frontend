@@ -1,6 +1,7 @@
 import React from 'react'
 import Navebar from './Navebar'
 import Header from './Header'
+import EditProfile from './EditProfile'
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
    
     <Navebar/>
     {/* <Header/> */}
+    <EditProfile/>
    </>
   
     
