@@ -6,7 +6,7 @@ const Logout = () => {
     const navigate = useNavigate()
     const handleLogout = () => {
         localStorage.removeItem('token')
-        navigate('/')
+        navigate('/login')
    }
   return (
     <div>
