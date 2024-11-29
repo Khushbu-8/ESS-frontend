@@ -31,6 +31,7 @@ function Registration() {
             phone: phone,
             address: address
         };
+        console.log(fullData);
         try {
             const response = await axios.post(backend_API, fullData, {
                 headers: {
