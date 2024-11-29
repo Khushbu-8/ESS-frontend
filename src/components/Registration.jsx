@@ -12,7 +12,11 @@ function Registration() {
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false)
-
+    const isAuthenticated = localStorage.getItem("token");
+    if (isAuthenticated) {
+      // Redirect to a protected page if already logged in
+      return <Navigate to="/" />;
+  }
     // const notify = () => toast("Registration Successful");
 
     const handleSubmit = async (e) => {
@@ -22,7 +26,7 @@ function Registration() {
             name: name,
             email: email,
             password: password,
-            confirmpassword: password,
+            confirmpassword: confirmpassword,
             phone: phone,
             address: address
         };
@@ -40,10 +44,6 @@ function Registration() {
             if (response.status === 200) {
                 navigete('/login');
                 console.log('Register successful!');
-            } else {
-                // Handle error responses
-                const errorData = await response.json();
-                setErrorMessage(errorData.message || 'Invalid credentials');
             }
         } catch (error) {
             console.log(error);
