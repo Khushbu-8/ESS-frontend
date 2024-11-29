@@ -106,7 +106,7 @@ function Registration() {
                                         <input
                                             value={confirmpassword}
                                             onChange={(e) => setConfirmpassword(e.target.value)}
-                                            className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="password" placeholder="Confirm Password" />
+                                            className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" type="cpassword" placeholder="Confirm Password" />
                                         <input
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
