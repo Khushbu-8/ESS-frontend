@@ -6,6 +6,8 @@ const Profile = () => {
     const [data, setData] = useState('')
 
     const token = JSON.parse(localStorage.getItem('token'))
+    console.log(token);
+    
 
     const fetchData = () => {
 
