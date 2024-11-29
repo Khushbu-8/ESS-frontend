@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
 
    const Logout = () =>{
+    const navigete = useNavigate();
     localStorage.removeItem('token');
-    window.location.reload();
+    navigete('/')
+    
    }
   return (
     <div>
