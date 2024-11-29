@@ -1,10 +1,11 @@
 import React from 'react'
+import Navebar from './Navebar'
 
 const Home = () => {
   return (
    <>
-    <div>Home</div>
-    
+   
+    <Navebar/>
    </>
   
     

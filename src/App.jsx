@@ -14,7 +14,7 @@ export default function App() {
     <>
       <ToastContainer />
       <Router>
-        <Header />
+      
         <Routes>
           {/* protected rout */}
           <Route element={<ProtectedRoute />}>

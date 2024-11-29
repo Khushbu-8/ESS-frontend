@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import logo from "../../public/ess-121.png"
+import logo from "../../public/ess-121.png"
 import { Link } from 'react-router-dom';
 
 const Navebar = () => {
@@ -67,7 +67,7 @@ return() =>{
                             </ul>
                         </div>
                         <div className="logo">
-                            <img src="" width={80} alt="" />
+                            <img src={logo} width={80} alt="" />
                         </div>
                     </div>
                     <div className="navbar-end space-x-3">
