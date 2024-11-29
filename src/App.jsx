@@ -21,6 +21,7 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
         </Routes>
