@@ -345,8 +345,8 @@ const EditProfile = () => {
         </button>
       </form>
     </div> */}
-      <div className="bg-gray-200 pt-20 flex items-center mx-2  justify-center ">
-        <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5">
+      <div className="bg-gray-200 pt-20 flex items-center   justify-center ">
+        <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
           <div className="w-full h-[160px] bg-red-500 flex items-center justify-center">
             <div className="avatar">
               <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
