@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import jwtDecode from 'jwt-decode'
 import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
 import axios from 'axios';
@@ -9,53 +8,30 @@ import axios from 'axios';
 const Profile = () => {
     const [profile, setProfile] = useState("");
     const navigate = useNavigate();
-
-    const fetchData = async() => {
-        // if (token) {
-        //     // Split the token into its components
-        //     const payload = token.split('.')[1];
-        //     // Decode the Base64 URL-encoded payload
-        //     const decodedPayload = JSON.parse(atob(payload));
-        //     console.log("Decoded Token:", decodedPayload.user);
-        //     setProfile(decodedPayload.user)
-
-        // } else {
-        //     console.error("No token found.");
-        // }
+    const fetchData = async () => {
         const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
         const token = JSON.parse(localStorage.getItem('token'))
-          console.log(token, "token Edit");
-          try {
+        //   console.log(token, "token Edit");
+        try {
             const response = await axios.get(backend_API, {
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`
-              },
-          });
-          const data = await response.data;
-          setProfile(data.user)
-          console.log(data, "data Edit");
-          // console.log(data);
-          if (response.status === 200) {
-            // localStorage.setItem('token', JSON.stringify(response.data.token))
-            // localStorage.setItem("Users",JSON.stringify(data.user))
-            // localStorage.setItem("Users",token)
-              // navigete('/profile')
-              console.log("profile Successful...");
-
-        
-          }
-            // console.log(data);
-          
-          } catch (error) {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data = await response.data;
+            setProfile(data.user)
+            console.log(data, "data Edit");
+            if (response.status === 200) {
+                navigate('/profile')
+                console.log("profile Successful...");
+            }
+        } catch (error) {
             console.log(error);
             return false;
-          }
-        
-    }
+        }
 
-    console.log("profile", profile)
-    console.log("profile", profile.name)
+    }
     useEffect(() => {
         fetchData()
     }, [])
@@ -94,7 +70,7 @@ const Profile = () => {
                                 <span><RiStarSFill /></span>
                             </div>
                             <div className="rating">
-                           < p className="font-semibold text-gray-700">User Service rating :</p>
+                                < p className="font-semibold text-gray-700">User Service rating :</p>
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                                 <input
                                     type="radio"
@@ -106,7 +82,7 @@ const Profile = () => {
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                             </div>
                             <div className="flex">
-                                <button onClick={() => navigate(`/editprofile`,{state:profile})}  className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
+                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
                             </div>
                         </div>
                     </div>

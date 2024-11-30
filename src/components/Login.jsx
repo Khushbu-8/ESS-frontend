@@ -33,13 +33,10 @@ const Login = () => {
             console.log(response.data, "data");
             console.log(response.data.token, "token");
           
-            if (response.status === 200) {
-              const cookitoken = Cookies.get('refreshToken');
-              console.log(cookitoken, "cookietoken")    
+            if (response.status === 200) {   
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 localStorage.setItem("Users",JSON.stringify(response.data.user))
                 navigate("/")
-                 // Corrected 'naviget' to 'navigate'
                 console.log("Login Successful...");
             }
         } catch (error) {

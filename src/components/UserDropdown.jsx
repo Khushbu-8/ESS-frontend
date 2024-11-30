@@ -6,44 +6,27 @@ function UserDropdown() {
   const [profile,setProfile] = useState("");
   const navigate = useNavigate();
 
-  const fetchData = async() => {
-
+  const fetchData = async () => {
+    const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
     const token = JSON.parse(localStorage.getItem('token'))
-    console.log(token, "token");
-    const cookitoken = Cookies.get('refreshToken');
-    console.log(cookitoken, "cookietoken");
-     // Replace 'your-cookie-name' with the cookie storing the token
 
-    if (!token) {
-        console.log("Token not found in cookies.");
+    try {
+        const response = await axios.get(backend_API, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        const data = await response.data;
+        setProfile(data.user)
+        console.log(data, "data Edit");
+        if (response.status === 200) {
+            console.log("profile Successful...");
+        }
+    } catch (error) {
+        console.log(error);
+        return false;
     }
-    // if (token) {
-    //     // Split the token into its components
-    //     const payload = token.split('.')[1];
-    //     // Decode the Base64 URL-encoded payload
-    //     const decodedPayload = JSON.parse(atob(payload));
-    //     console.log("Decoded Token:", decodedPayload.user);
-    //     setProfile(decodedPayload.user)
-
-    // } else {
-    //     console.error("No token found.");
-    // }
-    // const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
-    // try {
-    //     const response = await axios.get(backend_API, {
-    //         headers: {
-    //             Authorization: `Bearer ${token}`,
-    //         },
-    //         withCredentials: true
-    //     });
-    //    const data = await response.data;
-    //     console.log("user data", data);
-              
-    // } catch (error) {
-    //     console.log(error);
-        
-    // }
-
 
 }
 
@@ -68,7 +51,7 @@ useEffect(() => {
   </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
     <li>
-     <h1>Welcome :</h1>
+     <h1>Welcome : {profile.name}</h1>
     </li>
     <li>
       <Link to="/profile">Profile</Link>
