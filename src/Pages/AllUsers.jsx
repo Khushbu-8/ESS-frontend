@@ -44,7 +44,7 @@ const AllUsers = () => {
           <h1 className='text-center text-xl text-bold z-30'>All Users</h1>
           <table className="table  flex  z-0 border  p-5">
             {/* head */}
-            <thead className='text-bold text-lg text-black z-30'>
+            <thead className='text-bold text-[15px] text-black z-30'>
               <tr>
                 <th></th>
                 <th>Name</th>
@@ -63,22 +63,37 @@ const AllUsers = () => {
                   return (
                     <tr key={i}>
                       <th>{++i}</th>
-                      <th>{user.name}</th>
-                      <th>{user.email}</th>
-                      <th>{user.phone}</th>
-                      <th>{user.address}</th>
-                      <th>{user.businessName}</th>
-                      <th>{user.businessCategory}</th>
-                      <th>{user.businessAddress}</th>
-                      <th>
-                        <button className=' m-1 text-xl'><MdOutlineDeleteOutline /></button>
-                        <button className=' m-1 text-xl'><FaEdit /></button>
-                      </th>
-                      
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.phone}</td>
+                      <td>{user.address}</td>
+                      <td>{user.businessName}</td>
+                      <td>{user.businessCategory}</td>
+                      <td>{user.businessAddress}</td>
+                      <td>
+                        <button className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
+                        <button className=' m-1 text-xl text-green-500'><FaEdit /></button>
+                      </td>
+
                     </tr>
                   )
                 })
               }
+
+              {/* <tr>
+                <th>1</th>
+                <td>Cy Ganderton</td>
+                <td>Quality Control Specialist</td>
+                <td>Blue</td>
+                <td>Blue</td>
+                <td>Blue</td>
+                <td>Blue</td>
+                <td>Blue</td>
+                <th>
+                  <button className=' m-1 text-xl  text-red-500'><MdOutlineDeleteOutline /></button>
+                  <button className=' m-1 text-xl text-green-500'><FaEdit /></button>
+                </th>
+              </tr> */}
             </tbody>
           </table>
         </div>
