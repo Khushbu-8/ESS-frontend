@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
+import axios from 'axios';
 
 const EditProfile = () => {
   const [name, setName] = useState('');
@@ -184,31 +185,19 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newBusiness = { name, email, password, contact, address, selectedCategories, businessName, businessAddress };
+    const fullData = { name, email, password, contact, address, selectedCategories, businessName, businessAddress };
 
     try {
-      const record = await fetch(`${backend_API}/admin/updateUser`, {
-        method: 'PUT',
+      const response = await axios.post(backend_API, fullData, {
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          id: location?.state?._id,
-          name: name,
-          email: email,
-          password: password,
-          contact: contact,
-          address: address,
-          businessCategory: selectedCategories,
-          businessName: businessName,
-          businessAddress: businessAddress
-
-        })
-      })
-      await record.json();
+    });
+    const data = await response.data;
+    console.log(data);
       // console.log(data);
       alert('User Update Successfully');
-      navigete('/dashboard/users')
+      navigete('/profile')
 
     } catch (error) {
       console.log(error);
@@ -356,7 +345,7 @@ const EditProfile = () => {
         </button>
       </form>
     </div> */}
-      <div className="bg-gray-200 pt-20 flex items-center   justify-center ">
+      <div className="bg-gray-200 pt-20 flex items-center mx-2  justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5">
           <div className="w-full h-[160px] bg-red-500 flex items-center justify-center">
             <div className="avatar">
