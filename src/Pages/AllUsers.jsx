@@ -44,7 +44,7 @@ const AllUsers = () => {
           <h1 className='text-center text-xl text-bold z-30'>All Users</h1>
           <table className="table position-absolut flex bg-red-100 z-0 border  p-5">
             {/* head */}
-            <thead className='text-bold text-md text-black z-30'>
+            <thead className='text-bold text-lg text-black z-30'>
               <tr>
                 <th></th>
                 <th>Name</th>
@@ -71,18 +71,14 @@ const AllUsers = () => {
                       <th>{user.businessCategory}</th>
                       <th>{user.businessAddress}</th>
                       <th>
-                        <button className=' m-1'><MdOutlineDeleteOutline /></button>
-                        <button className=' m-1'><FaEdit /></button>
+                        <button className=' m-1 text-xl'><MdOutlineDeleteOutline /></button>
+                        <button className=' m-1 text-xl'><FaEdit /></button>
                       </th>
                       
                     </tr>
                   )
                 })
               }
-              {/* row 1 */}
-
-
-
             </tbody>
           </table>
         </div>
