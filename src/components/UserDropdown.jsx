@@ -44,11 +44,11 @@ useEffect(() => {
     <>
    <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className="btn m-1">
-    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="" />
+    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="" width={80} height={80} />
   </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
     <li>
-      <Link to="/profile" className="btn btn-ghost">Profile</Link>
+      <Link to="/profile">Profile</Link>
     </li>
     <li>
      <button onClick={{handleLogout}}>logout</button>
