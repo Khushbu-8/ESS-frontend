@@ -48,19 +48,19 @@ const Profile = () => {
         </div>
         <div className="py-3 px-6 grid grid-cols-1 gap-6">
           <div className="flex flex-col items-center">
-            <span>UserId :</span>
-            <h3 className="text-3xl font-semibold text-red-600">user name</h3>
+            <span>UserId : {profile._id}</span>
+            <h3 className="text-3xl font-semibold text-red-600">{profile.name}</h3>
           </div>
          <div>
         <div>
-        <p className="font-semibold text-gray-700">bussiness category:</p>
+        <p className="font-semibold text-gray-700">bussiness category: {profile.businessCategory}</p>
          <button className="bg-red-600 text-white px-8 py-3 px-2 rounded-1 font-semibold uppercase text-sm">
           ADVOCATE
             </button>
         </div>
          </div>
-         <p className="font-semibold text-gray-700">Contect :</p>
-         <p className="font-semibold text-gray-700">Address :</p>
+         <p className="font-semibold text-gray-700">Contect : {profile.phone}</p>
+         <p className="font-semibold text-gray-700">Address : {profile.address}</p>
           <div className="">
           <p className="font-semibold text-gray-700">User Service rating :</p>
         <span><RiStarSFill /></span>
