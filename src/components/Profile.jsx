@@ -6,7 +6,7 @@ import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
 
 const Profile = () => {
-    const [profile,setProfile] = useState();
+    const [profile,setProfile] = useState("");
     const navigate = useNavigate();
   
     const fetchData = () => {
@@ -26,8 +26,8 @@ const Profile = () => {
       }
   }
   
-  console.log("data", profile)
-  
+  console.log("profile", profile)
+  console.log("profile",profile.name)
   useEffect(() => {
       fetchData()
   }, [])
