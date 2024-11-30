@@ -7,14 +7,11 @@ import axios from 'axios';
 const EditProfile = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [contact, setContact] = useState('');
+  const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState([]);
   const location = useLocation();
   const navigete = useNavigate()
   let categories = [
@@ -173,19 +170,19 @@ const EditProfile = () => {
     "YOGA CLASSES"
   ]
   const toggleSelection = (category) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+    if (businessCategory.includes(category)) {
+      setBusinessCategory(businessCategory.filter((c) => c !== category));
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setBusinessCategory([...businessCategory, category]);
     }
   };
 
   //  const backend_API = "http://localhost:4000"
-  const backend_API = "https://ess-backend.vercel.app"
+  const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fullData = { name, email, password, contact, address, selectedCategories, businessName, businessAddress };
+    const fullData = { name, email, phone, address, businessCategory, businessName, businessAddress };
 
     try {
       const response = await axios.post(backend_API, fullData, {
@@ -208,11 +205,9 @@ const EditProfile = () => {
   useEffect(() => {
     setName(location?.state?.name)
     setEmail(location?.state?.email)
-    setPassword(location?.state?.password)
-    setConfirmPassword(location.state?.confirmPassword)
-    setContact(location?.state?.contact)
+    setPhone(location?.state?.contact)
     setAddress(location?.state?.address)
-    setSelectedCategories(location?.state?.selectedCategories || []),
+    setBusinessCategory(location?.state?.businessCategory || []),
       setBusinessName(location?.state?.businessName),
       setBusinessAddress(location?.state?.businessAddress)
   }, [location?.state])
@@ -371,11 +366,11 @@ const EditProfile = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Mobile Number</label>
+          <label className="block text-sm font-medium">contact</label>
           <input
             type="text"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             required
           />
@@ -396,8 +391,8 @@ const EditProfile = () => {
           </label>
           <div className="mt-2">
             <div className="border border-gray-300 rounded-md p-2 bg-white">
-              {selectedCategories.length > 0 ? (
-                selectedCategories.map((category, i) => (
+              {businessCategory.length > 0 ? (
+                businessCategory.map((category, i) => (
                   <span
                     key={++i}
                     className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
@@ -413,7 +408,7 @@ const EditProfile = () => {
               {categories.map((category, i) => (
                 <li
                   key={++i}
-                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${selectedCategories.includes(category) ? "bg-green-200" : ""
+                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
                     }`}
                   onClick={() => toggleSelection(category)}
                 >

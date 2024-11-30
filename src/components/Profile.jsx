@@ -81,6 +81,7 @@ const Profile = () => {
                                 <Link to={"/editprofile"} className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">
                                     Edit
                                 </Link>
+                                <button onClick={() => navigate(`/editprofile`,{state:profile})}  className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
                             </div>
                         </div>
                     </div>
