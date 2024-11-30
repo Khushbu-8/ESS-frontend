@@ -42,7 +42,7 @@ const AllUsers = () => {
       <div className='mx-5'>
         <div className="overflow-x-auto  z-30  p-5">
           <h1 className='text-center text-xl text-bold z-30'>All Users</h1>
-          <table className="table position-absolut flex bg-red-100 z-0 border  p-5">
+          <table className="table  flex  z-0 border  p-5">
             {/* head */}
             <thead className='text-bold text-lg text-black z-30'>
               <tr>
