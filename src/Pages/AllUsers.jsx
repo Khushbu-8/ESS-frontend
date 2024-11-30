@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const AllUsers = () => {
 
@@ -62,6 +64,16 @@ const AllUsers = () => {
                     <tr key={i}>
                       <th>{++i}</th>
                       <th>{user.name}</th>
+                      <th>{user.email}</th>
+                      <th>{user.phone}</th>
+                      <th>{user.address}</th>
+                      <th>{user.businessName}</th>
+                      <th>{user.businessCategory}</th>
+                      <th>{user.businessAddress}</th>
+                      <th>
+                        <button className=' m-1'><MdOutlineDeleteOutline /></button>
+                        <button className=' m-1'><FaEdit /></button>
+                      </th>
                       
                     </tr>
                   )
