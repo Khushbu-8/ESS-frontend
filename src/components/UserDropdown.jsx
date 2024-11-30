@@ -2,15 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function UserDropdown() {
-  const [isOpen, setIsOpen] = useState(false);
   const [profile,setProfile] = useState();
   const navigate = useNavigate();
 
-  // Simulated user data (replace with actual data from API or token)
-  const user = {
-    name: 'John Doe',
-    profilePhoto: 'https://via.placeholder.com/150', // Replace with actual photo URL
-  };
   const fetchData = () => {
 
     const token = JSON.parse(localStorage.getItem('token'))
@@ -44,11 +38,14 @@ useEffect(() => {
     <>
    <div className="dropdown dropdown-end rounded-full m-3 border bg-red">
   <div tabIndex={0} role="button" className="">
-    <div class="img w-50 h-[50px] rounded-full m-3 border bg-red overflow-hidden">
+    <div class="img w-50 h-[50px] rounded-full border bg-red overflow-hidden">
     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
     </div>
   </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+    <li>
+     <h1>Welcome : {profile.name}</h1>
+    </li>
     <li>
       <Link to="/profile">Profile</Link>
     </li>

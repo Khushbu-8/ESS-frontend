@@ -1,45 +1,37 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import jwtDecode from 'jwt-decode'
 import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
 
 const Profile = () => {
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState('')
-
-    
+    const [profile,setProfile] = useState();
+    const navigate = useNavigate();
+  
     const fetchData = () => {
-
-        const token = JSON.parse(localStorage.getItem('token'))
-        console.log(token, "token");
-        if (token) {
-            // Split the token into its components
-            const payload = token.split('.')[1];
-        
-            // Decode the Base64 URL-encoded payload
-            const decodedPayload = JSON.parse(atob(payload));
-            console.log("Decoded Token:", decodedPayload);
-        
-            // Access specific values
-            const userId = decodedPayload.id;
-            const email = decodedPayload.user.email;
-            const name = decodedPayload.user.name;
-            setData(decodedPayload.user)
-            console.log("User ID:", userId);
-            console.log("Email:", email);
-            console.log("Name:",name);
-        } else {
-            console.error("No token found.");
-        }
-    }
-
-    console.log("data", data)
-
-    useEffect(() => {
-        fetchData()
-    }, [])
+  
+      const token = JSON.parse(localStorage.getItem('token'))
+      console.log(token, "token");
+      if (token) {
+          // Split the token into its components
+          const payload = token.split('.')[1];
+          // Decode the Base64 URL-encoded payload
+          const decodedPayload = JSON.parse(atob(payload));
+          console.log("Decoded Token:", decodedPayload.user);
+          setProfile(decodedPayload.user)
+          
+      } else {
+          console.error("No token found.");
+      }
+  }
+  
+  console.log("data", profile)
+  
+  useEffect(() => {
+      fetchData()
+  }, [])
+  
 
     return (
        <>
