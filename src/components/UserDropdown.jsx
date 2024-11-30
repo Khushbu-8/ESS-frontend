@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,38 +41,21 @@ useEffect(() => {
   };
 
   return (
-    <div className="relative">
-      {/* Profile Photo Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" width={150} />
-      </button>
-
-      {/* Dropdown Menu */}
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-          <div className="py-2">
-            <p className="px-4 py-2 text-sm text-gray-700">
-              Welcome, {profile.name}
-            </p>
-            <hr className="my-1" />
-            <button
-              onClick={() => navigate('/profile')}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Profile
-            </button>
-            <button
-              onClick={handleLogout}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+    <>
+   <div className="dropdown dropdown-end">
+  <div tabIndex={0} role="button" className="btn m-1">
+    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="" />
+  </div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+    <li>
+      <Link to="/profile" className="btn btn-ghost">Profile</Link>
+    </li>
+    <li>
+     <button onClick={{handleLogout}}>logout</button>
+    </li>
+  </ul>
+</div>
+    </>
   );
 }
 
