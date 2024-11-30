@@ -53,7 +53,7 @@ useEffect(() => {
       <Link to="/profile">Profile</Link>
     </li>
     <li>
-     <button onClick={{handleLogout}}>logout</button>
+     <button onClick={handleLogout}>logout</button>
     </li>
   </ul>
 </div>
