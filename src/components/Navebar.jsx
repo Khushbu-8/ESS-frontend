@@ -107,9 +107,6 @@ return() =>{
                         </div>
                         <div>
                             <label className="swap swap-rotate">
-                                {/* this hidden checkbox controls the state */}
-                                <input type="checkbox" className="theme-controller" value="synthwave" />
-
                                 {/* sun icon */}
                                 <svg
                                     className="swap-off h-8 w-8 fill-current"
