@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const [phone, setPhone] = useState('');
@@ -19,6 +20,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
+        
             const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
     
             const response = await axios.post(backend_API, {
@@ -32,6 +34,8 @@ const Login = () => {
             console.log(response.data.token, "token");
           
             if (response.status === 200) {
+              const cookitoken = Cookies.get('refreshToken');
+              console.log(cookitoken, "cookietoken")    
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 localStorage.setItem("Users",JSON.stringify(response.data.user))
                 navigate("/")
