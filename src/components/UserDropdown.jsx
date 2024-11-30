@@ -43,8 +43,10 @@ useEffect(() => {
   return (
     <>
    <div className="dropdown dropdown-end">
-  <div tabIndex={0} role="button" className="btn m-1">
+  <div tabIndex={0} role="button" className="">
+    <div className="img w-50 h-50 rounded-full">
     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
+    </div>
   </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
     <li>
