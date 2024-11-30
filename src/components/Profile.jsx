@@ -33,7 +33,7 @@ const Profile = () => {
               },
           });
           const data = await response.data;
-          setProfile(data)
+          setProfile(data.user)
           console.log(data, "data Edit");
           // console.log(data);
           if (response.status === 200) {
