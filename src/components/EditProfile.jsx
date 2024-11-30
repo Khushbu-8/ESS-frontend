@@ -205,7 +205,7 @@ const EditProfile = () => {
   useEffect(() => {
     setName(location?.state?.name)
     setEmail(location?.state?.email)
-    setPhone(location?.state?.contact)
+    setPhone(location?.state?.phone)
     setAddress(location?.state?.address)
     setBusinessCategory(location?.state?.businessCategory || []),
       setBusinessName(location?.state?.businessName),
@@ -361,6 +361,16 @@ const EditProfile = () => {
             type="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             required
           />
