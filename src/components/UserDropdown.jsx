@@ -23,7 +23,7 @@ function UserDropdown() {
 }
 
 console.log("data", profile)
-console.log("name", profile.nmae)
+console.log("name", profile.name)
 
 useEffect(() => {
     fetchData()
