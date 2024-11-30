@@ -44,7 +44,7 @@ useEffect(() => {
   </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
     <li>
-     <h1>Welcome : user</h1>
+     <h1>Welcome : {profile.name}</h1>
     </li>
     <li>
       <Link to="/profile">Profile</Link>

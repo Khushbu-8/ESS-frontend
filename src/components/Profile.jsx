@@ -48,7 +48,7 @@ const Profile = () => {
         </div>
         <div className="py-3 px-6 grid grid-cols-1 gap-6">
           <div className="flex flex-col items-center">
-            <span>UserId</span>
+            <span>UserId :</span>
             <h3 className="text-3xl font-semibold text-red-600">user name</h3>
           </div>
          <div>
