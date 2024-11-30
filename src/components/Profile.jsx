@@ -78,9 +78,6 @@ const Profile = () => {
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                             </div>
                             <div className="flex">
-                                <Link to={"/editprofile"} className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">
-                                    Edit
-                                </Link>
                                 <button onClick={() => navigate(`/editprofile`,{state:profile})}  className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
                             </div>
                         </div>
