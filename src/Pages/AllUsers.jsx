@@ -5,17 +5,16 @@ const AllUsers = () => {
  
   const[userList, setUserList] = useState([]);
   const fetchData = async () => {
-    const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
-    const token = JSON.parse(localStorage.getItem('token'))
-      console.log(token, "token Edit");
+    const backend_API = "https://ees-121-backend.vercel.app/auth/getAllUser"
+    // const token = JSON.parse(localStorage.getItem('token'))
+    //   console.log(token, "token Edit");
     try {
         const response = await axios.get(backend_API, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
 
             },
-            
+
         });
         const data = await response.data;
         setUserList(data)
