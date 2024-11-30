@@ -15,7 +15,7 @@ const AllUsers = () => {
             },
         });
         const data = await response.data;
-        setUserList(data.user)
+        setUserList(data)
         console.log(data, "AllUser");
         if (response.status === 200) {
            
