@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // import jwtDecode from 'jwt-decode'
@@ -26,7 +26,7 @@ const Profile = () => {
         const token = JSON.parse(localStorage.getItem('token'))
           console.log(token, "token Edit");
           try {
-            const response = await axios.get(backend_API, fullData, {
+            const response = await axios.get(backend_API, {
               headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`
