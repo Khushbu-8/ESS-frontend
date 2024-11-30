@@ -83,7 +83,7 @@ return() =>{
                             <img src={logo} width={80} alt="" />
                         </div>
                     </div>
-                    <div className="navbar-end space-x-3">
+                    <div className="navbar-center space-x-3">
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">
                                 {NaveItems}
