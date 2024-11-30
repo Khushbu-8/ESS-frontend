@@ -5,6 +5,7 @@ import Navebar from './Navebar';
 import axios from 'axios';
 
 const EditProfile = () => {
+  const [profile, setProfile] = useState("");
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -194,6 +195,7 @@ const EditProfile = () => {
         },
     });
     const data = await response.data;
+    setProfile(data)
     console.log(data, "data Edit");
     // console.log(data);
     if (response.status === 200) {

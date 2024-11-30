@@ -4,26 +4,54 @@ import { Link, useNavigate } from 'react-router-dom'
 // import jwtDecode from 'jwt-decode'
 import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
+import axios from 'axios';
 
 const Profile = () => {
     const [profile, setProfile] = useState("");
     const navigate = useNavigate();
 
-    const fetchData = () => {
+    const fetchData = async() => {
+        // if (token) {
+        //     // Split the token into its components
+        //     const payload = token.split('.')[1];
+        //     // Decode the Base64 URL-encoded payload
+        //     const decodedPayload = JSON.parse(atob(payload));
+        //     console.log("Decoded Token:", decodedPayload.user);
+        //     setProfile(decodedPayload.user)
 
+        // } else {
+        //     console.error("No token found.");
+        // }
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
         const token = JSON.parse(localStorage.getItem('token'))
-        console.log(token, "token");
-        if (token) {
-            // Split the token into its components
-            const payload = token.split('.')[1];
-            // Decode the Base64 URL-encoded payload
-            const decodedPayload = JSON.parse(atob(payload));
-            console.log("Decoded Token:", decodedPayload.user);
-            setProfile(decodedPayload.user)
+          console.log(token, "token Edit");
+          try {
+            const response = await axios.get(backend_API, fullData, {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              },
+          });
+          const data = await response.data;
+          setProfile(data)
+          console.log(data, "data Edit");
+          // console.log(data);
+          if (response.status === 200) {
+            // localStorage.setItem('token', JSON.stringify(response.data.token))
+            // localStorage.setItem("Users",JSON.stringify(data.user))
+            // localStorage.setItem("Users",token)
+              // navigete('/profile')
+              console.log("profile Successful...");
 
-        } else {
-            console.error("No token found.");
-        }
+        
+          }
+            // console.log(data);
+          
+          } catch (error) {
+            console.log(error);
+            return false;
+          }
+        
     }
 
     console.log("profile", profile)
