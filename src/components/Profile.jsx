@@ -48,14 +48,14 @@ const Profile = () => {
         </div>
         <div className="py-3 px-6 grid grid-cols-1 gap-6">
           <div className="flex flex-col items-center">
-            <span>UserId : </span>
+            <span>UserId : {profile._id}</span>
             <h3 className="text-3xl font-semibold text-red-600">{profile.name}</h3>
           </div>
          <div>
         <div>
-        <p className="font-semibold text-gray-700">bussiness category: {profile.businessCategory}</p>
+        <p className="font-semibold text-gray-700">bussiness category:</p>
          <button className="bg-red-600 text-white px-8 py-3 px-2 rounded-1 font-semibold uppercase text-sm">
-          ADVOCATE
+          ADVOCATE {profile.businessCategory}
             </button>
         </div>
          </div>
