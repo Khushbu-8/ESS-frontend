@@ -92,7 +92,7 @@ const AllUsers = () => {
                       <td>{user.businessCategory}</td>
                       <td>{user.businessAddress}</td>
                       <td>
-                        <button onClick={() => DeletUser(_id)} className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
+                        <button onClick={() => DeletUser(user._id)} className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
                         <button onClick={() => navigate(`/admin/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
                       </td>
 
