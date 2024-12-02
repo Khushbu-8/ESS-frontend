@@ -44,7 +44,7 @@ const AllUsers = () => {
     
 
     try {
-      const response = await axios.post(`${backend_API}/auth/deleteUser`, { id: id }, {
+      const response = await axios.delete(`${backend_API}/auth/deleteUser`, { id: id }, {
         headers: {
           'Content-Type': 'application/json',
         },
