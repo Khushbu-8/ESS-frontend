@@ -74,7 +74,7 @@ const AllUsers = () => {
                       <td>{user.businessAddress}</td>
                       <td>
                         <button className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
-                        <button onClick={() => navigate(`/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
+                        <button onClick={() => navigate(`/admin/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
                       </td>
 
                     </tr>
