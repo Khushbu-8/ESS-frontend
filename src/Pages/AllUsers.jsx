@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const AllUsers = () => {
 
   const [userList, setUserList] = useState([]);
+  const navigate = useNavigate();
   const fetchData = async () => {
     const backend_API = "https://ees-121-backend.vercel.app/auth/getAllUser"
     // const token = JSON.parse(localStorage.getItem('token'))
