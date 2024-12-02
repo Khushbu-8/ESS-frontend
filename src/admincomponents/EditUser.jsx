@@ -182,7 +182,6 @@ const EditUser = () => {
   const backend_API = "https://ees-121-backend.vercel.app/auth/UpdateUser"
   // const token = JSON.parse(localStorage.getItem('token'))
   //   console.log(token, "token Edit");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(location?.state?._id ,"Edit Id");
@@ -205,9 +204,7 @@ const EditUser = () => {
     });
   
     console.log(response.data, "Data Edit");
-  
-      
-      console.log(data, "data Edit");
+
       // console.log(data);
       if (response.status === 200) {
         navigete('/admin')
