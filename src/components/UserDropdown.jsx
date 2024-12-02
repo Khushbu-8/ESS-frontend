@@ -7,11 +7,10 @@ function UserDropdown() {
   const [profile,setProfile] = useState("");
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem('token'))
-  console.log(token, "token Edit");
+  console.log(token, "token profil");
 
   const fetchData = async () => {
     const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
-    const token = JSON.parse(localStorage.getItem('token'))
 
     try {
         const response = await axios.get(backend_API, {
