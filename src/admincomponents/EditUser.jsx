@@ -188,7 +188,7 @@ const EditUser = () => {
     console.log(location?.state?._id ,"Edit Id");
     
    try {
-    const response = await axios.put(`${backend_API}/updateUser`, {
+    const response = await axios.put(backend_API, {
       id: location?.state?._id,
       name: name,
       email: email,
