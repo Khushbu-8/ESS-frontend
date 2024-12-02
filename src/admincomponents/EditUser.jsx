@@ -188,22 +188,24 @@ const EditUser = () => {
     console.log(location?.state?._id ,"Edit Id");
     
    try {
-      const response = await axios.put(backend_API, {
-        id: location?.state?._id,
-        name: name,
-        email: email,
-        phone: phone,
-        address: address,
-        businessCategory: businessCategory,
-        businessName: businessName,
-        businessAddress: businessAddress
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true
-      }); 
-      const data = await response.data;
+    const response = await axios.put(`${backend_API}/updateUser`, {
+      id: location?.state?._id,
+      name: name,
+      email: email,
+      phone: phone,
+      address: address,
+      businessCategory: businessCategory,
+      businessName: businessName,
+      businessAddress: businessAddress
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true // For cookies/session authentication if required
+    });
+  
+    console.log(response.data, "Data Edit");
+  
       
       console.log(data, "data Edit");
       // console.log(data);
