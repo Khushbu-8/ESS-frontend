@@ -92,7 +92,7 @@ const AllUsers = () => {
                 userList.map((user, i) => {
                   return (
                     <tr key={i}>
-                      <th>{++i}</th>
+                      <th>{user._id}</th>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
