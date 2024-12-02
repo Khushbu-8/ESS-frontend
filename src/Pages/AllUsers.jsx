@@ -39,16 +39,22 @@ const AllUsers = () => {
   }, [])
   const DeletUser = async(id) =>{
     try {
-        const record = await fetch(`${backend_API}/auth/deleteUser`,{
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({id:id})
-        })
-        const res = await record.json()
-       if(res.success){
+      const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
+        id : id
+      },
+         {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+       
+      if (response.status === 200) {
+
         alert("User deleted successfully");
+        console.log("User deleted successfully");
+        
         fetchData();
-       }
+      }
         
     } catch (error) {
         console.log(error);
