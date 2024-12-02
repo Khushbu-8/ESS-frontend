@@ -186,10 +186,19 @@ const EditUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fullData = { id:location?.state?._id,name, email, phone, address, businessCategory, businessName, businessAddress };
+    const fullData = { };
 
     try {
-      const response = await axios.put(backend_API, fullData, {
+      const response = await axios.put(backend_API,{
+        id:location?.state?._id,
+        name :name, 
+        email : email, 
+        phone :phone,
+         address : address,
+          businessCategory : businessCategory, 
+          businessName :businessName, 
+          businessAddress :businessAddress
+      } , {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -237,6 +246,7 @@ const EditUser = () => {
             </div>
             <form onSubmit={handleSubmit} method='post' className="space-y-4  dark:text-white">
         <div>
+          <input type="text"  name="" id="" />
           <label className="block text-sm font-medium">Name</label>
           <input
             type="name"
