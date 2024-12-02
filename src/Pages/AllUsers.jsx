@@ -39,12 +39,12 @@ const AllUsers = () => {
     fetchData()
   }, [])
 
-  const DeletUser = async(id) =>{
+  const DeletUser = async(uid) =>{
     console.log(id);
     
 
     try {
-      const response = await axios.delete(`${backend_API}/auth/deleteUser`, { id: id }, {
+      const response = await axios.delete(`${backend_API}/auth/deleteUser`, { id : uid }, {
         headers: {
           'Content-Type': 'application/json',
         },
