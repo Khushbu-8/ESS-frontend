@@ -6,7 +6,6 @@ import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
 
 const EditUser = () => {
-  const [profile, setProfile] = useState("");
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -186,34 +185,34 @@ const EditUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fullData = { };
-
-    try {
-      const response = await axios.put(backend_API,{
-        id:location?.state?._id,
-        name :name, 
-        email : email, 
-        phone :phone,
-         address : address,
-          businessCategory : businessCategory, 
-          businessName :businessName, 
-          businessAddress :businessAddress
-      } , {
+    console.log(location?.state?._id ,"Edit Id");
+    
+   try {
+      const response = await axios.put(backend_API, {
+        id: location?.state?._id,
+        name: name,
+        email: email,
+        phone: phone,
+        address: address,
+        businessCategory: businessCategory,
+        businessName: businessName,
+        businessAddress: businessAddress
+      }, {
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         withCredentials: true
-    });
-    const data = await response.data;
-    setProfile(data)
-    console.log(data, "data Edit");
-    // console.log(data);
-    if (response.status === 200) {
+      }); 
+      const data = await response.data;
+      
+      console.log(data, "data Edit");
+      // console.log(data);
+      if (response.status === 200) {
         navigete('/admin')
 
-    }
+      }
       // console.log(data);
-    
+
     } catch (error) {
       console.log(error);
       return false;
@@ -221,7 +220,6 @@ const EditUser = () => {
 
   };
   useEffect(() => {
-
     setName(location?.state?.name)
     setEmail(location?.state?.email)
     setPhone(location?.state?.phone)
@@ -233,116 +231,116 @@ const EditUser = () => {
 
   return (
     <>
-   <AdminNavbar/>
-   <Sidebar/>
-     
+      <AdminNavbar />
+      <Sidebar />
+
       <div className="bg-gray-200 pt-15 flex items-center   justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
-          
+
           <div className="py-3 px-6 grid grid-cols-1 gap-6">
             <div className="flex flex-col items-center">
-             
+
               <h3 className="text-3xl font-semibold text-red-500 pt-3">Edit User</h3>
             </div>
             <form onSubmit={handleSubmit} method='post' className="space-y-4  dark:text-white">
-        <div>
-          <input type="text"  name="" id="" />
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">contact</label>
-          <input
-            type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Address</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div className="w-full mt-10">
-        <label className="block text-sm font-medium">
-            Select Business Categories:
-          </label>
-          <div className="mt-2">
-            <div className="border border-gray-300 rounded-md p-2 bg-white">
-              {businessCategory.length > 0 ? (
-                businessCategory.map((category, i) => (
-                  <span
-                    key={++i}
-                    className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                  >
-                    {category}
-                  </span>
-                ))
-              ) : (
-                <span className="text-gray-400">Select categories</span>
-              )}
-            </div>
-            <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
-              {categories.map((category, i) => (
-                <li
-                  key={++i}
-                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
-                    }`}
-                  onClick={() => toggleSelection(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Business Address</label>
-          <input
-            type="text"
-            value={businessAddress}
-            onChange={(e) => setBusinessAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
+              <div>
+                <input type="text" name="" id="" />
+                <label className="block text-sm font-medium">Name</label>
+                <input
+                  type="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">contact</label>
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Address</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div className="w-full mt-10">
+                <label className="block text-sm font-medium">
+                  Select Business Categories:
+                </label>
+                <div className="mt-2">
+                  <div className="border border-gray-300 rounded-md p-2 bg-white">
+                    {businessCategory.length > 0 ? (
+                      businessCategory.map((category, i) => (
+                        <span
+                          key={++i}
+                          className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
+                        >
+                          {category}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-gray-400">Select categories</span>
+                    )}
+                  </div>
+                  <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                    {categories.map((category, i) => (
+                      <li
+                        key={++i}
+                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
+                          }`}
+                        onClick={() => toggleSelection(category)}
+                      >
+                        {category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Business Address</label>
+                <input
+                  type="text"
+                  value={businessAddress}
+                  onChange={(e) => setBusinessAddress(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
 
-        <button
-          type="submit"
-          className="w-full bg-red-600 text-white font -bold py-2 rounded-md hover:bg-green-600"
-        >
-          Edit User
-        </button>
-      </form>
+              <button
+                type="submit"
+                className="w-full bg-red-600 text-white font -bold py-2 rounded-md hover:bg-red-600"
+              >
+                Edit User
+              </button>
+            </form>
           </div>
         </div>
       </div>
- {/* <div className="relative">
+      {/* <div className="relative">
       {/* Profile Photo Button */}
-   
+
 
     </>
   );
