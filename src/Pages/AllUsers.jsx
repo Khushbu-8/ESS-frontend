@@ -48,7 +48,7 @@ const AllUsers = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        data: { id: userId },
+        data: { id: uid },
       });
     console.log(response.data, "delet data");
       if (response.status === 200) {
