@@ -40,7 +40,7 @@ const AllUsers = () => {
   }, [])
 
   const DeletUser = async(uid) =>{
-    console.log(id);
+    console.log(uid);
     
 
     try {
