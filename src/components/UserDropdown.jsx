@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import axios from 'axios';
 
 
 function UserDropdown() {
   const [profile,setProfile] = useState("");
   const navigate = useNavigate();
+  const token = JSON.parse(localStorage.getItem('token'))
+  console.log(token, "token Edit");
 
   const fetchData = async () => {
     const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
