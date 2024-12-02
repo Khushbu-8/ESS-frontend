@@ -69,8 +69,8 @@ const AllUsers = () => {
   return (
     <>
  
-      <div className='mx-5 card bg-base-100  shadow-xl'>
-        <div className="overflow-x-auto  p-5">
+      <div className='mx-5 card bg-base-100 px-4 shadow-xl'>
+        <div className="overflow-x-auto p-5">
           <h1 className='text-center text-xl text-bold z-30 py-3'>All Users</h1>
           <table className="table  flex  z-0 border  p-5">
             {/* head */}
@@ -101,7 +101,7 @@ const AllUsers = () => {
                       <td>{user.businessCategory}</td>
                       <td>{user.businessAddress}</td>
                       <td>
-                        <button onClick={() => DeletUser(user._id)} className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
+                        <button onClick={() => DeletUser(user._id)} className=' m-1 text-xl text-primary'><MdOutlineDeleteOutline /></button>
                         <button onClick={() => navigate(`/admin/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
                       </td>
 
