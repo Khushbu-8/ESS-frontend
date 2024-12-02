@@ -186,7 +186,7 @@ const EditUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fullData = { name, email, phone, address, businessCategory, businessName, businessAddress };
+    const fullData = { id:location?.state?._id,name, email, phone, address, businessCategory, businessName, businessAddress };
 
     try {
       const response = await axios.put(backend_API, fullData, {
@@ -212,6 +212,7 @@ const EditUser = () => {
 
   };
   useEffect(() => {
+
     setName(location?.state?.name)
     setEmail(location?.state?.email)
     setPhone(location?.state?.phone)
