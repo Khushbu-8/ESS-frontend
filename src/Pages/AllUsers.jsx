@@ -40,17 +40,16 @@ const AllUsers = () => {
   }, [])
 
   const DeletUser = async(id) =>{
+    console.log(id);
+    
 
     try {
       const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
         id 
-      },
-         {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-       
+      }, {
+        withCredentials: true, // Important: send cookies with the request
+    } );
+    console.log(response.data, "delet data");
       if (response.status === 200) {
 
         alert("User deleted successfully");

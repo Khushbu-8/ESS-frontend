@@ -200,11 +200,8 @@ const EditUser = () => {
     console.log(data, "data Edit");
     // console.log(data);
     if (response.status === 200) {
-      // localStorage.setItem('token', JSON.stringify(response.data.token))
-      localStorage.setItem("Users",JSON.stringify(data.user))
-      // localStorage.setItem("Users",token)
         navigete('/admin')
-  
+
     }
       // console.log(data);
     
