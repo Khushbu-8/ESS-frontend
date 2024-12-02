@@ -9,11 +9,11 @@ const AllUsers = () => {
   const [userList, setUserList] = useState([]);
   const navigate = useNavigate();
   const fetchData = async () => {
-    const backend_API = "https://ees-121-backend.vercel.app/auth/getAllUser"
+    const backend_API = "https://ees-121-backend.vercel.app"
     // const token = JSON.parse(localStorage.getItem('token'))
     //   console.log(token, "token Edit");
     try {
-      const response = await axios.get(backend_API, {
+      const response = await axios.get(`${backend_API}/auth/getAllUser`, {
         headers: {
           'Content-Type': 'application/json',
 
@@ -37,6 +37,25 @@ const AllUsers = () => {
   useEffect(() => {
     fetchData()
   }, [])
+  const DeletUser = async(id) =>{
+    try {
+        const record = await fetch(`${backend_API}/auth/deleteUser`,{
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({id:id})
+        })
+        const res = await record.json()
+       if(res.success){
+        alert("User deleted successfully");
+        fetchData();
+       }
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
 
   return (
     <>
@@ -73,7 +92,7 @@ const AllUsers = () => {
                       <td>{user.businessCategory}</td>
                       <td>{user.businessAddress}</td>
                       <td>
-                        <button className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
+                        <button onClick={() => DeletUser(_id)} className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
                         <button onClick={() => navigate(`/admin/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
                       </td>
 

@@ -181,8 +181,8 @@ const EditUser = () => {
 
   //  const backend_API = "http://localhost:4000"
   const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
-  const token = JSON.parse(localStorage.getItem('token'))
-    console.log(token, "token Edit");
+  // const token = JSON.parse(localStorage.getItem('token'))
+  //   console.log(token, "token Edit");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -192,8 +192,8 @@ const EditUser = () => {
       const response = await axios.post(backend_API, fullData, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
         },
+        withCredentials: true
     });
     const data = await response.data;
     setProfile(data)
