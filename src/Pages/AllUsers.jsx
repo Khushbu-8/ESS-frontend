@@ -45,7 +45,7 @@ const AllUsers = () => {
 
     try {
       const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
-        id 
+        id : id
       }, {
         withCredentials: true, // Important: send cookies with the request
     } );
