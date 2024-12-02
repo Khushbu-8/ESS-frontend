@@ -69,9 +69,10 @@ const AllUsers = () => {
   return (
     <>
  
-      <div className='mx-5'>
-        <div className="overflow-x-auto  z-30  p-5">
-          <h1 className='text-center text-xl text-bold z-30'>All Users</h1>
+     
+        <div className="mx-5 card bg-base-100  shadow-xl w-full">
+        <div className="overflow-x-auto   p-5">
+          <h1 className='text-center text-xl text-bold z-30 py-3'>All Users</h1>
           <table className="table  flex  z-0 border  p-5">
             {/* head */}
             <thead className='text-bold text-[15px] text-black z-30'>
