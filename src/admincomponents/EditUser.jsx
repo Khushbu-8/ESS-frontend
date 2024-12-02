@@ -180,7 +180,7 @@ const EditUser = () => {
   };
 
   //  const backend_API = "http://localhost:4000"
-  const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
+  const backend_API = "https://ees-121-backend.vercel.app/auth/UpdateUser"
   // const token = JSON.parse(localStorage.getItem('token'))
   //   console.log(token, "token Edit");
 
@@ -189,7 +189,7 @@ const EditUser = () => {
     const fullData = { name, email, phone, address, businessCategory, businessName, businessAddress };
 
     try {
-      const response = await axios.post(backend_API, fullData, {
+      const response = await axios.put(backend_API, fullData, {
         headers: {
             'Content-Type': 'application/json',
         },
