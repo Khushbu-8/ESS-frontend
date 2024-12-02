@@ -53,7 +53,7 @@ return() =>{
     )
     return (
         <>
-            <div className={`max-w-screen-2xl container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4 z-50 fixed top-0 right-0 ${
+            <div className={` max-w-screen-2xl container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4 z-50 fixed top-0 right-0 ${
                 sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" "
             } `}>
                 <div className="navbar">

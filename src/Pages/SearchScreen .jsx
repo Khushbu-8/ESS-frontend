@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Navebar from '../components/Navebar'
+import { useNavigate } from 'react-router-dom';
+import ServiceDetail from './ServiceDetail';
 
-const SearchScreen  = () => {
+const SearchScreen = () => {
+    const[sevices,setServices] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
-    
     const [search, setSearch] = useState("");
+    const navigate = useNavigate();
     let categories = [
         { id: 1, name: "A.C. SERVICE" },
         { id: 2, name: "ADVOCATE" },
@@ -23,142 +26,103 @@ const SearchScreen  = () => {
         { id: 15, name: "BICYCLE" },
         { id: 16, name: "CAFE" },
         { id: 17, name: "CAR DECORATOR" },
-      ];
+    ];
 
     let profile = [{
-        id:1,
+        id: 1,
         name: "John Doe",
         email: "john@example.com",
         phone: "1234567890",
         address: "123 Main St, Anytown, USA",
-        category : "A.C. SERVICE"
+        category: "A.C. SERVICE"
 
-    } ,
+    },
     {
-        id:2,
+        id: 2,
         name: "Jane Doe",
         email: "jane@example.com",
         phone: "9876543210",
         address: "456 Elm St, Anytown, USA",
-        category : "AUTO RICKSHAW"
-        },
-        {
-            id:3,
-            name: "John Doe",
-            email: "john@example.com",
-            phone: "1234567890",
-            address: "123 Main St, Anytown, USA",
-            category : "BAGGI (HORSE CART)"
-            },
- ]
+        category: "AUTO RICKSHAW"
+    },
+    {
+        id: 3,
+        name: "John Doe",
+        email: "john@example.com",
+        phone: "1234567890",
+        address: "123 Main St, Anytown, USA",
+        category: "BAGGI (HORSE CART)"
+    },
+    ]
 
- const FilterServies = (cat) =>{
-    let filterSevises = [...profile]
-    filterSevises = filterSevises.filter(val => val.category === cat)
-    setFilterRecord(filterSevises)
- }
- useEffect(()=>{
-    let filter = [...profile];
-    if(search.trim()){
-        filter = filter.filter(item => item.category.toLowerCase().includes(search.toLowerCase()));
+    const FilterServies = (cat) => {
+        let filterSevises = [...profile]
+        filterSevises = filterSevises.filter(val => val.category === cat)
+        setFilterRecord(filterSevises)
+        
+    }
+    useEffect(() => {
+        let filter = [...categories];
+        if (search.trim()) {
+            filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         }
         setFilterRecord(filter);
- },[search])
+    }, [search])
 
- 
- useEffect(()=>{
-    FilterServies();
- },[])
-  return (
-    <>
-    <Navebar/>
-    
-    <div className='max-w-sm  mt-20 p-6'>
-        <h1 className='py-3'>Serch for Serviesis</h1>
-    <div className="form-control ">
-      <input type="text" placeholder="Search"  onChange={(e) => setSearch(e.target.value)} value={search}  className="input input-bordered w-24 md:w-auto" />
-    </div>
-    </div>
-<div className='pb-4 pl-5'>
-    {
-        categories.map((cat,i) =>{
-            return(
-                <button onClick={() => FilterServies(cat.name)} className="btn btn-active bg-primary text-white hover:bg-red-700 border-0 rounded-sm m-1">{cat.name}</button>
-            )
-        })
-    }
 
-{/* <button className="btn btn-active rounded-sm mx-1">Ac servise</button> */}
+    useEffect(() => {
+        FilterServies();
+    }, [])
 
-</div>
+    return (
+        <>
+            <Navebar />
 
-    <div className='card card-compact bg-base-100  shadow-xl'>
-    <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <th>Name</th>
-        <th>Bussiness</th>
-        <th>profile</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+            <div className='max-w-sm  mt-20 p-6'>
+                <h1 className='py-3'>Serch for Serviesis</h1>
 
-    {filterrecord.length > 0 ? (
-                filterrecord.map((p, i) => (
-                  <tr key={p.id}>
-                    <th>
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </th>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle h-12 w-12">
-                            <img
-                              src="https://via.placeholder.com/150"
-                              alt="User Avatar"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{p.name}</div>
-                          <div className="text-sm opacity-50">{p.email}</div>
-                          <div className="text-sm opacity-50">{p.phone}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{p.category}</td>
-                    <td>
-                      <button className="btn">View Profile</button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" className="text-center">
+                <div className=''>
+                    <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
+                        <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none dark:bg-slate-900 dark:text-white  bg-base-900`} />
+                        <button className="btn btn-square btn-sm">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                                className="h-4 w-4 opacity-70">
+                                <path
+                                    fillRule="evenodd"
+                                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                    clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </label>
+                </div>
+            </div>
+            <div className='pb-4 pl-5'>
+                {filterrecord.length > 0 ?(
+                    filterrecord.map((cat, i) => {
+                        return (
+                            <button onClick={() => FilterServies(cat.name)} className="btn btn-active bg-primary text-white hover:bg-red-700 border-0 rounded-sm m-1">{cat.name}</button>
+                        )
+                    })
+                ) : (
+                    <h1>
                     No records found. Please select a category or search.
-                  </td>
-                </tr>
-              )}
-     
+                </h1>
+                )}
 
-    </tbody>
-    {/* foot */}
-   
-  </table>
-</div>
-    </div>
-    </>
-  )
+                {/* <button className="btn btn-active rounded-sm mx-1">Ac servise</button> */}
+
+            </div>
+
+           <ServiceDetail 
+           filterrecord ={filterrecord } 
+           profile = {profile}
+
+           />
+        </>
+    )
 }
 
 export default SearchScreen 

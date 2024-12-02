@@ -11,6 +11,7 @@ import AllUsers from "./Pages/AllUsers"
 import EditUser from "./admincomponents/EditUser"
 import SearchScreen from "./Pages/SearchScreen "
 import Home from "./components/Home";
+import ServiceDetail from "./Pages/ServiceDetail";
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/servises" element={ <SearchScreen/>} />
+            <Route path="/serviceDetail" element={ <ServiceDetail/>} />
           {/* </Route> */}
 
           <Route path="/" element={<Home />} />
