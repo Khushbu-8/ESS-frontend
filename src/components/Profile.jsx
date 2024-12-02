@@ -43,7 +43,7 @@ const Profile = () => {
             <div className=''>
                 <div className="bg-gray-200 mx-auto  max-w-full  pt-20 flex items-center   justify-center ">
                     <div className="w-[600px] bg-white h-[700px] rounded-lg overflow-hidden shadow-md mt-5">
-                        <div className="w-full h-[160px] bg-red-600 flex items-center justify-center">
+                        <div className="w-full h-[160px] bg-primary flex items-center justify-center">
                             <div className="avatar">
                                 <div className="ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
                                     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -58,7 +58,7 @@ const Profile = () => {
                             <div>
                                 <div>
                                     <p className="font-semibold text-gray-700">bussiness category:</p>
-                                    <button className="bg-red-600 text-white px-8 py-3 px-2 rounded-1 font-semibold uppercase text-sm">
+                                    <button className="bg-primary text-white px-8 py-3 px-2 rounded-1 font-semibold uppercase text-sm">
                                         ADVOCATE {profile.businessCategory}
                                     </button>
                                 </div>
@@ -78,7 +78,7 @@ const Profile = () => {
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                             </div>
                             <div className="flex">
-                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className="bg-red-600 text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
+                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className="bg-primary text-white px-8 py-3 rounded font-semibold uppercase text-sm">Edit</button>
                             </div>
                         </div>
                     </div>

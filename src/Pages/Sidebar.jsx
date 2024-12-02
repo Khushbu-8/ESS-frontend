@@ -6,12 +6,12 @@ import { FaUser } from 'react-icons/fa'
 const Sidebar = () => {
   const sidebarManu = [
     {
-        id: 1,
-        title: 'Users',
-        icon: <FaUser/>,
-        path: '/admin',
-        }
-]
+      id: 1,
+      title: 'Users',
+      icon: <FaUser />,
+      path: '/admin',
+    }
+  ]
 
   return (
     <>
@@ -22,26 +22,26 @@ const Sidebar = () => {
         </div>
         <div className="drawer-side z-30">
           <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-          
-        <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-        <div className="logo flex justify-center text-center">
-            <img src={logo} width={80} alt="" />
+
+          <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+            <div className="logo flex justify-center text-center">
+              <img src={logo} width={80} alt="" />
+            </div>
+            <hr />
+            <ul className='mt-3 font-bold'>
+              {
+                sidebarManu.map((manu, i) => {
+                  return (
+                    <li key={++i} className=' my-1 rounded hover:bg-primary hover:text-white focus:text-white'>
+                      <Link to={manu.path} className=' text-lg'>
+                        <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
+                        {manu.title}</Link>
+                    </li>
+                  )
+                })
+              }
+            </ul>
           </div>
-          <hr />
-        <ul className='mt-3 font-bold'>
-        {
-                            sidebarManu.map((manu , i) => {
-                                return (
-                                    <li key={++i} className=' my-1 rounded hover:bg-orange hover:text-white'>
-                           <Link to={manu.path} className=' text-lg'>
-                           <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
-                           {manu.title}</Link>
-                        </li>
-                                )
-                            })
-                        }
-          </ul>
-        </div>
         </div>
       </div>
     </>

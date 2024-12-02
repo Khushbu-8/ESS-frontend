@@ -226,134 +226,9 @@ const EditProfile = () => {
   return (
     <>
     <Navebar/>
-      {/* <div className="p-4 mx-auto">
-      <h1 className="text-2xl  dark:text-white font-bold mb-4">Edit User</h1>
-      <form onSubmit={handleSubmit} method='post' className="space-y-4  dark:text-white">
-        <div>
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Confirm Password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Mobile Number</label>
-          <input
-            type="text"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Address</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Business Name</label>
-          <input
-            type="text"
-            value={businessName}
-            onChange={(e) => setBusinessName(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div className="w-full mt-10">
-        <label className="block text-sm font-medium">
-            Select Business Categories:
-          </label>
-          <div className="mt-2">
-            <div className="border border-gray-300 rounded-md p-2 bg-white">
-              {selectedCategories.length > 0 ? (
-                selectedCategories.map((category, i) => (
-                  <span
-                    key={++i}
-                    className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                  >
-                    {category}
-                  </span>
-                ))
-              ) : (
-                <span className="text-gray-400">Select categories</span>
-              )}
-            </div>
-            <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
-              {categories.map((category, i) => (
-                <li
-                  key={++i}
-                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${selectedCategories.includes(category) ? "bg-green-200" : ""
-                    }`}
-                  onClick={() => toggleSelection(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Business Address</label>
-          <input
-            type="text"
-            value={businessAddress}
-            onChange={(e) => setBusinessAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-green-500 text-white font -bold py-2 rounded-md hover:bg-green-600"
-        >
-          Edit User
-        </button>
-      </form>
-    </div> */}
       <div className="bg-gray-200 pt-20 flex items-center   justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
-          <div className="w-full h-[160px] bg-red-500 flex items-center justify-center">
+          <div className="w-full h-[160px] bg-primary flex items-center justify-center">
             <div className="avatar">
               <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -361,11 +236,8 @@ const EditProfile = () => {
             </div>
           </div>
           <div className="py-3 px-6 grid grid-cols-1 gap-6">
-            <div className="flex flex-col items-center">
-              <span>UserId</span>
-              <h3 className="text-3xl font-semibold text-red-500">user name</h3>
-            </div>
-            <form onSubmit={handleSubmit} method='post' className="space-y-4  dark:text-white">
+            
+            <form onSubmit={handleSubmit} method='post' className="space-y-4 py-3  dark:text-white">
         <div>
           <label className="block text-sm font-medium">Name</label>
           <input
@@ -452,7 +324,7 @@ const EditProfile = () => {
 
         <button
           type="submit"
-          className="w-full bg-red-600 text-white font -bold py-2 rounded-md hover:bg-green-600"
+          className="w-[160px] bg-primary text-white font -bold py-2 rounded-md hover:bg-primary "
         >
           Edit User
         </button>

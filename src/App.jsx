@@ -20,10 +20,10 @@ export default function App() {
       
         <Routes>
           {/* protected rout */}
-          <Route element={<ProtectedRoute />}>
+          {/* <Route element={<ProtectedRoute />}> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
-          </Route>
+          {/* </Route> */}
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Registration />} />
