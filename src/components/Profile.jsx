@@ -41,7 +41,7 @@ const Profile = () => {
         <>
             <Navebar />
             <div className=''>
-                <div className="bg-gray-200 mx-auto  max-w-full  pt-20 flex items-center   justify-center ">
+                <div className="mx-auto  max-w-full  pt-20 flex items-center  justify-center ">
                     <div className="w-[600px] bg-white h-[700px] rounded-lg overflow-hidden shadow-md mt-5">
                         <div className="w-full h-[160px] bg-primary flex items-center justify-center">
                             <div className="avatar">

@@ -226,7 +226,7 @@ const EditProfile = () => {
   return (
     <>
     <Navebar/>
-      <div className="bg-gray-200 pt-20 flex items-center   justify-center ">
+      <div className=" pt-20 flex items-center   justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
           <div className="w-full h-[160px] bg-primary flex items-center justify-center">
             <div className="avatar">

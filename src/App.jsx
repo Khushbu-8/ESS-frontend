@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from "./components/Home"
 import Login from "./components/Login"
 import Registration from "./components/Registration"
 import Profile from "./components/Profile"
@@ -10,6 +9,8 @@ import EditProfile from "./components/EditProfile"
 import Admin from "./Pages/Admin"
 import AllUsers from "./Pages/AllUsers"
 import EditUser from "./admincomponents/EditUser"
+import SearchScreen from "./Pages/SearchScreen "
+import Home from "./components/Home";
 
 export default function App() {
 
@@ -23,7 +24,9 @@ export default function App() {
           {/* <Route element={<ProtectedRoute />}> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
+            <Route path="/servises" element={ <SearchScreen/>} />
           {/* </Route> */}
+
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Registration />} />

@@ -48,7 +48,7 @@ return() =>{
         <>
             <li><a href='/'>Home</a></li>
             <li><a href='/profile'>profile</a></li>
-            <li><a href='/contect'>Contect</a></li>
+            <li><a href='/servises'>Servises</a></li>
         </>
     )
     return (

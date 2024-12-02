@@ -76,7 +76,7 @@ const AllUsers = () => {
             {/* head */}
             <thead className='text-bold text-[15px] text-black z-30'>
               <tr>
-                <th></th>
+                <th>SrNo</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contect</th>
@@ -92,7 +92,7 @@ const AllUsers = () => {
                 userList.map((user, i) => {
                   return (
                     <tr key={i}>
-                      <th>{user._id}</th>
+                      <th>{++i}</th>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
