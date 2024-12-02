@@ -8,8 +8,9 @@ const AllUsers = () => {
 
   const [userList, setUserList] = useState([]);
   const navigate = useNavigate();
+   const backend_API = "https://ees-121-backend.vercel.app"
   const fetchData = async () => {
-    const backend_API = "https://ees-121-backend.vercel.app"
+   
     // const token = JSON.parse(localStorage.getItem('token'))
     //   console.log(token, "token Edit");
     try {
@@ -37,6 +38,7 @@ const AllUsers = () => {
   useEffect(() => {
     fetchData()
   }, [])
+
   const DeletUser = async(id) =>{
     try {
       const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
