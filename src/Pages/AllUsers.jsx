@@ -40,9 +40,10 @@ const AllUsers = () => {
   }, [])
 
   const DeletUser = async(id) =>{
+
     try {
       const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
-        id : id
+        id 
       },
          {
         headers: {
