@@ -44,11 +44,11 @@ const AllUsers = () => {
     
 
     try {
-      const response = await axios.delete(`${backend_API}/auth/deleteUser`,{
-        id : id
-      }, {
-        withCredentials: true, // Important: send cookies with the request
-    } );
+      const response = await axios.post(`${backend_API}/auth/deleteUser`, { id: id }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     console.log(response.data, "delet data");
       if (response.status === 200) {
 
