@@ -65,10 +65,6 @@ const Profile = () => {
                             </div>
                             <p className="font-semibold text-gray-700">Contect : {profile.phone}</p>
                             <p className="font-semibold text-gray-700">Address : {profile.address}</p>
-                            <div className="">
-                                <p className="font-semibold text-gray-700">User Service rating :</p>
-                                <span><RiStarSFill /></span>
-                            </div>
                             <div className="rating">
                                 < p className="font-semibold text-gray-700">User Service rating :</p>
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
