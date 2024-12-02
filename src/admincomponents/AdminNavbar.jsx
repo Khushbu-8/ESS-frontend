@@ -3,7 +3,7 @@ import logo from "../../public/ess-121.png"
 const AdminNavbar = () => {
     return (
         <>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 sticky-navbar ">
                 <div className="drawer-content">
                     {/* Page content here */}
                     <label htmlFor="my-drawer" className="btn  drawer-button"> <svg

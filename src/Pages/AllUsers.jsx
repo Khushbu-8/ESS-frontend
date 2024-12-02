@@ -38,7 +38,7 @@ const AllUsers = () => {
 
   return (
     <>
-
+ 
       <div className='mx-5'>
         <div className="overflow-x-auto  z-30  p-5">
           <h1 className='text-center text-xl text-bold z-30'>All Users</h1>
@@ -72,7 +72,7 @@ const AllUsers = () => {
                       <td>{user.businessAddress}</td>
                       <td>
                         <button className=' m-1 text-xl text-red-500'><MdOutlineDeleteOutline /></button>
-                        <button className=' m-1 text-xl text-green-500'><FaEdit /></button>
+                        <button onClick={() => navigate(`admin/editUser`, { state: user })}  className=' text-xl text-green-500'><FaEdit /></button>
                       </td>
 
                     </tr>
