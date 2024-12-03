@@ -69,7 +69,7 @@ const AllUsers = () => {
   return (
     <>
  
-      <div className='mx-5 card bg-base-100 px-4 shadow-xl'>
+      <div className='mx-5 card bg-base-100 px-4 shadow-xl mt-32'>
         <div className="overflow-x-auto p-5">
           <h1 className='text-center text-xl text-bold z-30 py-3'>All Users</h1>
           <table className="table  flex  z-0 border  p-5">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
-import { FaUser } from 'react-icons/fa'
+import { FaCalendar, FaCaretDown, FaPage4, FaUser } from 'react-icons/fa'
 
 const Sidebar = () => {
   const sidebarManu = [
@@ -10,6 +10,12 @@ const Sidebar = () => {
       title: 'Users',
       icon: <FaUser />,
       path: '/admin',
+    },
+    {
+      id: 2,
+      title: 'Card',
+      icon: <FaCalendar />,
+      path: '/admin/card',
     }
   ]
 

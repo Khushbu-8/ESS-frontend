@@ -8,7 +8,7 @@ import './index.css'
 
 
 createRoot(document.getElementById('root')).render(
-  <div className="px-[20px]">
+  <div className="px-[20px] bg-pink-100">
      <App />
   </div>
    

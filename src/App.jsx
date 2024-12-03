@@ -12,35 +12,41 @@ import EditUser from "./admincomponents/EditUser"
 import SearchScreen from "./Pages/SearchScreen "
 import Home from "./components/Home";
 import ServiceDetail from "./Pages/ServiceDetail";
+import Card from "./Pages/Card";
 
 export default function App() {
 
   return (
     <>
+      <div>
       <ToastContainer />
       <Router>
       
         <Routes>
           {/* protected rout */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/servises" element={ <SearchScreen/>} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
-          {/* </Route> */}
+          </Route>
 
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+
+          {/* Admin Routes */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/users" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
+          <Route path="/admin/card" element={<Card />} />
 
 
         </Routes>
       </Router>
 
+      </div>
     </>
   )
 }

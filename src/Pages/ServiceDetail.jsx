@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Navebar from '../components/Navebar'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const ServiceDetail = ({filterrecord}) => {
-    
+const ServiceDetail = () => {
+
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location?.state?.cat);
 
     let profile = [{
         id: 1,
@@ -33,11 +35,12 @@ const ServiceDetail = ({filterrecord}) => {
     },
     ]
 
-  
-  return (
-    <>
-    <Navebar/>
-    <div className='card card-compact bg-base-100  shadow-xl mt-24'>
+
+    return (
+        <>
+            <Navebar />
+            <div className='card card-compact bg-base-100 shadow-xl mt-32'>
+                <h1 className='text-xl mb-4'>Detail</h1>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -55,39 +58,71 @@ const ServiceDetail = ({filterrecord}) => {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {/* {
-                                filterrecord.map((p, i) => (
-                                    <tr key={p.id}>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" className="checkbox" />
-                                            </label>
-                                        </th>
-                                        <td>
-                                            <div className="flex items-center gap-3">
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle h-12 w-12">
-                                                        <img
-                                                            src="https://via.placeholder.com/150"
-                                                            alt="User Avatar"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className="font-bold">{p.name}</div>
-                                                    <div className="text-sm opacity-50">{p.email}</div>
-                                                    <div className="text-sm opacity-50">{p.phone}</div>
-                                                </div>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                                    alt="Avatar Tailwind CSS Component" />
                                             </div>
-                                        </td>
-                                        <td>{p.category}</td>
-                                        <td>
-                                            <button className="btn">View Profile</button>
-                                        </td>
-                                    </tr>
-                                ))
-                            } */}
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="text-sm opacity-50">United States</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Zemlak, Daniel and Leannon
+                                    <br />
+                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                </td>
+                                <td>Purple</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+                            {/* row 2 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src="https://img.daisyui.com/images/profile/demo/3@94.webp"
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Brice Swyre</div>
+                                            <div className="text-sm opacity-50">China</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Carroll Group
+                                    <br />
+                                    <span className="badge badge-ghost badge-sm">Tax Accountant</span>
+                                </td>
+                                <td>Red</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+
 
 
                         </tbody>
@@ -96,8 +131,8 @@ const ServiceDetail = ({filterrecord}) => {
                     </table>
                 </div>
             </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default ServiceDetail

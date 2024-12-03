@@ -8,7 +8,9 @@ export default {
     extend: {
       backgroundColor :{
         "orange" : "#e92626",
-        "primary" : "#e92626"
+        "primary" : "#e92626",
+        "pink-100" : "#fbf6f0",
+        // "red-100" : "#fbf6f0"
       
       },
       colors: {

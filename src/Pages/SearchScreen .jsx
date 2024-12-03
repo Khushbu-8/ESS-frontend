@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Navebar from '../components/Navebar'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ServiceDetail from './ServiceDetail';
 
 const SearchScreen = () => {
-    const[sevices,setServices] = useState();
+    const [sevices, setServices] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
@@ -27,63 +27,33 @@ const SearchScreen = () => {
         { id: 16, name: "CAFE" },
         { id: 17, name: "CAR DECORATOR" },
     ];
-
-    let profile = [{
-        id: 1,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
-        category: "A.C. SERVICE"
-
-    },
-    {
-        id: 2,
-        name: "Jane Doe",
-        email: "jane@example.com",
-        phone: "9876543210",
-        address: "456 Elm St, Anytown, USA",
-        category: "AUTO RICKSHAW"
-    },
-    {
-        id: 3,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
-        category: "BAGGI (HORSE CART)"
-    },
-    ]
-
     const FilterServies = (cat) => {
-        let filterSevises = [...profile]
-        filterSevises = filterSevises.filter(val => val.category === cat)
-        setFilterRecord(filterSevises)
-        
+   
+     
+        navigate(`/serviceDetail`,{state : cat})
     }
     useEffect(() => {
         let filter = [...categories];
-        if (search.trim()) {
+        if (search) {
             filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         }
+        if (sevices) {
+            filter = filter.filter(item =>item.name === sevices);
+        }
+
         setFilterRecord(filter);
-    }, [search])
-
-
-    useEffect(() => {
-        FilterServies();
-    }, [])
+    }, [search,sevices])
 
     return (
         <>
-            <Navebar />
+            <Navebar/>
 
-            <div className='max-w-sm  mt-20 p-6'>
+            <div className='max-w-sm  mt-24 p-6'>
                 <h1 className='py-3'>Serch for Serviesis</h1>
 
                 <div className=''>
                     <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
-                        <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none dark:bg-slate-900 dark:text-white  bg-base-900`} />
+                        <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none bg-pink-100`} />
                         <button className="btn btn-square btn-sm">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -99,28 +69,44 @@ const SearchScreen = () => {
                     </label>
                 </div>
             </div>
-            <div className='pb-4 pl-5'>
-                {filterrecord.length > 0 ?(
+            
+                
+           
+
+            <div className='flex flex-wrap'>
+                {filterrecord.length > 0 ? (
                     filterrecord.map((cat, i) => {
                         return (
-                            <button onClick={() => FilterServies(cat.name)} className="btn btn-active bg-primary text-white hover:bg-red-700 border-0 rounded-sm m-1">{cat.name}</button>
+                            <Link key={++i} onClick={()=> FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)}className="flex w-200px] m-2 items-center  gap-3 p-3 bg-orange">
+                            <div className="avatar">
+                                <div className="mask mask-squircle h-12 w-12">
+                                    <img
+                                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                        alt="Avatar Tailwind CSS Component" />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="font-bold">{cat.name}</div>
+                                
+                            </div>
+                        </Link>
                         )
                     })
                 ) : (
                     <h1>
-                    No records found. Please select a category or search.
-                </h1>
+                        No records found. Please select a category or search.
+                    </h1>
                 )}
 
                 {/* <button className="btn btn-active rounded-sm mx-1">Ac servise</button> */}
 
             </div>
 
-           <ServiceDetail 
-           filterrecord ={filterrecord } 
-           profile = {profile}
+            {/* <ServiceDetail
+                filterrecord={filterrecord}
+                profile={profile}
 
-           />
+            /> */}
         </>
     )
 }

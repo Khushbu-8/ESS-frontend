@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "../../public/ess-121.png"
 const AdminNavbar = () => {
+    const [sticky,setSticky] = useState(false);
+
+    useEffect(() =>{
+        const handlScroll= () =>{
+            if(window.scrollY > 0){
+                setSticky(true)
+            }else{
+                setSticky(false)
+            }
+        }
+window.addEventListener('scroll',handlScroll)
+return() =>{
+    window.removeEventListener("scroll",handlScroll)
+}
+    },[])
     return (
         <>
-            <div className="navbar bg-base-100 sticky-navbar ">
+            <div className={`navbar max-w-screen-2xl shadow-md bg-base-100 rounded-md m-5 w-[97%] overflow-hidden  container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4  fixed top-0 right-5 ${
+                sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" "
+            }`}>
                 <div className="drawer-content">
                     {/* Page content here */}
                     <label htmlFor="my-drawer" className="btn  drawer-button"> <svg
@@ -19,9 +36,9 @@ const AdminNavbar = () => {
                     </svg></label>
                 </div>
                 <div className="flex-1">
-                <div className="logo">
-                            <img src={logo} width={80} alt="" />
-                        </div>
+                    <div className="logo">
+                        <img src={logo} width={80} alt="" />
+                    </div>
                 </div>
                 <div className="flex-none gap-2">
                     <div className="form-control">
