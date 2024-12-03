@@ -1,11 +1,11 @@
 import React from 'react'
-import Sidebar from './Sidebar'
-import AdminNavbar from '../admincomponents/AdminNavbar'
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTeamspeak, FaUser, FaUsers } from 'react-icons/fa';
+// import Navebar from '../components/Navebar';
+// import UserSideBar from '../components/UserSideBar';
 
 const Card = () => {
     const settings = {
@@ -47,12 +47,11 @@ const Card = () => {
     }
     return (
         <>
-            <AdminNavbar />
-            <Sidebar />
-
-            <div className=''>
-                <div className="card card-side bg-base-100 rounded-md shadow-xl w-full py-3 mt-36 ">
-
+        {/* <Navebar/>
+        <UserSideBar/>
+         */}
+            <div className=' '>
+                <div className="card card-side bg-base-100 rounded-md shadow-xl w-full py-3  mt-32 pt-3  ">
                     <div className=" sm:grid sm:grid-cols-3 w-full sm:gap-4 sm:px-0">
                         <div className="text-sm/6  text-gray-900 ">
                             <figure className='p-4 '>

@@ -9,7 +9,8 @@ export default {
       backgroundColor :{
         "orange" : "#e92626",
         "primary" : "#e92626",
-        "pink-100" : "#fbf6f0",
+        "pink-100" : "#f0f0f0",
+        // "base-100" :"#e6dede"
         // "red-100" : "#fbf6f0"
       
       },

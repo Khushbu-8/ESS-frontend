@@ -53,8 +53,8 @@ return() =>{
     )
     return (
         <>
-            <div className={` max-w-screen-2xl container mx-auto md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-50 fixed top-0 right-0 ${
-                sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" "
+            <div className={` max-w-screen-2xl container mx-auto md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-20 fixed top-0 right-0 ${
+                sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" bg-base-100 "
             } `}>
                 <div className="navbar">
                     <div className="navbar-start">
@@ -79,9 +79,24 @@ return() =>{
                                 {NaveItems}
                             </ul>
                         </div>
+                        <div className="drawer-content">
+                    {/* Page content here */}
+                    <label htmlFor="my-slider" className="btn  drawer-button"> <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        className="inline-block h-6 w-6 stroke-current">
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg></label>
+                </div>
                         <div className="logo">
                             <img src={logo} width={80} alt="" />
                         </div>
+
                     </div>
                     <div className="navbar-center space-x-3">
                         <div className="navbar-center hidden lg:flex">
@@ -92,7 +107,8 @@ return() =>{
 
                         <div className='hidden md:block'>
                             <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
-                                <input type="text" className={`grow outline-none dark:bg-slate-900 dark:text-white  bg-base-900`} placeholder="Search" />
+                                <input type="text" className={`grow outline-none  bg-base-100 ${
+                sticky ? " bg-white":" bg-base-100" }`} placeholder="Search" />
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 16 16"

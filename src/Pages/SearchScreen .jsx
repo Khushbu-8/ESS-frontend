@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Navebar from '../components/Navebar'
 import { Link, useNavigate } from 'react-router-dom';
-import ServiceDetail from './ServiceDetail';
+import Navebar from '../components/Navebar';
 
 const SearchScreen = () => {
     const [sevices, setServices] = useState();
@@ -28,9 +27,9 @@ const SearchScreen = () => {
         { id: 17, name: "CAR DECORATOR" },
     ];
     const FilterServies = (cat) => {
-   
-     
-        navigate(`/serviceDetail`,{state : cat})
+
+
+        navigate(`/serviceDetail`, { state: cat })
     }
     useEffect(() => {
         let filter = [...categories];
@@ -38,58 +37,62 @@ const SearchScreen = () => {
             filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         }
         if (sevices) {
-            filter = filter.filter(item =>item.name === sevices);
+            filter = filter.filter(item => item.name === sevices);
         }
 
         setFilterRecord(filter);
-    }, [search,sevices])
+    }, [search, sevices])
 
     return (
         <>
-            <Navebar/>
+            <Navebar />
 
-            <div className='max-w-sm  mt-24 p-6'>
-                <h1 className='py-3'>Serch for Serviesis</h1>
+            <div className='mt-24 p-3'>
+                <div className='max-w-sm p-6 border border-primary  bg-white mt-4 rounded-md shadow-xl'>
+                    <h1 className='py-3 text-lg'>Serch for Serviesis</h1>
 
-                <div className=''>
-                    <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
-                        <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none bg-pink-100`} />
-                        <button className="btn btn-square btn-sm">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 16 16"
-                                fill="currentColor"
-                                className="h-4 w-4 opacity-70">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                    clipRule="evenodd" />
-                            </svg>
-                        </button>
-                    </label>
+
+                    <form action="" className=''>
+                        <label className=" px-3 py-2 border rounded-md flex items-center gap-2 ">
+                            <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none bg-white`} />
+                            <button type='submit' className="btn btn-square btn-sm">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 16 16"
+                                    fill="currentColor"
+                                    className="h-4 w-4 opacity-70">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                        clipRule="evenodd" />
+                                </svg>
+                            </button>
+                        </label>
+                    </form>
                 </div>
             </div>
-            
-                
-           
+
+
+
+
 
             <div className='flex flex-wrap'>
                 {filterrecord.length > 0 ? (
                     filterrecord.map((cat, i) => {
                         return (
-                            <Link key={++i} onClick={()=> FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)}className="flex w-200px] m-2 items-center text-white  gap-3 p-3 bg-orange">
-                            <div className="avatar">
-                                <div className="mask mask-squircle h-12 w-12">
-                                    <img
-                                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                                        alt="Avatar Tailwind CSS Component" />
+                            <Link key={++i} onClick={() => FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)} className="flex  m-2 items-center  border border-primary rounded-md  gap-3 p-3 bg-white">
+                                <div className="avatar">
+                                    <div className="mask mask-squircle h-12 w-12">
+                                        <img
+                                            src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                            alt="Avatar Tailwind CSS Component" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div className="font-bold">{cat.name}</div>
-                                
-                            </div>
-                        </Link>
+                                <div>
+                                    <div className="font-bold">{cat.name}</div>
+
+                                </div>
+                            </Link>
                         )
                     })
                 ) : (
