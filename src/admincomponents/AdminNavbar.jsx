@@ -18,7 +18,7 @@ return() =>{
     },[])
     return (
         <>
-            <div className={`navbar max-w-screen-2xl shadow-md bg-base-100 rounded-md m-5 w-[97%] overflow-hidden  container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4  fixed top-0 right-5 ${
+            <div className={`navbar max-w-screen-2xl shadow-md bg-base-100 rounded-md m-5 w-[97%] overflow-hidden  container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4 z-50 fixed top-0 right-5 ${
                 sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" "
             }`}>
                 <div className="drawer-content">
