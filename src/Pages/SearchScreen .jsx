@@ -77,7 +77,7 @@ const SearchScreen = () => {
                 {filterrecord.length > 0 ? (
                     filterrecord.map((cat, i) => {
                         return (
-                            <Link key={++i} onClick={()=> FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)}className="flex w-200px] m-2 items-center  gap-3 p-3 bg-orange">
+                            <Link key={++i} onClick={()=> FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)}className="flex w-200px] m-2 items-center text-white  gap-3 p-3 bg-orange">
                             <div className="avatar">
                                 <div className="mask mask-squircle h-12 w-12">
                                     <img
