@@ -47,13 +47,13 @@ function UserDropdown() {
     <>
       <div className="dropdown dropdown-end rounded-lg m-3 border bg-red">
         <div tabIndex={0} role="button" className="">
-          <div class="img w-50 h-[50px] rounded-lg border bg-red overflow-hidden">
+          <div class="img rounded-lg border bg-red overflow-hidden">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
         </div>
         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
           <li>
-            <h3>Welcome : {profile.name}</h3>
+            <h3>{profile.name}</h3>
           </li>
           <li>
             <Link to="/profile">Profile</Link>
