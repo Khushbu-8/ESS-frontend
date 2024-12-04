@@ -237,7 +237,7 @@ const EditProfile = () => {
     <>
       <Navebar />
       <UserSideBar/>
-     <section className='pt-20'>
+     <section className='pt-32'>
      <div className="container">
         <div className="row">
           <div className="col-12">
