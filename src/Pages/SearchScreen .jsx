@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navebar from '../components/Navebar';
+import { HiDotsHorizontal } from "react-icons/hi";
 
 const SearchScreen = () => {
     const [sevices, setServices] = useState();
@@ -26,10 +27,12 @@ const SearchScreen = () => {
         { id: 16, name: "CAFE" },
         { id: 17, name: "CAR DECORATOR" },
     ];
-    const FilterServies = (cat) => {
+    const hendleSubmit = (e) => {
+        e.preventDefault();
 
 
-        navigate(`/serviceDetail`, { state: cat })
+
+        navigate(`/serviceDetail`, { state: search })
     }
     useEffect(() => {
         let filter = [...categories];
@@ -47,12 +50,12 @@ const SearchScreen = () => {
         <>
             <Navebar />
 
-            <div className='mt-24 p-3'>
-                <div className='max-w-sm p-6 border border-primary  bg-white mt-4 rounded-md shadow-xl'>
+          <div className="container mt-24">
+            <div className="row">
+            <div className=' p-3'>
+                <div className='max-w-sm p-6 bg-white mt-4 rounded-md shadow-xl'>
                     <h1 className='py-3 text-lg'>Serch for Serviesis</h1>
-
-
-                    <form action="" className=''>
+                    <form action="" onSubmit={hendleSubmit} className=''>
                         <label className=" px-3 py-2 border rounded-md flex items-center gap-2 ">
                             <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none bg-white`} />
                             <button type='submit' className="btn btn-square btn-sm">
@@ -72,6 +75,8 @@ const SearchScreen = () => {
                 </div>
             </div>
 
+            </div>
+          </div>
 
 
 
@@ -79,21 +84,7 @@ const SearchScreen = () => {
             <div className='flex flex-wrap'>
                 {filterrecord.length > 0 ? (
                     filterrecord.map((cat, i) => {
-                        return (
-                            <Link key={++i} onClick={() => FilterServies(cat.name)} onChange={(e) => setServices(e.target.value)} className="flex  m-2 items-center  border border-primary rounded-md  gap-3 p-3 bg-white">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle h-12 w-12">
-                                        <img
-                                            src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                                            alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">{cat.name}</div>
-
-                                </div>
-                            </Link>
-                        )
+                      
                     })
                 ) : (
                     <h1>
@@ -101,9 +92,56 @@ const SearchScreen = () => {
                     </h1>
                 )}
 
-                {/* <button className="btn btn-active rounded-sm mx-1">Ac servise</button> */}
-
+                
             </div>
+
+
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <h2 className='px-4'>All services</h2>
+                        <div className="col-12 flex flex-wrap">
+                        {filterrecord.length > 0 ? (
+                    filterrecord.map((cat, i) => {
+                      return(
+                        <div className="col-xl-3 p-2">
+                                <div className="card border-0 bg-base-100 shadow-xl">
+                                    <div className='d-flex justify-content-between'>
+                                        <figure className='rounded-md m-3'>
+                                            <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+
+                                            </img>
+                                        </figure>
+                                        <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                                    </div>
+                                    <div className='p-3'>
+                                        <h2 className="text-lg font-bold">{cat.name}</h2>
+                                        <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
+                                        <div className="rating rating-sm">
+                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />
+                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400"  />
+                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                            <span className='pl-3'>245 rating</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                      )
+                    })
+                ) : (
+                    <h1>
+                        No records found. Please select a category or search.
+                    </h1>
+                )}
+
+                        
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* <ServiceDetail
                 filterrecord={filterrecord}

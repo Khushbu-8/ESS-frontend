@@ -13,6 +13,7 @@ import SearchScreen from "./Pages/SearchScreen "
 import Home from "./components/Home";
 import ServiceDetail from "./Pages/ServiceDetail";
 import Card from "./Pages/Card";
+import Services from "./Pages/Services";
 
 export default function App() {
 
@@ -27,7 +28,7 @@ export default function App() {
           {/* <Route element={<ProtectedRoute />}> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/servises" element={ <SearchScreen/>} />
+            <Route path="/servises" element={ <Services/>} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
           {/* </Route> */}
 

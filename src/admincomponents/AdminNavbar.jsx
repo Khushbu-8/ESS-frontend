@@ -18,8 +18,8 @@ return() =>{
     },[])
     return (
         <>
-            <div className={`navbar max-w-screen-2xl shadow-md bg-base-100 rounded-md  w-[97%] overflow-hidden  container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4 z-20 fixed top-0 right-5 ${
-                sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out m-0":" m-5"
+            <div className={`navbar shadow-md bg-base-100 rounded-md  w-[97%] overflow-hidden  container mx-auto md:px-20 dark:bg-slate-900 dark:text-white px-4 z-20 fixed top-0 right-5 ${
+                sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out m-0":""
             }`}>
                 <div className="drawer-content">
                     {/* Page content here */}
@@ -41,8 +41,8 @@ return() =>{
                     </div>
                 </div>
                 <div className="flex-none gap-2">
-                    <div className="form-control">
-                        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+                    <div className="form-control border border-0">
+                        <input type="text" placeholder="Search" className="input w-24 md:w-auto" />
                     </div>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

@@ -3,6 +3,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { RiStarSFill } from "react-icons/ri";
 import Navebar from './Navebar';
 import axios from 'axios';
+import { HiDotsHorizontal } from "react-icons/hi";
+import { FaUser, FaUserCircle, FaUserClock } from 'react-icons/fa';
+import { FaUsersBetweenLines, FaUsersLine } from 'react-icons/fa6';
+
+import { LuUserPen } from "react-icons/lu";
+import { MdAlternateEmail } from "react-icons/md";
+import { LuPhone } from "react-icons/lu";
+import { FaRegAddressCard } from "react-icons/fa6";
+import { CiEdit } from "react-icons/ci";
 
 const EditProfile = () => {
   const [profile, setProfile] = useState("");
@@ -181,7 +190,7 @@ const EditProfile = () => {
   //  const backend_API = "http://localhost:4000"
   const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
   const token = JSON.parse(localStorage.getItem('token'))
-    console.log(token, "token Edit");
+  console.log(token, "token Edit");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -190,23 +199,23 @@ const EditProfile = () => {
     try {
       const response = await axios.post(backend_API, fullData, {
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
-    });
-    const data = await response.data;
-    setProfile(data)
-    console.log(data, "data Edit");
-    // console.log(data);
-    if (response.status === 200) {
-      // localStorage.setItem('token', JSON.stringify(response.data.token))
-      localStorage.setItem("Users",JSON.stringify(data.user))
-      // localStorage.setItem("Users",token)
-        // navigete('/profile')
-  
-    }
+      });
+      const data = await response.data;
+      setProfile(data)
+      console.log(data, "data Edit");
       // console.log(data);
-    
+      if (response.status === 200) {
+        // localStorage.setItem('token', JSON.stringify(response.data.token))
+        localStorage.setItem("Users", JSON.stringify(data.user))
+        // localStorage.setItem("Users",token)
+        // navigete('/profile')
+
+      }
+      // console.log(data);
+
     } catch (error) {
       console.log(error);
       return false;
@@ -225,7 +234,7 @@ const EditProfile = () => {
 
   return (
     <>
-    <Navebar/>
+      <Navebar />
       <div className=" pt-20 flex items-center   justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
           <div className="w-full h-[160px] bg-primary flex items-center justify-center">
@@ -236,106 +245,223 @@ const EditProfile = () => {
             </div>
           </div>
           <div className="py-3 px-6 grid grid-cols-1 gap-6">
-            
-            <form onSubmit={handleSubmit} method='post' className="space-y-4 py-3  dark:text-white">
-        <div>
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">contact</label>
-          <input
-            type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Address</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
-        <div className="w-full mt-10">
-        <label className="block text-sm font-medium">
-            Select Business Categories:
-          </label>
-          <div className="mt-2">
-            <div className="border border-gray-300 rounded-md p-2 bg-white">
-              {businessCategory.length > 0 ? (
-                businessCategory.map((category, i) => (
-                  <span
-                    key={++i}
-                    className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                  >
-                    {category}
-                  </span>
-                ))
-              ) : (
-                <span className="text-gray-400">Select categories</span>
-              )}
-            </div>
-            <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
-              {categories.map((category, i) => (
-                <li
-                  key={++i}
-                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
-                    }`}
-                  onClick={() => toggleSelection(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Business Address</label>
-          <input
-            type="text"
-            value={businessAddress}
-            onChange={(e) => setBusinessAddress(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
-        </div>
 
-        <button
-          type="submit"
-          className="w-[160px] bg-primary text-white font -bold py-2 rounded-md hover:bg-primary "
-        >
-          Edit User
-        </button>
-      </form>
+            <form onSubmit={handleSubmit} method='post' className="space-y-4 py-3  dark:text-white">
+              <div>
+                <label className="block text-sm font-medium">Name</label>
+                <input
+                  type="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">contact</label>
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Address</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div className="w-full mt-10">
+                <label className="block text-sm font-medium">
+                  Select Business Categories:
+                </label>
+                <div className="mt-2">
+                  <div className="border border-gray-300 rounded-md p-2 bg-white">
+                    {businessCategory.length > 0 ? (
+                      businessCategory.map((category, i) => (
+                        <span
+                          key={++i}
+                          className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
+                        >
+                          {category}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-gray-400">Select categories</span>
+                    )}
+                  </div>
+                  <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                    {categories.map((category, i) => (
+                      <li
+                        key={++i}
+                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
+                          }`}
+                        onClick={() => toggleSelection(category)}
+                      >
+                        {category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Business Address</label>
+                <input
+                  type="text"
+                  value={businessAddress}
+                  onChange={(e) => setBusinessAddress(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-[160px] bg-primary text-white font -bold py-2 rounded-md hover:bg-primary "
+              >
+                Edit User
+              </button>
+            </form>
           </div>
         </div>
       </div>
- {/* <div className="relative">
-      {/* Profile Photo Button */}
-   
 
+     <section className='pt-20'>
+     <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h2 className='py-2'>Profile Setting</h2>
+            <div className='card border-0 bg-base-100 shadow-xl'>
+              <form action="" className=' p-3'>
+               
+                  <div className='profilepic d-flex justify-content-between'>
+                    <figure className='rounded-md m-3'>
+                      <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+
+                      </img>
+                    </figure>
+                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                  </div>
+                  <div className='form-detaile d-flex flex-wrap w-full py-2 d-flex'>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold "> Name</label>
+                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                     <input 
+                     type="name"
+                     value={name}
+                     onChange={(e) => setName(e.target.value)}
+                      className=' w-100 outline-0 ' />
+                     <LuUserPen  className='text-xl' />
+                     </label>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold "> Email</label>
+                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                     <input 
+                     type="email"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     className=' w-100 outline-0 ' />
+                     <MdAlternateEmail   className='text-xl'/>
+                     </label>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold ">Contact </label>
+                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                     <input 
+                      type="text"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                     className=' w-100 outline-0 ' />
+                     <LuPhone   className='text-xl'/>
+                     </label>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold ">Address</label>
+                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                     <input
+                       type="text"
+                       value={address}
+                       onChange={(e) => setAddress(e.target.value)}
+                      className=' w-100 outline-0 ' />
+                     <FaRegAddressCard   className='text-xl'/>
+                     </label>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                    <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
+                <div className="">
+                  <div className="border border-2 rounded-md p-2 bg-white">
+                    {businessCategory.length > 0 ? (
+                      businessCategory.map((category, i) => (
+                        <span
+                          key={++i}
+                          className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
+                        >
+                          {category}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-gray-400">Select categories</span>
+                    )}
+                  </div>
+                  <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                    {categories.map((category, i) => (
+                      <li
+                        key={++i}
+                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
+                          }`}
+                        onClick={() => toggleSelection(category)}
+                      >
+                        {category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
+                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                     <input 
+                      type="text"
+                      value={businessAddress}
+                      onChange={(e) => setBusinessAddress(e.target.value)}
+                     className=' w-100 outline-0 ' />
+                     <FaRegAddressCard  className='text-xl'/>
+                     </label>
+                    </div>
+                  </div>
+                    <div className='d-flex justify-content-end'>
+                    <button
+                type="submit"
+                className="d-flex justify-content-center w-[160px]  bg-orange text-white  py-3 px-2 rounded-md hover:bg-primary "
+              >
+                Edit User <CiEdit className='text-xl text-bold mx-2' />
+
+              </button>
+                    </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     </section>
     </>
   );
 };

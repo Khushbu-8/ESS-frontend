@@ -9,7 +9,7 @@ const UserSideBar = () => {
           id: 1,
           title: 'profile',
           icon: <FaUser />,
-          path: '/admin',
+          path: '/profile',
         },
         {
           id: 2,

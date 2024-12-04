@@ -46,20 +46,20 @@ return() =>{
 
     const NaveItems = (
         <>
-            <li><a href='/'>Home</a></li>
+            <li><a className='list-none' href='/'>Home</a></li>
             <li><a href='/profile'>profile</a></li>
             <li><a href='/servises'>Servises</a></li>
         </>
     )
     return (
         <>
-            <div className={` max-w-screen-2xl container mx-auto md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-20 fixed top-0 right-0 ${
+            <div className={` w-full   md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-20 fixed top-0  ${
                 sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" bg-base-100 "
             } `}>
-                <div className="navbar">
+                <div className="navbar d-flex align-items-center">
                     <div className="navbar-start">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <div tabIndex={0} role="button" className="btn btn-ghost d-flex d-lg-none">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-5 w-5"
@@ -99,8 +99,8 @@ return() =>{
 
                     </div>
                     <div className="navbar-center space-x-3">
-                        <div className="navbar-center hidden lg:flex">
-                            <ul className="menu menu-horizontal px-1">
+                        <div className="navbar-center d-none d-lg-flex ">
+                            <ul className="menu menu-horizontal px-1 font-semibold">
                                 {NaveItems}
                             </ul>
                         </div>
