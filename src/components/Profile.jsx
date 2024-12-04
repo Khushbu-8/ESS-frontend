@@ -76,7 +76,7 @@ const Profile = () => {
                                             <div className='p-5'>
                                                 <span className='py-2'> {profile._id}</span>
                                                 <h5 className='text-gray pb-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h5>
-                                                <div className='p-2 d-flex justify-content-center text-uppercase rounded-md text-white bg-orange '>{profile.businessCategory}</div>
+                                                <div className='p-2 d-flex justify-content-center text-uppercase rounded-md text-white bg-orange '>Avocate{profile.businessCategory}</div>
 
                                                 <div className="rating rating-sm py-4">
                                                     <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />

@@ -53,7 +53,7 @@ function UserDropdown() {
         </div>
         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
           <li>
-            <h1>Welcome : {profile.name}</h1>
+            <h3>Welcome : {profile.name}</h3>
           </li>
           <li>
             <Link to="/profile">Profile</Link>
