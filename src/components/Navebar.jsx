@@ -99,13 +99,13 @@ return() =>{
 
                     </div>
                     <div className="navbar-center space-x-3">
-                        <div className="navbar-center d-none d-lg-flex ">
+                        <div className="navbar-center d-none d-xl-flex ">
                             <ul className="menu menu-horizontal px-1 font-semibold">
                                 {NaveItems}
                             </ul>
                         </div>
 
-                        <div className='hidden md:block'>
+                        <div className='d-none d-md-flex'>
                             <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
                                 <input type="text" className={`grow outline-none  bg-base-100 ${
                 sticky ? " bg-white":" bg-base-100" }`} placeholder="Search" />
