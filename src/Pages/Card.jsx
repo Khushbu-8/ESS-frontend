@@ -214,8 +214,8 @@ const Card = () => {
             <section className='pt-3'>
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 d-flex flex-wrap justify-center align-items-center">
-                            <div className="col-6">
+                        <div className="col-12  flex flex-wrap justify-center align-items-center">
+                            <div className="col-12 col-md-6">
                                 <div className='flex justify-start'>
                                     <label className=" px-3 py-2 border-orange  rounded-lg flex items-center gap-2 ">
                                         <input type="text" placeholder="Search For Services" className={` outline-none bg-pink-100 `} />
@@ -248,8 +248,8 @@ const Card = () => {
 
                                 </div>
                             </div>
-                            <div className="col-6 ">
-                            <div className="col-12 flex justify-center">
+                            <div className="col-12 col-md-6 ">
+                            <div className="col-12 justify-center">
                                 <div className="card bg-base-100 rounded-md border-0 sm:w-[100%] md:w-[50%] shadow-xl m-3">
                                     <div className="card-body flex justify-center align-middle">
 
