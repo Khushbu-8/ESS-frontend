@@ -57,7 +57,7 @@ return() =>{
                 sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" bg-base-100 "
             } `}>
                 <div className="navbar d-flex align-items-center">
-                    <div className="navbar-start">
+                    <div className="">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost d-flex d-lg-none">
                                 <svg
@@ -99,7 +99,7 @@ return() =>{
 
                     </div>
                     <div className="navbar-center space-x-3">
-                        <div className="navbar-center d-none d-xl-flex ">
+                        <div className="navbar-center d-none d-lg-flex ">
                             <ul className="menu menu-horizontal px-1 font-semibold">
                                 {NaveItems}
                             </ul>
