@@ -249,7 +249,7 @@ const Card = () => {
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 ">
-                            <div className="col-12 justify-center">
+                            <div className="col-12 d-flex justify-center">
                                 <div className="card bg-base-100 rounded-md border-0 sm:w-[100%] md:w-[50%] shadow-xl m-3">
                                     <div className="card-body flex justify-center align-middle">
 
