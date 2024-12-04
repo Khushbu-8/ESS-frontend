@@ -105,7 +105,7 @@ return() =>{
                             </ul>
                         </div>
 
-                        <div className='d-none d-md-flex'>
+                        <div className='d-none d-lg-flex'>
                             <label className=" px-3 py-2 border rounded- flex items-center gap-2 ">
                                 <input type="text" className={`grow outline-none  bg-base-100 ${
                 sticky ? " bg-white":" bg-base-100" }`} placeholder="Search" />
