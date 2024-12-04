@@ -47,7 +47,7 @@ function UserDropdown() {
     <>
       <div className="dropdown dropdown-end rounded-lg m-3 border bg-red">
         <div tabIndex={0} role="button" className="">
-          <div class="img rounded-lg border bg-red overflow-hidden">
+          <div class="img w-50 h-[50px] rounded-lg border bg-red overflow-hidden">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
         </div>
