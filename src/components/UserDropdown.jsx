@@ -45,23 +45,17 @@ function UserDropdown() {
 
   return (
     <>
-      <div className="dropdown dropdown-end rounded-lg m-3 border bg-red">
-        <div tabIndex={0} role="button" className="">
+      <div className="dropdown dropstart rounded-lg m-3 border bg-red">
+        <div  type="button" data-bs-toggle="dropdown" aria-expanded="false" className="">
           <div class="img w-[60px] h-[50px] rounded-lg border bg-red overflow-hidden">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
         </div>
-        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-          <li>
-            <h3>{profile.name}</h3>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>logout</button>
-          </li>
-        </ul>
+        <ul class="dropdown-menu mt-5">
+    <li><Link class="dropdown-item text-lg" href="#">Welcom {profile.name}</Link></li>
+    <li><Link class="dropdown-item" href="#">Profile</Link></li>
+    <li><Link class="dropdown-item"onClick={handleLogout}>Logout</Link></li>
+  </ul>
       </div>
       
      

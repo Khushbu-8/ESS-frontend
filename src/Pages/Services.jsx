@@ -8,8 +8,7 @@ const Services = () => {
   return (
     <div>
       <div>
-      <Navebar/>
-      <UserSideBar/>
+   
       <SearchScreen/>
       </div>
 

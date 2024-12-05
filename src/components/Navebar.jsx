@@ -52,7 +52,7 @@ return() =>{
     )
     return (
         <>
-            <div className={` w-full md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-20 fixed top-0  ${
+            <nav  className={`  w-full md:px-20 dark:bg-slate-900 dark:text-white  px-4 z-20 fixed top-0  ${
                 sticky? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" bg-base-100 "
             } `}>
                 <div className="navbar d-flex align-items-center">
@@ -159,7 +159,7 @@ return() =>{
                         
                     </div>
                 </div>
-            </div>
+            </nav>
         </>
     )
 }

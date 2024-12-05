@@ -6,13 +6,15 @@ import Card from '../Pages/Card'
 import ServieceCategories from './ServieceCategories'
 import CardSlider from './CardSlider'
 import Benner from './Benner'
+import AdminNavbar from '../admincomponents/AdminNavbar'
 
 const Home = () => {
   return (
     <>
 
-      <Navebar />
-      <UserSideBar />
+      <AdminNavbar />
+      <UserSideBar/>
+     
       <Card />
       <CardSlider/>
       <ServieceCategories/>

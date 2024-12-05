@@ -5,13 +5,14 @@ import { Route, Routes } from 'react-router-dom'
 import EditUser from '../admincomponents/EditUser'
 import AllUsers from './AllUsers'
 import Card from './Card'
+import UserSideBar from '../components/UserSideBar'
 
 const Admin = () => {
   return (
   <>
  <div className=''>
  <AdminNavbar/>
- <Sidebar/>
+ <UserSideBar/>
  <AllUsers/>
  <Routes>
  <Route path="/admin/editUser" element={<EditUser />} />

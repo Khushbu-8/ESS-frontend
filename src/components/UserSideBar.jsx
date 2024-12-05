@@ -32,24 +32,23 @@ const UserSideBar = () => {
       ]
   return (
     <>
-     <div className="drawer">
-        <input id="my-slider" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          {/* Page content here */}
-        </div>
-        <div className="drawer-side z-30">
-          <label htmlFor="my-slider" aria-label="close sidebar" className="drawer-overlay"></label>
-
-          <div className="menu bg-white text-base-content min-h-full w-80 p-4">
-            <div className="logo flex justify-center text-center">
-              <img src={logo} width={80} alt="" />
-            </div>
-            <hr />
-            <ul className='mt-3 font-bold'>
-              {
+  <div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex={-1} id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div className="d-flex justify-content-between align-items-center">
+    
+      <div classname="logo d-flex justify-content-end text-center ">
+        <img src={logo} width={80} alt />
+      </div>
+    
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+  </div>
+  <hr />
+  <div className="offcanvas-body">
+    <div>
+      <ul classname="p-0">
+      {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' my-1 rounded hover:bg-primary hover:text-white focus:text-white'>
+                    <li key={++i} className=' p-3 rounded hover:bg-primary hover:text-white focus:text-white'>
                       <Link to={manu.path} className=' text-lg'>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>
@@ -57,10 +56,12 @@ const UserSideBar = () => {
                   )
                 })
               }
-            </ul>
-          </div>
-        </div>
-      </div>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    
     </>
   )
 }
