@@ -236,15 +236,15 @@ const EditProfile = () => {
   return (
     <>
       <Navebar />
-      <UserSideBar/>
-     <section className='pt-32'>
-     <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h2 className='py-2'>Profile Setting</h2>
-            <div className='card border-0 bg-base-100 shadow-xl'>
-              <form action="" className=' p-3'>
-               
+      <UserSideBar />
+      <section className='pt-32'>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className='py-2'>Profile Setting</h2>
+              <div className='card border-0 bg-base-100 shadow-xl'>
+                <form action="" className=' p-3'>
+
                   <div className='profilepic d-flex justify-content-between'>
                     <figure className='rounded-md m-3'>
                       <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
@@ -256,107 +256,157 @@ const EditProfile = () => {
                   <div className='form-detaile d-flex flex-wrap w-full py-2 d-flex'>
                     <div className="col-12 col-md-6 p-2 w-full">
                       <label className="block text-md font-medium p-2 text-bold "> Name</label>
-                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                     <input 
-                     type="name"
-                     value={name}
-                     onChange={(e) => setName(e.target.value)}
-                      className=' w-100 outline-0 ' />
-                     <LuUserPen  className='text-xl' />
-                     </label>
+                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                        <input
+                          type="name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className=' w-100 outline-0 ' />
+                        <LuUserPen className='text-xl' />
+                      </label>
                     </div>
                     <div className="col-12 col-md-6 p-2 w-full">
                       <label className="block text-md font-medium p-2 text-bold "> Email</label>
-                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                     <input 
-                     type="email"
-                     value={email}
-                     onChange={(e) => setEmail(e.target.value)}
-                     className=' w-100 outline-0 ' />
-                     <MdAlternateEmail   className='text-xl'/>
-                     </label>
+                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className=' w-100 outline-0 ' />
+                        <MdAlternateEmail className='text-xl' />
+                      </label>
                     </div>
                     <div className="col-12 col-md-6 p-2 w-full">
                       <label className="block text-md font-medium p-2 text-bold ">Contact </label>
-                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                     <input 
-                      type="text"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                     className=' w-100 outline-0 ' />
-                     <LuPhone   className='text-xl'/>
-                     </label>
+                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                        <input
+                          type="text"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className=' w-100 outline-0 ' />
+                        <LuPhone className='text-xl' />
+                      </label>
                     </div>
                     <div className="col-12 col-md-6 p-2 w-full">
                       <label className="block text-md font-medium p-2 text-bold ">Address</label>
-                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                        <input
+                          type="text"
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
+                          className=' w-100 outline-0 ' />
+                        <FaRegAddressCard className='text-xl' />
+                      </label>
+
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
+                      <div className="">
+                        <div className="border border-2 rounded-md p-2 bg-white">
+                          {businessCategory.length > 0 ? (
+                            businessCategory.map((category, i) => (
+                              <span
+                                key={++i}
+                                className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
+                              >
+                                {category}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-gray-400">Select categories</span>
+                          )}
+                        </div>
+                        <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
+                          {categories.map((category, i) => (
+                            <li
+                              key={++i}
+                              className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
+                                }`}
+                              onClick={() => toggleSelection(category)}
+                            >
+                              {category}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="col-12 col-md-6 p-2 w-full">
+                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
+                      <div className="col-12 d-flex flex-wrap">
+                        <div className="col-6">
+                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                            <input
+                              type="text"
+                              value={businessAddress}
+                              onChange={(e) => setBusinessAddress(e.target.value)}
+                              className=' w-100 outline-0 bg-none' placeholder="area" />
+                            <FaRegAddressCard className='text-xl' />
+                          </div>
+
+                        </div>
+                        <div className="col-6">
+                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                            <input
+                              type="text"
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className=' w-100 outline-0 ' placeholder='city' />
+                            <FaRegAddressCard className='text-xl' />
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                            <input
+                              type="text"
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className=' w-100 outline-0 ' placeholder='state' />
+                            <FaRegAddressCard className='text-xl' />
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                            <input
+                              type="text"
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className=' w-100 outline-0 ' placeholder='country' />
+                            <FaRegAddressCard className='text-xl' />
+                          </div>
+                        </div>
+                        <div className="col-6">
+                     <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 my-1'>
                      <input
                        type="text"
                        value={address}
                        onChange={(e) => setAddress(e.target.value)}
-                      className=' w-100 outline-0 ' />
-                     <FaRegAddressCard   className='text-xl'/>
-                     </label>
-                    </div>
-                    <div className="col-12 col-md-6 p-2 w-full">
-                    <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
-                <div className="">
-                  <div className="border border-2 rounded-md p-2 bg-white">
-                    {businessCategory.length > 0 ? (
-                      businessCategory.map((category, i) => (
-                        <span
-                          key={++i}
-                          className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                        >
-                          {category}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400">Select categories</span>
-                    )}
-                  </div>
-                  <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
-                    {categories.map((category, i) => (
-                      <li
-                        key={++i}
-                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
-                          }`}
-                        onClick={() => toggleSelection(category)}
-                      >
-                        {category}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                    </div>
-                    <div className="col-12 col-md-6 p-2 w-full">
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
-                     <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                     <input 
-                      type="text"
-                      value={businessAddress}
-                      onChange={(e) => setBusinessAddress(e.target.value)}
-                     className=' w-100 outline-0 ' />
-                     <FaRegAddressCard  className='text-xl'/>
-                     </label>
-                    </div>
-                  </div>
-                    <div className='d-flex justify-content-end'>
-                    <button
-                type="submit"
-                className="d-flex justify-content-center w-[160px]  bg-orange text-white  py-3 px-2 rounded-md hover:bg-primary "
-              >
-                Edit User <CiEdit className='text-xl text-bold mx-2' />
+                      className=' w-100 outline-0 'placeholder='pincode' />
+                     <FaRegAddressCard   className='text-xl' />
+                     </div>
+                     </div>
 
-              </button>
+                      </div>
+
+
+
                     </div>
-                
-              </form>
+                  </div>
+                  <div className='d-flex justify-content-end'>
+                    <button
+                      type="submit"
+                      className="d-flex justify-content-center w-[160px]  bg-orange text-white  py-3 px-2 rounded-md hover:bg-primary "
+                    >
+                      Edit User <CiEdit className='text-xl text-bold mx-2' />
+
+                    </button>
+                  </div>
+
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-     </section>
+      </section>
     </>
   );
 };

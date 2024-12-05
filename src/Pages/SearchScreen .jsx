@@ -2,14 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navebar from '../components/Navebar';
 import { HiDotsHorizontal } from "react-icons/hi";
+import { FaLocationArrow, FaLocationDot, FaServer } from 'react-icons/fa6';
+import { FaRegAddressCard, FaSearch } from 'react-icons/fa';
+import UserSideBar from '../components/UserSideBar';
+import axios from 'axios';
 
 const SearchScreen = () => {
+   
+
+    const [con, setCon] = useState("")
     const [sevices, setServices] = useState();
+    const [cit, setCit] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
+    const [filtercity, setFilterCity] = useState([]);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
     let categories = [
-        { id: 1, name: "A.C. SERVICE" },
+        { id: 1, name: "A.C. SERVICE"},
         { id: 2, name: "ADVOCATE" },
         { id: 3, name: "ALUMINIUM WORKER" },
         { id: 4, name: "AUTO RICKSHAW" },
@@ -27,127 +36,155 @@ const SearchScreen = () => {
         { id: 16, name: "CAFE" },
         { id: 17, name: "CAR DECORATOR" },
     ];
+    const Cities = [
+        { name: "Ahmedabad", population: 8200000, knownFor: "Textile industry, Sabarmati Ashram" },
+        { name: "Surat", population: 6800000, knownFor: "Diamond cutting, Textile industry" },
+        { name: "Vadodara", population: 2100000, knownFor: "Cultural heritage, Laxmi Vilas Palace" },
+        { name: "Rajkot", population: 1600000, knownFor: "Patola sarees, Jewellery" },
+        { name: "Bhavnagar", population: 700000, knownFor: "Ship breaking industry, Palitana temples" },
+        { name: "Jamnagar", population: 600000, knownFor: "Oil refineries, Bandhani textiles" },
+        { name: "Junagadh", population: 300000, knownFor: "Gir National Park, Historical monuments" },
+        { name: "Gandhinagar", population: 350000, knownFor: "Capital city, Akshardham Temple" },
+        { name: "Anand", population: 200000, knownFor: "Amul Dairy, Rural development" },
+        { name: "Bhuj", population: 150000, knownFor: "Kutch desert, Handicrafts" }
+      ];
+      
+
     const hendleSubmit = (e) => {
         e.preventDefault();
 
-
-
         navigate(`/serviceDetail`, { state: search })
     }
+    
     useEffect(() => {
         let filter = [...categories];
+        let filetrcity = [...Cities]
+        
+        
         if (search) {
             filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         }
+        if (con) {
+            filetrcity = filetrcity.filter(item => item.name.toLowerCase().includes(con.toLowerCase()));
+        }
+        
         if (sevices) {
             filter = filter.filter(item => item.name === sevices);
         }
-
+        if (cit) {
+            cit = filter.cit(item => item.name === cit);
+        }
+        
         setFilterRecord(filter);
-    }, [search, sevices])
+        setFilterCity(filetrcity)
+    }, [search, sevices,con,cit])
+
+
+
+  
 
     return (
         <>
             <Navebar />
+            <UserSideBar />
+            <div className="container mt-24">
+                <div className="row">
+                    <div className='col-12 p-3'>
+                        <form action="" onSubmit={hendleSubmit} className='d-flex flex-wrap'>
+                        <div className="col-12 col-md-6 col-lg-3 p-2">
+                                <div htmlFor="" className='dropdown d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                                    <input
+                                        type="text"
+                                        onChange={(e) => setCon(e.target.value)} value={con}
+                                        className=' w-100 outline-0 bg-transparent dropdown-toggle'data-bs-toggle="dropdown" aria-expanded="false" placeholder="location or pincode" />
+                                    <FaLocationDot className='text-xl' />
+                                    <ul class="dropdown-menu mt-3">
+                                        {
+                                            filtercity.map((val,i)=>{
+                                                return(
+                                                    <li><a class="dropdown-item "  href="#">{val.name}</a></li>
+                                                )
 
-          <div className="container mt-24">
-            <div className="row">
-            <div className=' p-3'>
-                <div className='max-w-sm p-6 bg-white mt-4 rounded-md shadow-xl'>
-                    <h1 className='py-3 text-lg'>Serch for Serviesis</h1>
-                    <form action="" onSubmit={hendleSubmit} className=''>
-                        <label className=" px-3 py-2 border rounded-md flex items-center gap-2 ">
-                            <input type="text" placeholder="Search For Sercices" onChange={(e) => setSearch(e.target.value)} value={search} className={`grow outline-none bg-white`} />
-                            <button type='submit' className="btn btn-square btn-sm">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 16 16"
-                                    fill="currentColor"
-                                    className="h-4 w-4 opacity-70">
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                        clipRule="evenodd" />
-                                </svg>
-                            </button>
-                        </label>
-                    </form>
+                                            })
+                                        }
+                                   
+                                   
+                                        
+                                    </ul>   
+                                </div>
+                         </div>
+                           
+                            <div className="col-12 col-md-6 col-lg-3 p-2">
+
+                                <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                                    <input
+                                        type="text"
+                                        onChange={(e) => setSearch(e.target.value)} value={search}
+                                        className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
+                                    <button type=''>
+                                        <FaSearch className='text-lg' />
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </form>
+
+
+                    </div>
+
                 </div>
             </div>
-
-            </div>
-          </div>
-
-
-
-
-            <div className='flex flex-wrap'>
-                {filterrecord.length > 0 ? (
-                    filterrecord.map((cat, i) => {
-                      
-                    })
-                ) : (
-                    <h1>
-                        No records found. Please select a category or search.
-                    </h1>
-                )}
-
-                
-            </div>
-
 
             <section>
                 <div className="container">
                     <div className="row">
-                        <h2 className='px-4'>All services</h2>
+                        {
+                            filterrecord.length > 0 ?  <h2 className='px-4'>All services</h2> : <h2 className='px-4'>No services</h2>
+                        }
                         <div className="col-12 flex flex-wrap">
-                        {filterrecord.length > 0 ? (
-                    filterrecord.map((cat, i) => {
-                      return(
-                        <div className="col-xl-3 p-2">
-                                <div className="card border-0 bg-base-100 shadow-xl">
-                                    <div className='d-flex justify-content-between'>
-                                        <figure className='rounded-md m-3'>
-                                            <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+                            {filterrecord.length > 0 ? (
+                                filterrecord.map((cat, i) => {
+                                    return (
+                                        <div className="col-xl-3 p-2">
+                                            <div className="card border-0 bg-base-100 shadow-xl">
+                                                <div className='d-flex justify-content-between'>
+                                                    <figure className='rounded-md m-3'>
+                                                        <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
 
-                                            </img>
-                                        </figure>
-                                        <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
-                                    </div>
-                                    <div className='p-3'>
-                                        <h2 className="text-lg font-bold">{cat.name}</h2>
-                                        <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
-                                        <div className="rating rating-sm">
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400"  />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <span className='pl-3'>245 rating</span>
+                                                        </img>
+                                                    </figure>
+                                                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                                                </div>
+                                                <div className='p-3'>
+                                                    <h2 className="text-lg font-bold">{cat.name}</h2>
+                                                    <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
+                                                    <div className="rating rating-sm">
+                                                        <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />
+                                                        <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                                        <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                                        <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                                        <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
+                                                        <span className='pl-3'>245 rating</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
+                                    )
+                                })
+                            ) : (
+                                <h5>
+                                    No records found. Please select a category or search.
+                                </h5>
+                            )}
 
-                                    </div>
-                                </div>
-                            </div>
-                      )
-                    })
-                ) : (
-                    <h1>
-                        No records found. Please select a category or search.
-                    </h1>
-                )}
 
-                        
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* <ServiceDetail
-                filterrecord={filterrecord}
-                profile={profile}
 
-            /> */}
         </>
     )
 }

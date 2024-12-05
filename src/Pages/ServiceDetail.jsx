@@ -13,7 +13,7 @@ const ServiceDetail = () => {
         name: "John Doe",
         email: "john@example.com",
         phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
+        address: "ahmdabad",
         category: "A.C. SERVICE"
 
     },
@@ -22,7 +22,7 @@ const ServiceDetail = () => {
         name: "Jane Doe",
         email: "jane@example.com",
         phone: "9876543210",
-        address: "456 Elm St, Anytown, USA",
+        address: "surat",
         category: "AUTO RICKSHAW"
     },
     {
@@ -30,7 +30,7 @@ const ServiceDetail = () => {
         name: "John Doe",
         email: "john@example.com",
         phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
+        address: "rajkot",
         category: "BAGGI (HORSE CART)"
     },
     {
@@ -38,7 +38,7 @@ const ServiceDetail = () => {
         name: "John Doe",
         email: "john@example.com",
         phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
+        address: "surat",
         category: "BAGGI (HORSE CART)"
     },
     ]

@@ -38,15 +38,16 @@ h1,h2,h3,h4,h5{
 ul{
     margin: 0!important;
 }
-
-
+input[type="file"] {
+  display: none;
+}
 /* slic slider Card  start*/
 
 body{
     background-color: #F5F5FF;
   }
   .wrapper{
-    padding: 70px 0;
+    padding: 30px 0;
   }
 .slick-slide{
     width: 205px!important;
@@ -97,3 +98,4 @@ body{
   }
 
 /* slic slider Card  end*/
+
