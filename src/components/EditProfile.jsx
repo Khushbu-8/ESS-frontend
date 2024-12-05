@@ -13,6 +13,7 @@ import { LuPhone } from "react-icons/lu";
 import { FaRegAddressCard } from "react-icons/fa6";
 import { CiEdit } from "react-icons/ci";
 import UserSideBar from './UserSideBar';
+import AdminNavbar from '../admincomponents/AdminNavbar';
 
 const EditProfile = () => {
   const [profile, setProfile] = useState("");
@@ -235,7 +236,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <Navebar />
+      <AdminNavbar />
       <UserSideBar />
       <section className='pt-32'>
         <div className="container">

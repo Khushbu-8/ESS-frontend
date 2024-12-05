@@ -4,10 +4,10 @@ const Card = () => {
    
     return (
         <>
-            <section className='mt-32'>
+            <section className='mt-24 p-4'>
                 <div className="container">
                     <div className="row">
-                        <div className="card border-0 card-side bg-base-100 rounded-md shadow-xl w-full py-3   pt-3  ">
+                        <div className="card border-0 card-side bg-base-100 rounded-md shadow-xl w-full p-3   pt-3  ">
                             <div className="sm:grid sm:grid-cols-3 w-full sm:gap-4 sm:px-0">
                                 <div className="text-sm/6  text-gray-900 py-2">
                                     <figure className='py-2'>

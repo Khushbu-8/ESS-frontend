@@ -5,6 +5,7 @@ import { PiShoppingBagLight } from "react-icons/pi";
 import Navebar from './Navebar';
 import axios from 'axios';
 import UserSideBar from './UserSideBar';
+import AdminNavbar from '../admincomponents/AdminNavbar';
 
 const Profile = () => {
     const [profile, setProfile] = useState("");
@@ -40,9 +41,9 @@ const Profile = () => {
 
     return (
         <>
-            <Navebar />
+            <AdminNavbar />
             <UserSideBar />
-            <section className='my-32 h-[550px]'>
+            <section className='my-24 p-4 h-[550px]'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -53,7 +54,7 @@ const Profile = () => {
                                     <img className='h-[150px] w-full' src="https://img.freepik.com/free-vector/colorful-watercolor-texture-background_1035-19319.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid" alt="" />
 
                                     <div className="avatar">
-                                        <div className=" position-absolute top-5 start-[-1050px] ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
+                                        <div className=" position-absolute top-[100px] start-[50px] overflow-hidden ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
                                             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                                         </div>
                                     </div>

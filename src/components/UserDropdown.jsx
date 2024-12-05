@@ -53,7 +53,7 @@ function UserDropdown() {
         </div>
         <ul class="dropdown-menu mt-5">
     <li><Link class="dropdown-item text-lg" href="#">Welcom {profile.name}</Link></li>
-    <li><Link class="dropdown-item" href="#">Profile</Link></li>
+    <li><Link class="dropdown-item" to={"/profile"} >Profile</Link></li>
     <li><Link class="dropdown-item"onClick={handleLogout}>Logout</Link></li>
   </ul>
       </div>

@@ -5,6 +5,7 @@ import UserDropdown from '../components/UserDropdown'
 const AdminNavbar = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     const [auth, setAuth] = useState(false)
+    const [sticky,setSticky] = useState(false);
 
     const NaveItems = (
         <>
@@ -21,10 +22,26 @@ const AdminNavbar = () => {
 
 
     }, [token])
+    useEffect(() =>{
+        const handlScroll= () =>{
+            if(window.scrollY > 0){
+                setSticky(true)
+            }else{
+                setSticky(false)
+            }
+        }
+window.addEventListener('scroll',handlScroll)
+return() =>{
+    window.removeEventListener("scroll",handlScroll)
+}
+    },[])
 
     return (
         <>
-            <nav class="navbar navbar-expand-lg bg-white">
+            <nav  className={`  navbar-expand-lg bg-white w-full md:px-20 dark:bg-slate-900 dark:text-white  px-4 py-2 z-20 fixed top-0  ${
+                sticky? "sticky-navbar shadow-md bg-white dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out":" bg-base-100 "
+            } `}>
+            {/* <nav class="navbar navbar-expand-lg bg-white"> */}
                 <div class="container-fluid px-3">
                     <div className="col-12 d-flex align-items-center">
                         <div className="col-4 d-flex align-items-center">

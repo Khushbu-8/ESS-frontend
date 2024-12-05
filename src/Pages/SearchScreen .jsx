@@ -6,6 +6,7 @@ import { FaLocationArrow, FaLocationDot, FaServer } from 'react-icons/fa6';
 import { FaRegAddressCard, FaSearch } from 'react-icons/fa';
 import UserSideBar from '../components/UserSideBar';
 import axios from 'axios';
+import AdminNavbar from '../admincomponents/AdminNavbar';
 
 const SearchScreen = () => {
    
@@ -85,7 +86,6 @@ const SearchScreen = () => {
 
     return (
         <>
-            <Navebar />
             <UserSideBar />
             <div className="container mt-24">
                 <div className="row">
