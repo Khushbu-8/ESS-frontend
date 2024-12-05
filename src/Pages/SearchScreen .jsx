@@ -72,7 +72,7 @@ const SearchScreen = () => {
             filter = filter.filter(item => item.name === sevices);
         }
         if (cit) {
-            cit = filter.cit(item => item.name === cit);
+            cit = filetrcity.filter(item => item.name === cit);
         }
         
         setFilterRecord(filter);
