@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCalendar, FaNetworkWired, FaPowerOff, FaUser, FaWallet } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
+import axios from 'axios'
 
 const UserSideBar = () => {
+  const [profile, setProfile] = useState("");
+  const navigate = useNavigate();
+  const token = JSON.parse(localStorage.getItem('token'))
+  console.log(token, "token profil");
     const sidebarManu = [
         {
           id: 1,
@@ -31,6 +36,33 @@ const UserSideBar = () => {
         }
        
       ]
+      const fetchData = async () => {
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
+    
+        try {
+          const response = await axios.get(backend_API, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+          });
+          const data = await response.data;
+          setProfile(data.user)
+          console.log(data, "data Edit");
+          if (response.status === 200) {
+            console.log("profile Successful...");
+          }
+        } catch (error) {
+          console.log(error);
+          return false;
+        }
+    
+      }
+      
+  useEffect(() => {
+    fetchData()
+  }, [])
+
       const handleLogout = () => {
         localStorage.removeItem('token'); // Clear the token
         navigate('/login'); // Redirect to login
@@ -45,7 +77,7 @@ const UserSideBar = () => {
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
           <div>
-          <h3>joy</h3>
+          <h3>{profile.name}</h3>
           </div>
      </div>
        <div className=' d-flex justify-content-center'>
