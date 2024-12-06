@@ -203,7 +203,7 @@ const RegisterNextPage = () => {
             if (response.status === 200) {
               localStorage.setItem("Users",JSON.stringify(data.user))
               // localStorage.setItem("Users",token)
-                navigete('/');
+                navigete('/login');
                 console.log('Register successful!');
             }else {
                 // Handle error responses
