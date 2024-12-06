@@ -8,6 +8,7 @@ const SearchScreen = () => {
     const [allServices,setAllServices] = useState
 
     const backend_API = "https://ees-121-backend.vercel.app"
+
   const fetchData = async () => {
     try {
       const response = await axios.get(`${backend_API}/auth/getAllUser`, {
@@ -19,7 +20,7 @@ const SearchScreen = () => {
       });
       const data = await response.data;
     //   setAllServices(data.user)
-      console.log(data, "AllUser");
+      console.log(data, "AllUser get");
     //   if (response.status === 200) {
 
     //     console.log("All User Successful...");
