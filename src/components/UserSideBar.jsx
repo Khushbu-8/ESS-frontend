@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaCalendar, FaNetworkWired, FaUser, FaWallet } from 'react-icons/fa'
+import { FaCalendar, FaNetworkWired, FaPowerOff, FaUser, FaWallet } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 
@@ -18,18 +18,23 @@ const UserSideBar = () => {
           path: '/',
         },
         {
-          id: 2,
+          id: 4,
           title: 'wallete',
           icon: <FaWallet />,
           path: '/admin/card',
         },
         {
-          id: 2,
+          id: 5,
           title: 'work',
           icon: <FaNetworkWired />,
           path: '/admin/card',
         }
+       
       ]
+      const handleLogout = () => {
+        localStorage.removeItem('token'); // Clear the token
+        navigate('/login'); // Redirect to login
+      };
   return (
     <>
   <div className="offcanvas offcanvas-end" data-bs-backdrop="static" tabIndex={-1} id="staticBackdrop" aria-labelledby="staticBackdropLabel">
@@ -63,6 +68,11 @@ const UserSideBar = () => {
                   )
                 })
               }
+              <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white'>
+                      <Link  onClick={handleLogout} className=' text-lg'>
+                        <span className='inline-block mr-2 text-xl'><FaPowerOff/></span>
+                        Logout</Link>
+                    </li>
       </ul>
     </div>
   </div>
