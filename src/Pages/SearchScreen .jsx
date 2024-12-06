@@ -34,16 +34,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
     }
 
-    useEffect(()=>{
-        const filterbycaregiry =[...allServices]
-        if(search){
-             filterbycaregiry = filterbycaregiry.filter((category) =>{
-                return category && category.name.toLowerCase().includes(search.toLowerCase())
-             })
-
-        }
-        setAllServices(filterbycaregiry)
-    },[search])
+   
     const hendelChange = (value) =>{
         setSearch(value);
 
