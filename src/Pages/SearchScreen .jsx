@@ -18,7 +18,7 @@ const SearchScreen = () => {
 
       });
       const data = await response.data;
-      setAllServices(data.user)
+    //   setAllServices(data.user)
       console.log(data, "AllUser");
     //   if (response.status === 200) {
 
