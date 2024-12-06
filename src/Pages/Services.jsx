@@ -11,7 +11,10 @@ const Services = () => {
       <div>
    <AdminNavbar/>
    <UserSideBar/>
-      <SearchScreen/>
+      {/* <SearchScreen/> */}
+     <div className='mt-24'>
+     <ServieceCategories/>
+     </div>
       </div>
 
     </div>
