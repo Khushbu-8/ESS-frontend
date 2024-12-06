@@ -11,7 +11,7 @@ import AdminNavbar from '../admincomponents/AdminNavbar';
 const SearchScreen = () => {
    
 
-    const [con, setCon] = useState("")
+    const [location, setLocation] = useState("")
     const [sevices, setServices] = useState();
     const [cit, setCit] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
@@ -49,7 +49,34 @@ const SearchScreen = () => {
         { name: "Anand", population: 200000, knownFor: "Amul Dairy, Rural development" },
         { name: "Bhuj", population: 150000, knownFor: "Kutch desert, Handicrafts" }
       ];
-      
+      const fetchData = async (value) => {
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
+        const token = JSON.parse(localStorage.getItem('token'))
+        //   console.log(token, "token Edit");
+        try {
+            const response = await axios.get(backend_API, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data = await response.data;
+            console.log(data, "data User");
+            // if (response.status === 200) {
+            //     navigate('/profile')
+            //     console.log("profile Successful...");
+            // }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+
+    }
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
 
     const hendleSubmit = (e) => {
         e.preventDefault();
@@ -57,31 +84,7 @@ const SearchScreen = () => {
         navigate(`/serviceDetail`, { state: search })
     }
     
-    useEffect(() => {
-        let filter = [...categories];
-        let filetrcity = [...Cities]
-        
-        
-        if (search) {
-            filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
-        }
-        if (con) {
-            filetrcity = filetrcity.filter(item => item.name.toLowerCase().includes(con.toLowerCase()));
-        }
-        
-        if (sevices) {
-            filter = filter.filter(item => item.name === sevices);
-        }
-        if (cit) {
-            cit = filetrcity.filter(item => item.name === cit);
-        }
-        
-        setFilterRecord(filter);
-        setFilterCity(filetrcity)
-    }, [search, sevices,con,cit])
-
-
-
+  
   
 
     return (
@@ -95,19 +98,12 @@ const SearchScreen = () => {
                                 <div htmlFor="" className='dropdown d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                     <input
                                         type="text"
-                                        onChange={(e) => setCon(e.target.value)} value={con}
+                                        onChange={(e) => setLocation(e.target.value)} value={location}
                                         className=' w-100 outline-0 bg-transparent dropdown-toggle'data-bs-toggle="dropdown" aria-expanded="false" placeholder="location or pincode" />
                                     <FaLocationDot className='text-xl' />
                                     <ul class="dropdown-menu mt-3">
-                                        {
-                                            filtercity.map((val,i)=>{
-                                                return(
-                                                    <li><a class="dropdown-item "  href="#">{val.name}</a></li>
-                                                )
+                                    <li><a class="dropdown-item "  href="#">name</a></li>
 
-                                            })
-                                        }
-                                   
                                    
                                         
                                     </ul>   
