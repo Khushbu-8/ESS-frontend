@@ -5,6 +5,8 @@ import axios from 'axios';
 
 const SearchScreen = ({setAllServices}) => {
     const [search, setSearch] = useState("");
+    console.log(search);
+    
 
     const backend_API = "https://ees-121-backend.vercel.app"
 
@@ -18,6 +20,7 @@ const SearchScreen = ({setAllServices}) => {
 
             });
             const data = await response.data.user;
+
             setAllServices(data)
             console.log(data, "AllUser get");
             //   if (response.status === 200) {
@@ -28,6 +31,10 @@ const SearchScreen = ({setAllServices}) => {
             console.log(error);
             return false;
         }
+
+    }
+    const hendelChange = (value) =>{
+        setSearch(value);
 
     }
 
@@ -49,7 +56,7 @@ const SearchScreen = ({setAllServices}) => {
                                     <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                         <input
                                             type="text"
-                                            onChange={(e) => setSearch(e.target.value)} value={search}
+                                            onChange={(e) => hendelChange(e.target.value)} value={search}
                                             className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                         <button type=''>
                                             <FaSearch className='text-lg' />

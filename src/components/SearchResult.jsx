@@ -28,8 +28,6 @@ const SearchResult = ({allServices}) => {
                                                 <div className="p-3 col-10 col-md-12 ">
                                                     <h4 className="">{card.name}</h4>
                                                     <h6>{card.businessCategory}</h6>
-                                                    <p>{card.email}</p>
-                                                    <p>{card.phone}</p>
                                                     <p>{card.address}</p>
                                                    
                                                     <div className="rating rating-sm py-4 d-flex align-items-center">
