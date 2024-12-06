@@ -5,6 +5,8 @@ import AdminNavbar from '../admincomponents/AdminNavbar'
 import SearchResult from '../components/SearchResult'
 
 const Services = () => {
+  const [allServices, setAllServices] = useState([])
+
   return (
     <div>
       <div>
@@ -14,9 +16,9 @@ const Services = () => {
       
      <div className='mt-24'>
     <div className='py-3'>
-    <SearchScreen/>
+    <SearchScreen setAllServices ={setAllServices}/>
     </div>
-     <SearchResult/>
+     <SearchResult allServices={allServices} setAllServices ={setAllServices}/>
      </div>
       </div>
 

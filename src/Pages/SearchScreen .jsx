@@ -3,67 +3,68 @@ import UserSideBar from '../components/UserSideBar';
 import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 
-const SearchScreen = () => {
-    const [search,setSearch] = useState("");
-    const [allServices,setAllServices] = useState([])
+const SearchScreen = ({setAllServices}) => {
+    const [search, setSearch] = useState("");
 
     const backend_API = "https://ees-121-backend.vercel.app"
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${backend_API}/auth/getAllUser`, {
-        headers: {
-          'Content-Type': 'application/json',
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${backend_API}/auth/getAllUser`, {
+                headers: {
+                    'Content-Type': 'application/json',
 
-        },
+                },
 
-      });
-      const data = await response.data.user;
-      setAllServices(data)
-      console.log(data, "AllUser get");
-    //   if (response.status === 200) {
+            });
+            const data = await response.data.user;
+            setAllServices(data)
+            console.log(data, "AllUser get");
+            //   if (response.status === 200) {
 
-    //     console.log("All User Successful...");
-    //   }
-    } catch (error) {
-      console.log(error);
-      return false;
+            //     console.log("All User Successful...");
+            //   }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+
     }
 
-  }
+    useEffect(() => {
+        fetchData()
+    }, [])
 
-  useEffect(() => {
-    fetchData()
-  }, [])
-    
 
 
     return (
         <>
             <UserSideBar />
-            <div className="container">
-                <div className="row">
-                    <div className='col-12 p-0'>
-                        <form action=""  className='d-flex flex-wrap'>
-                            <div className="col-12 col-md-6 col-lg-3">
-                                <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                                    <input
-                                        type="text"
-                                        onChange={(e) => setSearch(e.target.value)} value={search}
-                                        className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
-                                    <button type=''>
-                                        <FaSearch className='text-lg' />
-                                    </button>
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className='col-12 p-0'>
+                            <form action="" className='d-flex flex-wrap'>
+                                <div className="col-12 col-md-6 col-lg-3">
+                                    <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                                        <input
+                                            type="text"
+                                            onChange={(e) => setSearch(e.target.value)} value={search}
+                                            className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
+                                        <button type=''>
+                                            <FaSearch className='text-lg' />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                        </form>
 
+                            </form>
+
+
+                        </div>
 
                     </div>
-
                 </div>
-            </div>
+            </section>
         </>
     )
 }
