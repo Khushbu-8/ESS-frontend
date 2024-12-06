@@ -60,7 +60,7 @@ const SearchScreen = () => {
                 },
             });
             const data = await response.data.user;
-            console.log(data.user, "data User");
+            console.log(data, "data User");
             const result = data.filter(item =>{
                 value && 
                 item && 
