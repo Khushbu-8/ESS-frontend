@@ -60,15 +60,7 @@ const SearchScreen = () => {
                 },
             });
             const data = await response.data.user;
-             data = data.filter((item) =>{
-               return(
-                value && 
-                item && 
-                item.name &&
-                item.address && 
-                item.address.toLowerCase().includes(value.toLowerCase())
-               )
-            });
+            
              console.log(data, "data User");
             // if (response.status === 200) {
             //     navigate('/profile')
