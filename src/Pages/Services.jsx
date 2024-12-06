@@ -16,7 +16,7 @@ const Services = () => {
       
      <div className='mt-24'>
     <div className='py-3'>
-    <SearchScreen setAllServices ={setAllServices}/>
+    <SearchScreen allServices={allServices} setAllServices ={setAllServices}/>
     </div>
      <SearchResult allServices={allServices} setAllServices ={setAllServices}/>
      </div>

@@ -3,7 +3,7 @@ import UserSideBar from '../components/UserSideBar';
 import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 
-const SearchScreen = ({setAllServices}) => {
+const SearchScreen = ({setAllServices , allServices}) => {
     const [search, setSearch] = useState("");
     console.log(search);
     
@@ -33,6 +33,17 @@ const SearchScreen = ({setAllServices}) => {
         }
 
     }
+
+    useEffect(()=>{
+        const filterbycaregiry =[...allServices]
+        if(search){
+             filterbycaregiry = filterbycaregiry.filter((category) =>{
+                return category && category.businessCategory.toLowerCase().includes(search.toLowerCase())
+             })
+
+        }
+        setAllServices(filterbycaregiry)
+    },[search])
     const hendelChange = (value) =>{
         setSearch(value);
 
