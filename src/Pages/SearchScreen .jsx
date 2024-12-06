@@ -80,9 +80,6 @@ const SearchScreen = () => {
         }
 
     }
-    useEffect(() => {
-        fetchData()
-    }, [])
 
 
    const hendleChange = (value) =>{
