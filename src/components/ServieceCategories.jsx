@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { FaSearch } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom';
+import SearchScreen from '../Pages/SearchScreen ';
 
 const  ServieceCategories = () => {
     const [sevices, setServices] = useState();
@@ -45,34 +45,6 @@ const  ServieceCategories = () => {
 
     return (
         <>
-
-            <section>
-                <div className="container">
-                    <div className="row">
-                    <h3 className="text-bold py-2 px-4">Servieces</h3>
-                        <div className='col-12 '>
-                            <form action="" onSubmit={hendleSubmit} className='d-flex flex-wrap'>
-
-                                <div className="col-12 col-md-6 col-lg-3">
-
-                                    <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                                        <input
-                                            type="text"
-                                           
-                                            className=' w-100 outline-0 bg-transparent ' placeholder="Search For Services" />
-                                        <button type='submit'>
-                                            <FaSearch className='text-lg' />
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div >
-
-            </section>
-
             <section className='mt-2'>
                 <div className="container">
                     <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
