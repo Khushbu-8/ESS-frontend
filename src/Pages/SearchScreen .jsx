@@ -59,8 +59,15 @@ const SearchScreen = () => {
                     
                 },
             });
-            const data = await response.data;
-            console.log(data, "data User");
+            const data = await response.data.user;
+            console.log(data.user, "data User");
+            const result = data.filter(item =>{
+                value && 
+                item && 
+                item.name &&
+                item.address && 
+                item.address.toLowerCase().includes(value.toLowerCase())
+            });
             // if (response.status === 200) {
             //     navigate('/profile')
             //     console.log("profile Successful...");
