@@ -188,7 +188,7 @@ const RegisterNextPage = () => {
         e.preventDefault();
         const fullData = { 
             ...previousData,
-             businessName :businessName,businessCategory :businessCategory, businessAddress:businessAddress,address:address };
+             businessName :businessName,businessCategory :businessCategory, businessAddress:businessAddress };
 
         console.log(fullData);
         try {
