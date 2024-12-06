@@ -60,7 +60,6 @@ const SearchScreen = () => {
                 },
             });
             const data = await response.data.user;
-            console.log(data, "data User");
              data = data.filter((item) =>{
                return(
                 value && 
@@ -70,6 +69,7 @@ const SearchScreen = () => {
                 item.address.toLowerCase().includes(value.toLowerCase())
                )
             });
+             console.log(data, "data User");
             // if (response.status === 200) {
             //     navigate('/profile')
             //     console.log("profile Successful...");
