@@ -50,14 +50,13 @@ const SearchScreen = () => {
         { name: "Bhuj", population: 150000, knownFor: "Kutch desert, Handicrafts" }
       ];
       const fetchData = async (value) => {
-        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
-        const token = JSON.parse(localStorage.getItem('token'))
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getAllUser"
         //   console.log(token, "token Edit");
         try {
             const response = await axios.get(backend_API, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    
                 },
             });
             const data = await response.data;
