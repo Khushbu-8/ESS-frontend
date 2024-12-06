@@ -61,15 +61,15 @@ const SearchScreen = () => {
             });
             const data = await response.data.user;
             console.log(data, "data User");
-            //  data = data.filter((item) =>{
-            //    return(
-            //     value && 
-            //     item && 
-            //     item.name &&
-            //     item.address && 
-            //     item.address.toLowerCase().includes(value.toLowerCase())
-            //    )
-            // });
+             data = data.filter((item) =>{
+               return(
+                value && 
+                item && 
+                item.name &&
+                item.address && 
+                item.address.toLowerCase().includes(value.toLowerCase())
+               )
+            });
             // if (response.status === 200) {
             //     navigate('/profile')
             //     console.log("profile Successful...");
@@ -85,6 +85,10 @@ const SearchScreen = () => {
     }, [])
 
 
+   const hendleChange = (value) =>{
+    setLocation(value)
+    fetchData(value)
+   }
 
     const hendleSubmit = (e) => {
         e.preventDefault();
@@ -106,7 +110,7 @@ const SearchScreen = () => {
                                 <div htmlFor="" className='dropdown d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                     <input
                                         type="text"
-                                        onChange={(e) => setLocation(e.target.value)} value={location}
+                                        onChange={(e) => hendleChange(e.target.value)} value={location}
                                         className=' w-100 outline-0 bg-transparent dropdown-toggle'data-bs-toggle="dropdown" aria-expanded="false" placeholder="location or pincode" />
                                     <FaLocationDot className='text-xl' />
                                     <ul class="dropdown-menu mt-3">
