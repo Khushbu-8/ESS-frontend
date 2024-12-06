@@ -29,6 +29,9 @@ const Home = () => {
         auth ? <Card /> : <></>
       }
       
+      {/* <Card />  */}
+      
+      
     
      <CardSlider/>
       <ServieceCategories/>
