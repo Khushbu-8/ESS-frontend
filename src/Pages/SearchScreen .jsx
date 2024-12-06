@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SearchScreen = () => {
     const [search,setSearch] = useState("");
-    const [allServices,setAllServices] = useState
+    const [allServices,setAllServices] = useState([])
 
     const backend_API = "https://ees-121-backend.vercel.app"
 
@@ -18,8 +18,8 @@ const SearchScreen = () => {
         },
 
       });
-      const data = await response.data;
-    //   setAllServices(data.user)
+      const data = await response.data.user;
+      setAllServices(data)
       console.log(data, "AllUser get");
     //   if (response.status === 200) {
 
