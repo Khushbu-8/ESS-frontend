@@ -36,7 +36,7 @@ const SearchResult = ({allServices}) => {
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/>
-                                                        <FaStaf className='text-warning'/> <span className='ps-2'>rating</span>
+                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
                                                     </div>
                                                    
                                                   <div className=' pt-3'>
