@@ -61,7 +61,10 @@ const Card = () => {
                                             <h5 >PFP</h5>
                                         </div>
                                         <div className='p-2  d-flex justify-content-center'>
-                                        <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+                                            <div className="checkbox-con">
+                                                <input id="checkbox" type="checkbox" />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
