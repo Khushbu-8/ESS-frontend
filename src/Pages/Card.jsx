@@ -1,7 +1,8 @@
 import React from 'react'
+import { FaStar } from 'react-icons/fa'
 
 const Card = () => {
-   
+
     return (
         <>
             <section className='mt-24 p-4'>
@@ -17,13 +18,12 @@ const Card = () => {
                                     </figure>
                                     <div className='text-center'>
                                         <h1 className='text-xl'>Joye</h1>
-                                        <div className="rating rating-sm">
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" defaultChecked />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                            <span className='pl-3'>245 rating</span>
+                                        <div className="rating rating-sm py-4 d-flex align-items-center">
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' /> <span className='ps-2'>rating</span>
                                         </div>
                                     </div>
                                 </div>

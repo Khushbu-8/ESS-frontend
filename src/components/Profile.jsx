@@ -6,6 +6,7 @@ import Navebar from './Navebar';
 import axios from 'axios';
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
+import { FaStar } from 'react-icons/fa';
 
 const Profile = () => {
     const [profile, setProfile] = useState("");
@@ -79,13 +80,13 @@ const Profile = () => {
                                                 <h5 className='text-gray pb-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h5>
                                                 <div className='p-2 d-flex justify-content-center text-uppercase rounded-md text-white bg-orange '>Avocate{profile.businessCategory}</div>
 
-                                                <div className="rating rating-sm py-4 ">
-                                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400  " />
-                                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" defaultChecked />
-                                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                                    <input type="radio" name="rating-4" className="mask mask-star-2 bg-amber-400" />
-                                                </div>
+                                                <div className="rating rating-sm py-4 d-flex align-items-center">
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
+                                                    </div>
                                                 <div className=''>
                                                     <label for="" class=" btn d-inline-block border-1 text-white d-flex justify-content-center align-items-center bg-orange text-center ">
                                                         Add Offer Benner
