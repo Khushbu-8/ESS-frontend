@@ -69,7 +69,7 @@ const UserSideBar = () => {
       };
   return (
     <>
-  <div className="offcanvas offcanvas-end" data-bs-backdrop="static" tabIndex={-1} id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div className="d-flex  align-items-center p-3">
     
      <div className='w-full d-flex align-items-center gap-4'>
