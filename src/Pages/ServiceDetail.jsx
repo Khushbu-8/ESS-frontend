@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 const ServiceDetail = () => {
-    
+
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location?.state?.cat);
