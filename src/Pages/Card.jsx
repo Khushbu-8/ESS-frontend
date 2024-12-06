@@ -17,7 +17,7 @@ const Card = () => {
                                             alt="Movie" />
                                     </figure>
                                     <div className='text-center'>
-                                        <h1 className='text-xl'>Joye</h1>
+                                        <h1 className='text-xl text-center'>Joye</h1>
                                         <div className="rating rating-sm py-4 d-flex align-items-center">
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
@@ -61,10 +61,7 @@ const Card = () => {
                                             <h5 >PFP</h5>
                                         </div>
                                         <div className='p-2  d-flex justify-content-center'>
-                                            <input
-                                                type="checkbox"
-                                                value="synthwave"
-                                                className="toggle theme-controller hover:bg-red-500  border-red-400 bg-red-500  checked:border-green-800 checked:bg-green-500  checked:hover:bg-green-500 " />
+                                        <input type="checkbox" value="synthwave" className="toggle theme-controller" />
                                         </div>
                                     </div>
                                 </div>
