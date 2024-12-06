@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Navebar from '../components/Navebar'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 const ServiceDetail = () => {
-
+    
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location?.state?.cat);
@@ -47,10 +46,8 @@ const ServiceDetail = () => {
 
     return (
         <>
-            <Navebar />
-            
-
-            <section className='mt-24'>
+          
+            <section className=''>
                 <div className="container">
                     <div className="row">
                         <div className='d-flex'>
@@ -70,7 +67,7 @@ const ServiceDetail = () => {
                                                         alt="Movie" />
                                                 </div>
                                                 <div className="p-3 col-10 col-md-12 ">
-                                                    <h2 className="card-title">{card.name}</h2>
+                                                    <h4 className="">{card.name}</h4>
                                                     <p>{card.email}</p>
                                                     <p>{card.phone}</p>
                                                     <p>{card.address}</p>

@@ -1,9 +1,8 @@
 import React from 'react'
 import UserSideBar from '../components/UserSideBar'
-import Navebar from '../components/Navebar'
 import SearchScreen from './SearchScreen '
-import ServieceCategories from '../components/ServieceCategories'
 import AdminNavbar from '../admincomponents/AdminNavbar'
+import SearchResult from '../components/SearchResult'
 
 const Services = () => {
   return (
@@ -11,10 +10,13 @@ const Services = () => {
       <div>
    <AdminNavbar/>
    <UserSideBar/>
-      {/* <SearchScreen/> */}
-     <div className='mt-24'>
+  
       
-     <ServieceCategories/>
+     <div className='mt-24'>
+    <div className='py-3'>
+    <SearchScreen/>
+    </div>
+     <SearchResult/>
      </div>
       </div>
 
