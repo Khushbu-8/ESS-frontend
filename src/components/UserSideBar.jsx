@@ -65,7 +65,9 @@ const UserSideBar = () => {
 
       const handleLogout = () => {
         localStorage.removeItem('token'); // Clear the token
+        
         navigate('/login'); // Redirect to login
+
       };
   return (
     <>
@@ -101,7 +103,7 @@ const UserSideBar = () => {
                 })
               }
               <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white'>
-                      <Link  onClick={handleLogout} className=' text-lg'>
+                      <Link onClick={handleLogout} className=' text-lg'>
                         <span className='inline-block mr-2 text-xl'><FaPowerOff/></span>
                         Logout</Link>
                     </li>

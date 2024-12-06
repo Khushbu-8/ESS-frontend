@@ -25,11 +25,11 @@ const Home = () => {
 
       <AdminNavbar />  
       <UserSideBar/>
-      {
+      {/* {
         auth ? <Card /> : <></>
-      }
+      } */}
       
-      {/* <Card />  */}
+      <Card /> 
       
       
     

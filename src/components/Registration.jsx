@@ -17,40 +17,14 @@ function Registration() {
     if (isAuthenticated) {
       // Redirect to a protected page if already logged in
       return <Navigate to="/" />;
-  }
-    // const notify = () => toast("Registration Successful");
-    const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
 
+  }
+ 
+  
     const handleSubmits = async (e) => {
         setLoading(true)
         e.preventDefault();
-        const fullData = { name :name, email :email, password :password,confirmpassword :password, phone:phone,address:address };
-
-        console.log(fullData);
-        try {
-            const response = await axios.post(backend_API, fullData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            const data = await response.data;
-            console.log(data);
-            if (response.status === 200) {
-              localStorage.setItem("Users",JSON.stringify(data.user))
-              // localStorage.setItem("Users",token)
-                navigete('/login');
-                console.log('Register successful!');
-            }else {
-                // Handle error responses
-                const errorData = await response.json();
-                setErrorMessage(errorData.message || 'Invalid credentials');
-            }
-        } catch (error) {
-            console.log(error);
-            return false;
-        }
-
+        navigete("/registernext", {state :  { name :name, email :email, password :password,confirmpassword :password, phone:phone,address:address }})
 
     };
 

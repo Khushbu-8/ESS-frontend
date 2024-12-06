@@ -14,6 +14,7 @@ import Home from "./components/Home";
 import ServiceDetail from "./Pages/ServiceDetail";
 import Card from "./Pages/Card";
 import Services from "./Pages/Services";
+import RegisterNextPage from "./components/RegisterNextPage";
 
 export default function App() {
 
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           
           <Route path="/register" element={<Registration />} />
+          <Route path="/registernext" element={<RegisterNextPage />} />
           <Route path="/login" element={<Login />} />
 
           {/* Admin Routes */}
