@@ -38,7 +38,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
         const filterbycaregiry =[...allServices]
         if(search){
              filterbycaregiry = filterbycaregiry.filter((category) =>{
-                return category && category.businessCategory.toLowerCase().includes(search.toLowerCase())
+                return category && category.name.toLowerCase().includes(search.toLowerCase())
              })
 
         }
