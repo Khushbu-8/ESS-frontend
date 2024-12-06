@@ -19,13 +19,7 @@ const  ServieceCategories = () => {
         { id: 8, name: "BANK SERVICE" },
         { id: 9, name: "BANQUET HALL" },
         { id: 10, name: "BATTERY SERVICE" },
-        { id: 11, name: "BEAUTY PARLOUR" },
-        { id: 12, name: "BIKE SERVICE" },
-        { id: 13, name: "BROKER" },
-        { id: 14, name: "BUSINESS CONSULTANT" },
-        { id: 15, name: "BICYCLE" },
-        { id: 16, name: "CAFE" },
-        { id: 17, name: "CAR DECORATOR" },
+        
     ];
     const hendleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +59,7 @@ const  ServieceCategories = () => {
                                         <input
                                             type="text"
                                            
-                                            className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
+                                            className=' w-100 outline-0 bg-transparent ' placeholder="Search For Services" />
                                         <button type='submit'>
                                             <FaSearch className='text-lg' />
                                         </button>
@@ -78,20 +72,20 @@ const  ServieceCategories = () => {
                 </div >
 
             </section>
+
             <section className='mt-2'>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12 d-flex flex-wrap ">
+                    <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
                             {
                                 filterrecord.map((item, i) => {
                                     return (
-                                        <div key={++i} className="col-4 col-md-3 col-lg-2 p-2">
+                                        <div key={++i} className="col">
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
                                                 <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
                                                 </img>
                                             </figure>
-                                            <h6 className='text-lg'>{item.name}</h6 >
+                                            <h6 className='text-md'>{item.name}</h6 >
                                         </div>
         
         
@@ -99,7 +93,7 @@ const  ServieceCategories = () => {
                                     )
                                 })
                             }
-                        </div>
+                        
                     </div>
                 </div>
             </section>

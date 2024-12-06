@@ -1,6 +1,4 @@
-import React from 'react'
-import Navebar from './Navebar'
-import EditProfile from './EditProfile'
+import React, { useEffect, useState } from 'react'
 import UserSideBar from './UserSideBar'
 import Card from '../Pages/Card'
 import ServieceCategories from './ServieceCategories'
@@ -9,16 +7,33 @@ import Benner from './Benner'
 import AdminNavbar from '../admincomponents/AdminNavbar'
 
 const Home = () => {
+  const token = JSON.parse(localStorage.getItem('token'))
+  const[auth,setAuth] = useState(false);
+
+  useEffect(()=>{
+    if(token){
+        setAuth(true)
+        }else{
+            setAuth(false)
+            }
+
+
+},[token])
+
   return (
     <>
 
-      <AdminNavbar />
+      <AdminNavbar />  
       <UserSideBar/>
-     
-      <Card />
-      <CardSlider/>
+      {
+        auth ? <Card /> : <></>
+      }
+      
+    
+     <CardSlider/>
       <ServieceCategories/>
       <Benner/>
+      <ServieceCategories/>
       
       
 

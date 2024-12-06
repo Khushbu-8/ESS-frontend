@@ -32,23 +32,30 @@ const UserSideBar = () => {
       ]
   return (
     <>
-  <div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex={-1} id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-  <div className="d-flex justify-content-between align-items-center">
+  <div className="offcanvas offcanvas-end" data-bs-backdrop="static" tabIndex={-1} id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div className="d-flex  align-items-center p-3">
     
-      <div classname="logo d-flex justify-content-end text-center ">
-        <img src={logo} width={80} alt />
-      </div>
-    
-    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+     <div className='w-full d-flex align-items-center gap-4'>
+     <div class="img w-[80px] h-[80px] rounded-lg border bg-red overflow-hidden d-flex">
+            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
+          </div>
+          <div>
+          <h3>joy</h3>
+          </div>
+     </div>
+       <div className=' d-flex justify-content-center'>
+       <button  type="button" className="btn-close " data-bs-dismiss="offcanvas" aria-label="Close" />
+
+       </div>
   </div>
   <hr />
-  <div className="offcanvas-body">
+  <div className="offcanvas-body p-0 p-2">
     <div>
-      <ul classname="p-0">
+      <ul classname="">
       {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' p-3 rounded hover:bg-primary hover:text-white focus:text-white'>
+                    <li key={++i} className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white'>
                       <Link to={manu.path} className=' text-lg'>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>

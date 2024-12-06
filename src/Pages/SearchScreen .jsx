@@ -12,6 +12,8 @@ const SearchScreen = () => {
    
 
     const [location, setLocation] = useState("")
+    const [serchResult,setSearchResult] = useState()
+
     const [sevices, setServices] = useState();
     const [cit, setCit] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
