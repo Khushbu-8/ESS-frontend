@@ -55,10 +55,10 @@ const SearchScreen = () => {
     }
 
     useEffect(() => {
-        let filetr = [...serchResult]
+        let filetrcat = [...serchResult]
         if (search) {
             // filetr = filetr.filter((item) => item.address.toLowerCase().includes(search.toLowerCase()))
-            filetr = filetr.filter((item) => 
+            filetrcat = filetrcat.filter((item) => 
                 search && 
              // Ensure the item has a valid `id`
                 (
@@ -71,15 +71,15 @@ const SearchScreen = () => {
               );
          }
          if(search){
-            filetr = filetr.filter((item => item.address == search))
+            filetrcat = filetrcat.filter(item => item.address == search)
          }
 
-        setFilterRecord(filetr)
+        setFilterRecord(filetrcat)
     }, [search])
 
     const hendleSubmit = (e) => {
         e.preventDefault();
-        const query = { search }
+        const query = {search }
         console.log(query, "search");
         fetchData(query);
         hendleChange(search)
