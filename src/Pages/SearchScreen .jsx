@@ -61,8 +61,12 @@ const SearchScreen = () => {
             filetr = filetr.filter((item) => 
                 search && 
              // Ensure the item has a valid `id`
-                item.businessCategory.some((category) => 
-                  category.toLowerCase().includes(search.toLowerCase())
+                (
+                    item.address.toLowerCase().includes(search.toLowerCase()) ||
+                    item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
+                    item.businessCategory.some((category) => 
+                        category.toLowerCase().includes(search.toLowerCase())
+                      )
                 )
               );
          }
