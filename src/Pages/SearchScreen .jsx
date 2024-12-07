@@ -132,8 +132,8 @@ const SearchScreen = () => {
                                                     <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
                                                 </div>
                                                 <div className='p-3'>
-                                                    <h4 className=" font-bold">{cat.name}</h4>
-                                                    <h5 className=" font-bold">{cat.businessCategory}</h5>
+                                                    <h5 className=" font-bold">{cat.name}</h5>
+                                                    <h6 className=" font-bold">{cat.businessCategory}</h6>
                                                     <p className=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
                                                     <div className="rating rating-sm py-4 d-flex align-items-center">
                                                         <FaStar className='text-warning'/>
@@ -145,7 +145,7 @@ const SearchScreen = () => {
 
                                                 </div>
                                                 <div className='d-flex justify-content-end'>
-                                                    <Link to={'/serviceDetail'} className='btn bg-orange  text-white'>View Profile</Link>
+                                                    <Link to={'/serviceDetail'} className='btn bg-orange text-white'>View Profile</Link>
                                                 </div>
                                             </div>
                                         </div>
