@@ -25,7 +25,7 @@ export default function App() {
       <Router>
       
         <Routes>
-          {/* protected rout */}
+          {/* protected route */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />

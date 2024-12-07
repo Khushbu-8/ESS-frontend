@@ -35,23 +35,34 @@ const  ServieceCategories = () => {
             filter = filter.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         }
         
-        if (sevices) {
-            filter = filter.filter(item => item.name === sevices);
-        }
+       
         
         setFilterRecord(filter);
-    }, [search, sevices])
+    }, [search])
 
+const hendelFilter = (val) =>{
+    let filter = [...categories];
+    if(val === "all"){
+        setFilterRecord(filter)
+        }
+        else{
+            filter = filter.filter(item => item.name === val);
+            setFilterRecord(filter)
+            }
+            
+            navigate("/serviceDetail")
 
+   
+}
     return (
         <>
             <section className='mt-2'>
                 <div className="container">
                     <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
                             {
-                                filterrecord.map((item, i) => {
+                                categories.map((item, i) => {
                                     return (
-                                        <div key={++i} className="col">
+                                        <div key={++i} className="col" style={{cursor: "pointer"}} onClick={() => hendelFilter(item.name)}>
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
                                                 <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src="https://img.daisyui.com/images/profile/demo/2@94.webp" >

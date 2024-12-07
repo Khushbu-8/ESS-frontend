@@ -119,7 +119,7 @@ setSearch("")
                 <div className="container">
                     <div className="row">
                         {
-                            filterrecord.filterResult > 0 ? <h2 className='px-4'>All services</h2> : <h2 className='px-4'>No services</h2>
+                            filterrecord > 0 ? <h2 className='px-4'>All services</h2> : <h2 className='px-4'>No services</h2>
                         }
                         <div className="col-12 flex flex-wrap">
                             {filterrecord.length > 0 ? (
