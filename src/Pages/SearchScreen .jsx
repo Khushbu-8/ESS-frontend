@@ -57,7 +57,7 @@ const SearchScreen = () => {
     useEffect(() => {
         let filetr = [...serchResult]
         if (search) {
-            filetr = filetr.filter((item) => item.businessAddress.toLowerCase().includes(search.toLowerCase()))
+            filetr = filetr.filter((item) => item.address.toLowerCase().includes(search.toLowerCase()))
             filetr = filetr.filter((item) => 
                 search && 
              // Ensure the item has a valid `id`
