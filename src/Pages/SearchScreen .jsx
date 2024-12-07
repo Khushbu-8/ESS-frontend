@@ -41,7 +41,11 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
     }
 
-  
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
 
     return (
         <>
