@@ -41,7 +41,7 @@ const Home = () => {
       <h3 className='ps-2 py-2'>Servises</h3>
      </div>
      <div>
-      <SearchScreen/>
+      {/* <SearchScreen/> */}
      </div>
     </div>
   </div>
