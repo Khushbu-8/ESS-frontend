@@ -41,7 +41,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
       let filterData = [...allServices]
       if(search) {
         filterData = filterData.filter((item) => {
-            return  item.name && item.address  && item.businessAddress.toLowerCase().includes(search.toLowerCase())
+            return item.name.toLowerCase().includes(search.toLowerCase())
         })
         }
         setFilterResult(filterData)
