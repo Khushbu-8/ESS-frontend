@@ -122,7 +122,7 @@ const SearchScreen = () => {
                                 filterrecord.map((cat, i) => {
                                     return (
                                         <div className="col-xl-3 p-2">
-                                            <div className="card border-0 bg-base-100 shadow-xl h-[300px] overflow-hidden">
+                                            <div className="card border-0 bg-base-100 shadow-xl" style={{height :"200px"}}>
                                                 <div className='d-flex justify-content-between'>
                                                     <figure className='rounded-md m-3'>
                                                         <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
