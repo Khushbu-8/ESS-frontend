@@ -81,7 +81,7 @@ const SearchScreen = () => {
         e.preventDefault();
         const query = {search }
         console.log(query, "search");
-        fetchData(query);
+        // fetchData(query);
         hendleChange(search)
 
 
