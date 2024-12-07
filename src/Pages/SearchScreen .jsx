@@ -9,7 +9,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     
 
     const backend_API = "https://ees-121-backend.vercel.app"
-
+const hendleSubmit  = () =>{
     const fetchData = async () => {
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
@@ -32,6 +32,9 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
         }
 
     }
+}
+
+   
 
    useEffect(()=>{
     fetchData();
@@ -62,12 +65,12 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
                         <div className='col-12 p-0'>
                             <form action="" className='d-flex flex-wrap'>
                                 <div className="col-12 col-md-6 col-lg-3">
-                                    <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                                    <div htmlFor="" onSubmit={hendleSubmit} className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                         <input
                                             type="text"
                                             onChange={(e) => setSearch(e.target.value)} value={search}
                                             className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
-                                        <button type=''>
+                                        <button type='submit'>
                                             <FaSearch className='text-lg' />
                                         </button>
                                     </div>
