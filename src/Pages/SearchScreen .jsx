@@ -20,9 +20,6 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
             });
             const data = await response.data.user;
-                data = data.filter((item) => {
-                    return item.name.toLowerCase().includes(value.toLowerCase());
-                })
             setAllServices(data)
             console.log(data, "AllUser get");
             //   if (response.status === 200) {
@@ -37,14 +34,13 @@ const SearchScreen = ({setAllServices , allServices}) => {
     }
 
    
-    const hendelChange = (value) =>{
-        setSearch(value);
-        fetchData(value)
-
-    }
 
     useEffect(() => {
-        fetchData(search)
+      let filterData = [...allServices]
+      if(search !== "") {
+        filterData = filterData.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+        }
+        setAllServices(filterData)
 
     }, [search])
 
