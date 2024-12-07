@@ -48,6 +48,9 @@ const SearchScreen = () => {
 
 
     const hendleChange = (value) => {
+        if(!value){
+            setFilterRecord("")
+        }
         setSearch(value)
     }
 
