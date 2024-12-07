@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navebar from '../components/Navebar';
 import { HiDotsHorizontal } from "react-icons/hi";
-import { FaLocationArrow, FaLocationDot, FaServer } from 'react-icons/fa6';
+import { FaLocationArrow, FaLocationDot, FaServer, FaStar } from 'react-icons/fa6';
 import { FaRegAddressCard, FaSearch } from 'react-icons/fa';
 import UserSideBar from '../components/UserSideBar';
 import axios from 'axios';
@@ -132,10 +132,20 @@ const SearchScreen = () => {
                                                     <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
                                                 </div>
                                                 <div className='p-3'>
-                                                    <h2 className="text-lg font-bold">{cat.name}</h2>
-                                                    <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
-                                                    
+                                                    <h4 className=" font-bold">{cat.name}</h4>
+                                                    <h5 className=" font-bold">{cat.businessCategory}</h5>
+                                                    <p className=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
+                                                    <div className="rating rating-sm py-4 d-flex align-items-center">
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
+                                                    </div> 
 
+                                                </div>
+                                                <div className='d-flex justify-content-end'>
+                                                    <Link to={'/serviceDetail'} className='btn bg-orange btn-lg text-white'>View Profile</Link>
                                                 </div>
                                             </div>
                                         </div>

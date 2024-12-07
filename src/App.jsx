@@ -26,12 +26,12 @@ export default function App() {
       
         <Routes>
           {/* protected rout */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
-          {/* </Route> */}
+          </Route>
           <Route path="/servises" element={ <Services/>} />
           <Route path="/" element={<Home />} />
           
