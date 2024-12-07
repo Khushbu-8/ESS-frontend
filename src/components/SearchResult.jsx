@@ -17,8 +17,8 @@ const SearchResult = ({allServices ,filterResult}) => {
                         </div>
 
                         <div className="col-12 d-flex flex-wrap">
-                            {
-                                filterResult.map((card, i) => {
+                            { filterResult.length > 0 ? (
+                                 filterResult.map((card, i) => {
                                     return (
                                         <div className="col-12 col-md-6 w-full col-lg-3 p-2 ">
                                             <div className="bg-white rounded-md overflow-hidden flex d-md-block w-full">
@@ -52,6 +52,10 @@ const SearchResult = ({allServices ,filterResult}) => {
                                         </div>
                                     )
                                 })
+                            ) : (<h5>
+                                    No records found. Please select a category or search.
+                                </h5>)
+                               
                             }
 
 

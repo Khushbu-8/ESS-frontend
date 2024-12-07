@@ -9,12 +9,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     
 
     const backend_API = "https://ees-121-backend.vercel.app"
-const hendleSubmit  = (e) =>{
-    e.preventDefault();
-    const result = {search}
-    console.log(result,"all result");
-    
-}
+
 
     const fetchData = async () => {
         try {
@@ -59,9 +54,15 @@ const hendleSubmit  = (e) =>{
         setFilterResult(filterData)
 
     }, [search])
-
-
-
+  
+    const hendleSubmit = (e) => {
+        e.preventDefault();
+        const  query = {search}
+    console.log(query, "search");
+    fetchData(query);
+    }
+    
+  
     return (
         <>
             <UserSideBar />
