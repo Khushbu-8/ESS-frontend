@@ -43,6 +43,9 @@ const hendleSubmit  = (e) =>{
     fetchData();
    },[])
 
+   const hendleChange = (value) =>{
+    setSearch(value)
+   }
     useEffect(() => {
       let filterData = [...allServices]
       if(search) {
@@ -71,7 +74,7 @@ const hendleSubmit  = (e) =>{
                                     <div htmlFor="" onSubmit={hendleSubmit} className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                         <input
                                             type="text"
-                                            onChange={(e) => setSearch(e.target.value)} value={search}
+                                            onChange={(e) =>  hendleChange(e.target.value)} value={search}
                                             className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                         <button type='submit'>
                                             <FaSearch className='text-lg' />
