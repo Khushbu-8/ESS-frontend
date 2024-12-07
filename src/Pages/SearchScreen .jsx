@@ -63,7 +63,7 @@ const SearchScreen = () => {
              // Ensure the item has a valid `id`
                 (
                     item.address.toLowerCase().includes(search.toLowerCase()) ||
-                    // item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
+                    item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
                     item.businessCategory.some((category) => 
                         category.toLowerCase().includes(search.toLowerCase())
                       )
