@@ -44,8 +44,9 @@ const SearchScreen = ({setAllServices , allServices}) => {
     }
 
     useEffect(() => {
-        fetchData()
-    }, [])
+        fetchData(search)
+
+    }, [search])
 
 
 
@@ -61,7 +62,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
                                     <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                         <input
                                             type="text"
-                                            onChange={(e) => hendelChange(e.target.value)} value={search}
+                                            onChange={(e) => setSearch(e.target.value)} value={search}
                                             className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                         <button type=''>
                                             <FaSearch className='text-lg' />
