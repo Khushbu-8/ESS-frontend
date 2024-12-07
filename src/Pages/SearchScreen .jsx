@@ -83,7 +83,7 @@ const SearchScreen = () => {
         console.log(query, "search");
         // fetchData(query);
         hendleChange(search)
-setSearch("")
+// setSearch("")
 
     }
 
