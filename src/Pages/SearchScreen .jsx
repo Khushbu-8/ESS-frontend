@@ -11,7 +11,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     const backend_API = "https://ees-121-backend.vercel.app"
 const hendleSubmit  = (e) =>{
     e.preventDefault();
-    const result = {allServices}
+    const result = [...allServices]
     console.log(result,"all result");
     
 }
