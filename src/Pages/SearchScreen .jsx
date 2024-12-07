@@ -10,7 +10,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
     const backend_API = "https://ees-121-backend.vercel.app"
 
-    const fetchData = async () => {
+    const fetchData = async (value) => {
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
                 headers: {
@@ -20,7 +20,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
             });
             const data = await response.data.user;
-
+                data = data.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
             setAllServices(data)
             console.log(data, "AllUser get");
             //   if (response.status === 200) {
@@ -37,14 +37,11 @@ const SearchScreen = ({setAllServices , allServices}) => {
    
     const hendelChange = (value) =>{
         setSearch(value);
+        fetchData(value)
 
     }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-
+  
 
     return (
         <>
