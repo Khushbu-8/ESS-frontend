@@ -22,6 +22,7 @@ const SearchScreen = () => {
    
   
     const fetchData = async () => {
+         const backend_API = "https://ees-121-backend.vercel.app"
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
                 headers: {
