@@ -3,7 +3,7 @@ import UserSideBar from '../components/UserSideBar';
 import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 
-const SearchScreen = ({setAllServices , allServices}) => {
+const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     const [search, setSearch] = useState("");
     console.log(search);
     
@@ -40,7 +40,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
       if(search) {
         filterData = filterData.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
         }
-        setAllServices(filterData)
+        setFilterResult(filterData)
 
     }, [search])
 

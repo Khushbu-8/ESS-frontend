@@ -6,6 +6,8 @@ import SearchResult from '../components/SearchResult'
 
 const Services = () => {
   const [allServices, setAllServices] = useState([])
+  const [filterResult,setFilterResult] = useState([])
+  
 
   return (
     <div>
@@ -16,9 +18,9 @@ const Services = () => {
       
      <div className='mt-24'>
     <div className='py-3'>
-    <SearchScreen allServices={allServices} setAllServices ={setAllServices}/>
+    <SearchScreen allServices={allServices} setAllServices ={setAllServices} setFilterResult = {setFilterResult}/>
     </div>
-     <SearchResult allServices={allServices} setAllServices ={setAllServices}/>
+     <SearchResult allServices={allServices} setAllServices ={setAllServices} filterResult={filterResult}/>
      </div>
       </div>
 

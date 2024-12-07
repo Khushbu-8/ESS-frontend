@@ -2,8 +2,8 @@ import React from 'react'
 import { FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-const SearchResult = ({allServices}) => {
-    console.log(allServices,"filter servises");
+const SearchResult = ({allServices ,filterResult}) => {
+    console.log(filterResult,"filter servises");
     
   return (
     
