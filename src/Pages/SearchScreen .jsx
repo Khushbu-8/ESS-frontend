@@ -15,6 +15,7 @@ const SearchScreen = () => {
 
     const [filterrecord, setFilterRecord] = useState([]);
     const [search, setSearch] = useState("");
+    const [servise, setServise] = useState("");
     const navigate = useNavigate();
    
   
@@ -53,9 +54,15 @@ const SearchScreen = () => {
         }
         setSearch(value)
     }
-
+ const hendleServise = (svalue) =>{
+    if(!svalue){
+        setServise(servise)
+    }
+    setServise(svalue)
+}
     useEffect(() => {
         let filetrcat = [...serchResult]
+        let filterServies = [...filterrecord]
         if (search) {
             // filetr = filetr.filter((item) => item.address.toLowerCase().includes(search.toLowerCase()))
             filetrcat = filetrcat.filter((item) => 
@@ -73,16 +80,28 @@ const SearchScreen = () => {
          if(search){
             filetrcat = filetrcat.filter(item => item.address == search)
          }
-
+         if(servise){
+            filetrcat = filetrcat.filter((item) => 
+                servise && 
+             // Ensure the item has a valid `id`
+                (
+                    // item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
+                    item.businessCategory((category) => category == servise )
+                      )
+                
+              );
+         }
         setFilterRecord(filetrcat)
-    }, [search])
+        setFilterRecord(filterServies)
+    }, [search,servise])
 
     const hendleSubmit = (e) => {
         e.preventDefault();
-        const query = {search }
+        const query = {search ,servise}
         console.log(query, "search");
         // fetchData(query);
         hendleChange(search)
+        hendleServise(servise)
 // setSearch("")
 
     }
@@ -105,6 +124,18 @@ const SearchScreen = () => {
                                     <input
                                         type="text"
                                         onChange={(e) => hendleChange(e.target.value)} value={search}
+                                        className=' w-100 outline-0 bg-transparent ' placeholder="Search For location" />
+                                    <button type=''>
+                                        <FaSearch className='text-lg' />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="col-12 col-md-6 col-lg-3 p-2">
+
+                                <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                                    <input
+                                        type="text"
+                                        onChange={(e) => hendleServise(e.target.value)} value={servise}
                                         className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                     <button type=''>
                                         <FaSearch className='text-lg' />
