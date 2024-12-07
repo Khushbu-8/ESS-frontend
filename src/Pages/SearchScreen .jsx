@@ -20,7 +20,9 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
             });
             const data = await response.data.user;
-                // data = data.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
+                data = data.filter((item) => {
+                    return item.name.toLowerCase().includes(value.toLowerCase());
+                })
             setAllServices(data)
             console.log(data, "AllUser get");
             //   if (response.status === 200) {
