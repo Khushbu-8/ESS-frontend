@@ -37,7 +37,7 @@ const SearchScreen = ({setAllServices , allServices}) => {
 
     useEffect(() => {
       let filterData = [...allServices]
-      if(search !== "") {
+      if(search) {
         filterData = filterData.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
         }
         setAllServices(filterData)
