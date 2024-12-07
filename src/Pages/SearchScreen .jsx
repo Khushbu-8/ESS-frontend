@@ -49,7 +49,7 @@ const SearchScreen = () => {
 
     const hendleChange = (value) => {
         if(!value){
-            setFilterRecord("")
+            setFilterRecord(filterrecord)
         }
         setSearch(value)
     }
@@ -84,7 +84,6 @@ const SearchScreen = () => {
         fetchData(query);
         hendleChange(search)
 
-setSearch("")
 
     }
 
