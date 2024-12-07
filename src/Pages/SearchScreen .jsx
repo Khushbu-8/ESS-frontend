@@ -145,7 +145,7 @@ const SearchScreen = () => {
 
                                                 </div>
                                                 <div className='d-flex justify-content-end'>
-                                                    <Link to={'/serviceDetail'} className='btn bg-orange text-white'>View Profile</Link>
+                                                    <Link to={'/serviceDetail'} className='p-2 bg-orange text-white'>View Profile</Link>
                                                 </div>
                                             </div>
                                         </div>
