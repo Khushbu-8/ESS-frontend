@@ -17,10 +17,10 @@ const SearchScreen = () => {
     const [search, setSearch] = useState("");
     const [servise, setServise] = useState("");
     const navigate = useNavigate();
-   
-  
+
+
     const fetchData = async () => {
-         const backend_API = "https://ees-121-backend.vercel.app"
+        const backend_API = "https://ees-121-backend.vercel.app"
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
                 headers: {
@@ -49,60 +49,50 @@ const SearchScreen = () => {
 
 
     const hendleChange = (value) => {
-        if(!value){
+        if (!value) {
             setFilterRecord(filterrecord)
         }
         setSearch(value)
     }
- const hendleServise = (svalue) =>{
-    if(!svalue){
-        setServise(servise)
-    }
-    setServise(svalue)
-}
+    //  const hendleServise = (svalue) =>{
+    //     if(!svalue){
+    //         setServise(servise)
+    //     }
+    //     setServise(svalue)
+    // }
     useEffect(() => {
         let filetrcat = [...serchResult]
-        let filterServies = [...filterrecord]
+        // let filterServies = [...filterrecord]
         if (search) {
             // filetr = filetr.filter((item) => item.address.toLowerCase().includes(search.toLowerCase()))
-            filetrcat = filetrcat.filter((item) => 
-                search && 
-             // Ensure the item has a valid `id`
+            filetrcat = filetrcat.filter((item) =>
+                search &&
+                // Ensure the item has a valid `id`
                 (
                     item.address.toLowerCase().includes(search.toLowerCase()) ||
                     // item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
-                    item.businessCategory.some((category) => 
+                    item.businessCategory.some((category) =>
                         category.toLowerCase().includes(search.toLowerCase())
-                      )
+                    )
                 )
-              );
-         }
-         if(search){
+            );
+        }
+        if (search) {
             filetrcat = filetrcat.filter(item => item.address == search)
-         }
-         if(servise){
-            filetrcat = filetrcat.filter((item) => 
-                servise && 
-             // Ensure the item has a valid `id`
-                (
-                    // item.businessAddress.toLowerCase().includes(search.toLowerCase()) ||
-                    item.businessCategory((category) => category == servise )
-                      )
-                
-              );
-         }
+        }
+
         setFilterRecord(filetrcat)
-        setFilterRecord(filterServies)
-    }, [search,servise])
+        // setFilterRecord(filterServies)
+    }, [search])
 
     const hendleSubmit = (e) => {
         e.preventDefault();
-        const query = {search ,servise}
+        const query = { search, servise }
         console.log(query, "search");
         // fetchData(query);
         hendleChange(search)
-        hendleServise(servise)
-// setSearch("")
+        // hendleServise(servise)
+        // setSearch("")
 
     }
 
@@ -111,13 +101,13 @@ const SearchScreen = () => {
 
     return (
         <>
-        <AdminNavbar/>
+            <AdminNavbar />
             <UserSideBar />
             <div className="container mt-24">
                 <div className="row">
                     <div className='col-12 p-3'>
                         <form action="" onSubmit={hendleSubmit} className='d-flex flex-wrap'>
-                           
+
                             <div className="col-12 col-md-6 col-lg-3 p-2">
 
                                 <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
@@ -130,7 +120,7 @@ const SearchScreen = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="col-12 col-md-6 col-lg-3 p-2">
+                            {/* <div className="col-12 col-md-6 col-lg-3 p-2">
 
                                 <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
                                     <input
@@ -141,7 +131,7 @@ const SearchScreen = () => {
                                         <FaSearch className='text-lg' />
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
 
                         </form>
 
@@ -162,7 +152,7 @@ const SearchScreen = () => {
                                 filterrecord.map((cat, i) => {
                                     return (
                                         <div className="col-xl-3 p-2" >
-                                            <div className="card border-0 bg-base-100 shadow-xl" style={{height :"400px" , overflow : "auto"}}>
+                                            <div className="card border-0 bg-base-100 shadow-xl" style={{ height: "400px", overflow: "auto" }}>
                                                 <div className='d-flex justify-content-between'>
                                                     <figure className='rounded-md m-3'>
                                                         <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
@@ -176,12 +166,12 @@ const SearchScreen = () => {
                                                     <h6 className=" font-bold">{cat.businessCategory}</h6>
                                                     <p className=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
                                                     <div className="rating rating-sm py-4 d-flex align-items-center">
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
-                                                    </div> 
+                                                        <FaStar className='text-warning' />
+                                                        <FaStar className='text-warning' />
+                                                        <FaStar className='text-warning' />
+                                                        <FaStar className='text-warning' />
+                                                        <FaStar className='text-warning' /> <span className='ps-2'>rating</span>
+                                                    </div>
 
                                                 </div>
                                                 <div className='d-flex justify-content-end'>
