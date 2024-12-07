@@ -10,7 +10,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
 
     const backend_API = "https://ees-121-backend.vercel.app"
 
-    const fetchData = async (value) => {
+    const fetchData = async () => {
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
                 headers: {
@@ -33,7 +33,9 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
 
     }
 
-   
+   useEffect(()=>{
+    fetchData();
+   })
 
     useEffect(() => {
       let filterData = [...allServices]
