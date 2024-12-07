@@ -40,7 +40,8 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     useEffect(() => {
       let filterData = [...allServices]
       if(search) {
-        filterData = filterData.filter((item) => search && item.businessAddress.toLowerCase().includes(search.toLowerCase()))
+        filterData = filterData.filter((item) => search && item.name.toLowerCase().includes(search.toLowerCase()))
+        // filterData = filterData.filter((item) => search && item.name.toLowerCase().includes(search.toLowerCase()))
         }
         setFilterResult(filterData)
 
