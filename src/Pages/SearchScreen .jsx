@@ -59,7 +59,8 @@ const SearchScreen = () => {
         if (search) {
             // filetr = filetr.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
             filetr = filetr.filter((item) => 
-                search &&  // Ensure the item has a valid `id`
+                search && item.businessAddress && 
+             // Ensure the item has a valid `id`
                 item.businessCategory.some((category) => 
                   category.toLowerCase().includes(search.toLowerCase())
                 )
