@@ -57,8 +57,14 @@ const SearchScreen = () => {
     useEffect(() => {
         let filetr = [...serchResult]
         if (search) {
-            filetr = filetr.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
-        }
+            // filetr = filetr.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+            filetr = filetr.filter((item) => 
+                search && // Ensure the item has a valid `id`
+                item.businessCategory.some((category) => 
+                  category.toLowerCase().includes(search.toLowerCase())
+                )
+              );
+         }
 
         setFilterRecord(filetr)
     }, [search])
