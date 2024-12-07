@@ -244,7 +244,7 @@ const EditProfile = () => {
             <div className="col-12">
               <h2 className='py-2'>Profile Setting</h2>
               <div className='card border-0 bg-base-100 shadow-xl'>
-                <form action="" className=' p-3'>
+                <form action="" onSubmit={handleSubmit} className=' p-3'>
 
                   <div className='profilepic d-flex justify-content-between'>
                     <figure className='rounded-md m-3'>

@@ -9,8 +9,9 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
     
 
     const backend_API = "https://ees-121-backend.vercel.app"
-const hendleSubmit  = () =>{
-    const fetchData = async () => {
+const hendleSubmit  = (e) =>{
+    e.preventDefault();
+    
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`, {
                 headers: {
@@ -31,14 +32,12 @@ const hendleSubmit  = () =>{
             return false;
         }
 
-    }
+    
 }
 
    
 
-   useEffect(()=>{
-    fetchData();
-   },[])
+ 
 
     useEffect(() => {
       let filterData = [...allServices]
