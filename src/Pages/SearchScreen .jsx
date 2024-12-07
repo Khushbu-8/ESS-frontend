@@ -59,7 +59,7 @@ const SearchScreen = () => {
         if (search) {
             // filetr = filetr.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
             filetr = filetr.filter((item) => 
-                search && // Ensure the item has a valid `id`
+                search &&  // Ensure the item has a valid `id`
                 item.businessCategory.some((category) => 
                   category.toLowerCase().includes(search.toLowerCase())
                 )
@@ -73,7 +73,9 @@ const SearchScreen = () => {
         e.preventDefault();
         const query = { search }
         console.log(query, "search");
-        fetchData(query)
+        fetchData(query);
+        hendleChange(search)
+
 
 
     }
