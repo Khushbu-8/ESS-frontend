@@ -70,6 +70,9 @@ const SearchScreen = () => {
                 )
               );
          }
+         if(search){
+            filetr = filetr.filter((item => item.address == search))
+         }
 
         setFilterRecord(filetr)
     }, [search])
