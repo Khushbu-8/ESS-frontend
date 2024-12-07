@@ -35,7 +35,7 @@ const SearchScreen = ({setAllServices , allServices ,setFilterResult}) => {
 
    useEffect(()=>{
     fetchData();
-   })
+   },[])
 
     useEffect(() => {
       let filterData = [...allServices]
