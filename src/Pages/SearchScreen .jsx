@@ -81,9 +81,7 @@ const SearchScreen = () => {
 setSearch("")
 
     }
- const hendleFilter = () =>{
-    alert("hyy")
- }
+
 
 
 
@@ -102,7 +100,6 @@ setSearch("")
                                     <input
                                         type="text"
                                         onChange={(e) => hendleChange(e.target.value)} value={search}
-                                        onClick={hendleFilter}
                                         className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                     <button type=''>
                                         <FaSearch className='text-lg' />
