@@ -13,10 +13,7 @@ const SearchScreen = () => {
 
     const [serchResult, setSearchResult] = useState([])
 
-    const [sevices, setServices] = useState();
-    const [cit, setCit] = useState();
     const [filterrecord, setFilterRecord] = useState([]);
-    const [filtercity, setFilterCity] = useState([]);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
    
@@ -81,7 +78,7 @@ const SearchScreen = () => {
         fetchData(query);
         hendleChange(search)
 
-
+setSearch("")
 
     }
 
