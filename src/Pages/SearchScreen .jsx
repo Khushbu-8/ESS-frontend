@@ -81,7 +81,9 @@ const SearchScreen = () => {
 setSearch("")
 
     }
-
+ const hendleFilter = () =>{
+    alert("hyy")
+ }
 
 
 
@@ -100,6 +102,7 @@ setSearch("")
                                     <input
                                         type="text"
                                         onChange={(e) => hendleChange(e.target.value)} value={search}
+                                        onClick={hendleFilter}
                                         className=' w-100 outline-0 bg-transparent ' placeholder="Search For Serviecis" />
                                     <button type=''>
                                         <FaSearch className='text-lg' />
@@ -125,7 +128,7 @@ setSearch("")
                             {filterrecord.length > 0 ? (
                                 filterrecord.map((cat, i) => {
                                     return (
-                                        <div className="col-xl-3 p-2">
+                                        <div className="col-xl-3 p-2" >
                                             <div className="card border-0 bg-base-100 shadow-xl" style={{height :"400px" , overflow : "auto"}}>
                                                 <div className='d-flex justify-content-between'>
                                                     <figure className='rounded-md m-3'>
