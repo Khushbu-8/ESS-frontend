@@ -18,7 +18,7 @@ const SearchResult = ({allServices ,filterResult}) => {
 
                         <div className="col-12 d-flex flex-wrap">
                             {
-                                allServices.map((card, i) => {
+                                filterResult.map((card, i) => {
                                     return (
                                         <div className="col-12 col-md-6 w-full col-lg-3 p-2 ">
                                             <div className="bg-white rounded-md overflow-hidden flex d-md-block w-full">
