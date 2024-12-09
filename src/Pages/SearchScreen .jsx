@@ -80,7 +80,7 @@ const SearchScreen = () => {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="Search by address"
+                                    placeholder="Search location or service"
                                     value={search}
                                     onChange={handleSearchChange}
                                     onFocus={() => search && setShowList(true)}
@@ -99,7 +99,10 @@ const SearchScreen = () => {
                                 <div className="col-12 d-flex flex-wrap">
                                     {searchResult
                                         .filter((user) =>
-                                            user.address.toLowerCase().includes(search.toLowerCase())
+                                            user.address.toLowerCase().includes(search.toLowerCase()) ||
+                                        user.businessCategory.some((category) =>
+                                          category.toLowerCase().includes(search.toLowerCase())
+                                        )
                                         )
                                         .map((user, i) => (
                                             <div key={i} className="col-12 col-md-6 col-xl-3 p-2 " onClick={() => handleItemClick(user.address)}  style={{ cursor: "pointer", height:"350px" }} >
