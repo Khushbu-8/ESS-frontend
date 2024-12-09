@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box!important;
+}
+
 body{
   font-family: "Poppins", sans-serif!important;
   font-weight: 400!important;
@@ -46,62 +52,56 @@ input[type="file"] {
 }
 /* slic slider Card  start*/
 
-body{
-    background-color: #F5F5FF;
-  }
-
-
-  .wrapper{
-    padding: 30px 0;
-  }
+.wrapper{
+  padding: 30px 0;
+}
 .slick-slide{
-    width: 205px!important;
-  }
-  /* Default slide */
-  .center-slider .slick-slide{
-  
-    color: #FFF;
-    height: 300px;
-    margin: 0 15px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0.9);
-    transition: all 0.4s ease-in-out;
-  }
-  .center-slider .slick-slide,
-  .center-slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"] {
-    transform: scale(0.8, 0.8);
-    transition: all 0.4s ease-in-out;
-  }
-  
-  /* Active center slide (You can change anything here for cenetr slide)*/
-  .center-slider .slick-center,
-  .center-slider .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"] {
-    transform: scale(1.1);
-    
-  }
-  .center-slider .slick-current.slick-active{
-    transform: scale(1.1);
-   
-  }
-  
-  .slick-next, .slick-prev{
-    z-index: 5;
-  }
-  .slick-next{
-    right: -5px;
-    top: 150px;
-  }
-  .slick-prev{
-    left: -15px;
-    top: 150px;
-  }
-  .slick-next:before, .slick-prev:before{
-    color: #000;
-    font-size: 26px;
-  }
+  width: 205px!important;
+}
+/* Default slide */
+.center-slider .slick-slide{
 
+  color: #FFF;
+  height: 300px;
+  margin: 0 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.9);
+  transition: all 0.4s ease-in-out;
+}
+.center-slider .slick-slide,
+.center-slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"] {
+  transform: scale(0.8, 0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Active center slide (You can change anything here for cenetr slide)*/
+.center-slider .slick-center,
+.center-slider .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"] {
+  transform: scale(1.1);
+  
+}
+.center-slider .slick-current.slick-active{
+  transform: scale(1.1);
+ 
+}
+
+.slick-next, .slick-prev{
+  z-index: 5;
+}
+.slick-next{
+  right: -5px;
+  top: 150px;
+}
+.slick-prev{
+  left: -15px;
+  top: 150px;
+}
+.slick-next:before, .slick-prev:before{
+  color: #000;
+  font-size: 26px;
+}
 /* slic slider Card  end*/
 
 

@@ -32,7 +32,9 @@ const Home = () => {
       
       {/* <Card />  */}
 
+     <div className='mt-3'>
      <CardSlider/>
+     </div>
 <section>
   <div className="container">
     <div className="row">
