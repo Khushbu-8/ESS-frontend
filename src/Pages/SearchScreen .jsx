@@ -19,7 +19,7 @@ const SearchScreen = () => {
     const [categoryFilter, setCategoryFilter] = useState("");
 
     const fetchData = async () => {
-        const API_URL = "http://localhost:3000/auth/getAllUser";
+        const API_URL = "https://ees-121-backend.vercel.app/auth/getAllUser";
         try {
             const response = await axios.get(API_URL);
             const data = response.data.user;
