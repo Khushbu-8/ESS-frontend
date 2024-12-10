@@ -5,20 +5,21 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { FaLocationArrow, FaLocationDot, FaServer } from 'react-icons/fa6';
 import { FaRegAddressCard, FaSearch, FaStar } from 'react-icons/fa';
 import UserSideBar from '../components/UserSideBar';
+import {categories} from '../ServiceCategory'
 import axios from 'axios';
 
 const SearchScreen = () => {
     const [search, setSearch] = useState('')
     const navigate = useNavigate();
     const [searchResult, setSearchResult] = useState([])
-    const [showList, setShowList] = useState(false);
+    const [showList, setShowList] = useState(true);
     const [showListt, setShowListt] = useState(false);
     const [selectedItem, setSelectedItem] = useState([]);
 
     const [categoryFilter, setCategoryFilter] = useState("");
 
     const fetchData = async () => {
-        const API_URL = "https://ees-121-backend.vercel.app/auth/getAllUser";
+        const API_URL = "http://localhost:3000/auth/getAllUser";
         try {
             const response = await axios.get(API_URL);
             const data = response.data.user;
@@ -130,44 +131,28 @@ const handleItemClickLocation = (loc) => {
 
             <section>
                 <div className="container">
-                    <div className="row">
+                    
                         {showList && (
-                                <div className="col-12 d-flex flex-wrap">
-                                    {searchResult
+                             <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
+                                    {categories
                                         .filter((user) =>
-                                            // user.address.toLowerCase().includes(search.toLowerCase()) ||
-                                        user.businessCategory.some((category) =>
-                                          category.toLowerCase().includes(search.toLowerCase())
-                                        )
+                                            user.name.toLowerCase().includes(search.toLowerCase()) 
+                                        // user.businessCategory.some((category) =>
+                                        //   category.toLowerCase().includes(search.toLowerCase())
+                                        // )
                                         )
                                         .map((user, i) => (
-                                            <div key={i} className="col-12 col-md-6 col-xl-3 p-2 " onClick={() => handleItemClick(user.businessCategory)}  style={{ cursor: "pointer", height:"350px" }} >
-                                            <div className="card border-0 bg-base-100 shadow-xl"  style={{height:"100%"}}>
-                                                <div className='d-flex justify-content-between'>
-                                                    <figure className='rounded-md m-3'>
-                                                        <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
-
-                                                        </img>
-                                                    </figure>
-                                                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
-                                                </div>
-                                                <div className='p-3'>
-                                                    <h4 className="font-bold">{user.name}</h4>
-                                                    <h5 className="font-bold">{user.address}</h5>
-                                                    <h6 className="font-bold">{user.businessCategory}</h6>
-
-                                                    <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
-                                                    <div className="rating rating-sm py-4 d-flex align-items-center">
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/>
-                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                            <div key={++i} className="col" style={{cursor: "pointer"}} onClick={() => handleItemClick(user.name)}>
+                                        <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
+                                            <figure className='w-full m-0 p-2 '>
+                                                <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+                                                </img>
+                                            </figure>
+                                            <h6 className='text-md'>{user.name}</h6 >
                                         </div>
+        
+        
+                                    </div>
                                         ))}
                                 </div>
                         )}
@@ -211,7 +196,7 @@ const handleItemClickLocation = (loc) => {
                                         ))}
                                 </div>
                         )}
-                    </div>
+                    
                 </div>
             </section>
 
