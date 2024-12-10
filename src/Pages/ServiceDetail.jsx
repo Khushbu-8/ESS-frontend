@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import UserSideBar from '../components/UserSideBar';
 
-const ServiceDetail = ({selectedItem}) => {
+const ServiceDetail = ({selectedItem ,handleItemCaregory}) => {
 
 
     return (

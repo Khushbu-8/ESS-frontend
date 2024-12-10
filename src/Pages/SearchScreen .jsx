@@ -74,7 +74,7 @@ const handleItemClick = (cat) => {
         )
     }
     setSelectedItem(filtercat); // Set the selected item
-    // navigate("/serviceDetail")
+    navigate("/serviceDetail")
 };
 
 const handleItemClickLocation = (loc) => {
@@ -201,8 +201,8 @@ const handleItemClickLocation = (loc) => {
                     
                 </div>
             </section>
-            {/* <ServiceDetail selectedItem ={selectedItem} /> */}
-
+            <ServiceDetail selectedItem ={selectedItem} handleItemCaregory = {handleItemCaregory} />
+{/* 
             <section>
                 <div className="container">
                     <div className="row">
@@ -251,7 +251,7 @@ const handleItemClickLocation = (loc) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
 
         </>
