@@ -155,7 +155,7 @@ useEffect(()=>{
                                         // )
                                         )
                                         .map((user, i) => (
-                                            <div key={++i} className="col" style={{cursor: "pointer"}} onClick={() => handleItemClick(user.name)}>
+                                            <div key={++i} className="col" style={{cursor: "pointer"}} onClick={() => {auth ? handleItemClick(user.name) : navigate('/login')}}>
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
                                                 <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
