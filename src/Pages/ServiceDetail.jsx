@@ -2,46 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
-const ServiceDetail = () => {
+const ServiceDetail = ({selectedItem}) => {
 
     const navigate = useNavigate();
-    const location = useLocation();
-    console.log(location?.state?.cat);
+    // const location = useLocation();
+    // console.log(location?.state?.cat);
 
-    let profile = [{
-        id: 1,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "ahmdabad",
-        category: "A.C. SERVICE"
+    // let profile = [{
+    //     id: 1,
+    //     name: "John Doe",
+    //     email: "john@example.com",
+    //     phone: "1234567890",
+    //     address: "ahmdabad",
+    //     category: "A.C. SERVICE"
 
-    },
-    {
-        id: 2,
-        name: "Jane Doe",
-        email: "jane@example.com",
-        phone: "9876543210",
-        address: "surat",
-        category: "AUTO RICKSHAW"
-    },
-    {
-        id: 3,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "rajkot",
-        category: "BAGGI (HORSE CART)"
-    },
-    {
-        id: 4,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "surat",
-        category: "BAGGI (HORSE CART)"
-    },
-    ]
+    // },
+    // {
+    //     id: 2,
+    //     name: "Jane Doe",
+    //     email: "jane@example.com",
+    //     phone: "9876543210",
+    //     address: "surat",
+    //     category: "AUTO RICKSHAW"
+    // },
+    // {
+    //     id: 3,
+    //     name: "John Doe",
+    //     email: "john@example.com",
+    //     phone: "1234567890",
+    //     address: "rajkot",
+    //     category: "BAGGI (HORSE CART)"
+    // },
+    // {
+    //     id: 4,
+    //     name: "John Doe",
+    //     email: "john@example.com",
+    //     phone: "1234567890",
+    //     address: "surat",
+    //     category: "BAGGI (HORSE CART)"
+    // },
+    // ]
 
 
     return (
@@ -57,7 +57,7 @@ const ServiceDetail = () => {
 
                         <div className="col-12 d-flex flex-wrap">
                             {
-                                profile.map((card, i) => {
+                                selectedItem.map((card, i) => {
                                     return (
                                         <div className="col-12 col-md-6 w-full col-lg-3 p-2 ">
                                             <div className="bg-white rounded-md overflow-hidden flex d-md-block w-full">
