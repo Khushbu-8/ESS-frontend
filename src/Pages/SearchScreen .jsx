@@ -77,7 +77,7 @@ const handleItemClick = (cat) => {
 const handleItemClickLocation = (loc) => {
     setCategoryFilter(loc); // Update the search box with the selected value
     setShowListt(false); // Hide the list
-    let filtercat = [...searchResult]
+    let filtercat = [...selectedItem]
     if(loc){
         filtercat = filtercat.filter((user) => user.address == loc)
     }
