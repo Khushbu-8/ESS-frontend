@@ -12,7 +12,10 @@ const SearchScreen = () => {
     const navigate = useNavigate();
     const [searchResult, setSearchResult] = useState([])
     const [showList, setShowList] = useState(false);
+    const [showListt, setShowListt] = useState(false);
     const [selectedItem, setSelectedItem] = useState([]);
+
+    const [categoryFilter, setCategoryFilter] = useState("");
 
     const fetchData = async () => {
         const API_URL = "https://ees-121-backend.vercel.app/auth/getAllUser";
@@ -31,26 +34,7 @@ const SearchScreen = () => {
         fetchData();
     }, []);
 
-    // for refrence
-    const handleItemClick = (address) => {
-        setSearch(address); // Update the search box with the selected value
-        setShowList(false); // Hide the list
-        let filteritem = [...searchResult];
-        if (address) {
-            filteritem = filteritem.filter(item => item.address.toLowerCase().includes(address.toLowerCase()));
-        }
-        if (address) {
-            filteritem = filteritem.filter(item => item.address == address);
-        }
-        setSelectedItem(filteritem)
-    };
-
-    const handleSearchChange = (e) => {
-        const value = e.target.value;
-        setSearch(value);
-        setShowList(!!value); 
-
-    };
+    
 
     const handleItemCaregory = (cat) => {
         console.log(cat);
@@ -64,7 +48,43 @@ const SearchScreen = () => {
         
         setSelectedItem(filteredCategory);
     }
-    
+
+const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    setShowList(!!value);
+};
+
+const handleCategoryChange = (e) => {
+    const value = e.target.value;
+    setCategoryFilter(value);
+    setShowListt(!!value);
+};
+
+const handleItemClick = (cat) => {
+    setSearch(cat); // Update the search box with the selected value
+    setShowList(false); // Hide the list
+    let filtercat = [...searchResult]
+    if(cat){
+        filtercat = filtercat.filter((user) =>
+        user.businessCategory.some((category) =>
+            category == cat)
+        )
+    }
+    setSelectedItem(filtercat); // Set the selected item
+};
+
+const handleItemClickLocation = (loc) => {
+    setCategoryFilter(loc); // Update the search box with the selected value
+    setShowListt(false); // Hide the list
+    let filtercat = [...searchResult]
+    if(loc){
+        filtercat = filtercat.filter((user) => user.address == loc)
+    }
+    setSelectedItem(filtercat); // Set the selected item
+};
+
+
     if (selectedItem) {
         console.log(selectedItem);  
     }
@@ -73,17 +93,33 @@ const SearchScreen = () => {
             <UserSideBar />
             <div className="container mt-24">
                 <div className="row">
-                    <div className='col-12 col-xl-4 p-3'>
+                    <div className='col-12 col-xl-5 p-3'>
                         {/* Search Box for Address */}
                         <form action=""  >
                             <div className="search-input mb-2 d-flex align-items-center">
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="Search location or service"
+                                    placeholder="Search service"
                                     value={search}
                                     onChange={handleSearchChange}
-                                    onFocus={() => search && setShowList(true)}
+                                    onFocus={() => search || setShowList(true)}
+                                />
+                            </div>
+                        
+                        </form>
+                    </div>
+                    <div className='col-12 col-xl-3 p-3'>
+                        {/* Search Box for Address */}
+                        <form action=""  >
+                            <div className="search-input mb-2 d-flex align-items-center">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Search location "
+                                    value={categoryFilter}
+                                    onChange={handleCategoryChange}
+                                    onFocus={() => categoryFilter || setShowListt(true)}
                                 />
                             </div>
                         
@@ -99,13 +135,53 @@ const SearchScreen = () => {
                                 <div className="col-12 d-flex flex-wrap">
                                     {searchResult
                                         .filter((user) =>
-                                            user.address.toLowerCase().includes(search.toLowerCase()) ||
+                                            // user.address.toLowerCase().includes(search.toLowerCase()) ||
                                         user.businessCategory.some((category) =>
                                           category.toLowerCase().includes(search.toLowerCase())
                                         )
                                         )
                                         .map((user, i) => (
-                                            <div key={i} className="col-12 col-md-6 col-xl-3 p-2 " onClick={() => handleItemClick(user.address)}  style={{ cursor: "pointer", height:"350px" }} >
+                                            <div key={i} className="col-12 col-md-6 col-xl-3 p-2 " onClick={() => handleItemClick(user.businessCategory)}  style={{ cursor: "pointer", height:"350px" }} >
+                                            <div className="card border-0 bg-base-100 shadow-xl"  style={{height:"100%"}}>
+                                                <div className='d-flex justify-content-between'>
+                                                    <figure className='rounded-md m-3'>
+                                                        <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+
+                                                        </img>
+                                                    </figure>
+                                                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                                                </div>
+                                                <div className='p-3'>
+                                                    <h4 className="font-bold">{user.name}</h4>
+                                                    <h5 className="font-bold">{user.address}</h5>
+                                                    <h6 className="font-bold">{user.businessCategory}</h6>
+
+                                                    <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
+                                                    <div className="rating rating-sm py-4 d-flex align-items-center">
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/>
+                                                        <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ))}
+                                </div>
+                        )}
+                        {showListt && (
+                                <div className="col-12 d-flex flex-wrap">
+                                    {selectedItem
+                                        .filter((user) =>
+                                            user.address.toLowerCase().includes(categoryFilter.toLowerCase()) 
+                                        // user.businessCategory.some((category) =>
+                                        //   category.toLowerCase().includes(search.toLowerCase())
+                                        // )
+                                        )
+                                        .map((user, i) => (
+                                            <div key={i} className="col-12 col-md-6 col-xl-3 p-2 " onClick={() => handleItemClickLocation(user.address)}  style={{ cursor: "pointer", height:"350px" }} >
                                             <div className="card border-0 bg-base-100 shadow-xl"  style={{height:"100%"}}>
                                                 <div className='d-flex justify-content-between'>
                                                     <figure className='rounded-md m-3'>
