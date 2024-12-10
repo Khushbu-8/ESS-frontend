@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import AdminNavbar from '../admincomponents/AdminNavbar';
+import UserSideBar from '../components/UserSideBar';
 
 const ServiceDetail = ({selectedItem}) => {
 
@@ -9,7 +10,7 @@ const ServiceDetail = ({selectedItem}) => {
     return (
         <>
         <AdminNavbar/>
-          
+        <UserSideBar/>          
           <section>
                 <div className="container">
                     <div className="row">
