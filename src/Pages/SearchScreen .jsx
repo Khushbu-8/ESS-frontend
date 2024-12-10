@@ -76,7 +76,7 @@ const handleItemClick = (cat) => {
         )
     }
     setSelectedItem(filtercat); // Set the selected item
-    navigate("/serviceDetail")
+    // navigate("/serviceDetail")
 };
 
 const handleItemClickLocation = (loc) => {
