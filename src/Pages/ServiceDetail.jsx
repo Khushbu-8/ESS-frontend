@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import AdminNavbar from '../admincomponents/AdminNavbar';
 
 const ServiceDetail = ({selectedItem}) => {
 
 
     return (
         <>
+        <AdminNavbar/>
           
           <section>
                 <div className="container">
