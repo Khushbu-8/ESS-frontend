@@ -7,6 +7,7 @@ import { FaRegAddressCard, FaSearch, FaStar } from 'react-icons/fa';
 import UserSideBar from '../components/UserSideBar';
 import {categories} from '../ServiceCategory'
 import axios from 'axios';
+import ServiceDetail from './ServiceDetail';
 
 const SearchScreen = () => {
     const [search, setSearch] = useState('')
@@ -73,6 +74,7 @@ const handleItemClick = (cat) => {
         )
     }
     setSelectedItem(filtercat); // Set the selected item
+    navigate("/serviceDetail")
 };
 
 const handleItemClickLocation = (loc) => {
@@ -199,6 +201,7 @@ const handleItemClickLocation = (loc) => {
                     
                 </div>
             </section>
+            <ServiceDetail selectedItem ={selectedItem} />
 
             <section>
                 <div className="container">

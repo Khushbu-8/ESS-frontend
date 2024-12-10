@@ -2,105 +2,62 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
-const ServiceDetail = () => {
-
-    const navigate = useNavigate();
-    const location = useLocation();
-    console.log(location?.state?.cat);
-
-    let profile = [{
-        id: 1,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "ahmdabad",
-        category: "A.C. SERVICE"
-
-    },
-    {
-        id: 2,
-        name: "Jane Doe",
-        email: "jane@example.com",
-        phone: "9876543210",
-        address: "surat",
-        category: "AUTO RICKSHAW"
-    },
-    {
-        id: 3,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "rajkot",
-        category: "BAGGI (HORSE CART)"
-    },
-    {
-        id: 4,
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "1234567890",
-        address: "surat",
-        category: "BAGGI (HORSE CART)"
-    },
-    ]
+const ServiceDetail = ({selectedItem}) => {
 
 
     return (
         <>
           
-            <section className=''>
+          <section>
                 <div className="container">
                     <div className="row">
-                        <div className='d-flex'>
-                            <h3 className='py-4 px-3'>Servies Detaile </h3>
 
-                        </div>
-
-                        <div className="col-12 d-flex flex-wrap">
+                        <div className="col-12 flex flex-wrap">
                             {
-                                profile.map((card, i) => {
-                                    return (
-                                        <div className="col-12 col-md-6 w-full col-lg-3 p-2 ">
-                                            <div className="bg-white rounded-md overflow-hidden flex d-md-block w-full">
-                                                <div className='col-5 col-md-12'>
-                                                    <img className='w-full'
-                                                        src="https://img.daisyui.com/images/profile/demo/5@94.webp"
-                                                        alt="Movie" />
-                                                </div>
-                                                <div className="p-3 col-10 col-md-12 ">
-                                                    <h4 className="">{card.name}</h4>
-                                                    <p>{card.email}</p>
-                                                    <p>{card.phone}</p>
-                                                    <p>{card.address}</p>
-                                                   
-                                                    <div className="rating rating-sm py-4 d-flex align-items-center">
+                                selectedItem ? (
+                                    selectedItem.map((user, i) => {
+                                        return (
+                                            <div key={i} className="col-12 col-md-6 col-xl-3 p-2" onClick={() => handleItemCaregory(user.businessCategory)} style={{ cursor: "pointer" }}>
+                                                <div className="card border-0 bg-base-100 shadow-xl" >
+                                                    <div className='d-flex justify-content-between'>
+                                                        <figure className='rounded-md m-3'>
+                                                            <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+
+                                                            </img>
+                                                        </figure>
+                                                        <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                                                    </div>
+                                                    <div className='p-3'>
+                                                        <h2 className=" font-bold">{user.name}</h2>
+                                                        <h5 className=" font-bold">{user.businessCategory}</h5>
+                                                        <h6 className=" font-bold">{user.address}</h6>
+
+                                                        <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
+                                                        <div className="rating rating-sm py-4 d-flex align-items-center">
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
                                                     </div>
-                                                   
-                                                  <div className=' pt-3'>
-                                                  <Link className='btn pt-2  bg-orange rounded-1 text-semibold text-white '>
-                                                        View Profile
-                                                    </Link>
-                                                  </div>
 
-                                                   
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )
-                                })
+
+                                        )
+                                    })
+                                ) : (
+                                    <h4>No item Found</h4>
+                                )
                             }
-
-
-
+                       
 
                         </div>
                     </div>
                 </div>
             </section>
+
            
         </>
     )
