@@ -2,6 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import logo from "../../public/ees-logo.png"
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+  LanguageSelect,
+  RegionSelect,
+  PhonecodeSelect
+} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 
 // 
 // for address 
@@ -12,6 +21,11 @@ function Registration() {
   const [confirmpassword, setConfirmpassword] = useState('');
   const [phone, setPhone] = useState('');
 // for address
+const [region, setRegion] = useState("");
+const [phonecode, setPhoneCode] = useState("");
+const [countryid, setCountryid] = useState(0);
+const [stateid, setstateid] = useState(0);
+
 
 
 
@@ -141,6 +155,50 @@ console.log(address,"address");
             </div>
 
             <form action="" onSubmit={handleSubmits} className='p-4'>
+            <div>
+               
+                
+                <h6>Country</h6>
+                <CountrySelect
+                  onChange={(e) => {
+                    setCountryid(e.id);
+                  }}
+                  placeHolder="Select Country"
+                  region={region}
+                />
+                
+                <h6>Phone Code</h6>
+                <RegionSelect
+                  onChange={(e) => {
+                    setPhoneCode(e.phone_code);
+                  }}
+                  placeHolder="Select Phone Code"
+                />
+                <h6>State</h6>
+                <StateSelect
+                  countryid={countryid}
+                  onChange={(e) => {
+                    setstateid(e.id);
+                  }}
+                  placeHolder="Select State"
+                />
+                <h6>City</h6>
+                <CitySelect
+                  countryid={countryid}
+                  stateid={stateid}
+                  onChange={(e) => {
+                    console.log(e);
+                  }}
+                  placeHolder="Select City"
+                />
+                <h6>Language</h6>
+                <LanguageSelect
+                  onChange={(e) => {
+                    console.log(e);
+                  }}
+                  placeHolder="Select Language"
+                />
+              </div>
               <div className="col-12 d-flex flex-wrap">
                 <div className="col-12 col-lg-6">
                   <div className='px-2'>
