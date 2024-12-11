@@ -1,441 +1,115 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { RiStarSFill } from "react-icons/ri";
+
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { PiShoppingBagLight } from "react-icons/pi";
 import Navebar from './Navebar';
 import axios from 'axios';
-import { HiDotsHorizontal } from "react-icons/hi";
-import { FaUser, FaUserCircle, FaUserClock } from 'react-icons/fa';
-import { FaUsersBetweenLines, FaUsersLine } from 'react-icons/fa6';
-
-import { LuUserPen } from "react-icons/lu";
-import { MdAlternateEmail } from "react-icons/md";
-import { LuPhone } from "react-icons/lu";
-import { FaRegAddressCard } from "react-icons/fa6";
-import { CiEdit } from "react-icons/ci";
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
+import { FaStar } from 'react-icons/fa';
 
-const EditProfile = () => {
-  const [profile, setProfile] = useState("");
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [area, setArea] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [pincode, setPincode] = useState('');
-  const [address, setAddress] = useState();
-  const [businessCategory, setBusinessCategory] = useState([]);
-  const [businessName, setBusinessName] = useState('');
-  const [businessAddress, setBusinessAddress] = useState('');
-  const location = useLocation();
-  
-  const navigete = useNavigate()
-  let categories = [
-    "A.C. SERVICE",
-    "ADVOCATE",
-    "ALUMINIUM WORKER",
-    "AUTO RICKSHAW",
-    "AUTO MOBILE & SALES",
-    "BABY SITTING",
-    "BAGGI (HORSE CART)",
-    "BANK SERVICE",
-    "BANQUET HALL",
-    "BATTERY SERVICE",
-    "BEAUTY PARLOUR",
-    "BIKE SERVICE",
-    "BROKER",
-    "BUSINESS CONSULTANT",
-    "BICYCLE",
-    "CAFE",
-    "CAR DECORATOR",
-    "CAR SERVICE",
-    "CAR WASHING",
-    "CAR WIRING",
-    "CARE TAKER",
-    "CARPENTER",
-    "CATERING",
-    "CCTV.CAMERA",
-    "CHAIR REPAIRING",
-    "CHARTERED ACCOUNTAT",
-    "CHILDREN WEAR",
-    "CLASSES",
-    "COMPUTER CLASSES",
-    "COMPUTER HARDWARE",
-    "COMPUTER SOFTWARE",
-    "COSMETIC STORE",
-    "COURIER SERVICE",
-    "DAIRY PRODUCT",
-    "DANCE CLASSES",
-    "DESIGNER / EDITOR",
-    "DHOLI",
-    "DIAMOND BUSINESS",
-    "DIGITAL MARKETING",
-    "DJ SOUND",
-    "DOCTOR",
-    "E - COMMERCE",
-    "EDUCATION",
-    "ELECTRICIAN",
-    "ELECTRONIC PRODUCT",
-    "EMPLOYEE",
-    "ENGINEER",
-    "EVENT MANAGEMENT",
-    "WELDING",
-    "FARMER",
-    "FASHION DESIGNER",
-    "FAST FOOD",
-    "FINANCIAL",
-    "FLEX BOARD HOARDING",
-    "FLOWER DECORATION",
-    "FREELANCER",
-    "FURNITURE",
-    "GAS CHULA SERVICE",
-    "GENERATOR SERVICE",
-    "GEYSER SERVICE",
-    "GLASS WORK",
-    "GOVT. PUBLIC SERVICE",
-    "GOVT. EMERGENCY SERVICE",
-    "GRUH UDHYOG",
-    "GYM",
-    "HEALTH CARE",
-    "HOME CLEANING",
-    "HOSPITAL",
-    "HOUSE WIFE",
-    "IMITATION JEWELLERY",
-    "INDUSTRIAL INSTRUMENT",
-    "INSURANCE",
-    "INTERIOR DESIGNER",
-    "INTERNET DEPARTMENT",
-    "INVERTER SERVICE",
-    "JOB PLACEMENT",
-    "JUICE CENTER",
-    "LABOUR",
-    "LAUNDRY",
-    "LIFT SERVICE",
-    "LIGHTING",
-    "MAID",
-    "MANDAP SERVICE",
-    "MANUFACTURING",
-    "MARKETING",
-    "MARRIAGE BUREAU",
-    "MEDICAL STORE",
-    "MEHNDI ARTIST",
-    "MEN'S WEAR",
-    "MOBILE & ACCESSORIES",
-    "MOTOR SERVICE",
-    "MOVERS & PACKER",
-    "NURSERY",
-    "ORCHESTRA",
-    "OTHER",
-    "OVEN SERVICE",
-    "PAINTER",
-    "PANDIT",
-    "PASSPORT AGENT",
-    "PEST CONTROL",
-    "PETCARE SERVICE",
-    "PHOTOGRAPHY",
-    "PHYSIOTHERAPIST",
-    "PLUMBER",
-    "PRINTING PRESS",
-    "R.O. SERVICE",
-    "REAL - ESTATE",
-    "REFRESHMENT",
-    "RESTAURANTS",
-    "RETIRED",
-    "RIDES",
-    "RTO AGENT",
-    "REFRIGERATOR SERVICE",
-    "SCRAP ( BHANGAR )",
-    "SECURITY SERVICE",
-    "SHOEMAKER ( MOCHI )",
-    "SHOP",
-    "SHUTTER REPAIR",
-    "SOCIAL WORKER",
-    "SOFA CLEANING",
-    "SOLAR PANEL",
-    "SOUND SYSTEM REPAIRING",
-    "SPOKEN ENGLISH CLASSES",
-    "SPORTS",
-    "STATIONERY",
-    "STOCK MARKET",
-    "STUDENT",
-    "STUDY CLASSES",
-    "SALON",
-    "TAXI",
-    "TEA CENTER",
-    "TELECOM DEPARTMENT",
-    "TEXTILE",
-    "TIFFIN SERVICE",
-    "TOUR & TRAVELERS",
-    "TAILOR",
-    "TOWING",
-    "TRADERS",
-    "TRANSPORT",
-    "TRAVEL AGENT",
-    "TUITION CLASS",
-    "T.V. SERVICE",
-    "TWO WHEELERS WIRING",
-    "TYRE PUNCTURE FIXING",
-    "VEGETABLES & FRUITS",
-    "VETER INARY DOCTOR",
-    "VISA CONSULTANCY & GUIDANCE",
-    "WASHING MACHINE SERVICE",
-    "WATER SUPPLIER",
-    "WEALTH MANAGEMENT",
-    "WOMEN WEAR",
-    "XEROX",
-    "YOGA CLASSES"
-  ]
-  const toggleSelection = (category) => {
-    if (businessCategory.includes(category)) {
-      setBusinessCategory(businessCategory.filter((c) => c !== category));
-    } else {
-      setBusinessCategory([...businessCategory, category]);
+const Profile = () => {
+    const [profile, setProfile] = useState("");
+    const navigate = useNavigate();
+    const fetchData = async () => {
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
+        const token = JSON.parse(localStorage.getItem('token'))
+        //   console.log(token, "token Edit");
+        try {
+            const response = await axios.get(backend_API, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data = await response.data;
+            setProfile(data.user)
+            console.log(data.user, "data profile");
+            if (response.status === 200) {
+                navigate('/profile')
+                console.log("profile Successful...");
+            }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+
     }
-  };
+    useEffect(() => {
+        fetchData()
+    }, [])
 
-  //  const backend_API = "http://localhost:4000"
-  const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
-  const token = JSON.parse(localStorage.getItem('token'))
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newAddress = {
-      area,
-      city,
-      state,
-      country,
-      pincode
-    };
-    
-    const fullData = { name, email, phone, address:newAddress, businessCategory, businessName, businessAddress };
-    
+    return (
+        <>
+            <AdminNavbar />
+            <UserSideBar />
+            <section className='my-24 p-4 h-[550px]'>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="card rounded-md overflow-hidden border-0 bg-base-100 shadow-xl ">
 
-    try {
-      const response = await axios.post(backend_API, fullData, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      });
-      const data = await response.data;
-      setProfile(data)
-      if (response.status === 200) {
-        console.log("Profile Updated Successfully");
-        navigete('/profile')
-      }
+                                <div className="w-full position-reletive bg-orange flex items-center justify-center">
 
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
+                                    <img className='h-[150px] w-full' src="https://img.freepik.com/free-vector/colorful-watercolor-texture-background_1035-19319.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid" alt="" />
 
-  };
-  useEffect(() => {
-    setName(location?.state?.name)
-    setEmail(location?.state?.email)
-    setPhone(location?.state?.phone)
-    setArea(location?.state?.address?.area)
-    setCity(location?.state?.address?.city)
-    setState(location?.state?.address?.state)
-    setCountry(location?.state?.address?.country)
-    setPincode(location?.state?.address?.pincode)
-    setAddress(location?.state?.address || {})
-    setBusinessCategory(location?.state?.businessCategory || []),
-      setBusinessName(location?.state?.businessName),
-      setBusinessAddress(location?.state?.businessAddress)
-  }, [location?.state])
+                                    <div className="avatar">
+                                        <div className=" position-absolute top-[100px] start-[50px] overflow-hidden ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
+                                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="col-12 d-flex">
+                                        <div className="col-6 p-5">
+                                            <h2 className="text-3xl font-bold  text-gray-700  mt-4">
+                                                {profile.name}
+                                            </h2>
+                                            <h6 className='py-3 text-gray'>{profile.email}</h6>
+                                            <p className='text-gray pb-3'> +91{profile.phone}</p>
+                                            {/* <p className='text-gray pb-3'>  {profile?.address?.area}</p> */}
+                                            <p className="text-gray pb-3">
+                                                {profile?.address?.area}, {profile?.address?.city}, {profile?.address?.country} - {profile?.address?.pincode}
+                                            </p>
 
-  return (
-    <>
-      <AdminNavbar />
-      <UserSideBar />
-      <section className='pt-32'>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 className='py-2'>Profile Setting</h2>
-              <div className='card border-0 bg-base-100 shadow-xl'>
-                <form action="" onSubmit={handleSubmit} className=' p-3'>
+                                            <div className="flex">
+                                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className="border-orange text-orange px-8 py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
+                                            </div>
+                                        </div>
+                                        <div className="col-6 d-flex justify-content-end">
+                                            <div className='p-5'>
+                                                <span className='py-2'> {profile._id}</span>
+                                                <h5 className='text-gray pb-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h5>
+                                                <div className='p-2 d-flex justify-content-center text-uppercase rounded-md text-white bg-orange '>Avocate{profile.businessCategory}</div>
 
-                  <div className='profilepic d-flex justify-content-between'>
-                    <figure className='rounded-md m-3'>
-                      <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+                                                <div className="rating rating-sm py-4 d-flex align-items-center">
+                                                    <FaStar className='text-warning' />
+                                                    <FaStar className='text-warning' />
+                                                    <FaStar className='text-warning' />
+                                                    <FaStar className='text-warning' />
+                                                    <FaStar className='text-warning' /> <span className='ps-2'>rating</span>
+                                                </div>
+                                                <div className=''>
+                                                    <label for="" class=" btn d-inline-block border-1 text-white d-flex justify-content-center align-items-center bg-orange text-center ">
+                                                        Add Offer Benner
+                                                    </label>
+                                                    <input type="file" id="file-upload" />
+                                                </div>
 
-                      </img>
-                    </figure>
-                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
-                  </div>
-                  <div className='form-detaile d-flex flex-wrap w-full py-2 d-flex'>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div className="col-12 col-md-6 p-2 w-full">
-                      <div className='my-1'>
-                        <label className="block text-md font-medium p-2 text-bold "> Name</label>
-                        <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                          <input
-                            type="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className=' w-100 outline-0 ' />
-                          <LuUserPen className='text-xl' />
-                        </label>
-                      </div>
-                      <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold "> Email</label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <MdAlternateEmail className='text-xl' />
-                      </label>
-                      </div>
-                      <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Contact </label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="text"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <LuPhone className='text-xl' />
-                      </label>
-                      </div>
-                      <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Address</label>
-                      <div className="col-12 d-flex flex-wrap">
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={area}
-                              onChange={(e) => setArea(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='area' />
-                            <FaRegAddressCard className='text-xl' />
-                          </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={city}
-                              onChange={(e) => setCity(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='city' />
-                            <FaRegAddressCard className='text-xl' />
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={state}
-                              onChange={(e) => setState(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='state' />
-                            <FaRegAddressCard className='text-xl' />
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 my-1'>
-                            <input
-                              type="text"
-                              value={country}
-                              onChange={(e) => setCountry(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='country' />
-                            <FaRegAddressCard className='text-xl' />
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={pincode}
-                              onChange={(e) => setPincode(e.target.value)}
-                              className=' w-100 outline-0 bg-none' placeholder="pincode" />
-                            <FaRegAddressCard className='text-xl' />
-                          </div>
-
-                        </div>
-
-                      </div>
-
-                      </div>
                     </div>
-                    <div className="col-12 col-md-6 p-2 w-full">
-                    <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Name </label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="text"
-                          value={businessName}
-                          onChange={(e) => setBusinessName(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <MdAlternateEmail className='text-xl' />
-                      </label>
-                      </div>
-                      <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
-                      <div className="">
-                        <div className="border border-2 rounded-md p-2 bg-white">
-                          {businessCategory.length > 0 ? (
-                            businessCategory.map((category, i) => (
-                              <span
-                                key={++i}
-                                className="inline-block bg-orange text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                              >
-                                {category}
-                              </span>
-                            ))
-                          ) : (
-                            <span className="text-gray-400">Select categories</span>
-                          )}
-                        </div>
-                        <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md  max-h-40 overflow-y-auto">
-                          {categories.map((category, i) => (
-                            <li
-                              key={++i}
-                              className={`cursor-pointer px-4 py-2 hover:bg-orange hover:text-white ${businessCategory.includes(category) ? "bg-orange text-white" : ""
-                                }`}
-                              onClick={() => toggleSelection(category)}
-                            >
-                              {category}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      </div>
-                      <div className='my-2'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                        <input
-                          type="text"
-                          value={businessAddress}
-                          onChange={(e) => setBusinessAddress(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <FaRegAddressCard className='text-xl' />
-                      </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <button
-                      type="submit"
-                      className="d-flex justify-content-center w-[160px]  bg-orange text-white  py-3 px-2 rounded-md hover:bg-primary "
-                    >
-                      Edit User <CiEdit className='text-xl text-bold mx-2' />
+                </div>
+            </section>
 
-                    </button>
-                  </div>
+        </>
+    )
+}
 
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default EditProfile;
+export default Profile
