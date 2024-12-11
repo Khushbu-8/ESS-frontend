@@ -70,7 +70,7 @@ const UserSideBar = () => {
   };
   return (
     <>
-  <div className="offcanvas offcanvas-lg offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div className="offcanvas offcanvas-lg bg-white offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div className="d-flex  align-items-center p-3">
     
      <div className='w-full d-flex align-items-center gap-4'>

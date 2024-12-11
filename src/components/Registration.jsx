@@ -23,6 +23,7 @@ function Registration() {
   const [address, setAddress] = useState([])
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState({});
   const isAuthenticated = localStorage.getItem("token");
   const navigete = useNavigate();
   if (isAuthenticated) {
@@ -30,11 +31,56 @@ function Registration() {
     return <Navigate to="/" />;
 
   }
+  const validatePassword = (password) => {
+    const easy = /^[a-zA-Z0-9]{6,}$/; // Easy: At least 6 characters
+    const medium = /^(?=.*[A-Z])(?=.*[0-9]).{6,}$/; // Medium: At least 6 chars, 1 uppercase, 1 number
+    const hard = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{8,}$/; // Hard: At least 8 chars, 1 uppercase, 1 number, 1 special char
+
+    if (hard.test(password)) return "hard";
+    if (medium.test(password)) return "medium";
+    if (easy.test(password)) return "easy";
+    return null;
+  };
+
+  const validateInputs = () => {
+    const newErrors = {};
+
+    if (!name) newErrors.name = "Name is required.";
+    if (!email) {
+      newErrors.email = "Email is required.";
+    } else if (!email.endsWith("@gmail.com")) {
+      newErrors.email = "Email must end with @gmail.com.";
+    }
+    if (!phone) newErrors.phone = "Phone number is required.";
+    else if (phone.length < 10 || isNaN(phone)) newErrors.phone = "Phone number must be at least 10 digits.";
+
+    if (!password) newErrors.password = "Password is required.";
+    else if (!validatePassword(password)) {
+      newErrors.password = "Password must be at least 6 characters, include an uppercase letter, a number, and a special character.";
+    }
+
+    if (password !== confirmpassword) newErrors.confirmpassword = "Passwords do not match.";
+    if (!area) newErrors.area = "Area is required.";
+    if (!city) newErrors.city = "City is required.";
+    if (!state) newErrors.state = "State is required.";
+    if (!country) newErrors.country = "Country is required.";
+    if (!pincode) newErrors.pincode = "Pincode is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
 
   const handleSubmits = async (e) => {
     setLoading(true)
     e.preventDefault();
+    
+
+    if (!validateInputs()) {
+      setLoading(false);
+      return;
+    }
+
     let newadd = {
       area,
       city,
@@ -49,9 +95,6 @@ console.log(address,"address");
 
   };
 
-  useEffect(()=>{
-   
-  },[])
   return (
     <>
 
@@ -106,19 +149,23 @@ console.log(address,"address");
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Name" />
+                    {errors.name && <span className="error text-orange text-orange text-sm">{errors.name}</span>}
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Email" />
+                   {errors.email && <span className="error text-orange text-sm">{errors.email}</span>}
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="password" placeholder="Password" />
+                   {errors.password && <span className="error text-orange text-orange text-sm">{errors.password}</span>}
                     <input
                       value={confirmpassword}
                       onChange={(e) => setConfirmpassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="password" placeholder="Confirm Password" />
+                  {errors.confirmpassword && <span className="error text-orange text-sm">{errors.confirmPassword}</span>}
                   </div>
                 </div>
                 <div className="col-12 col-lg-6">
@@ -127,36 +174,42 @@ console.log(address,"address");
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Contect" />
+                    {errors.phone && <span className="error text-orange text-sm">{errors.phone}</span>}
                     <div className="col-12 d-flex flex-wrap">
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={area}
                           onChange={(e) => setArea(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Area" />
+                      {errors.area && <span className="error text-orange text-orange text-sm">{errors.area}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="City" />
+                      {errors.city && <span className="error text-orange text-orange text-sm">{errors.city}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={state}
                           onChange={(e) => setState(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="State" />
+                      {errors.state && <span className="error text-orange text-orange text-sm">{errors.state}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Country" />
+                      {errors.country && <span className="error text-orange text-orange text-sm">{errors.country}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={pincode}
                           onChange={(e) => setPincode(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
+                         {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
                       </div>
                     </div>
 

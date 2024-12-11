@@ -3,7 +3,6 @@ import Slider from "react-slick";
 
 const CardSlider = () => {
     const sliderRef = useRef(null);
-
     const settings = {
         slidesToShow: 5,
         slidesToScroll: 1,
