@@ -63,12 +63,11 @@ const UserSideBar = () => {
     fetchData()
   }, [])
 
-      const handleLogout = () => {
-        localStorage.removeItem('token'); // Clear the token
-        
-        navigate('/login'); // Redirect to login
-
-      };
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Clear the token
+    navigate('/login'); // Redirect to login
+    window.location.reload();
+  };
   return (
     <>
   <div className="offcanvas offcanvas-lg offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

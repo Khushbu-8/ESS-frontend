@@ -38,11 +38,7 @@ function UserDropdown() {
   }, [])
 
 
-  const handleLogout = () => {
-    localStorage.removeItem('token'); // Clear the token
-    navigate('/login'); // Redirect to login
-    window.location.reload();
-  };
+
 
   return (
     <>
@@ -52,11 +48,7 @@ function UserDropdown() {
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
         </div>
-        <ul class="dropdown-menu mt-5">
-    <li><Link class="dropdown-item text-lg" href="#">Welcom {profile.name}</Link></li>
-    <li><Link class="dropdown-item" to={"/profile"} >Profile</Link></li>
-    <li><Link class="dropdown-item"onClick={handleLogout}>Logout</Link></li>
-  </ul>
+       
       </div>
       
      
