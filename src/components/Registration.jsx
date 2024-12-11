@@ -167,13 +167,7 @@ console.log(address,"address");
                   region={region}
                 />
                 
-                <h6>Phone Code</h6>
-                <RegionSelect
-                  onChange={(e) => {
-                    setPhoneCode(e.phone_code);
-                  }}
-                  placeHolder="Select Phone Code"
-                />
+                
                 <h6>State</h6>
                 <StateSelect
                   countryid={countryid}
@@ -191,13 +185,7 @@ console.log(address,"address");
                   }}
                   placeHolder="Select City"
                 />
-                <h6>Language</h6>
-                <LanguageSelect
-                  onChange={(e) => {
-                    console.log(e);
-                  }}
-                  placeHolder="Select Language"
-                />
+
               </div>
               <div className="col-12 d-flex flex-wrap">
                 <div className="col-12 col-lg-6">
