@@ -41,12 +41,13 @@ function UserDropdown() {
   const handleLogout = () => {
     localStorage.removeItem('token'); // Clear the token
     navigate('/login'); // Redirect to login
+    window.location.reload();
   };
 
   return (
     <>
       <div className="dropdown dropstart rounded-lg m-3 border bg-red">
-        <div  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <div  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
           <div class="img w-[60px] h-[50px] rounded-lg border bg-red overflow-hidden">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>

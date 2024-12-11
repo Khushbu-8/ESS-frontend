@@ -70,7 +70,7 @@ const Profile = () => {
                                             <p className='text-gray pb-3'> +91{profile.phone}</p>
                                             {/* <p className='text-gray pb-3'>  {profile?.address?.area}</p> */}
                                             <p className="text-gray pb-3">
-                                                {profile?.address?.area}, {profile?.address?.city}, {profile?.address?.country} - {profile?.address?.pincode}
+                                                {profile?.address?.area} {profile?.address?.city}  {profile?.address?.state} {profile?.address?.country}  {profile?.address?.pincode}
                                             </p>
 
                                             <div className="flex">
