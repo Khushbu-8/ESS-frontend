@@ -6,9 +6,9 @@ import UserSideBar from '../components/UserSideBar'
 
 const Senedrequest = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-    const LoginData = JSON.parse(localStorage.getItem("Users"))
-    const [loginData,setLoginData] = useState(LoginData)
-    console.log(loginData,"req");
+    // const LoginData = JSON.parse(localStorage.getItem("Users"))
+    // const [loginData,setLoginData] = useState(LoginData)
+    // console.log(loginData,"req");
 
     const requests = [
         {
