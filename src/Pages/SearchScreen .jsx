@@ -21,6 +21,8 @@ const SearchScreen = () => {
 
     const [categoryFilter, setCategoryFilter] = useState("");
 
+
+    
     const fetchData = async () => {
         const API_URL = "https://ees-121-backend.vercel.app/auth/getAllUser";
         try {
@@ -88,6 +90,31 @@ const handleItemClickLocation = (loc) => {
     }
     setSelectedItem(filtercat); // Set the selected item
 };
+
+// send req
+const sendRequest = async (userId) => {
+    console.log(userId);
+    
+    try {
+        const response = await axios.post(`http://localhost:3000/request/sentRequest`, {
+            receiverId: userId,
+        }, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+          });
+      if (response.status === 200) {
+        alert("Request Sent Successfully!");
+      } else {
+        alert("Failed to send request!");
+      }
+    } catch (error) {
+      console.error("Error sending request:", error);
+      alert("Something went wrong. Try again.");
+    }
+  };
+
 
 useEffect(()=>{
     if(token){
@@ -191,7 +218,7 @@ useEffect(()=>{
                                                 </div>
                                                 <div className='p-3'>
                                                     <h4 className="font-bold">{user.name}</h4>
-                                                    <h5 className="font-bold">{user.address}</h5>
+                                                    <h5 className="font-bold">{user.address.city}</h5>
                                                     <h6 className="font-bold">{user.businessCategory}</h6>
 
                                                     <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
@@ -202,7 +229,7 @@ useEffect(()=>{
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
                                                     </div>
-
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -236,7 +263,7 @@ useEffect(()=>{
                                                     <div className='p-3'>
                                                         <h2 className=" font-bold">{user.name}</h2>
                                                         <h5 className=" font-bold">{user.businessCategory}</h5>
-                                                        <h6 className=" font-bold">{user.address}</h6>
+                                                        <h6 className=" font-bold">{user.address.city}</h6>
 
                                                         <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laborum.</p>
                                                         <div className="rating rating-sm py-4 d-flex align-items-center">
@@ -246,7 +273,13 @@ useEffect(()=>{
                                                         <FaStar className='text-warning'/>
                                                         <FaStar className='text-warning'/> <span className='ps-2'>rating</span>
                                                     </div>
-
+ 
+                                                    <div>
+                                                        <button className='btn btn-success'  onClick={() => sendRequest(user._id)}>
+                                                            Contect Now
+                                                        </button>
+                                                    </div>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>

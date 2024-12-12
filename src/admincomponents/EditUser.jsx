@@ -9,7 +9,9 @@ const EditUser = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [city, setCity] = useState('');
   const [address, setAddress] = useState('');
+
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
@@ -179,12 +181,15 @@ const EditUser = () => {
   };
 
   //  const backend_API = "http://localhost:4000"
-  const backend_API = "https://ees-121-backend.vercel.app/auth/UpdateUser"
+  const backend_API = "http://localhost:3000/auth/UpdateUser"
   // const token = JSON.parse(localStorage.getItem('token'))
   //   console.log(token, "token Edit");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(location?.state?._id ,"Edit Id");
+    console.log(location?.state?.adress ,"Edit Id");
+    const newadd = {
+      city
+    }
     
    try {
     const response = await axios.put(backend_API, {
@@ -192,7 +197,7 @@ const EditUser = () => {
       name: name,
       email: email,
       phone: phone,
-      address: address,
+      address: newadd,
       businessCategory: businessCategory,
       businessName: businessName,
       businessAddress: businessAddress

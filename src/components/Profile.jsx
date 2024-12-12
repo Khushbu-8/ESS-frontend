@@ -26,6 +26,7 @@ const Profile = () => {
             setProfile(data.user)
             console.log(data.user, "data profile");
             if (response.status === 200) {
+                localStorage.setItem("Users", JSON.stringify(data.user))
                 navigate('/profile')
                 console.log("profile Successful...");
             }
@@ -81,7 +82,7 @@ const Profile = () => {
                                             <div className='p-5'>
                                                 <span className='py-2'> {profile._id}</span>
                                                 <h5 className='text-gray pb-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h5>
-                                                <div className='p-2 d-flex justify-content-center text-uppercase rounded-md text-white bg-orange '>Avocate{profile.businessCategory}</div>
+                                                {profile.businessCategory ? (<div className='btn  d-flex justify-content-center text-uppercase rounded-md text-white bg-orange py-2'>{profile.businessCategory}</div>) : (<></>) }
 
                                                 <div className="rating rating-sm py-4 d-flex align-items-center">
                                                     <FaStar className='text-warning' />
@@ -91,7 +92,7 @@ const Profile = () => {
                                                     <FaStar className='text-warning' /> <span className='ps-2'>rating</span>
                                                 </div>
                                                 <div className=''>
-                                                    <label for="" class=" btn d-inline-block border-1 text-white d-flex justify-content-center align-items-center bg-orange text-center ">
+                                                    <label for="" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
                                                         Add Offer Benner
                                                     </label>
                                                     <input type="file" id="file-upload" />

@@ -96,7 +96,7 @@ const AllUsers = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
-                      <td>{user.address}</td>
+                      <td>{user?.address?.area} {user?.address?.city} {user?.address?.state} {user?.address?.country} {user?.address?.pincode}</td>
                       <td>{user.businessName}</td>
                       <td>{user.businessCategory}</td>
                       <td>{user.businessAddress}</td>

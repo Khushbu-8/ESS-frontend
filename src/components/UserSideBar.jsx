@@ -8,7 +8,7 @@ const UserSideBar = () => {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem('token'))
-  console.log(token, "token profil");
+  // console.log(token, "token profil");
     const sidebarManu = [
         {
           id: 1,
@@ -32,7 +32,7 @@ const UserSideBar = () => {
           id: 5,
           title: 'work',
           icon: <FaNetworkWired />,
-          path: '/admin/card',
+          path: '/work',
         }
        
       ]
@@ -48,7 +48,7 @@ const UserSideBar = () => {
           });
           const data = await response.data;
           setProfile(data.user)
-          console.log(data, "data Edit");
+          // console.log(data, "data Edit");
           if (response.status === 200) {
             console.log("profile Successful...");
           }

@@ -7,7 +7,7 @@ function UserDropdown() {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem('token'))
-  console.log(token, "token profil");
+  // console.log(token, "token profil");
 
   const fetchData = async () => {
     const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
@@ -21,7 +21,7 @@ function UserDropdown() {
       });
       const data = await response.data;
       setProfile(data.user)
-      console.log(data, "data Edit");
+      // console.log(data, "data Edit");
       if (response.status === 200) {
         console.log("profile Successful...");
       }

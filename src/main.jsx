@@ -8,7 +8,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 
 
 createRoot(document.getElementById('root')).render(
-  <div className=" bg-pink-100">
+  <div className="">
      <App />
   </div>
    

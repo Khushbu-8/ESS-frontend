@@ -3,6 +3,7 @@ import UserSideBar from '../components/UserSideBar'
 import SearchScreen from './SearchScreen '
 import AdminNavbar from '../admincomponents/AdminNavbar'
 import SearchResult from '../components/SearchResult'
+import ServiceDetail from './ServiceDetail'
 
 const Services = () => {
 
@@ -17,6 +18,7 @@ const Services = () => {
      <div className='mt-24'>
     
     <SearchScreen/>
+    {/* <ServiceDetail/> */}
      </div>
       </div>
 

@@ -15,6 +15,8 @@ import ServiceDetail from "./Pages/ServiceDetail";
 import Card from "./Pages/Card";
 import Services from "./Pages/Services";
 import RegisterNextPage from "./components/RegisterNextPage";
+import Work from "./Pages/Work";
+import Senedrequest from "./Pages/Senedrequest";
 
 export default function App() {
 
@@ -33,6 +35,11 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/servises" element={ <Services/>} />
+
+          {/* work  */}
+          <Route path="/work" element={ <Work/>} />
+          <Route path="/work/sendrequest" element={ <Senedrequest/>} />
+
           <Route path="/" element={<Home />} />
           
           <Route path="/register" element={<Registration />} />
