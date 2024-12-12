@@ -5,11 +5,11 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Recievedrequest = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-    const LoginData = JSON.parse(localStorage.getItem("Users"))
+    // const LoginData = JSON.parse(localStorage.getItem("Users"))
 
     const [recievedRequest,setRecievedRequest] = useState([])
-    const [loginData,setLoginData] = useState(LoginData)
-    console.log(loginData.received_requests,"req");
+    // const [loginData,setLoginData] = useState(LoginData)
+    // console.log(loginData.received_requests,"req");
     const naviget = useNavigate()
     
 
