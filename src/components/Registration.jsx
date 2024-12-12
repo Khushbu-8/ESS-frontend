@@ -20,21 +20,14 @@ function Registration() {
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
   const [phone, setPhone] = useState('');
-// for address
-const [region, setRegion] = useState("");
-const [phonecode, setPhoneCode] = useState("");
-const [countryid, setCountryid] = useState(0);
-const [stateid, setstateid] = useState(0);
-
-
-
-
+  // for address
   const [area, setArea] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [pincode, setPincode] = useState('');
   const [address, setAddress] = useState([])
+  
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({});
@@ -88,7 +81,7 @@ const [stateid, setstateid] = useState(0);
   const handleSubmits = async (e) => {
     setLoading(true)
     e.preventDefault();
-    
+
 
     if (!validateInputs()) {
       setLoading(false);
@@ -103,7 +96,7 @@ const [stateid, setstateid] = useState(0);
       pincode
     }
     setAddress(newadd)
-console.log(address,"address");
+    console.log(address, "address");
 
     navigete("/registernext", { state: { name: name, email: email, password: password, confirmpassword: password, phone: phone, address: newadd } })
 
@@ -155,38 +148,7 @@ console.log(address,"address");
             </div>
 
             <form action="" onSubmit={handleSubmits} className='p-4'>
-            <div>
-               
-                
-                <h6>Country</h6>
-                <CountrySelect
-                  onChange={(e) => {
-                    setCountryid(e.id);
-                  }}
-                  placeHolder="Select Country"
-                  region={region}
-                />
-                
-                
-                <h6>State</h6>
-                <StateSelect
-                  countryid={countryid}
-                  onChange={(e) => {
-                    setstateid(e.id);
-                  }}
-                  placeHolder="Select State"
-                />
-                <h6>City</h6>
-                <CitySelect
-                  countryid={countryid}
-                  stateid={stateid}
-                  onChange={(e) => {
-                    console.log(e);
-                  }}
-                  placeHolder="Select City"
-                />
-
-              </div>
+            
               <div className="col-12 d-flex flex-wrap">
                 <div className="col-12 col-lg-6">
                   <div className='px-2'>
@@ -201,17 +163,17 @@ console.log(address,"address");
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Email" />
-                   {errors.email && <span className="error text-orange text-sm">{errors.email}</span>}
+                    {errors.email && <span className="error text-orange text-sm">{errors.email}</span>}
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="password" placeholder="Password" />
-                   {errors.password && <span className="error text-orange text-orange text-sm">{errors.password}</span>}
+                    {errors.password && <span className="error text-orange text-orange text-sm">{errors.password}</span>}
                     <input
                       value={confirmpassword}
                       onChange={(e) => setConfirmpassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="password" placeholder="Confirm Password" />
-                  {errors.confirmpassword && <span className="error text-orange text-sm">{errors.confirmPassword}</span>}
+                    {errors.confirmpassword && <span className="error text-orange text-sm">{errors.confirmPassword}</span>}
                   </div>
                 </div>
                 <div className="col-12 col-lg-6">
@@ -222,40 +184,65 @@ console.log(address,"address");
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Contect" />
                     {errors.phone && <span className="error text-orange text-sm">{errors.phone}</span>}
                     <div className="col-12 d-flex flex-wrap">
-                      <div className="col-12 col-lg-6 p-1">
+                      <div className="col-12 col-lg-6 ">
                         <input
                           value={area}
                           onChange={(e) => setArea(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Area" />
-                      {errors.area && <span className="error text-orange text-orange text-sm">{errors.area}</span>}
+                        {errors.area && <span className="error text-orange text-orange text-sm">{errors.area}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        <input
+                        {/* <input
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="City" />
-                      {errors.city && <span className="error text-orange text-orange text-sm">{errors.city}</span>}
+                        */}
+                        <CitySelect
+                          countryid={country}
+                          stateid={state}
+                          onChange={(e) => {
+                            console.log(e);
+                          }}
+                          placeHolder="Select City"
+                        />
+                        {errors.city && <span className="error text-orange text-orange text-sm">{errors.city}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        <input
+                        {/* <input
                           value={state}
                           onChange={(e) => setState(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="State" />
-                      {errors.state && <span className="error text-orange text-orange text-sm">{errors.state}</span>}
+                       */}
+                        <StateSelect
+                          countryid={country}
+                          onChange={(e) => {
+                            setState(e.id);
+                          }}
+                          placeHolder="Select State"
+                        />
+                        {errors.state && <span className="error text-orange text-orange text-sm">{errors.state}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        <input
+                        {/* <input
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Country" />
-                      {errors.country && <span className="error text-orange text-orange text-sm">{errors.country}</span>}
+                      */}
+                        <CountrySelect
+                          onChange={(e) => {
+                            setCountry(e.id);
+                          }}
+                          placeHolder="Select Country"
+                          value={country}
+                        />
+                        {errors.country && <span className="error text-orange text-orange text-sm">{errors.country}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
                           value={pincode}
                           onChange={(e) => setPincode(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
-                         {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
+                        {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
                       </div>
                     </div>
 

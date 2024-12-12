@@ -50,6 +50,31 @@ input[type="file"] {
 .offcanvas{
   width: 300px!important;
 }
+
+.Select{
+  background-color: #e92626!important;
+}
+.stdropdown-container{
+  padding: 11.5px 20px;
+  background-color: #f3f4f6!important;
+  border: 1px solid #dee2e6;
+  border-radius: 7px;
+  margin-top: 10px;
+  
+}
+.stdropdown-input input::placeholder{
+  color: #6b7280!important;
+  font-family: "Poppins", sans-serif!important;
+  font-weight: 500!important;
+  font-style: normal!important;
+  font-size: 15px;
+} 
+.stdropdown-input input{
+ background-color: transparent!important;
+ border: none;
+ outline: none;
+} 
+
 /* slic slider Card  start*/
 
 .wrapper{
