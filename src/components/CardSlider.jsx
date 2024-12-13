@@ -76,10 +76,10 @@ const CardSlider = () => {
                                     {images.map((image, index) => (
                                         <div
                                             key={index}
-                                            className="rounded-md overflow-hidden"
+                                            className="rounded-sm overflow-hidden"
                                             onClick={() => handleImageClick(index)}
                                         >
-                                            <figure className="rounded-md overflow-hidden w-full">
+                                            <figure className="overflow-hidden w-full">
                                                 <img
                                                     className=""
                                                     src={image}

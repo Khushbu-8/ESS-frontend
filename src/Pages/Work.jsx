@@ -35,7 +35,7 @@ const Work = () => {
                                     requests.map((req, i) => {
                                         return (
                                             <div className="receivReqBtn">
-                                                <Link to={req.path} className='btn btn-success text-white'>
+                                                <Link to={req.path} className={`btn btn-success rounded-0 text-white`}>
                                                     {req.name}
                                                 </Link>
                                             </div>

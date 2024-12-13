@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import logo from "../../public/ees-logo.png"
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
+
 const RegisterNextPage = () => {
   const [businessCategory, setBusinessCategory] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -182,7 +185,7 @@ const RegisterNextPage = () => {
     setIsDropdownOpen(false); // Close dropdown
   };
   // const notify = () => toast("Registration Successful");
-  const backend_API = "https://ees-121-backend.vercel.app/auth/registerUserweb"
+  const backend_API = "/auth/registerUserweb"
 
   const handleSubmits = async (e) => {
     setLoading(true)
@@ -194,7 +197,7 @@ const RegisterNextPage = () => {
 
     console.log(fullData);
     try {
-      const response = await axios.post(backend_API, fullData, {
+      const response = await axios.post(`${backend_API}/auth/registerUserweb`, fullData, {
         headers: {
           'Content-Type': 'application/json',
         },
