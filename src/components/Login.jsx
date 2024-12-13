@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 import Cookies from 'js-cookie';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 
 const Login = () => {
