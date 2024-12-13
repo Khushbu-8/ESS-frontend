@@ -5,6 +5,8 @@ import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
 const EditUser = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -179,11 +181,6 @@ const EditUser = () => {
       setBusinessCategory([...businessCategory, category]);
     }
   };
-
-  //  const backend_API = "http://localhost:4000"
-  const backend_API = "http://localhost:3000/auth/UpdateUser"
-  // const token = JSON.parse(localStorage.getItem('token'))
-  //   console.log(token, "token Edit");
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(location?.state?.adress ,"Edit Id");
@@ -192,7 +189,7 @@ const EditUser = () => {
     }
     
    try {
-    const response = await axios.put(backend_API, {
+    const response = await axios.put(`${backend_API}/auth/UpdateUser`, {
       id: location?.state?._id,
       name: name,
       email: email,

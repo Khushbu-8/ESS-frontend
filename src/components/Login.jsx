@@ -5,6 +5,9 @@ import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 import Cookies from 'js-cookie';
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
+
 const Login = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -19,11 +22,8 @@ const Login = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        try {
-        
-            const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
-    
-            const response = await axios.post(backend_API, {
+        try {    
+            const response = await axios.post(`${backend_API}/auth/loginUserweb`, {
                 phone,
                 password,
             }, {

@@ -8,15 +8,16 @@ import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import { FaStar } from 'react-icons/fa';
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
 const Profile = () => {
     const [profile, setProfile] = useState("");
     const navigate = useNavigate();
     const fetchData = async () => {
-        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
         const token = JSON.parse(localStorage.getItem('token'))
         //   console.log(token, "token Edit");
         try {
-            const response = await axios.get(backend_API, {
+            const response = await axios.get(`${backend_API}/auth/getuser`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

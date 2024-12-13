@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
 const UserSideBar = () => {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
@@ -37,10 +39,9 @@ const UserSideBar = () => {
        
       ]
       const fetchData = async () => {
-        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
     
         try {
-          const response = await axios.get(backend_API, {
+          const response = await axios.get(`${backend_API}/auth/getuser`, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
