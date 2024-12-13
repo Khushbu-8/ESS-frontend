@@ -79,7 +79,7 @@ const UserSideBar = () => {
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
           <div>
-          <h3>{profile.name}</h3>
+          <h3>name</h3>
           </div>
      </div>
        <div className=' d-flex justify-content-center'>
