@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
-
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const [phone, setPhone] = useState('');
@@ -21,15 +19,20 @@ const Login = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        try {    
-            const response = await axios.post(`${backend_API}/auth/loginUserweb`, {
+        try {
+        
+            const backend_API = "https://ees-121-backend.vercel.app/auth/loginUserweb";
+    
+            const response = await axios.post(backend_API, {
                 phone,
                 password,
             }, {
                 withCredentials: true, // Important: send cookies with the request
-            })   
+            })
+            
             console.log(response.data, "data");
             console.log(response.data.token, "token");
+          
             if (response.status === 200) {   
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 localStorage.setItem("Users",JSON.stringify(response.data.user))

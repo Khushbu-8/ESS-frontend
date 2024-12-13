@@ -4,7 +4,6 @@ import { RiStarSFill } from "react-icons/ri";
 import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
 
 const EditUser = () => {
   const [name, setName] = useState('');
@@ -180,31 +179,36 @@ const EditUser = () => {
       setBusinessCategory([...businessCategory, category]);
     }
   };
+
+  //  const backend_API = "http://localhost:4000"
+  const backend_API = "http://localhost:3000/auth/UpdateUser"
+  // const token = JSON.parse(localStorage.getItem('token'))
+  //   console.log(token, "token Edit");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(location?.state?.adress, "Edit Id");
+    console.log(location?.state?.adress ,"Edit Id");
     const newadd = {
       city
     }
-
-    try {
-      const response = await axios.put(`${backend_API}/auth/UpdateUser`, {
-        id: location?.state?._id,
-        name: name,
-        email: email,
-        phone: phone,
-        address: newadd,
-        businessCategory: businessCategory,
-        businessName: businessName,
-        businessAddress: businessAddress
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true // For cookies/session authentication if required
-      });
-
-      console.log(response.data, "Data Edit");
+    
+   try {
+    const response = await axios.put(backend_API, {
+      id: location?.state?._id,
+      name: name,
+      email: email,
+      phone: phone,
+      address: newadd,
+      businessCategory: businessCategory,
+      businessName: businessName,
+      businessAddress: businessAddress
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true // For cookies/session authentication if required
+    });
+  
+    console.log(response.data, "Data Edit");
 
       // console.log(data);
       if (response.status === 200) {
@@ -225,8 +229,8 @@ const EditUser = () => {
     setPhone(location?.state?.phone)
     setAddress(location?.state?.address)
     setBusinessCategory(location?.state?.businessCategory || []),
-    setBusinessName(location?.state?.businessName),
-    setBusinessAddress(location?.state?.businessAddress)
+      setBusinessName(location?.state?.businessName),
+      setBusinessAddress(location?.state?.businessAddress)
   }, [location?.state])
 
   return (

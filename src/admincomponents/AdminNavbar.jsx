@@ -9,7 +9,7 @@ const AdminNavbar = () => {
 
     const NaveItems = (
         <>
-            <li><Link  className='' to={'/'}>Home</Link></li>
+            <li><Link className='' to={'/'}>Home</Link></li>
             <li><Link to={'/servises'}>Servises</Link></li>
         </>
     )

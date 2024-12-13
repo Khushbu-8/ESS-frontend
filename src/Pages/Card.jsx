@@ -12,14 +12,14 @@ const Card = () => {
                             <div className="col-12 d-flex flex-wrap">
                                 <div className="col-12 col-lg-4 w-full d-flex justify-content-center  text-gray-900 py-2">
                                    <div>
-                                   <figure className=''>
+                                   <figure className='py-2'>
                                         <img className='rounded-md w-[200px]  overflow-hidden'
                                             src="https://img.daisyui.com/images/profile/demo/2@94.webp"
                                             alt="Movie" />
                                     </figure>
                                     <div className='text-center'>
                                         <h1 className='text-xl'>Joye</h1>
-                                        <div className="rating rating-sm py-1 w-full text-center d-flex align-items-center  justify-content-center">
+                                        <div className="rating rating-sm py-4 w-full text-center d-flex align-items-center  justify-content-center">
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
