@@ -185,8 +185,6 @@ const RegisterNextPage = () => {
     setIsDropdownOpen(false); // Close dropdown
   };
   // const notify = () => toast("Registration Successful");
-  const backend_API = "/auth/registerUserweb"
-
   const handleSubmits = async (e) => {
     setLoading(true)
     e.preventDefault();
