@@ -8,6 +8,7 @@ import UserSideBar from '../components/UserSideBar';
 import { categories } from '../ServiceCategory'
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
+import SearchResult from '../components/SearchResult';
 
 // const backend_API =import.meta.env.BACKEND_API;
 const backend_API = "https://ees-121-backend.vercel.app"
@@ -100,30 +101,30 @@ const SearchScreen = () => {
 
     };
 
-    // send req
-    const sendRequest = async (userId) => {
-        // console.log(userId);
+    // // send req
+    // const sendRequest = async (userId) => {
+    //     // console.log(userId);
 
-        try {
-            const response = await axios.post(`${backend_API}/request/sentRequest`, {
-                receiverId: userId,
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-            });
+    //     try {
+    //         const response = await axios.post(`${backend_API}/request/sentRequest`, {
+    //             receiverId: userId,
+    //         }, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             },
+    //         });
 
-            if (response.status === 200) {
-                alert("Request Sent Successfully!");
-            } else {
-                alert("Failed to send request!");
-            }
-        } catch (error) {
-            console.error("Error sending request:", error);
-            alert("Something went wrong. Try again.");
-        }
-    };
+    //         if (response.status === 200) {
+    //             alert("Request Sent Successfully!");
+    //         } else {
+    //             alert("Failed to send request!");
+    //         }
+    //     } catch (error) {
+    //         console.error("Error sending request:", error);
+    //         alert("Something went wrong. Try again.");
+    //     }
+    // };
 
     useEffect(() => {
         if (token) {
@@ -237,6 +238,19 @@ const SearchScreen = () => {
                         <div className="col-12 flex flex-wrap">
                             {
                                 filteredItem.length > 0 ? (
+                                    filteredItem.map((user, i) => (
+                                        <SearchResult key={i} user={user} token={token} handleItemCaregory={handleItemCaregory} />
+                                    ))
+                                ) : (
+                                    <h4>No item Found</h4>
+                                )
+                            }
+
+
+                        </div>
+                        {/* <div className="col-12 flex flex-wrap">
+                            {
+                                filteredItem.length > 0 ? (
                                     filteredItem.map((user, i) => {
                                         return (
                                             <div key={i} className="col-12 col-md-6 col-xl-3 p-2" onClick={() => handleItemCaregory(user.businessCategory)} style={{ cursor: "pointer" }}>
@@ -281,7 +295,7 @@ const SearchScreen = () => {
                             }
 
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
