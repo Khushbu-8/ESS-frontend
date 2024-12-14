@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-
 const UserSideBar = () => {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
@@ -39,9 +37,10 @@ const UserSideBar = () => {
        
       ]
       const fetchData = async () => {
+        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
     
         try {
-          const response = await axios.get(`${backend_API}/auth/getuser`, {
+          const response = await axios.get(backend_API, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
@@ -79,7 +78,7 @@ const UserSideBar = () => {
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
           <div>
-          <h3>name</h3>
+          <h3>{profile.name}</h3>
           </div>
      </div>
        <div className=' d-flex justify-content-center'>

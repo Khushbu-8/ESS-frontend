@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { FaPhone, FaStar } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-
 const Recievedrequest = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     // const LoginData = JSON.parse(localStorage.getItem("Users"))
@@ -30,7 +28,7 @@ const Recievedrequest = () => {
 
     const fetchUserRequests = async () => {
         try {
-          const response = await axios.get(`${backend_API}/request/getUserRequests`, {
+          const response = await axios.get(`https://ees-121-backend.vercel.app/request/getUserRequests`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`

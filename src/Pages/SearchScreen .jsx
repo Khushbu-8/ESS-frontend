@@ -9,8 +9,6 @@ import {categories} from '../ServiceCategory'
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-
 const SearchScreen = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     const[auth,setAuth] = useState(false)
@@ -26,8 +24,9 @@ const SearchScreen = () => {
 
     
     const fetchData = async () => {
+        const API_URL = "https://ees-121-backend.vercel.app/auth/getAllUser";
         try {
-            const response = await axios.get(`${backend_API}/auth/getAllUser`);
+            const response = await axios.get(API_URL);
             const data = response.data.user;
             console.log(data);
             setSearchResult(data);
@@ -97,7 +96,7 @@ const sendRequest = async (userId) => {
     console.log(userId);
     
     try {
-        const response = await axios.post(`${backend_API}/request/sentRequest`, {
+        const response = await axios.post(`http://localhost:3000/request/sentRequest`, {
             receiverId: userId,
         }, {
             headers: {

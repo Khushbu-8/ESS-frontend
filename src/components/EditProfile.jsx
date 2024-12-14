@@ -15,8 +15,6 @@ import { CiEdit } from "react-icons/ci";
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-
 const EditProfile = () => {
   const [profile, setProfile] = useState("");
   const [name, setName] = useState('');
@@ -197,6 +195,8 @@ const EditProfile = () => {
     }
   };
 
+  //  const backend_API = "http://localhost:4000"
+  const backend_API = "https://ees-121-backend.vercel.app/auth/updateProfile"
   const token = JSON.parse(localStorage.getItem('token'))
 
   const handleSubmit = async (e) => {
@@ -213,7 +213,7 @@ const EditProfile = () => {
     
 
     try {
-      const response = await axios.post(`${backend_API}/auth/updateProfile`, fullData, {
+      const response = await axios.post(backend_API, fullData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
