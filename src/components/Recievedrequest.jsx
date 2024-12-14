@@ -98,7 +98,8 @@ const Recievedrequest = () => {
         
                                                 <div className='pt-2 d-flex flex-column flex-md-row gap-3  justify-content-between align-items-start w-100 flex-md-row'>
                                                     <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
-                                                    <FaPhone /> Contect Now
+                                                    {/* <FaPhone /> Contect Now */}
+                                                    Accept
                                                     </Link>
                                                     <Link className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange '>
                                                         cancel

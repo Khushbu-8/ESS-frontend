@@ -26,6 +26,7 @@ const SearchResult = ({user,token,handleItemCaregory}) => {
             alert("Request Sent Successfully!");
              setRequestSent(true); // Update state to show Cancel button  
             
+            
           } else {
             alert("Failed to send request!");
           }
