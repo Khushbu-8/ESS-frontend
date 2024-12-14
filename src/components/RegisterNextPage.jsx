@@ -226,8 +226,8 @@ const RegisterNextPage = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className=" bg-gray-100 text-gray-900 flex justify-center">
-            <div className=" sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+          <div className="  text-gray-900 w-full flex justify-center">
+            <div className=" sm:m-10 bg-white w-full shadow sm:rounded-lg flex justify-center flex-1">
               <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-12">
                 <div className="flex flex-col items-center">
                   <div className="w-full flex-1 mt-8">
@@ -255,7 +255,7 @@ const RegisterNextPage = () => {
                       </div>
                     </div>
                     <form action="" onSubmit={handleSubmits}>
-                      <div className="mx-auto max-w-xs">
+                      <div className="mx-auto max-w-full">
                         <input
                           value={businessName}
                           onChange={(e) => setBusinessName(e.target.value)}
@@ -264,15 +264,15 @@ const RegisterNextPage = () => {
                         <div className="mt-3">
                           {/* Display Selected Category */}
                           <div
-                            className="border border-2 rounded-md p-2  bg-gray-100 focus:bg-white cursor-pointer"
+                            className="border border-1 rounded-md p-3 w-full  bg-gray-100 focus:bg-white cursor-pointer"
                             onClick={toggleDropdown}
                           >
-                            {businessCategory ? (
-                              <span className="inline-block px-3 py-1 ">
+                            {businessCategory.length > 0 ? (
+                              <span className="inline-block px-3 text-black py-1  ">
                                 {businessCategory}
                               </span>
                             ) : (
-                              <span className="text-gray-400">Select a category</span>
+                              <span className="text-gray-500 ps-3 py-1">Select a category</span>
                             )}
                           </div>
 

@@ -145,15 +145,15 @@ function Registration() {
   return (
     <>
 
-      <div className="container pt-24">
+      <div className="container py-24">
         <div className="row mx-auto ">
-          <div className="registerpage bg w-full bg-white p-0">
+          <div className="registerpage shadow bg-white p-0">
             <div className="col-12 d-flex flex-wrap">
 
               <div className="col-12 col-lg-6 p-2 d-flex justify-content-center align-items-center">
-                <div className='flex justify-center align-center'>
-                  <div className="flex flex-col items-center   align-center">
-                    <div className='mb-12'>
+                <div className='d-flex justify-content-center align-items-center'>
+                  <div className="">
+                    <div className='mb-12 d-flex justify-content-center align-items-center'>
                       <img src={logo} width={100} />
                     </div>
                     {/* <button className="w-full px-2 max-w-xs font-bold shadow-sm rounded-lg py-3 bg-green-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
@@ -181,22 +181,22 @@ function Registration() {
                 </div>
               </div>
             </div>
-            <div className=" border-b text-center">
+            {/* <div className=" border-b text-center">
               <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
 
               </div>
-            </div>
+            </div> */}
 
-            <form action="" onSubmit={handleSubmits} className='p-4'>
+            <form action="" onSubmit={handleSubmits} className='py-5'>
             
-              <div className="col-12 d-flex flex-wrap">
-                <div className="col-12 col-lg-6">
+              <div className="col-12 d-flex flex-wrap justify-content-center p-5">
+                <div className="col-12 col-lg-6 p-1">
                   <div className='px-2'>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Name" />
+                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" placeholder="Name" />
                     {errors.name && <span className="error text-orange text-orange text-sm">{errors.name}</span>}
                     <input
                       type="email"
@@ -217,18 +217,20 @@ function Registration() {
                   </div>
                 </div>
                 <div className="col-12 col-lg-6">
-                  <div className='px-2'>
+                  <div className='px-2 w-full'>
+                    <div className='col-12 p-1'>
                     <input
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Contect" />
+                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2 " type="text" placeholder="Phone" />
                     {errors.phone && <span className="error text-orange text-sm">{errors.phone}</span>}
-                    <div className="col-12 d-flex flex-wrap">
-                      <div className="col-12 col-lg-6 ">
+                    </div>
+                    <div className="col-12 d-flex flex-wrap justify-content-between">
+                      <div className="col-12 col-lg-6 p-1 ">
                         <input
                           value={area}
                           onChange={(e) => setArea(e.target.value)}
-                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Area" />
+                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Area" />
                         {errors.area && <span className="error text-orange text-orange text-sm">{errors.area}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
@@ -241,11 +243,11 @@ function Registration() {
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
                         {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
                       </div>
-                      <div className="col-12 col-lg-6 p-1">
+                      <div className="col-12 col-lg-6 p-1 ">
                         <input
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="City" />
+                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="City" />
 
                         {/* <CitySelect
                           countryid={country}
@@ -274,7 +276,7 @@ function Registration() {
                         /> */}
                         {errors.state && <span className="error text-orange text-orange text-sm">{errors.state}</span>}
                       </div>
-                      <div className="col-12 col-lg-6 p-1">
+                      <div className="col-12 col-lg-6 p-1 ">
                         <input
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
@@ -299,8 +301,8 @@ function Registration() {
               </div>
 
               <div className='d-flex justify-content-center'>
-                <button type='submit' className="mt-3 tracking-wide font-semibold bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                  <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <button type='submit' className="mt-3 tracking-wide font-semibold bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <svg className="w-6 h-6 -ml-1" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                     <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                     <circle cx="8.5" cy={7} r={4} />
                     <path d="M20 8v6M23 11h-6" />

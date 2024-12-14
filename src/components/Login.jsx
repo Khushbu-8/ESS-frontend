@@ -49,9 +49,9 @@ const Login = () => {
     return (
        <div className="container">
         <div className="row">
-        <div className=" bg-gray-100 text-gray-900 flex justify-center">
+        <div className="  text-gray-900 flex justify-center">
         <div className=" sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+          <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-12">
             <div className="flex flex-col items-center">
               <div className="w-full flex-1 mt-8">
                 <div className="flex flex-col items-center">
@@ -107,7 +107,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-green text-center hidden lg:flex">
+          <div className="flex-1 bg-green-100 text-center hidden lg:flex">
             <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" >
               <img src="https://readymadeui.com/signin-image.webp" alt="" />
             </div>
