@@ -58,7 +58,7 @@ const Card = () => {
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
-                                            <FaStar className='text-warning' /> <span> User ratting</span>
+                                            <FaStar className='text-warning' /> <span> User rating</span>
                                         </div>
                                         <div className="rating rating-sm py-1 w-full text-center d-flex align-items-center  justify-content-center">
                                             <FaStar className='text-warning' />
