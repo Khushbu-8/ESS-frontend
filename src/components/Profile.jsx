@@ -78,7 +78,7 @@ const Profile = () => {
                                             </p>
 
                                             <div className="flex">
-                                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className=" text-orange px-8 py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
+                                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className=" text-orange py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
                                             </div>
                                         </div>
                                         <div className="col-6 d-flex justify-content-end">

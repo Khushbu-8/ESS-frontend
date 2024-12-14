@@ -34,8 +34,6 @@ const Card = () => {
     useEffect(() => {
         fetchData()
     }, [])
-
-
     return (
         <>
             <section className='mt-24 p-4'>
