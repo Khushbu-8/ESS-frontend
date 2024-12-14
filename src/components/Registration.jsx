@@ -203,8 +203,8 @@ function Registration() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Email" />
-                      <span className='text-gray text-sm'>Email must end with @gmail.com.</span>
-                    {errors.email && <span className="error text-orange text-sm">{errors.email}</span>}
+                      <span className=' ps-2 text-gray text-sm'>Email must end with @gmail.com.</span>
+                    {errors.email ? (<span className="error text-orange text-sm">{errors.email}</span>) : (<span className=' ps-2 text-gray text-sm'>Email must end with @gmail.com.</span>)}
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
