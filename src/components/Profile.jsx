@@ -25,8 +25,8 @@ const Profile = () => {
                 },
             });
             const data = await response.data;
-            setProfile(data.user)
-            console.log(data.user, "data profile");
+            // setProfile(data.user)
+            console.log(data, "data profile");
             if (response.status === 200) {
                 localStorage.setItem("Users", JSON.stringify(data.user))
                 navigate('/profile')

@@ -48,8 +48,8 @@ const UserSideBar = () => {
             },
           });
           const data = await response.data;
-          setProfile(data.user)
-          // console.log(data, "data Edit");
+          // setProfile(data.user)
+          console.log(data, "data Edit");
           if (response.status === 200) {
             localStorage.setItem("Users", JSON.stringify(data.user))
             console.log("profile Successful...");
