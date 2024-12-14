@@ -65,8 +65,8 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="col-12 d-flex">
-                                        <div className="col-6 p-5">
+                                    <div className="col-12 d-flex flex-wrap ">
+                                        <div className="c0l-12 col-md-6 p-5">
                                             <h2 className="text-3xl font-bold  text-gray-700  mt-4">
                                                 {profile.name}
                                             </h2>
@@ -81,7 +81,7 @@ const Profile = () => {
                                                 <button onClick={() => navigate(`/editprofile`, { state: profile })} className=" text-orange py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
                                             </div>
                                         </div>
-                                        <div className="col-6 d-flex justify-content-end">
+                                        <div className="c0l-12 col-md-6 d-flex justify-content-end">
                                             <div className='p-5'>
                                                 <p className='text-gray'>Your Bussiness Id :</p>
                                                 <span className='py-2'> {profile._id}</span>
