@@ -53,6 +53,12 @@ const Recievedrequest = () => {
         fetchUserRequests();
       },[])
 
+      const hendleAccept = (id) =>{
+        console.log(id, "accept");
+       
+
+      }
+
     return (
         <>
             <section>
@@ -97,7 +103,7 @@ const Recievedrequest = () => {
                                                 <p className='d-flex align-items-center gap-1' ><FaLocationDot/> { receive.user.address.area} </p>
         
                                                 <div className='pt-2 d-flex flex-column flex-md-row gap-3  justify-content-between align-items-start w-100 flex-md-row'>
-                                                    <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
+                                                    <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success ' onClick={ () =>hendleAccept(receive.user._id)}>
                                                     {/* <FaPhone /> Contect Now */}
                                                     Accept
                                                     </Link>

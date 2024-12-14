@@ -104,12 +104,15 @@ console.log(sendedRequest,"sended");
                                                 <p className='d-flex align-items-center gap-1' ><FaLocationDot/> { receive.user.address.area} </p>
         
                                                 <div className='pt-2 d-flex flex-column flex-md-row gap-3  justify-content-end align-items-start w-100 flex-md-row'>
+                                                   {/* after accept */}
                                                     {/* <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
                                                     <FaPhone /> Contect Now
                                                     </Link> */}
                                                     <Link className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange '>
                                                         cancel
                                                     </Link>
+                                                   
+                                                   
                                                 </div>
         
                                                </div>
