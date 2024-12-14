@@ -71,7 +71,7 @@ const Profile = () => {
                                             </h2>
                                             <h6 className='py-3 text-gray'>{profile.email}</h6>
                                             <p className='text-gray pb-3'> +91{profile.phone}</p>
-                                            <p className='text-gray pb-3'>  {profile?.address?.area}</p>
+                                            {/* <p className='text-gray pb-3'>  {profile?.address?.area}</p> */}
                                             <p className="text-gray pb-3">
                                                 {profile?.address?.area} {profile?.address?.city}  {profile?.address?.state} {profile?.address?.country}  {profile?.address?.pincode}
                                             </p>
