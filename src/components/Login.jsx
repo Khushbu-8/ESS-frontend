@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 
-const backend_API = import.meta.env.BACKEND_API;
+// const backend_API = import.meta.env.BACKEND_API;
 console.log(backend_API,"api");
 
 
@@ -19,6 +19,9 @@ const Login = () => {
       // Redirect to a protected page if already logged in
       return <Navigate to="/" />;
   }
+  const backend_API = "https://ees-121-backend.vercel.app"
+
+  console.log(backend_API,"api");
 
     const handleSubmit = async(e) => {
         e.preventDefault();
