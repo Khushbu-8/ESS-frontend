@@ -55,6 +55,7 @@ const Recievedrequest = () => {
       },[])
 
       const hendleAccept = (id) =>{
+
         console.log(id, "accept");
         setRequestAccept(true)
 

@@ -52,14 +52,20 @@ const Card = () => {
                                     </figure>
                                     <div className='text-center'>
                                         <h1 className='text-xl'>{profile.name}</h1>
+                                    </div>
                                         <div className="rating rating-sm py-1 w-full text-center d-flex align-items-center  justify-content-center">
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />
-                                            <FaStar className='text-warning' /> 
+                                            <FaStar className='text-warning' /> <span> User ratting</span>
                                         </div>
-                                    </div>
+                                        <div className="rating rating-sm py-1 w-full text-center d-flex align-items-center  justify-content-center">
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' />
+                                            <FaStar className='text-warning' /><span> Provider</span>
+                                            
+                                        </div>
                                    </div>
                                 </div>
                                 <div className="mt col-12 col-lg-8  text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
