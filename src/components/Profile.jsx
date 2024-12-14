@@ -81,8 +81,8 @@ const Profile = () => {
                                                 <button onClick={() => navigate(`/editprofile`, { state: profile })} className=" text-orange py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
                                             </div>
                                         </div>
-                                        <div className="col-12 col-md-6 d-flex justify-content-end">
-                                            <div className='p-5'>
+                                        <div className="col-12 col-md-6 d-flex justify-content-md-end justify-content-start">
+                                            <div className='p-5 w-full'>
                                                 <p className='text-gray'>Your Bussiness Id :</p>
                                                 <span className='py-2'> {profile._id}</span>
                                                 <h6 className='text-gray py-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h6>
