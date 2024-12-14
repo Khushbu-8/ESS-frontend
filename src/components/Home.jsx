@@ -28,12 +28,12 @@ const Home = () => {
       <UserSideBar/>
 
      <div className='mt-32'>
-       {/* {
+       {
         auth ? <Card /> : <></>
       }
-       */}
+      
     
-     <Card /> 
+     {/* <Card />  */}
      <CardSlider/>
      </div>
 <section>
