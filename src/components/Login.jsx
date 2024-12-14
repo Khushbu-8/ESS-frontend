@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 
 // const backend_API = import.meta.env.BACKEND_API;
-console.log(backend_API,"api");
+// console.log(backend_API,"api");
 
 
 
