@@ -86,7 +86,7 @@ const Profile = () => {
                                                 <p className='text-gray'>Your Bussiness Id :</p>
                                                 <span className='py-2'> {profile._id}</span>
                                                 <h6 className='text-gray py-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h6>
-                                                {profile.businessCategory ? (<div className='btn  d-flex justify-content-center text-uppercase rounded-md text-white bg-orange py-2'>{profile.businessCategory}</div>) : (<></>) }
+                                                {profile.businessCategory ? (<div className='btn w-50  d-flex justify-content-center text-uppercase rounded-md text-white bg-orange py-2'>{profile.businessCategory}</div>) : (<></>) }
 
                                                 <div className="rating rating-sm py-4 d-flex align-items-center">
                                                     <FaStar className='text-warning' />
