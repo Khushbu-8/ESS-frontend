@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 
 const backend_API = process.env.BACKEND_API;
+console.log(backend_API,"api");
+
 
 
 const Login = () => {
@@ -54,7 +56,7 @@ const Login = () => {
                   <div className='mb-12'>
                     <img src={logo} width={100} />
                   </div>
-                  <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-green-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                  {/* <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-green-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
                     <div className="bg-white p-2 rounded-full">
                       <svg className="w-4" viewBox="0 0 533.5 544.3">
                         <path d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z" fill="#4285f4" />
@@ -66,13 +68,13 @@ const Login = () => {
                     <span className="ml-4">
                       Sign In with Google
                     </span>
-                  </button>
+                  </button> */}
                 </div>
-                <div className="my-12 border-b text-center">
+                {/* <div className="my-12 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                     Or sign In with Cartesian E-mail
                   </div>
-                </div>
+                </div> */}
                 <form action="" onSubmit={handleSubmit}>
                   <div className="mx-auto max-w-xs">
                     <input
