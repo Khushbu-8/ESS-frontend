@@ -9,7 +9,7 @@ import { categories } from '../ServiceCategory'
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API =import.meta.env.BACKEND_API;
 
 const SearchScreen = () => {
     const token = JSON.parse(localStorage.getItem('token'))

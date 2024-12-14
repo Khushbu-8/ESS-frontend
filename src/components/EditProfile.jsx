@@ -15,7 +15,7 @@ import { CiEdit } from "react-icons/ci";
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API =  import.meta.env.BACKEND_API;
 
 const EditProfile = () => {
   const [profile, setProfile] = useState("");

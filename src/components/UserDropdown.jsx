@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 function UserDropdown() {
   const [profile, setProfile] = useState("");

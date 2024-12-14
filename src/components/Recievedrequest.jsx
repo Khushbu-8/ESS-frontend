@@ -4,7 +4,7 @@ import { FaLocationDot, FaPhone, FaStar } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 import acService from '../../public/service-icons/ac service.png'
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 
 const Recievedrequest = () => {

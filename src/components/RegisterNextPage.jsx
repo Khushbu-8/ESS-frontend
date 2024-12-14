@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import logo from "../../public/ees-logo.png"
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 
 const RegisterNextPage = () => {

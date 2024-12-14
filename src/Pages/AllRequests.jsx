@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaPhone, FaStar } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 const AllRequests = () => {
     const token = JSON.parse(localStorage.getItem('token'))

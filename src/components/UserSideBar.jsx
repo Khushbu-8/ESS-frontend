@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
 
-const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+const backend_API = import.meta.env.BACKEND_API;
 
 const UserSideBar = () => {
   const [profile, setProfile] = useState("");
@@ -48,8 +48,8 @@ const UserSideBar = () => {
             },
           });
           const data = await response.data;
-          // setProfile(data.user)
-          console.log(data, "data Edit");
+          setProfile(data.user)
+          console.log(data, "data sidebar");
           if (response.status === 200) {
             localStorage.setItem("Users", JSON.stringify(data.user))
             console.log("profile Successful...");
@@ -80,7 +80,7 @@ const UserSideBar = () => {
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
           </div>
           <div>
-          {/* <h3>{profile.name}</h3> */}
+          <h3>{profile.name}</h3>
           </div>
      </div>
        <div className=' d-flex justify-content-center'>
