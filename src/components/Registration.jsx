@@ -6,9 +6,7 @@ import {
   CitySelect,
   CountrySelect,
   StateSelect,
-  LanguageSelect,
-  RegionSelect,
-  PhonecodeSelect
+ 
 } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 
@@ -21,11 +19,12 @@ function Registration() {
   const [confirmpassword, setConfirmpassword] = useState('');
   const [phone, setPhone] = useState('');
   // for address
+  const [pincode, setPincode] = useState('');
   const [area, setArea] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
-  const [pincode, setPincode] = useState('');
+  const [error, setError] = useState('');
   const [address, setAddress] = useState([])
   
   const [errorMessage, setErrorMessage] = useState('');
@@ -77,6 +76,47 @@ function Registration() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const fetchLocationDetails = async (pincode) => {
+    try {
+      const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+      const data = await response.json();
+      console.log(data);
+      
+
+      if (data[0].Status === 'Success') {
+        const postOffice = data[0].PostOffice[0]; // Get the first result
+        setArea(postOffice.Name || ''); // Set Area (e.g., Kamrej)
+        setCity(postOffice.District || ''); // Set City (e.g., Surat)
+        setState(postOffice.State || ''); // Set State (e.g., Gujarat)
+        setCountry(postOffice.Country || ''); // Set Country (e.g., India)
+        setError('');
+      } else {
+        setError('Invalid Pincode! Please enter a valid one.');
+        setArea('');
+        setCity('');
+        setState('');
+        setCountry('');
+      }
+    } catch (err) {
+      setError('Failed to fetch location details. Try again later.');
+    }
+  };
+
+  // Handle pincode input change
+  const handlePincodeChange = (e) => {
+    const inputPincode = e.target.value.trim();
+    setPincode(inputPincode);
+
+    if (inputPincode.length === 6) {
+      fetchLocationDetails(inputPincode);
+    } else {
+      setArea('');
+      setCity('');
+      setState('');
+      setCountry('');
+      setError('');
+    }
+  };
 
   const handleSubmits = async (e) => {
     setLoading(true)
@@ -181,7 +221,7 @@ function Registration() {
                     <input
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Phone" />
+                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Contect" />
                     {errors.phone && <span className="error text-orange text-sm">{errors.phone}</span>}
                     <div className="col-12 d-flex flex-wrap">
                       <div className="col-12 col-lg-6 ">
@@ -193,62 +233,68 @@ function Registration() {
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         <input
+
                           value={pincode}
-                          onChange={(e) => setPincode(e.target.value)}
+                          onChange={handlePincodeChange}
+                          maxLength="6"
+                          // onChange={(e) => setPincode(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
                         {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        {/* <input
+                        <input
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="City" />
-                        */}
-                        <CitySelect
+
+                        {/* <CitySelect
                           countryid={country}
                           stateid={state}
                           onChange={(e) => {
                             console.log(e);
                           }}
+                          value={city}
                           placeHolder="Select City"
-                        />
+                        /> */}
                         {errors.city && <span className="error text-orange text-orange text-sm">{errors.city}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        {/* <input
+                        <input
                           value={state}
                           onChange={(e) => setState(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="State" />
-                       */}
+                        {/*                       
                         <StateSelect
                           countryid={country}
                           onChange={(e) => {
                             setState(e.id);
                           }}
+                          value={state}
                           placeHolder="Select State"
-                        />
+                        /> */}
                         {errors.state && <span className="error text-orange text-orange text-sm">{errors.state}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
-                        {/* <input
+                        <input
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Country" />
-                      */}
-                        <CountrySelect
+
+                        {/* <CountrySelect
                           onChange={(e) => {
                             setCountry(e.id);
                           }}
                           placeHolder="Select Country"
                           value={country}
-                        />
+                        /> */}
                         {errors.country && <span className="error text-orange text-orange text-sm">{errors.country}</span>}
                       </div>
-                     
+
                     </div>
 
                   </div>
                 </div>
+
 
               </div>
 
