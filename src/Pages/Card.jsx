@@ -87,7 +87,7 @@ const Card = () => {
                                             <h6 >Address</h6>
                                         </div>
                                         <div className='p-2  text-gray'>
-                                            <p>{profile.address.area} {profile.address.city} {profile.address.state} {profile.address.country} {profile.address.pincode}</p>
+                                            <p>{profile?.address?.area} {profile?.address?.city} {profile?.address?.state} {profile?.address?.country} {profile?.address?.pincode}</p>
                                         </div>
                                     </div>
                                     <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
