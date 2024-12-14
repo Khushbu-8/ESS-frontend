@@ -203,12 +203,12 @@ function Registration() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" placeholder="Email" />
-                    {errors.email ? (<span className="error text-orange text-sm">{errors.email}</span>) : (<span className=' ps-2 text-gray text-sm'>Email must end with @gmail.com.</span>)}
+                    {errors.email ? (<span className="error text-orange text-sm">{errors.email}</span>) : (<span className='  text-gray text-sm'>Email must end with @gmail.com.</span>)}
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="password" placeholder="Password" />
-                    {errors.password ?( <span className="error text-orange text-orange text-sm">{errors.password}</span>) : (<span className=' ps-2 text-gray text-sm'>Password must be at least 6 characters, include an uppercase letter, a number, and a special character.</span>)}
+                    {errors.password ?( <span className="error text-orange text-orange text-sm">{errors.password}</span>) : (<span className='  text-gray text-sm'>Password must be at least 6 characters, include an uppercase letter, a number, and a special character.</span>)}
                     <input
                       value={confirmpassword}
                       onChange={(e) => setConfirmpassword(e.target.value)}
@@ -223,7 +223,7 @@ function Registration() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2 " type="text" placeholder="Phone" />
-                    {errors.phone ? (<span className="error text-orange text-sm">{errors.phone}</span>) : (<span className=' ps-2 text-gray text-sm'>Phone number must be at least 10 digits.</span>)}
+                    {errors.phone ? (<span className="error text-orange text-sm">{errors.phone}</span>) : (<span className=' text-gray text-sm'>Phone number must be at least 10 digits.</span>)}
                     </div>
                     <div className="col-12 d-flex flex-wrap justify-content-between">
                       <div className="col-12 col-lg-6 p-1 ">
