@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
 
 function UserDropdown() {
   const [profile, setProfile] = useState("");
@@ -10,10 +11,8 @@ function UserDropdown() {
   // console.log(token, "token profil");
 
   const fetchData = async () => {
-    const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
-
     try {
-      const response = await axios.get(backend_API, {
+      const response = await axios.get(`${backend_API}/auth/getuser`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

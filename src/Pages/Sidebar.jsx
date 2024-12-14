@@ -38,7 +38,7 @@ const Sidebar = () => {
               {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' my-1 rounded hover:bg-primary hover:text-white focus:text-white'>
+                    <li key={++i} className=' my-1 w-full rounded hover:bg-primary hover:text-white focus:text-white'>
                       <Link to={manu.path} className=' text-lg'>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>

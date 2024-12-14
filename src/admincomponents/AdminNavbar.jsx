@@ -2,14 +2,32 @@ import React, { useEffect, useState } from 'react'
 import logo from "../../public/ess-121.png"
 import { Link } from 'react-router-dom'
 import UserDropdown from '../components/UserDropdown'
+import { FaPlus } from "react-icons/fa6";
+
+import { GoBell } from "react-icons/go";
 const AdminNavbar = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     const [auth, setAuth] = useState(false)
     const [sticky, setSticky] = useState(false);
 
+    const navManu = [
+        {
+        title: 'Home',
+        link: '/',
+        icon: <FaPlus /> 
+        
+    },
+        {
+        title: 'Services',
+        link: '/servises',
+        icon: <FaPlus /> 
+        
+    },
+]
+
     const NaveItems = (
         <>
-            <li><Link className='' to={'/'}>Home</Link></li>
+            <li><Link  className='' to={'/'}>Home</Link></li>
             <li><Link to={'/servises'}>Servises</Link></li>
         </>
     )
@@ -38,7 +56,7 @@ const AdminNavbar = () => {
 
     return (
         <>
-            <nav className={`  navbar-expand-lg bg-white w-full md:px-20 dark:bg-slate-900 dark:text-white  px-4 py-2 z-20 fixed top-0  ${sticky ? "sticky-navbar shadow-md bg-white dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out" : " bg-base-100 "
+            <nav className={`  navbar-expand-lg bg-white w-full md:px-20  shadow-sm  px-4 py-2 z-20 fixed top-0  ${sticky ? "sticky-navbar shadow-md bg-white dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out" : " bg-base-100 "
                 } `}>
                 {/* <nav class="navbar navbar-expand-lg bg-white"> */}
                 <div class="container-fluid px-3">
@@ -60,6 +78,7 @@ const AdminNavbar = () => {
                                     </svg>
                                 </button>
                                 <ul class="dropdown-menu mt-5 p-3">
+                                  
                                     {NaveItems}
                                 </ul>
                             </div>
@@ -68,7 +87,7 @@ const AdminNavbar = () => {
                                 <img src={logo} width={80} alt="" />
                             </div>
                             <div className='d-none d-lg-flex px-3'>
-                                <label className=" px-3  border rounded- flex items-center gap-2 ">
+                                <label className=" px-3  border  flex items-center gap-2 ">
                                     <input type="text" className="grow outline-none  bg-base-100 p-2 " placeholder="Search" />
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -88,9 +107,13 @@ const AdminNavbar = () => {
                             <div className='w-full d-flex justify-content-end  align-items-center '>
                                 <div className="manu  d-flex d-none d-lg-flex">
                                     <ul className='d-flex gap-3 px-3'>
-
-                                        {NaveItems}
-
+                                        {
+                                            navManu.map((val,i)=>{
+                                                return(
+                                                    <li><Link  className=' d-flex align-items-center text-black gap-1 ' to={val.link}>{val.title} {val.icon}</Link></li> 
+                                                )
+                                            })
+                                        }
                                     </ul>
                                 </div>
                                 <div className=" btn border-0 d-flex d-lg-none">
@@ -105,7 +128,9 @@ const AdminNavbar = () => {
                                             clipRule="evenodd" />
                                     </svg>
                                 </div>
-
+                                 <div>
+                                 <GoBell className='w-100 fs-5 fw-bold' />
+                                    </div>   
                                 {/* <UserDropdown />
                                 <div className="">
                                     <Link to={"/login"} className="bg-orange text-white px-3 py-2 rounded-md hover:bg-slate-800 duretion-300 cursor-pointer">Login</Link>

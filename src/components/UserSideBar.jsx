@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
 
+const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
+
 const UserSideBar = () => {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
@@ -37,10 +39,9 @@ const UserSideBar = () => {
        
       ]
       const fetchData = async () => {
-        const backend_API = "https://ees-121-backend.vercel.app/auth/getuser"
     
         try {
-          const response = await axios.get(backend_API, {
+          const response = await axios.get(`${backend_API}/auth/getuser`, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
@@ -50,6 +51,7 @@ const UserSideBar = () => {
           setProfile(data.user)
           // console.log(data, "data Edit");
           if (response.status === 200) {
+            localStorage.setItem("Users", JSON.stringify(data.user))
             console.log("profile Successful...");
           }
         } catch (error) {
@@ -70,7 +72,7 @@ const UserSideBar = () => {
   };
   return (
     <>
-  <div className="offcanvas offcanvas-lg bg-white offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div className="offcanvas bg-white offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div className="d-flex  align-items-center p-3">
     
      <div className='w-full d-flex align-items-center gap-4'>
@@ -93,17 +95,17 @@ const UserSideBar = () => {
       {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white'>
-                      <Link to={manu.path} className=' text-lg'>
+                    <li key={++i} className=' p-2 rounded hover:bg-orange hover:text-white focus:text-white'>
+                      <Link to={manu.path} className=' text-lg d-flex align-items-center'>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>
                     </li>
                   )
                 })
               }
-              <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white'>
-                      <Link onClick={handleLogout} className=' text-lg'>
-                        <span className='inline-block mr-2 text-xl'><FaPowerOff/></span>
+              <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
+                      <Link onClick={handleLogout} className=' text-lg d-flex align-items-center'>
+                        <span className='inline-block mr-2 text-xl '><FaPowerOff/></span>
                         Logout</Link>
                     </li>
       </ul>

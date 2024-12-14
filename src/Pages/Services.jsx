@@ -15,7 +15,7 @@ const Services = () => {
    <UserSideBar/>
   
       
-     <div className='mt-24'>
+     <div className='mt-32'>
     
     <SearchScreen/>
     {/* <ServiceDetail/> */}
