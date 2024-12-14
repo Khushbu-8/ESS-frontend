@@ -68,7 +68,7 @@ const Card = () => {
                                             <h6 >Email</h6>
                                         </div>
                                         <div className='p-2  text-gray'>
-                                            <p>Email@gmail.com</p>
+                                            <p>{profile.email}</p>
                                         </div>
 
                                     </div>
@@ -78,7 +78,7 @@ const Card = () => {
                                             <h6 >Contact</h6>
                                         </div>
                                         <div className='p-2 text-gray'>
-                                            <p>9442556634</p>
+                                            <p>{profile.phon}</p>
                                         </div>
 
                                     </div>
@@ -87,7 +87,7 @@ const Card = () => {
                                             <h6 >Address</h6>
                                         </div>
                                         <div className='p-2  text-gray'>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                                            <p>{profile.address.area} {profile.address.city} {profile.address.state} {profile.address.country} {profile.address.pincode}</p>
                                         </div>
                                     </div>
                                     <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
