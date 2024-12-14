@@ -78,7 +78,7 @@ const Card = () => {
                                             <h6 >Contact</h6>
                                         </div>
                                         <div className='p-2 text-gray'>
-                                            <p>{profile.phon}</p>
+                                            <p>{profile.phone}</p>
                                         </div>
 
                                     </div>
