@@ -16,7 +16,7 @@ import Card from "./Pages/Card";
 import Services from "./Pages/Services";
 import RegisterNextPage from "./components/RegisterNextPage";
 import Work from "./Pages/Work";
-import Senedrequest from "./Pages/Senedrequest";
+import Senedrequest from "./components/Senedrequest";
 
 export default function App() {
 

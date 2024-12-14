@@ -100,19 +100,9 @@ const SearchScreen = () => {
 
     };
 
-    const handleItemClickLocation = (loc) => {
-        setCategoryFilter(loc); // Update the search box with the selected value
-        setShowListt(false); // Hide the list
-        let filtercat = [...selectedItem]
-        if (loc) {
-            filtercat = filtercat.filter((user) => user.address.city == loc)
-        }
-        setSelectedItem(filtercat); // Set the selected item
-    };
-
     // send req
     const sendRequest = async (userId) => {
-        console.log(userId);
+        // console.log(userId);
 
         try {
             const response = await axios.post(`${backend_API}/request/sentRequest`, {
@@ -123,6 +113,7 @@ const SearchScreen = () => {
                     'Authorization': `Bearer ${token}`
                 },
             });
+
             if (response.status === 200) {
                 alert("Request Sent Successfully!");
             } else {

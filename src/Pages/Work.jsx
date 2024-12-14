@@ -1,7 +1,6 @@
 import React from 'react'
 import AdminNavbar from '../admincomponents/AdminNavbar'
 import UserSideBar from '../components/UserSideBar'
-import Senedrequest from './Senedrequest'
 import Recievedrequest from '../components/Recievedrequest'
 import AllRequests from './AllRequests'
 import { Link } from 'react-router-dom'
