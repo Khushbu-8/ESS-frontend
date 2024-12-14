@@ -181,7 +181,7 @@ function Registration() {
                     <input
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Contect" />
+                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Phone" />
                     {errors.phone && <span className="error text-orange text-sm">{errors.phone}</span>}
                     <div className="col-12 d-flex flex-wrap">
                       <div className="col-12 col-lg-6 ">
@@ -190,6 +190,13 @@ function Registration() {
                           onChange={(e) => setArea(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Area" />
                         {errors.area && <span className="error text-orange text-orange text-sm">{errors.area}</span>}
+                      </div>
+                      <div className="col-12 col-lg-6 p-1">
+                        <input
+                          value={pincode}
+                          onChange={(e) => setPincode(e.target.value)}
+                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
+                        {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
                       </div>
                       <div className="col-12 col-lg-6 p-1">
                         {/* <input
@@ -237,13 +244,7 @@ function Registration() {
                         />
                         {errors.country && <span className="error text-orange text-orange text-sm">{errors.country}</span>}
                       </div>
-                      <div className="col-12 col-lg-6 p-1">
-                        <input
-                          value={pincode}
-                          onChange={(e) => setPincode(e.target.value)}
-                          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2" type="text" placeholder="Pincode" />
-                        {errors.pincode && <span className="error text-orange text-orange text-sm">{errors.pincode}</span>}
-                      </div>
+                     
                     </div>
 
                   </div>

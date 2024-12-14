@@ -21,7 +21,6 @@ const Login = () => {
       return <Navigate to="/" />;
   }
 
-  console.log(backend_API,"api");
 
     const handleSubmit = async(e) => {
         e.preventDefault();
