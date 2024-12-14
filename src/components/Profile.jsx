@@ -67,7 +67,7 @@ const Profile = () => {
                                     <div className="col-12 d-flex">
                                         <div className="col-6 p-5">
                                             <h2 className="text-3xl font-bold  text-gray-700  mt-4">
-                                                {profile.name}
+                                                {/* {profile.name} */}
                                             </h2>
                                             <h6 className='py-3 text-gray'>{profile.email}</h6>
                                             <p className='text-gray pb-3'> +91{profile.phone}</p>
