@@ -8,7 +8,8 @@ import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import { FaStar } from 'react-icons/fa';
 
-const backend_API = import.meta.env.BACKEND_API;
+// const backend_API = import.meta.env.BACKEND_API;
+const backend_API = "https://ees-121-backend.vercel.app"
 
 
 const Profile = () => {

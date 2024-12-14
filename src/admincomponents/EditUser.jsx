@@ -5,6 +5,7 @@ import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
 // const backend_API = import.meta.env.BACKEND_API;
+const backend_API = "https://ees-121-backend.vercel.app"
 
 
 const EditUser = () => {

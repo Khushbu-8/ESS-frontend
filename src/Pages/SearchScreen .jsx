@@ -9,7 +9,8 @@ import { categories } from '../ServiceCategory'
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
 
-const backend_API =import.meta.env.BACKEND_API;
+// const backend_API =import.meta.env.BACKEND_API;
+const backend_API = "https://ees-121-backend.vercel.app"
 
 const SearchScreen = () => {
     const token = JSON.parse(localStorage.getItem('token'))
