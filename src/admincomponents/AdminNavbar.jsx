@@ -84,7 +84,9 @@ const AdminNavbar = () => {
                             </div>
 
                             <div className="logo navbar-brand">
-                                <img src={logo} width={80} alt="" />
+                               <Link to={'/'}>
+                               <img src={logo} width={80} alt="" />
+                               </Link>
                             </div>
                             <div className='d-none d-lg-flex px-3'>
                                 <label className=" px-3  border  flex items-center gap-2 ">
@@ -104,7 +106,7 @@ const AdminNavbar = () => {
 
                         </div>
                         <div className="col-4 d-flex align-items-center justify-content-end">
-                            <div className='w-full d-flex justify-content-end  align-items-center '>
+                            <div className='w-full d-flex justify-content-end  align-items-center px-3'>
                                 <div className="manu  d-flex d-none d-lg-flex">
                                     <ul className='d-flex gap-3 px-3'>
                                         {
@@ -128,7 +130,7 @@ const AdminNavbar = () => {
                                             clipRule="evenodd" />
                                     </svg>
                                 </div>
-                                 <div>
+                                 <div className='pe-3'>
                                  <GoBell className='w-100 fs-5 fw-bold' />
                                     </div>   
                                 {/* <UserDropdown />

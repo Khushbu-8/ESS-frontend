@@ -26,13 +26,14 @@ const Home = () => {
 
       <AdminNavbar />  
       <UserSideBar/>
-      {
+
+     <div className='mt-32'>
+       {/* {
         auth ? <Card /> : <></>
       }
-      
-      {/* <Card />  */}
-
-     <div className='mt-3'>
+       */}
+    
+     <Card /> 
      <CardSlider/>
      </div>
 <section>

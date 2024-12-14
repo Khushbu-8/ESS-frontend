@@ -1,7 +1,40 @@
-import React from 'react'
+
 import { FaStar } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+
+const backend_API = "https://ees-121-backend.vercel.app"
 
 const Card = () => {
+    const [profile, setProfile] = useState([]);
+    const fetchData = async () => {
+        const token = JSON.parse(localStorage.getItem('token'))
+        //   console.log(token, "token Edit");
+        try {
+            const response = await axios.get(`${backend_API}/auth/getuser`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data = await response.data;
+            setProfile(data.user)
+            console.log(data.user, "data profile");
+            if (response.status === 200) {
+                localStorage.setItem("Users", JSON.stringify(data.user))
+                navigate('/profile')
+                console.log("profile Successful...");
+            }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+
+    }
+    useEffect(() => {
+        fetchData()
+    }, [])
+
 
     return (
         <>
@@ -18,7 +51,7 @@ const Card = () => {
                                             alt="Movie" />
                                     </figure>
                                     <div className='text-center'>
-                                        <h1 className='text-xl'>Joye</h1>
+                                        <h1 className='text-xl'>{profile.name}</h1>
                                         <div className="rating rating-sm py-1 w-full text-center d-flex align-items-center  justify-content-center">
                                             <FaStar className='text-warning' />
                                             <FaStar className='text-warning' />

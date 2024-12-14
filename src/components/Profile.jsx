@@ -78,13 +78,14 @@ const Profile = () => {
                                             </p>
 
                                             <div className="flex">
-                                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className="border-orange text-orange px-8 py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
+                                                <button onClick={() => navigate(`/editprofile`, { state: profile })} className=" text-orange px-8 py-3 rounded-full font-semibold uppercase text-sm">Edit Profile</button>
                                             </div>
                                         </div>
                                         <div className="col-6 d-flex justify-content-end">
                                             <div className='p-5'>
+                                                <p className='text-gray'>Your Bussiness Id :</p>
                                                 <span className='py-2'> {profile._id}</span>
-                                                <h5 className='text-gray pb-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h5>
+                                                <h6 className='text-gray py-3'>Bussiness Category <PiShoppingBagLight className='inline-block' /></h6>
                                                 {profile.businessCategory ? (<div className='btn  d-flex justify-content-center text-uppercase rounded-md text-white bg-orange py-2'>{profile.businessCategory}</div>) : (<></>) }
 
                                                 <div className="rating rating-sm py-4 d-flex align-items-center">
@@ -92,14 +93,14 @@ const Profile = () => {
                                                     <FaStar className='text-warning' />
                                                     <FaStar className='text-warning' />
                                                     <FaStar className='text-warning' />
-                                                    <FaStar className='text-warning' /> <span className='ps-2'>rating</span>
+                                                    <FaStar className='text-warning' />
                                                 </div>
-                                                <div className=''>
-                                                    <label for="" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
-                                                        Add Offer Benner
-                                                    </label>
-                                                    <input type="file" id="file-upload" />
-                                                </div>
+                                                    <div className=''>
+                                                        <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
+                                                            Add Offer Benner
+                                                        </label>
+                                                        <input type="file" id="file-upload" />
+                                                    </div>
 
                                             </div>
                                         </div>
