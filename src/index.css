@@ -154,6 +154,7 @@ input[type="file"] {
 }
 .slick-slide{
   width: 205px!important;
+  
 }
 /* Default slide */
 .center-slider .slick-slide{
@@ -167,6 +168,7 @@ input[type="file"] {
   transform: scale(0.9);
   transition: all 0.4s ease-in-out;
 }
+
 .center-slider .slick-slide,
 .center-slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"] {
   transform: scale(0.8, 0.8);

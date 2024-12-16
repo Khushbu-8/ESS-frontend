@@ -1,8 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AdminHeader from '../admincomponents/AdminHeader'
 import AdminSidebar from '../admincomponents/AdminSidebar'
+import axios from 'axios';
+const backend_API = import.meta.env.VITE_API_URL;
 
 const ManageCatagory = () => {
+    const [categoryName, setCategoryName] = useState("");
+    const [categoryImg, setCategoryImg] = useState(null);
+    const [preview, setPreview] = useState(null);
+    const [categories, setCategories] = useState([]);
+    console.log(categoryImg,"categoryImg");
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+      
+        if (!categoryName || !categoryImg) {
+          alert("Please fill all fields");
+          return;
+        }
+      
+        const formData = new FormData();
+        formData.append("categoryName ", categoryName);
+        formData.append("category", categoryImg);
+        console.log('FormData:', Object.fromEntries(formData)); // Debugging
+
+        try {
+          const response = await axios.post(`${backend_API}/category/addCategory`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          console.log(response.data);
+          alert("Category added:");
+      
+          // Clear the form and close the modal
+          setCategoryName("");
+          setCategoryImg(null);
+          setPreview(null);
+        } catch (error) {
+          console.error("Error adding category:", error);
+        }
+      };
     return (
         <>
             <AdminHeader />
@@ -24,18 +62,34 @@ const ManageCatagory = () => {
                                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                             </div>
                                             <div className="modal-body">
-                                                <form>
+                                                <form onSubmit={handleSubmit} enctype="multipart/form-data">
                                                     <div className="mb-3">
                                                         <label htmlFor="recipient-name" className="col-form-label">Category Name:</label>
-                                                        <input type="text" className="form-control" />
+                                                        <input type="text" className="form-control" placeholder='Category Name' value={categoryName}
+                                                            onChange={(e) => setCategoryName(e.target.value)} />
                                                     </div>
                                                     <div className="mb-3">
-                                                        <label htmlFor="recipient-name" className="col-form-label">Category Image:</label>
-                                                        <input type="text" className="form-control" />
+                                                        <div className='' >
+                                                            <label htmlFor="recipient-name" className="col-form-label">Category Image:</label>
+                                                            <label for="file-upload" class=" btn d-inline-block border border-orange d-flex justify-content-start align-items-center  ">
+                                                                Catgory Image
+                                                            </label>
+                                                            <input
+                                                                type="file"
+                                                                id="file-upload"
+                                                                name="categoryImg"
+                                                                onChange={(e) => {
+                                                                    const file = e.target.files[0];
+                                                                    setCategoryImg(file);
+                                                                    setPreview(URL.createObjectURL(file))
+                                                                }}
+                                                            />
+                                                           {preview && <img src={preview} alt="Preview" width="100" />}
+                                                        </div>
                                                     </div>
                                                     <div className="modal-footer">
                                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" className="btn btn-primary">Save changes</button>
+                                                        <button type="submit" className="btn btn-primary"> Add</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -45,7 +99,7 @@ const ManageCatagory = () => {
                                 </div>
 
                                 <div className="card-body">
-                                    <table className="table table-striped table-bordered">
+                                    <table className="table  table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sr No</th>
@@ -60,7 +114,7 @@ const ManageCatagory = () => {
                                                 <td>1</td>
                                                 <td>Electronics</td>
                                                 <td><img src="https://via.placeholder.com/100" alt="" /></td>
-                                                <td className='gap-2'>
+                                                <td className='gap-2 h-full d-flex flex-wrap justify-content-center'>
                                                     <button className="btn bg-green text-white ">Edit</button>
                                                     <button className="btn bg-orange text-white ms-2">Delete</button>
 
@@ -76,8 +130,8 @@ const ManageCatagory = () => {
 
                         </div>
                     </div>
-                </div>
-            </section>
+                </div >
+            </section >
         </>
     )
 }

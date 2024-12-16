@@ -3,45 +3,54 @@ import React, { useState } from 'react'
 const backend_API = import.meta.env.VITE_API_URL; 
 
 const BannerAdd = () => {
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(null); // To show preview
     const token = JSON.parse(localStorage.getItem('token'))
-console.log(image,"sellected image");
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setPreview(URL.createObjectURL(file)); // Generate a preview URL
+      };
 
     const hendleSubmitIng = async(e) =>{
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("image", image);
-        formData.append("token", token);
-        try {
-            const response = await axios.post(`${backend_API}/banner`, formData);
-            console.log(response.data);
-            alert("Banner Added Successfully");
-            } catch (error) {
-                console.error(error);
-                }
-       
-        // try {
-        //     const response = await axios.post(`${backend_API}/banner/addBanner`,{
-        //         imageUrl : image
-        //     }, {
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': `Bearer ${token}`
-        //         },
-        //     });
-        //     const data = await response.data;
-           
-        //     console.log(data.user, "data profile");
-        //     if (response.status === 200) {
-              
-              
-        //         alert("profile Successful...");
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        //     return false;
-        // }
+   
+    if (!image) {
+      alert("Please upload an image");
+      return;
+    }
 
+    const formData = new FormData();
+    formData.append("banner", image); // Matches the backend field name
+  
+
+    try {
+       
+        const response = await axios.post(`${backend_API}/banner/addBanner`, formData, 
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${token}`,
+                  },
+                }
+                
+        )
+        console.log(response.data)
+        alert("Banner Added Successfully")
+       
+        if (response.status === 200) {
+            
+        alert("Banner Added Successfully")
+        setImage(null);
+        setPreview(null);
+        }
+
+        
+       
+    } catch (error) {
+        console.error("Error details:", error);
+        alert("Failed to upload banner. Check the console for more details.");
+    }
 
     }
 
@@ -53,8 +62,8 @@ console.log(image,"sellected image");
                     <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
                         Add Offer Benner
                     </label>
-                    <input type="file" id="file-upload" name="imageUrl"  onChange={ (e) => setImage(e.target.files[0]) } />
-                    <img src={image} alt="" />
+                    <input type="file" id="file-upload" name="imageUrl"  onChange={handleImageChange } />
+                    {preview && <img src={preview} alt="Preview" width="200" />}
                     <input type="submit"  name="" id="" />
 
                 </div>
