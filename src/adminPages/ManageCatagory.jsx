@@ -20,7 +20,7 @@ const ManageCatagory = () => {
         }
       
         const formData = new FormData();
-        formData.append("categoryName ", categoryName);
+        formData.append("categoryName", categoryName);
         formData.append("category", categoryImg);
         console.log('FormData:', Object.fromEntries(formData)); // Debugging
 
