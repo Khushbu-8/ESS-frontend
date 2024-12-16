@@ -5,6 +5,7 @@ import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
 const backend_API = import.meta.env.BACKEND_API;
+import { categories } from '../ServiceCategory'
 // const backend_API = "https://ees-121-backend.vercel.app"
 
 
@@ -18,169 +19,172 @@ const EditUser = () => {
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const navigete = useNavigate()
-  let categories = [
-    "A.C. SERVICE",
-    "ADVOCATE",
-    "ALUMINIUM WORKER",
-    "AUTO RICKSHAW",
-    "AUTO MOBILE & SALES",
-    "BABY SITTING",
-    "BAGGI (HORSE CART)",
-    "BANK SERVICE",
-    "BANQUET HALL",
-    "BATTERY SERVICE",
-    "BEAUTY PARLOUR",
-    "BIKE SERVICE",
-    "BROKER",
-    "BUSINESS CONSULTANT",
-    "BICYCLE",
-    "CAFE",
-    "CAR DECORATOR",
-    "CAR SERVICE",
-    "CAR WASHING",
-    "CAR WIRING",
-    "CARE TAKER",
-    "CARPENTER",
-    "CATERING",
-    "CCTV.CAMERA",
-    "CHAIR REPAIRING",
-    "CHARTERED ACCOUNTAT",
-    "CHILDREN WEAR",
-    "CLASSES",
-    "COMPUTER CLASSES",
-    "COMPUTER HARDWARE",
-    "COMPUTER SOFTWARE",
-    "COSMETIC STORE",
-    "COURIER SERVICE",
-    "DAIRY PRODUCT",
-    "DANCE CLASSES",
-    "DESIGNER / EDITOR",
-    "DHOLI",
-    "DIAMOND BUSINESS",
-    "DIGITAL MARKETING",
-    "DJ SOUND",
-    "DOCTOR",
-    "E - COMMERCE",
-    "EDUCATION",
-    "ELECTRICIAN",
-    "ELECTRONIC PRODUCT",
-    "EMPLOYEE",
-    "ENGINEER",
-    "EVENT MANAGEMENT",
-    "WELDING",
-    "FARMER",
-    "FASHION DESIGNER",
-    "FAST FOOD",
-    "FINANCIAL",
-    "FLEX BOARD HOARDING",
-    "FLOWER DECORATION",
-    "FREELANCER",
-    "FURNITURE",
-    "GAS CHULA SERVICE",
-    "GENERATOR SERVICE",
-    "GEYSER SERVICE",
-    "GLASS WORK",
-    "GOVT. PUBLIC SERVICE",
-    "GOVT. EMERGENCY SERVICE",
-    "GRUH UDHYOG",
-    "GYM",
-    "HEALTH CARE",
-    "HOME CLEANING",
-    "HOSPITAL",
-    "HOUSE WIFE",
-    "IMITATION JEWELLERY",
-    "INDUSTRIAL INSTRUMENT",
-    "INSURANCE",
-    "INTERIOR DESIGNER",
-    "INTERNET DEPARTMENT",
-    "INVERTER SERVICE",
-    "JOB PLACEMENT",
-    "JUICE CENTER",
-    "LABOUR",
-    "LAUNDRY",
-    "LIFT SERVICE",
-    "LIGHTING",
-    "MAID",
-    "MANDAP SERVICE",
-    "MANUFACTURING",
-    "MARKETING",
-    "MARRIAGE BUREAU",
-    "MEDICAL STORE",
-    "MEHNDI ARTIST",
-    "MEN'S WEAR",
-    "MOBILE & ACCESSORIES",
-    "MOTOR SERVICE",
-    "MOVERS & PACKER",
-    "NURSERY",
-    "ORCHESTRA",
-    "OTHER",
-    "OVEN SERVICE",
-    "PAINTER",
-    "PANDIT",
-    "PASSPORT AGENT",
-    "PEST CONTROL",
-    "PETCARE SERVICE",
-    "PHOTOGRAPHY",
-    "PHYSIOTHERAPIST",
-    "PLUMBER",
-    "PRINTING PRESS",
-    "R.O. SERVICE",
-    "REAL - ESTATE",
-    "REFRESHMENT",
-    "RESTAURANTS",
-    "RETIRED",
-    "RIDES",
-    "RTO AGENT",
-    "REFRIGERATOR SERVICE",
-    "SCRAP ( BHANGAR )",
-    "SECURITY SERVICE",
-    "SHOEMAKER ( MOCHI )",
-    "SHOP",
-    "SHUTTER REPAIR",
-    "SOCIAL WORKER",
-    "SOFA CLEANING",
-    "SOLAR PANEL",
-    "SOUND SYSTEM REPAIRING",
-    "SPOKEN ENGLISH CLASSES",
-    "SPORTS",
-    "STATIONERY",
-    "STOCK MARKET",
-    "STUDENT",
-    "STUDY CLASSES",
-    "SALON",
-    "TAXI",
-    "TEA CENTER",
-    "TELECOM DEPARTMENT",
-    "TEXTILE",
-    "TIFFIN SERVICE",
-    "TOUR & TRAVELERS",
-    "TAILOR",
-    "TOWING",
-    "TRADERS",
-    "TRANSPORT",
-    "TRAVEL AGENT",
-    "TUITION CLASS",
-    "T.V. SERVICE",
-    "TWO WHEELERS WIRING",
-    "TYRE PUNCTURE FIXING",
-    "VEGETABLES & FRUITS",
-    "VETER INARY DOCTOR",
-    "VISA CONSULTANCY & GUIDANCE",
-    "WASHING MACHINE SERVICE",
-    "WATER SUPPLIER",
-    "WEALTH MANAGEMENT",
-    "WOMEN WEAR",
-    "XEROX",
-    "YOGA CLASSES"
-  ]
-  const toggleSelection = (category) => {
-    if (businessCategory.includes(category)) {
-      setBusinessCategory(businessCategory.filter((c) => c !== category));
-    } else {
-      setBusinessCategory([...businessCategory, category]);
-    }
+  // let categories = [
+  //   "A.C. SERVICE",
+  //   "ADVOCATE",
+  //   "ALUMINIUM WORKER",
+  //   "AUTO RICKSHAW",
+  //   "AUTO MOBILE & SALES",
+  //   "BABY SITTING",
+  //   "BAGGI (HORSE CART)",
+  //   "BANK SERVICE",
+  //   "BANQUET HALL",
+  //   "BATTERY SERVICE",
+  //   "BEAUTY PARLOUR",
+  //   "BIKE SERVICE",
+  //   "BROKER",
+  //   "BUSINESS CONSULTANT",
+  //   "BICYCLE",
+  //   "CAFE",
+  //   "CAR DECORATOR",
+  //   "CAR SERVICE",
+  //   "CAR WASHING",
+  //   "CAR WIRING",
+  //   "CARE TAKER",
+  //   "CARPENTER",
+  //   "CATERING",
+  //   "CCTV.CAMERA",
+  //   "CHAIR REPAIRING",
+  //   "CHARTERED ACCOUNTAT",
+  //   "CHILDREN WEAR",
+  //   "CLASSES",
+  //   "COMPUTER CLASSES",
+  //   "COMPUTER HARDWARE",
+  //   "COMPUTER SOFTWARE",
+  //   "COSMETIC STORE",
+  //   "COURIER SERVICE",
+  //   "DAIRY PRODUCT",
+  //   "DANCE CLASSES",
+  //   "DESIGNER / EDITOR",
+  //   "DHOLI",
+  //   "DIAMOND BUSINESS",
+  //   "DIGITAL MARKETING",
+  //   "DJ SOUND",
+  //   "DOCTOR",
+  //   "E - COMMERCE",
+  //   "EDUCATION",
+  //   "ELECTRICIAN",
+  //   "ELECTRONIC PRODUCT",
+  //   "EMPLOYEE",
+  //   "ENGINEER",
+  //   "EVENT MANAGEMENT",
+  //   "WELDING",
+  //   "FARMER",
+  //   "FASHION DESIGNER",
+  //   "FAST FOOD",
+  //   "FINANCIAL",
+  //   "FLEX BOARD HOARDING",
+  //   "FLOWER DECORATION",
+  //   "FREELANCER",
+  //   "FURNITURE",
+  //   "GAS CHULA SERVICE",
+  //   "GENERATOR SERVICE",
+  //   "GEYSER SERVICE",
+  //   "GLASS WORK",
+  //   "GOVT. PUBLIC SERVICE",
+  //   "GOVT. EMERGENCY SERVICE",
+  //   "GRUH UDHYOG",
+  //   "GYM",
+  //   "HEALTH CARE",
+  //   "HOME CLEANING",
+  //   "HOSPITAL",
+  //   "HOUSE WIFE",
+  //   "IMITATION JEWELLERY",
+  //   "INDUSTRIAL INSTRUMENT",
+  //   "INSURANCE",
+  //   "INTERIOR DESIGNER",
+  //   "INTERNET DEPARTMENT",
+  //   "INVERTER SERVICE",
+  //   "JOB PLACEMENT",
+  //   "JUICE CENTER",
+  //   "LABOUR",
+  //   "LAUNDRY",
+  //   "LIFT SERVICE",
+  //   "LIGHTING",
+  //   "MAID",
+  //   "MANDAP SERVICE",
+  //   "MANUFACTURING",
+  //   "MARKETING",
+  //   "MARRIAGE BUREAU",
+  //   "MEDICAL STORE",
+  //   "MEHNDI ARTIST",
+  //   "MEN'S WEAR",
+  //   "MOBILE & ACCESSORIES",
+  //   "MOTOR SERVICE",
+  //   "MOVERS & PACKER",
+  //   "NURSERY",
+  //   "ORCHESTRA",
+  //   "OTHER",
+  //   "OVEN SERVICE",
+  //   "PAINTER",
+  //   "PANDIT",
+  //   "PASSPORT AGENT",
+  //   "PEST CONTROL",
+  //   "PETCARE SERVICE",
+  //   "PHOTOGRAPHY",
+  //   "PHYSIOTHERAPIST",
+  //   "PLUMBER",
+  //   "PRINTING PRESS",
+  //   "R.O. SERVICE",
+  //   "REAL - ESTATE",
+  //   "REFRESHMENT",
+  //   "RESTAURANTS",
+  //   "RETIRED",
+  //   "RIDES",
+  //   "RTO AGENT",
+  //   "REFRIGERATOR SERVICE",
+  //   "SCRAP ( BHANGAR )",
+  //   "SECURITY SERVICE",
+  //   "SHOEMAKER ( MOCHI )",
+  //   "SHOP",
+  //   "SHUTTER REPAIR",
+  //   "SOCIAL WORKER",
+  //   "SOFA CLEANING",
+  //   "SOLAR PANEL",
+  //   "SOUND SYSTEM REPAIRING",
+  //   "SPOKEN ENGLISH CLASSES",
+  //   "SPORTS",
+  //   "STATIONERY",
+  //   "STOCK MARKET",
+  //   "STUDENT",
+  //   "STUDY CLASSES",
+  //   "SALON",
+  //   "TAXI",
+  //   "TEA CENTER",
+  //   "TELECOM DEPARTMENT",
+  //   "TEXTILE",
+  //   "TIFFIN SERVICE",
+  //   "TOUR & TRAVELERS",
+  //   "TAILOR",
+  //   "TOWING",
+  //   "TRADERS",
+  //   "TRANSPORT",
+  //   "TRAVEL AGENT",
+  //   "TUITION CLASS",
+  //   "T.V. SERVICE",
+  //   "TWO WHEELERS WIRING",
+  //   "TYRE PUNCTURE FIXING",
+  //   "VEGETABLES & FRUITS",
+  //   "VETER INARY DOCTOR",
+  //   "VISA CONSULTANCY & GUIDANCE",
+  //   "WASHING MACHINE SERVICE",
+  //   "WATER SUPPLIER",
+  //   "WEALTH MANAGEMENT",
+  //   "WOMEN WEAR",
+  //   "XEROX",
+  //   "YOGA CLASSES"
+  // ]
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const selectCategory = (category) => {
+    setBusinessCategory(category); // Set selected category
+    setIsDropdownOpen(false); // Close dropdown
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -227,16 +231,16 @@ const EditUser = () => {
     setPhone(location?.state?.phone)
     setAddress(location?.state?.address)
     setBusinessCategory(location?.state?.businessCategory || []),
-    setBusinessName(location?.state?.businessName),
-    setBusinessAddress(location?.state?.businessAddress)
+      setBusinessName(location?.state?.businessName),
+      setBusinessAddress(location?.state?.businessAddress)
   }, [location?.state])
 
   return (
     <>
       <AdminNavbar />
-      <Sidebar />
 
-      <div className="bg-gray-200 pt-15 flex items-center   justify-center ">
+
+      <div className="bg-gray-200 pt-15 flex items-center mt-24 justify-center ">
         <div className="w-[600px] bg-white  rounded-lg overflow-hidden shadow-md mt-5 mx-2">
 
           <div className="py-3 px-6 grid grid-cols-1 gap-6">
@@ -290,33 +294,39 @@ const EditUser = () => {
                 <label className="block text-sm font-medium">
                   Select Business Categories:
                 </label>
-                <div className="mt-2">
-                  <div className="border border-gray-300 rounded-md p-2 bg-white">
+                <div className="mt-3 w-full">
+                  {/* Display Selected Category */}
+                  <div
+                    className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                    onClick={toggleDropdown}
+                  >
                     {businessCategory.length > 0 ? (
-                      businessCategory.map((category, i) => (
-                        <span
-                          key={++i}
-                          className="inline-block bg-green-500 text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                        >
-                          {category}
-                        </span>
-                      ))
+
+                      <span className="inline-block  text-black py-1  ">
+                        {businessCategory}
+                      </span>
+
+
                     ) : (
-                      <span className="text-gray-400">Select categories</span>
+                      <span className="  py-1">Select a category</span>
                     )}
                   </div>
-                  <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md shadow-lg max-h-40 overflow-y-auto">
-                    {categories.map((category, i) => (
-                      <li
-                        key={++i}
-                        className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory.includes(category) ? "bg-green-200" : ""
-                          }`}
-                        onClick={() => toggleSelection(category)}
-                      >
-                        {category}
-                      </li>
-                    ))}
-                  </ul>
+
+                  {/* Dropdown Menu */}
+                  {isDropdownOpen && (
+                    <ul className="z-10 border border-gray-300 bg-white w-full mt-2 rounded-md  max-h-40 overflow-y-auto">
+                      {categories.map((category, i) => (
+                        <li
+                          key={i}
+                          className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.name ? "bg-green-200" : ""
+                            }`}
+                          onClick={() => selectCategory(category.name)}
+                        >
+                          {category.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
               <div>

@@ -7,16 +7,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from "./components/ProtectedRoute"
 import EditProfile from "./components/EditProfile"
 import Admin from "./Pages/Admin"
-import AllUsers from "./Pages/AllUsers"
+
 import EditUser from "./admincomponents/EditUser"
 import SearchScreen from "./Pages/SearchScreen "
-import Home from "./components/Home";
+
 import ServiceDetail from "./Pages/ServiceDetail";
 import Card from "./Pages/Card";
 import Services from "./Pages/Services";
 import RegisterNextPage from "./components/RegisterNextPage";
 import Work from "./Pages/Work";
 import Senedrequest from "./components/Senedrequest";
+import Home from "./Pages/Home";
+import AllUsers from "./adminPages/AllUsers";
+import ManageCatagory from "./adminPages/ManageCatagory";
 
 export default function App() {
 
@@ -25,15 +28,14 @@ export default function App() {
       <div>
       <ToastContainer />
       <Router>
-      
         <Routes>
           {/* protected route */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
-          {/* </Route> */}
+          </Route>
           <Route path="/servises" element={ <Services/>} />
 
           {/* work  */}
@@ -48,9 +50,10 @@ export default function App() {
 
           {/* Admin Routes */}
           <Route path="/admin" element={<Admin />} />
-          <Route path="/users" element={<AllUsers />} />
+          <Route path="/admin" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
           <Route path="/admin/card" element={<Card />} />
+          <Route path="/admin/manageCategory" element={<ManageCatagory />} />
 
 
         </Routes>

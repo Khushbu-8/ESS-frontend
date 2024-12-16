@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
-const ServiceDetail = ({selectedItem}) => {
+const ServiceDetail = () => {
+
 
     const navigate = useNavigate();
-    console.log(selectedItem);
+    // console.log(selectedItem);
     
     const location = useLocation();
-    console.log(location?.state?.cat);
+    console.log(location.state);
 
     let profile = [{
         id: 1,

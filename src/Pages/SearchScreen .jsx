@@ -16,6 +16,9 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 const SearchScreen = () => {
     const token = JSON.parse(localStorage.getItem('token'))
+    const loginData = JSON.parse(localStorage.getItem("Users"))
+    console.log(loginData,"LoginData");
+    
     const [auth, setAuth] = useState(false)
     const [search, setSearch] = useState('')
     const navigate = useNavigate();
@@ -24,6 +27,8 @@ const SearchScreen = () => {
     const [showListt, setShowListt] = useState(false);
     const [selectedItem, setSelectedItem] = useState([]);
     const [filteredItem, setFilteredItem] = useState([]);
+
+    const [loginUser,setLoginUser] = useState([])
 
     const [categoryFilter, setCategoryFilter] = useState("");
     const fetchData = async () => {
@@ -42,17 +47,21 @@ const SearchScreen = () => {
         fetchData();
     }, []);
 
-
+    // const loginDatas = loginData?.address?.city?.toLowerCase() || ""; // Assuming 'loggedInUser' contains the logged-in user's data
+    // console.log(loginDatas,"datasss");
+    
+//  feth LoginUser's Address
 
     const handleItemCaregory = (cat) => {
         console.log(cat);
-
+   
         let filteredCategory = [...selectedItem]
+
         filteredCategory = filteredCategory.filter((user) =>
             user.businessCategory.some((category) =>
                 category == cat)
         )
-        console.log(filteredCategory);
+        // console.log(filteredCategory);
 
         setSelectedItem(filteredCategory);
     }
@@ -89,43 +98,28 @@ const SearchScreen = () => {
 
     const handleItemClick = (cat) => {
         setSearch(cat); // Update the search box with the selected value
-        setShowList(false); // Hide the list
+        setShowList(false);
+       
+         // Hide the list
         let filtercat = [...searchResult]
         if (cat) {
             filtercat = filtercat.filter((user) =>
-                user.businessCategory.some((category) =>
-                    category == cat)
-            )
-        }
+                {
+                    // Check if the user's businessCategory matches the selected category
+                    const categoryMatch = user.businessCategory.some((category) => category === cat);
+        
+                    // Check if the user's address matches the logged-in user's address
+                    let loginAddress = loginData?.address?.city || ""; // Assuming 'loggedInUser' contains the logged-in user's data
+                    console.log(loginAddress,"datasss");
+                    const addressMatch = user.address?.city === loginAddress;
+        
+                    return categoryMatch && addressMatch; // Both conditions must be true
+                });
+            }
         setSelectedItem(filtercat);
         setFilteredItem(filtercat); // Initially set filteredItem as the same
 
     };
-
-    // // send req
-    // const sendRequest = async (userId) => {
-    //     // console.log(userId);
-
-    //     try {
-    //         const response = await axios.post(`${backend_API}/request/sentRequest`, {
-    //             receiverId: userId,
-    //         }, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${token}`
-    //             },
-    //         });
-
-    //         if (response.status === 200) {
-    //             alert("Request Sent Successfully!");
-    //         } else {
-    //             alert("Failed to send request!");
-    //         }
-    //     } catch (error) {
-    //         console.error("Error sending request:", error);
-    //         alert("Something went wrong. Try again.");
-    //     }
-    // };
 
     useEffect(() => {
         if (token) {
@@ -173,7 +167,7 @@ const SearchScreen = () => {
                     </div>
                     <div className='col-12 col-xl-3 p-3'>
                         {/* Search Box for Address */}
-                        <form action=""  >
+                        {/* <form action=""  >
                             <div className="search-input border rounded-1 ps-3 pe-2 mb-2 d-flex align-items-center">
                                 <input type="text" placeholder="Search location "
                                     value={categoryFilter}
@@ -193,7 +187,7 @@ const SearchScreen = () => {
                                 </button>
 
                             </div>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import axios from 'axios'
 const backend_API = import.meta.env.VITE_API_URL; 
 // const backend_API = "https://ees-121-backend.vercel.app"
 
-const UserSideBar = () => {
+const AdminSidebar = () => {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem('token'))
@@ -16,28 +16,17 @@ const UserSideBar = () => {
     const sidebarManu = [
         {
           id: 1,
-          title: 'profile',
+          title: 'AllUsers',
           icon: <FaUser />,
-          path: '/profile',
+          path: '/admin',
         },
         {
           id: 2,
-          title: 'Card',
+          title: 'Manage Category',
           icon: <FaCalendar />,
-          path: '/',
+          path: '/admin/manageCategory',
         },
-        {
-          id: 4,
-          title: 'wallete',
-          icon: <FaWallet />,
-          path: '/admin/card',
-        },
-        {
-          id: 5,
-          title: 'work',
-          icon: <FaNetworkWired />,
-          path: '/work',
-        }
+        
        
       ]
       const fetchData = async () => {
@@ -75,7 +64,7 @@ const UserSideBar = () => {
   };
   return (
     <>
-  <div className="offcanvas bg-white offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div className="offcanvas bg-white offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div className="d-flex  align-items-center p-3">
     
      <div className='w-full d-flex align-items-center gap-4'>
@@ -106,11 +95,11 @@ const UserSideBar = () => {
                   )
                 })
               }
-              <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
+              {/* <li  className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
                       <Link onClick={handleLogout} className=' text-lg d-flex align-items-center'>
                         <span className='inline-block mr-2 text-xl '><FaPowerOff/></span>
                         Logout</Link>
-                    </li>
+                    </li> */}
       </ul>
     </div>
   </div>
@@ -121,4 +110,4 @@ const UserSideBar = () => {
   )
 }
 
-export default UserSideBar
+export default AdminSidebar

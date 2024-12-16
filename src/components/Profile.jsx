@@ -7,6 +7,7 @@ import axios from 'axios';
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import { FaStar } from 'react-icons/fa';
+import BannerAdd from './BannerAdd';
 const backend_API = import.meta.env.VITE_API_URL; 
 
 // const backend_API = "https://ees-121-backend.vercel.app"
@@ -96,13 +97,7 @@ const Profile = () => {
                                                     <FaStar className='text-warning' />
                                                     <FaStar className='text-warning' />
                                                 </div>
-                                                    <div className=''>
-                                                        <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
-                                                            Add Offer Benner
-                                                        </label>
-                                                        <input type="file" id="file-upload" />
-                                                    </div>
-
+                                                  <BannerAdd/>
                                             </div>
                                         </div>
                                     </div>
