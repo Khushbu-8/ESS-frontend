@@ -3,8 +3,10 @@ import axios from 'axios';
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-// const backend_API =  import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 const AllUsers = () => {
 

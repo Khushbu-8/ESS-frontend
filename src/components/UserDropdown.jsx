@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-// const backend_API = import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 function UserDropdown() {
   const [profile, setProfile] = useState("");

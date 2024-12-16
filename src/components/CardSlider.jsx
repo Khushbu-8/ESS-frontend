@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 import Slider from "react-slick";
+import OfferModal from './OfferModal';
 
 const CardSlider = () => {
+    const [click, setClick] = useState()
     const sliderRef = useRef(null);
     const settings = {
         slidesToShow: 5,
@@ -43,6 +46,9 @@ const CardSlider = () => {
     };
 
     const handleImageClick = (index) => {
+        // console.log(index);
+        setClick(index)
+
         if (sliderRef.current) {
             sliderRef.current.slickGoTo(index);
         }
@@ -57,8 +63,9 @@ const CardSlider = () => {
         "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
         "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
         "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-       
+
     ];
+    console.log(click);
 
     return (
         <>
@@ -77,7 +84,8 @@ const CardSlider = () => {
                                         <div
                                             key={index}
                                             className="rounded-sm overflow-hidden"
-                                            onClick={() => handleImageClick(index)}
+                                            onClick={() => handleImageClick(index,)}
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         >
                                             <figure className="overflow-hidden w-full">
                                                 <img
@@ -94,6 +102,7 @@ const CardSlider = () => {
                     </div>
                 </div>
             </section>
+            <OfferModal click={click}/>
         </>
     );
 };

@@ -16,8 +16,9 @@ import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 
 import { categories } from '../ServiceCategory'
-// const backend_API =  import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 const EditProfile = () => {
   const [profile, setProfile] = useState("");

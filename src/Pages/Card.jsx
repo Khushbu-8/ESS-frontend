@@ -3,7 +3,9 @@ import { FaStar } from 'react-icons/fa'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 const Card = () => {
     const [profile, setProfile] = useState([]);

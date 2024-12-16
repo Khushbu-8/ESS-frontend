@@ -4,8 +4,9 @@ import { FaLocationDot, FaPhone, FaStar } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 import acService from '../../public/service-icons/ac service.png'
 
-// const backend_API = import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 
 const Recievedrequest = () => {

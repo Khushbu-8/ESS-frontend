@@ -4,8 +4,11 @@ import logo from "../../public/ees-logo.png"
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import { categories } from '../ServiceCategory'
-// const backend_API = import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+
+const backend_API = import.meta.env.VITE_API_URL; 
+
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 
 const RegisterNextPage = () => {

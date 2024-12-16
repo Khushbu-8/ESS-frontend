@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa6'
 import { HiDotsHorizontal } from "react-icons/hi";
-// const backend_API = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_API;
-const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = import.meta.env.VITE_API_URL; 
+
+// const backend_API = "https://ees-121-backend.vercel.app"
 
 const SearchResult = ({user,token,handleItemCaregory}) => {
     const [requestSent, setRequestSent] = useState(false);
