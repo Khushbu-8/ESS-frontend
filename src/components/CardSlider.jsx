@@ -49,29 +49,30 @@ const CardSlider = () => {
         ],
     };
 
-    const handleImageClick = async(userId) => {
+    const handleImageClick = async(userId,index) => {
         console.log(userId);
         setClick(userId)
 
         if (sliderRef.current) {
             sliderRef.current.slickGoTo(index);
-        }
-        try {
-            const response = await axios.get(`${backend_API}/banner/getAllBanners`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
-            const data = await response.data;
-            setBannerImage(data.banners)
-            console.log(data.banners, "data slider");
-            if (response.status === 200) {
-              
+
+            try {
+                const response = await axios.get(`${backend_API}/banner/getUserByBanner`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+                const data = await response.data;
+                // setBannerImage(data.banners)
+                console.log(data, "data Modal");
+                if (response.status === 200) {
+                  
+                }
+            } catch (error) {
+                console.log(error);
+                return false;
             }
-        } catch (error) {
-            console.log(error);
-            return false;
         }
 
     };
@@ -128,7 +129,7 @@ const CardSlider = () => {
                                             <div
                                                 key={index}
                                                 className="rounded-sm h-[100%] overflow-hidden"
-                                                onClick={() => handleImageClick(image.userId)}
+                                                onClick={() => handleImageClick(image.userId , index)}
                                                 data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             >
                                                 <figure className="overflow-hidden  img-flued ">
