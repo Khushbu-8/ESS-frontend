@@ -108,16 +108,19 @@ const RegisterNextPage = () => {
                           onChange={(e) => setBusinessName(e.target.value)}
                           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-3" type="text" placeholder="Bussiness Name" />
 
-                        <div className="mt-3">
+                        <div className="mt-3 w-full">
                           {/* Display Selected Category */}
                           <div
-                            className="border border-1 rounded-md p-3 w-full  bg-gray-100 focus:bg-white cursor-pointer"
+                            className=" border border-1 rounded-md p-3 w-full  bg-gray-100 focus:bg-white cursor-pointer"
                             onClick={toggleDropdown}
                           >
                             {businessCategory.length > 0 ? (
-                              <span className="inline-block px-3 text-black py-1  ">
-                                {businessCategory}
-                              </span>
+                             
+                                  <span className="inline-block px-3 text-black py-1  ">
+                                  {businessCategory}
+                                </span>
+
+                             
                             ) : (
                               <span className="text-gray-500 ps-3 py-1">Select a category</span>
                             )}
@@ -129,11 +132,11 @@ const RegisterNextPage = () => {
                               {categories.map((category, i) => (
                                 <li
                                   key={i}
-                                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category ? "bg-green-200" : ""
+                                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.name ? "bg-green-200" : ""
                                     }`}
-                                  onClick={() => selectCategory(category)}
+                                  onClick={() => selectCategory(category.name)}
                                 >
-                                  {category}
+                                  {category.name}
                                 </li>
                               ))}
                             </ul>
