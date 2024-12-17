@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 const backend_API = import.meta.env.VITE_API_URL; 
+console.log(backend_API);
 
 const BannerAdd = () => {
     const [image, setImage] = useState(null);
@@ -37,16 +38,11 @@ const BannerAdd = () => {
         )
         console.log(response.data)
         alert("Banner Added Successfully")
-       
-        if (response.status === 200) {
-            
+        if (response.status === 200) {    
         alert("Banner Added Successfully")
         setImage(null);
         setPreview(null);
         }
-
-        
-       
     } catch (error) {
         console.error("Error details:", error);
         alert("Failed to upload banner. Check the console for more details.");
