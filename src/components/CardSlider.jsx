@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 import Slider from "react-slick";
 import OfferModal from './OfferModal';
 import axios from 'axios';
 const backend_API = import.meta.env.VITE_API_URL; 
 
 const CardSlider = () => {
-    const [click, setClick] = useState();
-    const [BannerImage, setBannerImage] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const token = JSON.parse(localStorage.getItem('token'));
+    const [click, setClick] = useState()
+    const [BannerImage,setBannerImage] = useState([])
+    const token = JSON.parse(localStorage.getItem('token'))
     const sliderRef = useRef(null);
-    
     const settings = {
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
         centerMode: true,
         arrows: true,
@@ -50,7 +49,47 @@ const CardSlider = () => {
         ],
     };
 
-    const GetBanner = async () => {
+    const handleImageClick = async(userId,index) => {
+        console.log(userId);
+        setClick(userId)
+
+        if (sliderRef.current) {
+            sliderRef.current.slickGoTo(index);
+
+            try {
+                const response = await axios.get(`${backend_API}/banner/getUserByBanner`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+                const data = await response.data;
+                // setBannerImage(data.banners)
+                console.log(data, "data Modal");
+                if (response.status === 200) {
+                  
+                }
+            } catch (error) {
+                console.log(error);
+                return false;
+            }
+        }
+
+    };
+
+    const images = [
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
+
+    ];
+ 
+    const GetBanner = async() =>{
         try {
             const response = await axios.get(`${backend_API}/banner/getAllBanners`, {
                 headers: {
@@ -58,128 +97,19 @@ const CardSlider = () => {
                 },
             });
             const data = await response.data;
-            setBannerImage(data.banners);
-        } catch (error) {
-            console.log(error);
-            return false;
-        }
-    };
-
-    const GetCategories = async () => {
-        try {
-            const response = await axios.get(`${backend_API}/category/getAllCategory`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const data = await response.data;
-            setCategories(data.category); // Assuming the response has a 'category' field
-        } catch (error) {
-            console.log(error);
-            return false;
-        }
-    };
-
-    useEffect(() => {
-        GetBanner();
-        GetCategories();
-    }, []);
-
-    const renderCategoriesAndBanners = () => {
-        const result = [];
-        const totalCategories = categories.length;
-        const totalBanners = BannerImage.length;
-
-        // Render categories in groups of 10
-        for (let i = 0; i < totalCategories; i += 10) {
-            const categoryGroup = categories.slice(i, i + 10);
-            result.push(
-                <div key={`category-group-${i}`} className="category-group">
-                    {categoryGroup.map((category, index) => (
-                        <div key={index} className="category-item">
-                            {category.name} {/* Assuming category has a name property */}
-                        </div>
-                    ))}
-                </div>
-            );
-
-            // Render banners in groups of 3 after each category group
-            if (i < totalBanners) {
-                const bannerGroup = BannerImage.slice(i / 10 * 3, (i / 10 + 1) * 3); // Calculate the correct slice for banners
-                result.push(
-                    <div key={`banner-group-${i}`} className="wrapper">
-                        <Slider
-                            ref={sliderRef}
-                            className="center-slider h-[100%]"
-                            {...settings}
-                        >
-                            {bannerGroup.map((image, index) => (
-                                <div
-                                    key={index}
-                                    className="rounded-sm h-[100%] overflow-hidden"
-                                    onClick={() => handleImageClick(image.userId, index)}
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                >
-                                    <figure className="overflow-hidden img-flued">
-                                        <img
-                                            className="w-full h-full"
-                                            src={image.imageUrl}
-                                        />
-                                    </figure>
-                                </div>
-                            ))}
-                        </Slider>
-                    </div>
-                );
+            setBannerImage(data.banners)
+            // console.log(data.banners , "data slider");
+            if (response.status === 200) {
+              
             }
+        } catch (error) {
+            console.log(error);
+            return false;
         }
-
-        // Render any remaining categories
-        if (totalCategories % 10 !== 0) {
-            const remainingCategories = categories.slice(Math.floor(totalCategories / 10) * 10);
-            result.push(
-                <div key="remaining-categories" className="category-group">
-                    {remainingCategories.map((category, index) => (
-                        <div key={index} className="category-item">
-                            {category.name}
-                        </div>
-                    ))}
-                </div>
-            );
-        }
-
-        // Render any remaining banners
-        const remainingBanners = BannerImage.slice(Math.floor(totalCategories / 10) * 3);
-        if (remainingBanners.length > 0) {
-            result.push(
-                <div key="remaining-banners" className="wrapper">
-                    <Slider
-                        ref={sliderRef}
-                        className="center-slider h-[100%]"
-                        {...settings}
-                    >
-                        {remainingBanners.map((image, index) => (
-                            <div
-                                key={index}
-                                className="rounded-sm h-[100%] overflow-hidden"
-                                onClick={() => handleImageClick(image.userId, index)}
-                                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            >
-                                <figure className="overflow-hidden img-flued">
-                                    <img
-                                        className="w-full h-full"
-                                        src={image.imageUrl}
-                                    />
-                                </figure>
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            );
-        }
-
-        return result;
-    };
+    }
+    useEffect(()=>{
+        GetBanner()
+    },[])
 
     return (
         <>
@@ -188,14 +118,39 @@ const CardSlider = () => {
                     <div className="row">
                         <div className="py-2">
                             <h1 className="pt-6 text-2xl">Best Offer</h1>
-                            <div className="categories-and-banners">
-                                {renderCategoriesAndBanners()}
+                            <div className="wrapper">
+                                <Slider
+                                    ref={sliderRef}
+                                    className="center-slider h-[100%]"
+                                    {...settings}
+                                >
+                                    {BannerImage.length > 0 ? (
+                                        BannerImage.map((image, index) => (
+                                            <div
+                                                key={index}
+                                                className="rounded-sm h-[100%] overflow-hidden"
+                                                onClick={() => handleImageClick(image.userId , index)}
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            >
+                                                <figure className="overflow-hidden  img-flued ">
+                                                    <img
+                                                        className=" w-full h-full"
+                                                        src={image.imageUrl}
+                                                        
+                                                    />
+                                                </figure>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <></>
+                                    )}
+                                </Slider>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <OfferModal click={click} />
+            <OfferModal click={click}/>
         </>
     );
 };
