@@ -22,13 +22,12 @@ const BannerAdd = () => {
     }
 
     const formData = new FormData();
-    formData.append("banner", image); // Matches the backend field name
+    formData.append('banner', image); // Matches the backend field name
     console.log('FormData:', Object.fromEntries(formData));
 
     try {
        
-        const response = await axios.post('https://ees-121-backend.vercel.app/banner/addBanner', // Replace with your API endpoint
-            formData,
+        const response = await axios.post('https://ees-121-backend.vercel.app/banner/addBanner', formData,
             {
               headers: {
                 'Content-Type': 'multipart/form-data',
@@ -58,7 +57,7 @@ const BannerAdd = () => {
                     <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
                         Add Offer Benner
                     </label>
-                    <input type="file" id="file-upload" name="banner"  onChange={handleImageChange} />
+                    <input type="file" id="file-upload" name="banner" onChange={handleImageChange} />
                     {preview && <img src={preview} alt="Preview" width="200" />}
                     <input type="submit"  name="" id="" />
 
