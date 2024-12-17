@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminHeader from '../admincomponents/AdminHeader'
 import AdminSidebar from '../admincomponents/AdminSidebar'
 import axios from 'axios';
@@ -9,7 +9,7 @@ const ManageCatagory = () => {
     const [categoryImg, setCategoryImg] = useState(null);
     const [preview, setPreview] = useState(null);
     const [categories, setCategories] = useState([]);
-    console.log(categoryImg,"categoryImg");
+    // console.log(categoryImg,"categoryImg");
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,6 +41,48 @@ const ManageCatagory = () => {
           console.error("Error adding category:", error);
         }
       };
+
+
+      const fetchCategory = async() =>{
+        try{
+            const response = await axios.get(`${backend_API}/category/getAllCategory`); 
+            const sortedCategories = response.data.category.sort((a, b) => 
+                a.categoryName.localeCompare(b.categoryName)
+            );
+            
+            setCategories(sortedCategories);
+            console.log(sortedCategories, "sortedCategories");
+            }
+            catch(error){
+                console.error("Error fetching categories:", error);
+                }
+      }
+      useEffect(() => {
+        fetchCategory();
+        }, []);
+
+        const hendeelDelete = async(categorId ) =>{
+            // console.log(categorId,"categorId ");
+            
+
+            try{
+                const response = await axios.delete(`${backend_API}/category/deleteCategory` ,{
+                    headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      data: { categorId: categorId },
+                    });
+                
+                
+                console.log(response.data);
+                alert("Category deleted:");
+                fetchCategory();
+                }
+                catch(error){
+                    console.error("Error deleting category:", error);
+                    }
+
+        }
     return (
         <>
             <AdminHeader />
@@ -110,6 +152,22 @@ const ManageCatagory = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {
+                                                categories.map((category, index) => {
+                                                    return (
+                                                        <tr>
+                                                        <td>{++index}</td>
+                                                        <td>{category.categoryName}</td>
+                                                        <td className=''><img src={category.image} alt="" width={70} className='d-flex justify-content-center' /></td>
+                                                        <td className='gap-2 h-full d-flex flex-wrap justify-content-center'>
+                                                            <button className="btn bg-green text-white ">Edit</button>
+                                                            <button className="btn bg-orange text-white ms-2"  onClick={() => hendeelDelete(category._id)}>Delete</button>
+        
+                                                        </td>
+                                                    </tr>
+                                                    )
+                                                })
+                                            }
                                             <tr>
                                                 <td>1</td>
                                                 <td>Electronics</td>
