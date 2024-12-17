@@ -7,6 +7,7 @@ const BannerAdd = () => {
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null); // To show preview
     const token = JSON.parse(localStorage.getItem('token'))
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImage(file);
@@ -27,7 +28,7 @@ const BannerAdd = () => {
 
     try {
        
-      const response = await axios.post(`${backend_API}/category/addCategory`, formData,{
+      const response = await axios.post(`${backend_API}/banner/addBanner`, formData,{
               headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`, // Pass the token in headers
