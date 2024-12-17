@@ -157,7 +157,7 @@ const ManageCatagory = () => {
                                             {
                                                 categories.map((category, index) => {
                                                     return (
-                                                        <tr className='text-capitalize'>
+                                                        <tr key={index} className='text-capitalize'>
                                                             <td>{++index}</td>
                                                             <td>{category.categoryName}</td>
                                                             <td className=''><img src={category.image} alt="" width={70} className='d-flex justify-content-center' /></td>

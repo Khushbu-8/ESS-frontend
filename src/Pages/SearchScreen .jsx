@@ -5,7 +5,6 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { FaLocationArrow, FaLocationDot, FaPhone, FaServer } from 'react-icons/fa6';
 import { FaRegAddressCard, FaSearch, FaStar } from 'react-icons/fa';
 import UserSideBar from '../components/UserSideBar';
-import { categories } from '../ServiceCategory'
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
 import SearchResult from '../components/SearchResult';
@@ -18,7 +17,7 @@ const SearchScreen = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     const loginData = JSON.parse(localStorage.getItem("Users"))
     console.log(loginData,"LoginData");
-    
+    const [categories, setCategories] = useState([]);
     const [auth, setAuth] = useState(false)
     const [search, setSearch] = useState('')
     const navigate = useNavigate();
@@ -31,6 +30,7 @@ const SearchScreen = () => {
     const [loginUser,setLoginUser] = useState([])
 
     const [categoryFilter, setCategoryFilter] = useState("");
+   
     const fetchData = async () => {
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`);
@@ -42,9 +42,24 @@ const SearchScreen = () => {
             console.error("Error fetching data:", error);
         }
     };
+    const fetchCategory = async () => {
+        try {
+            const response = await axios.get(`${backend_API}/category/getAllCategory`);
+            const sortedCategories = response.data.category.sort((a, b) =>
+                a.categoryName.localeCompare(b.categoryName)
+            );
+
+            setCategories(sortedCategories);
+            console.log(sortedCategories, "sortedCategories");
+        }
+        catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
 
     useEffect(() => {
         fetchData();
+        fetchCategory()
     }, []);
 
     // const loginDatas = loginData?.address?.city?.toLowerCase() || ""; // Assuming 'loggedInUser' contains the logged-in user's data
@@ -200,19 +215,19 @@ const SearchScreen = () => {
                         <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
                             {categories
                                 .filter((user) =>
-                                    user.name.toLowerCase().includes(search.toLowerCase())
+                                    user.categoryName.toLowerCase().includes(search.toLowerCase())
                                     // user.businessCategory.some((category) =>
                                     //   category.toLowerCase().includes(search.toLowerCase())
                                     // )
                                 )
                                 .map((user, i) => (
-                                    <div key={++i} className="col" style={{ cursor: "pointer" }} onClick={() => { auth ? handleItemClick(user.name) : navigate('/login') }}>
+                                    <div key={++i} className="col" style={{ cursor: "pointer" }} onClick={() => { auth ? handleItemClick(user.categoryName) : navigate('/login') }}>
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
-                                                <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
+                                                <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src={user.image} >
                                                 </img>
                                             </figure>
-                                            <h6 className='text-md'>{user.name}</h6 >
+                                            <h6 className='text-md text-capitalize'>{user.categoryName}</h6 >
                                         </div>
 
 

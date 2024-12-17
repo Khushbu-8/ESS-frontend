@@ -43,7 +43,7 @@ const  ServieceCategories = ({ categories }) => {
                                         <figure className='w-full m-0 p-2'>
                                             <img className='img-fluid w-100 rounded-md overflow-hidden' style={{ objectFit: "cover" }} src={item.image} alt={item.categoryName} />
                                         </figure>
-                                        <h6 className='text-md'>{item.categoryName}</h6>
+                                        <h6 className='text-md text-capitalize'>{item.categoryName}</h6>
                                     </div>
                                 </div>
                             );
