@@ -4,11 +4,13 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../public/ees-logo.png"
 
-const backend_API = import.meta.env.VITE_API_URL; 
+// const backend_API = import.meta.env.VITE_API_URL; 
 
 // console.log(backend_API,"api");
 
-// const backend_API = "https://ees-121-backend.vercel.app"
+const backend_API = "https://ees-backend.vercel.app"
+console.log(backend_API);
+
 
 
 
