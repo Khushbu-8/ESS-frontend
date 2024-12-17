@@ -58,7 +58,7 @@ const BannerAdd = () => {
                     <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
                         Add Offer Benner
                     </label>
-                    <input type="file" id="file-upload" name="baner "  onChange={handleImageChange } />
+                    <input type="file" id="file-upload" name="baner"  onChange={handleImageChange } />
                     {preview && <img src={preview} alt="Preview" width="200" />}
                     <input type="submit"  name="" id="" />
 
