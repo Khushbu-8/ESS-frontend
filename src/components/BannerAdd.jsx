@@ -21,7 +21,7 @@ const BannerAdd = () => {
     }
 
     const formData = new FormData();
-    formData.append("banner", image); // Matches the backend field name
+    formData.append("imageUrl", image); // Matches the backend field name
   
 
     try {
