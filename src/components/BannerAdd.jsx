@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-// const backend_API = import.meta.env.VITE_API_URL; 
+const backend_API = import.meta.env.VITE_API_URL; 
 // console.log(backend_API);
 
 const BannerAdd = () => {
@@ -27,8 +27,7 @@ const BannerAdd = () => {
 
     try {
        
-        const response = await axios.post('https://ees-backend.vercel.app/banner/addBanner', formData,
-            {
+      const response = await axios.post(`${backend_API}/category/addCategory`, formData,{
               headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`, // Pass the token in headers
