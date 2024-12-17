@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-const backend_API = import.meta.env.VITE_API_URL; 
-console.log(backend_API);
+// const backend_API = import.meta.env.VITE_API_URL; 
+// console.log(backend_API);
 
 const BannerAdd = () => {
     const [image, setImage] = useState(null);
@@ -27,15 +27,15 @@ const BannerAdd = () => {
 
     try {
        
-        const response = await axios.post(`${backend_API}/banner/addBanner`, formData, 
+        const response = await axios.post('https://ees-121-backend.vercel.app/banner/addBanner', // Replace with your API endpoint
+            formData,
             {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    "Authorization": `Bearer ${token}`,
-                  },
-                }
-                
-        )
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`, // Pass the token in headers
+              },
+            }
+          );
         console.log(response.data)
         alert("Banner Added Successfully")
         if (response.status === 200) {    
