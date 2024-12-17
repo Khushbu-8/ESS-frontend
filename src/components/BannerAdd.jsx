@@ -27,7 +27,7 @@ const BannerAdd = () => {
 
     try {
        
-        const response = await axios.post('https://ees-121-backend.vercel.app/banner/addBanner', formData,
+        const response = await axios.post('https://ees-backend.vercel.app/banner/addBanner', formData,
             {
               headers: {
                 'Content-Type': 'multipart/form-data',

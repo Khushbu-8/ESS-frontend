@@ -10,7 +10,7 @@ const ManageCatagory = () => {
     const [preview, setPreview] = useState(null);
     const [categories, setCategories] = useState([]);
     // console.log(categoryImg,"categoryImg");
-    const backend_API = 'https://ees-121-backend.vercel.app'
+    const backend_API = 'https://ees-backend.vercel.app'
     const handleSubmit = async (e) => {
         e.preventDefault();
       
