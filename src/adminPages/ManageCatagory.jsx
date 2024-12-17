@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import AdminHeader from '../admincomponents/AdminHeader'
 import AdminSidebar from '../admincomponents/AdminSidebar'
 import axios from 'axios';
-// const backend_API = import.meta.env.VITE_API_URL;
+const backend_API = import.meta.env.VITE_API_URL;
 
 const ManageCatagory = () => {
     const [categoryName, setCategoryName] = useState("");
     const [categoryImg, setCategoryImg] = useState(null);
     const [preview, setPreview] = useState(null);
     const [categories, setCategories] = useState([]);
-    // console.log(categoryImg,"categoryImg");
-    const backend_API = 'https://ees-backend.vercel.app'
+    // console.log(categoryImg,"categoryImg")
     const handleSubmit = async (e) => {
         e.preventDefault();
       
@@ -63,25 +62,21 @@ const ManageCatagory = () => {
 
         const hendeelDelete = async(categorId ) =>{
             // console.log(categorId,"categorId ");
-            
-
-            try{
-                const response = await axios.delete(`${backend_API}/category/deleteCategory` ,{
+            try {
+                const response = await axios.delete(`${backend_API}/category/deleteCategory`, {
                     headers: {
                         'Content-Type': 'application/json',
-                      },
-                      data: { categorId: categorId },
-                    });
-                
-                
+                    },
+                    data: { categorId }, // Pass the `categorId` in the `data` field
+                });
+        
                 console.log(response.data);
-                alert("Category deleted:");
-                fetchCategory();
-                }
-                catch(error){
-                    console.error("Error deleting category:", error);
-                    }
-
+                alert("Category deleted successfully");
+                fetchCategory(); // Refresh the category list
+            } catch (error) {
+                console.error("Error deleting category:", error);
+                alert("Failed to delete category. Check console for more details.");
+            }
         }
     return (
         <>
@@ -168,16 +163,6 @@ const ManageCatagory = () => {
                                                     )
                                                 })
                                             }
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Electronics</td>
-                                                <td><img src="https://via.placeholder.com/100" alt="" /></td>
-                                                <td className='gap-2 h-full d-flex flex-wrap justify-content-center'>
-                                                    <button className="btn bg-green text-white ">Edit</button>
-                                                    <button className="btn bg-orange text-white ms-2">Delete</button>
-
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
