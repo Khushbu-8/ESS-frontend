@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AdminHeader from '../admincomponents/AdminHeader'
 import AdminSidebar from '../admincomponents/AdminSidebar'
 import axios from 'axios';
-const backend_API = import.meta.env.VITE_API_URL;
+// const backend_API = import.meta.env.VITE_API_URL;
 
 const ManageCatagory = () => {
     const [categoryName, setCategoryName] = useState("");
@@ -10,7 +10,7 @@ const ManageCatagory = () => {
     const [preview, setPreview] = useState(null);
     const [categories, setCategories] = useState([]);
     // console.log(categoryImg,"categoryImg");
-    
+    const backend_API = 'https://ees-121-backend.vercel.app'
     const handleSubmit = async (e) => {
         e.preventDefault();
       
