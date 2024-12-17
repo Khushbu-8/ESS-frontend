@@ -12,7 +12,7 @@ const CardSlider = () => {
     const sliderRef = useRef(null);
     
     const settings = {
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
         centerMode: true,
         arrows: true,
@@ -67,16 +67,16 @@ const CardSlider = () => {
 
     const GetCategories = async () => {
         try {
-            const response = await axios.get(`${backend_API}/category/getAllCategory`);
-            const sortedCategories = response.data.category.sort((a, b) =>
-                a.categoryName.localeCompare(b.categoryName)
-            );
-
-            setCategories(sortedCategories);
-            console.log(sortedCategories, "sortedCategories");
-        }
-        catch (error) {
-            console.error("Error fetching categories:", error);
+            const response = await axios.get(`${backend_API}/category/getAllCategory`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.data;
+            setCategories(data.category); // Assuming the response has a 'category' field
+        } catch (error) {
+            console.log(error);
+            return false;
         }
     };
 
@@ -90,28 +90,30 @@ const CardSlider = () => {
         const totalCategories = categories.length;
         const totalBanners = BannerImage.length;
 
-        // Loop through categories and banners
-        for (let i = 0; i < Math.max(totalCategories, totalBanners); i++) {
-            // Add categories
-            if (i < totalCategories && i < 10) {
-                result.push(
-                    <div key={`category-${i}`} className="category-item">
-                        {categories[i].name} {/* Assuming category has a name property */}
-                    </div>
-                );
-            }
+        // Render categories in groups of 10
+        for (let i = 0; i < totalCategories; i += 10) {
+            const categoryGroup = categories.slice(i, i + 10);
+            result.push(
+                <div key={`category-group-${i}`} className="category-group">
+                    {categoryGroup.map((category, index) => (
+                        <div key={index} className="category-item">
+                            {category.name} {/* Assuming category has a name property */}
+                        </div>
+                    ))}
+                </div>
+            );
 
-            // Add banners after every 10 categories
-            if (i % 10 === 9 && i < totalBanners) {
-                const bannerSlice = BannerImage.slice(i - 2, i + 1); // Get the last 3 banners
+            // Render banners in groups of 3 after each category group
+            if (i < totalBanners) {
+                const bannerGroup = BannerImage.slice(i / 10 * 3, (i / 10 + 1) * 3); // Calculate the correct slice for banners
                 result.push(
-                    <div key={`banner-${i}`} className="wrapper">
+                    <div key={`banner-group-${i}`} className="wrapper">
                         <Slider
                             ref={sliderRef}
                             className="center-slider h-[100%]"
                             {...settings}
                         >
-                            {bannerSlice.map((image, index) => (
+                            {bannerGroup.map((image, index) => (
                                 <div
                                     key={index}
                                     className="rounded-sm h-[100%] overflow-hidden"
@@ -132,17 +134,23 @@ const CardSlider = () => {
             }
         }
 
-        // Add remaining categories
-        for (let i = 10; i < totalCategories; i++) {
+        // Render any remaining categories
+        if (totalCategories % 10 !== 0) {
+            const remainingCategories = categories.slice(Math.floor(totalCategories / 10) * 10);
             result.push(
-                <div key={`remaining-category-${i}`} className="category-item">
-                    {categories[i].name}
+                <div key="remaining-categories" className="category-group">
+                    {remainingCategories.map((category, index) => (
+                        <div key={index} className="category-item">
+                            {category.name}
+                        </div>
+                    ))}
                 </div>
             );
         }
 
-        // Add remaining banners
-        const remainingBanners = BannerImage.slice(3); if (remainingBanners.length > 0) {
+        // Render any remaining banners
+        const remainingBanners = BannerImage.slice(Math.floor(totalCategories / 10) * 3);
+        if (remainingBanners.length > 0) {
             result.push(
                 <div key="remaining-banners" className="wrapper">
                     <Slider
