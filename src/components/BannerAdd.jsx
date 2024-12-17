@@ -52,9 +52,9 @@ const BannerAdd = () => {
 
     return (
         <>
-            <form action="" onSubmit={hendleSubmitIng} enctype="multipart/form-data" >
+            <form action="" onSubmit={hendleSubmitIng} >
                 <div className='' >
-                    <label for="file-upload" class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
+                    <label htmlFor="file-upload"  class="h-[100px] btn d-inline-block border border-orange d-flex justify-content-center align-items-center  text-center ">
                         Add Offer Benner
                     </label>
                     <input type="file" id="file-upload" name="banner" onChange={handleImageChange} />
