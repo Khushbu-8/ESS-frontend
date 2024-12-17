@@ -1,47 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { FaLocationDot } from 'react-icons/fa6'
+
 import { useNavigate } from 'react-router-dom';
-import SearchScreen from '../Pages/SearchScreen ';
-import axios from 'axios';
-// import { categories } from '../ServiceCategory';
-const backend_API = import.meta.env.VITE_API_URL; 
-const  ServieceCategories = () => {
-    const [categories, setCategories] = useState([]);
-    const [sevices, setServices] = useState();
-    const [filterrecord, setFilterRecord] = useState([]);
-    const [search, setSearch] = useState("");
+
+const  ServieceCategories = ({ categories }) => {
+ 
     const navigate = useNavigate();
   
-  
-    const fetchCategory = async() =>{
-        try{
-            const response = await axios.get(`${backend_API}/category/getAllCategory`); 
-            const sortedCategories = response.data.category.sort((a, b) => 
-                a.categoryName.localeCompare(b.categoryName)
-            );
-            
-            setCategories(sortedCategories);
-            console.log(sortedCategories, "sortedCategories");
-            }
-            catch(error){
-                console.error("Error fetching categories:", error);
-                }
-      }
-      useEffect(() => {
-        fetchCategory();
-        }, []);
 
-      
-    const handleFilter = (val) => {
-        let filter = categories.slice(0, 10); // Ensure only the first 10 categories are used
-        if (val === "all") {
-            setFilterRecord(filter);
-        } else {
-            filter = filter.filter(item => item.name === val);
-            setFilterRecord(filter);
-        }
-        navigate("/serviceDetail");
-    };
     return (
         <>
         <section>
@@ -67,31 +32,26 @@ const  ServieceCategories = () => {
         </div>
       </div>
         </section>
-            <section className='mt-2'>
-                <div className="container">
-                    <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
-                            {
-                                 categories.slice(0, 10).map((item, i) => {
-                                    return (
-                                        <div key={++i} className="col" style={{cursor: "pointer"}} onClick={() => navigate(`/editprofile`, { state: item })}>
-                                        <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
-                                            <figure className='w-full m-0 p-2 '>
-                                                <img className='img-fluid w-100 rounded-md overflow-hidden ' style={{ objectFit: "cover" }} src={item.image} >
-                                                </img>
-                                            </figure>
-                                            <h6 className='text-md'>{item.categoryName}</h6 >
-                                        </div>
-        
-        
+        <section className='mt-2'>
+            <div className="container">
+                <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
+                    {
+                        categories.map((item, index) => {
+                            return (
+                                <div key={index} className="col" style={{ cursor: "pointer" }} onClick={() => navigate(`/editprofile`, { state: item })}>
+                                    <div className="border-0 w-100 h-100 text-center items-center justify-content-center rounded-md">
+                                        <figure className='w-full m-0 p-2'>
+                                            <img className='img-fluid w-100 rounded-md overflow-hidden' style={{ objectFit: "cover" }} src={item.image} alt={item.categoryName} />
+                                        </figure>
+                                        <h6 className='text-md'>{item.categoryName}</h6>
                                     </div>
-                                    )
-                                })
-                            }
-                        
-                    </div>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
-            </section>
-
+            </div>
+        </section>
 
         </>
     )

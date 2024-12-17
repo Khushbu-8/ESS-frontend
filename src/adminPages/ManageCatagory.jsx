@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AdminHeader from '../admincomponents/AdminHeader'
 import AdminSidebar from '../admincomponents/AdminSidebar'
 import axios from 'axios';
+import EditCategory from '../admincomponents/EditCategory';
 const backend_API = import.meta.env.VITE_API_URL;
 
 const ManageCatagory = () => {
@@ -9,75 +10,81 @@ const ManageCatagory = () => {
     const [categoryImg, setCategoryImg] = useState(null);
     const [preview, setPreview] = useState(null);
     const [categories, setCategories] = useState([]);
+    const [editcategory, setEditCategory] = useState({});
     // console.log(categoryImg,"categoryImg")
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         if (!categoryName || !categoryImg) {
-          alert("Please fill all fields");
-          return;
+            alert("Please fill all fields");
+            return;
         }
-      
+
         const formData = new FormData();
         formData.append("categoryName", categoryName);
         formData.append("category", categoryImg);
         console.log('FormData:', Object.fromEntries(formData)); // Debugging
 
         try {
-          const response = await axios.post(`${backend_API}/category/addCategory`, formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-          console.log(response.data);
-          alert("Category added:");
-      
-          // Clear the form and close the modal
-          setCategoryName("");
-          setCategoryImg(null);
-          setPreview(null);
+            const response = await axios.post(`${backend_API}/category/addCategory`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            console.log(response.data);
+            alert("Category added:");
+            fetchCategory();
+            // Clear the form and close the modal
+            setCategoryName("");
+            setCategoryImg(null);
+            setPreview(null);
         } catch (error) {
-          console.error("Error adding category:", error);
+            console.error("Error adding category:", error);
         }
-      };
+    };
 
 
-      const fetchCategory = async() =>{
-        try{
-            const response = await axios.get(`${backend_API}/category/getAllCategory`); 
-            const sortedCategories = response.data.category.sort((a, b) => 
+    const fetchCategory = async () => {
+        try {
+            const response = await axios.get(`${backend_API}/category/getAllCategory`);
+            const sortedCategories = response.data.category.sort((a, b) =>
                 a.categoryName.localeCompare(b.categoryName)
             );
-            
+
             setCategories(sortedCategories);
             console.log(sortedCategories, "sortedCategories");
-            }
-            catch(error){
-                console.error("Error fetching categories:", error);
-                }
-      }
-      useEffect(() => {
-        fetchCategory();
-        }, []);
-
-        const hendeelDelete = async(categorId ) =>{
-            // console.log(categorId,"categorId ");
-            try {
-                const response = await axios.delete(`${backend_API}/category/deleteCategory`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    data: { categorId }, // Pass the `categorId` in the `data` field
-                });
-        
-                console.log(response.data);
-                alert("Category deleted successfully");
-                fetchCategory(); // Refresh the category list
-            } catch (error) {
-                console.error("Error deleting category:", error);
-                alert("Failed to delete category. Check console for more details.");
-            }
         }
+        catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
+    useEffect(() => {
+        fetchCategory();
+    }, []);
+
+    const hendeelDelete = async (categorId) => {
+        // console.log(categorId,"categorId ");
+        try {
+            const response = await axios.delete(`${backend_API}/category/deleteCategory`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: { categorId }, // Pass the `categorId` in the `data` field
+            });
+
+            console.log(response.data);
+            alert("Category deleted successfully");
+            fetchCategory(); // Refresh the category list
+        } catch (error) {
+            console.error("Error deleting category:", error);
+            alert("Failed to delete category. Check console for more details.");
+        }
+    }
+    const hendelEdit = (categorysingle) =>{
+        console.log(categorysingle);
+        
+        setEditCategory(categorysingle)
+    }
     return (
         <>
             <AdminHeader />
@@ -121,7 +128,7 @@ const ManageCatagory = () => {
                                                                     setPreview(URL.createObjectURL(file))
                                                                 }}
                                                             />
-                                                           {preview && <img src={preview} alt="Preview" width="100" />}
+                                                            {preview && <img src={preview} alt="Preview" width="100" />}
                                                         </div>
                                                     </div>
                                                     <div className="modal-footer">
@@ -136,7 +143,7 @@ const ManageCatagory = () => {
                                 </div>
 
                                 <div className="card-body">
-                                    <table className="table  table-bordered">
+                                    <table className="table text-capitalizes table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sr No</th>
@@ -150,24 +157,25 @@ const ManageCatagory = () => {
                                             {
                                                 categories.map((category, index) => {
                                                     return (
-                                                        <tr>
-                                                        <td>{++index}</td>
-                                                        <td>{category.categoryName}</td>
-                                                        <td className=''><img src={category.image} alt="" width={70} className='d-flex justify-content-center' /></td>
-                                                        <td className='gap-2 h-full d-flex flex-wrap justify-content-center'>
-                                                            <button className="btn bg-green text-white ">Edit</button>
-                                                            <button className="btn bg-orange text-white ms-2"  onClick={() => hendeelDelete(category._id)}>Delete</button>
-        
-                                                        </td>
-                                                    </tr>
+                                                        <tr className='text-capitalize'>
+                                                            <td>{++index}</td>
+                                                            <td>{category.categoryName}</td>
+                                                            <td className=''><img src={category.image} alt="" width={70} className='d-flex justify-content-center' /></td>
+                                                            <td className='gap-2 h-full d-flex flex-wrap justify-content-center'>
+                                                                <button className="btn bg-green text-white" onClick={() => hendelEdit(category)} data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                                                <button className="btn bg-orange text-white ms-2" onClick={() => hendeelDelete(category._id)}>Delete</button>
+
+                                                            </td>
+                                                        </tr>
                                                     )
                                                 })
                                             }
                                         </tbody>
                                     </table>
                                 </div>
-
-
+                                <EditCategory editcategory={editcategory} />
+                                        
+                              
 
                             </div>
 
