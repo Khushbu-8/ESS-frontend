@@ -22,7 +22,7 @@ const BannerAdd = () => {
 
     const formData = new FormData();
     formData.append("imageUrl", image); // Matches the backend field name
-  
+    console.log('FormData:', Object.fromEntries(formData));
 
     try {
        
