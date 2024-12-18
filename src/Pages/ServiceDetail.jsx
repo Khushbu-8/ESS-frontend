@@ -1,15 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import axios from 'axios';
+const backend_API = import.meta.env.VITE_API_URL; 
 
 const ServiceDetail = () => {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const loginData = JSON.parse(localStorage.getItem("Users"))
+    // console.log(loginData,"LoginData");
+    const [category,setCategory] = useState();
 
-
-    const navigate = useNavigate();
-    // console.log(selectedItem);
-    
+    const navigate = useNavigate();   
     const location = useLocation();
-    console.log(location.state);
+    console.log(location.state.categoryName,"location");
+    const fetchData = async (cat) => {
+        try {
+            const response = await axios.get(`${backend_API}/auth/getAllUser`);
+            let data = response.data.user;
+            data = data.filter((user) =>
+                {
+                    // Check if the user's businessCategory matches the selected category
+                    const categoryMatch = user.businessCategory.some((category) => category === cat);
+        
+                    // Check if the user's address matches the logged-in user's address
+                    let loginAddress = loginData?.address?.city || ""; // Assuming 'loggedInUser' contains the logged-in user's data
+                    console.log(loginAddress,"datasss");
+                    const addressMatch = user.address?.city === loginAddress;
+        
+                    return categoryMatch && addressMatch; // Both conditions must be true
+                });
+            console.log(data,"filterdata");
+            
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+useEffect(() =>{
+        if (location.state) {
+            setCategory(location.state.categoryName)
+        }
+        fetchData(location.state.categoryName)
+},[location.state])
+useEffect(()=>{
+   
+},[])
 
     let profile = [{
         id: 1,
