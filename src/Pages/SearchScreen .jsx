@@ -8,6 +8,7 @@ import UserSideBar from '../components/UserSideBar';
 import axios from 'axios';
 import ServiceDetail from './ServiceDetail';
 import SearchResult from '../components/SearchResult';
+import SearchBox from '../components/SearchBox';
 
 const backend_API = import.meta.env.VITE_API_URL; 
 
@@ -61,12 +62,6 @@ const SearchScreen = () => {
         fetchData();
         fetchCategory()
     }, []);
-
-    // const loginDatas = loginData?.address?.city?.toLowerCase() || ""; // Assuming 'loggedInUser' contains the logged-in user's data
-    // console.log(loginDatas,"datasss");
-    
-//  feth LoginUser's Address
-
     const handleItemCaregory = (cat) => {
         console.log(cat);
    
@@ -156,7 +151,8 @@ const SearchScreen = () => {
             <UserSideBar />
             <div className="container mt-24">
                 <div className="row">
-                    <div className='col-12 col-xl-5 p-3'>
+                   
+                    <div className='col-12 col-xl-5 p-3 d-none'>
                         {/* Search Box for Category */}
                         <form action=""  >
                             <div className="search-input border rounded-1 ps-3 pe-2 mb-2 d-flex align-items-center">

@@ -17,6 +17,8 @@ const ServiceDetail = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location.state.categoryName, "catrgory");
+    console.log(location.state, "catrgoryss");
+
 
     const fetchData = async (cat, loggedInUserCity) => {
         try {
