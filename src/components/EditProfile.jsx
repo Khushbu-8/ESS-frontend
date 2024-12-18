@@ -63,7 +63,7 @@ const EditProfile = () => {
         setCity(postOffice.District || ''); // Set City (e.g., Surat)
         setState(postOffice.State || ''); // Set State (e.g., Gujarat)
         setCountry(postOffice.Country || ''); // Set Country (e.g., India)
-        setError('');
+       
       } else {
         setError('Invalid Pincode! Please enter a valid one.');
         setArea('');

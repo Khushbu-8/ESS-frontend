@@ -8,51 +8,38 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 const ServiceDetail = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-    const loginData = JSON.parse(localStorage.getItem("Users"))
-    // console.log(loginData,"LoginData");
+    const loggedInUser = JSON.parse(localStorage.getItem("Users"))
+    console.log(loggedInUser,"LoginData");
     const [category,setCategory] = useState();
     const [service, setService] = useState([]);
 
     const navigate = useNavigate();   
     const location = useLocation();
-    console.log(location.state.categoryName,"location");
+    console.log(location.state.categoryName,"catrgory");
     const fetchData = async (cat) => {
         try {
-            const response = await axios.get(`${backend_API}/auth/getAllUser`);
-            let data = response.data.user;
-            console.log(data);
-            
-            data = data.filter((user) =>
-                {
-                    // Check if the user's businessCategory matches the selected category
-                    const categoryMatch = user.businessCategory.some((category) => category === cat);
+          const response = await axios.get(`${backend_API}/auth/getAllUser`);
+          const data = response.data.user;
+      console.log(data);
+      
+          // Filter the users based on the business category
+           // Filter users where the `businessCategory` array includes `cat`
+    const filteredData = data.filter((user) => user.businessCategory?.includes(cat));
+    console.log(filteredData, "Filtered Data");
         
-                    // // Check if the user's address matches the logged-in user's address
-                    // let loginAddress = loginData?.address?.city() || ""; // Assuming 'loggedInUser' contains the logged-in user's data
-                    // console.log(loginAddress,"datasss");
-                    // const addressMatch = user.address?.city.toLowerCase() === loginAddress;
-        
-                    return categoryMatch  // Both conditions must be true
-                });
-            console.log(data,"filterdata");
-            setService(data);
-
-            
-
+          // Update the state with the filtered data
+          setService(filteredData);
         } catch (error) {
-            console.error("Error fetching data:", error);
+          console.error("Error fetching data:", error);
         }
-    };
-
-useEffect(() =>{
+      };
+    useEffect(() => {
         if (location.state) {
-            setCategory(location.state.categoryName)
+          const categoryName = location.state.categoryName;
+          setCategory(categoryName); // Set the category in state
+          fetchData(categoryName); // Fetch data for the specific category
         }
-        fetchData(location.state.categoryName)
-},[location.state])
-useEffect(()=>{
-   
-},[])
+      }, [location.state]);
 
     let profile = [{
         id: 1,
@@ -117,7 +104,7 @@ useEffect(()=>{
                                                     <h4 className="">{card.name}</h4>
                                                     <p>{card.email}</p>
                                                     <p>{card.phone}</p>
-                                                    <p>{card.address}</p>
+                                                    <p>{card.address.city}</p>
                                                    
                                                     <div className="rating rating-sm py-4 d-flex align-items-center">
                                                         <FaStar className='text-warning'/>
