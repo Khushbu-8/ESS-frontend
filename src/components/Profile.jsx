@@ -10,9 +10,6 @@ import { FaStar } from 'react-icons/fa';
 import BannerAdd from './BannerAdd';
 const backend_API = import.meta.env.VITE_API_URL; 
 
-// const backend_API = "https://ees-121-backend.vercel.app"
-// const backend_API = "http://localhost:3000"
-
 
 const Profile = () => {
     const [profile, setProfile] = useState("");

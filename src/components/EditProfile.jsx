@@ -16,7 +16,7 @@ import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 
 // import { categories } from '../ServiceCategory'
-const backend_API = import.meta.env.VITE_API_URL; 
+const backend_API = import.meta.env.VITE_API_URL;
 
 // const backend_API = "https://ees-121-backend.vercel.app"
 
@@ -34,36 +34,81 @@ const EditProfile = () => {
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
-   const [categories, setCategories] = useState([]);
+   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
   const location = useLocation();
-  
+
   const navigete = useNavigate()
   const toggleSelection = (category) => {
-    if (businessCategory.includes(category)) {
-      setBusinessCategory(businessCategory.filter((c) => c !== category));
-    } else {
-      setBusinessCategory([...businessCategory, category]);
-    }
+    setBusinessCategory(category); // Set selected category
+    setIsDropdownOpen(false); // Close dropdown
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const token = JSON.parse(localStorage.getItem('token'))
+
+  const fetchLocationDetails = async (pincode) => {
+    try {
+      const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+      const data = await response.json();
+      console.log(data);
+
+
+      if (data[0].Status === 'Success') {
+        const postOffice = data[0].PostOffice[0]; // Get the first result
+        setArea(postOffice.Name || ''); // Set Area (e.g., Kamrej)
+        setCity(postOffice.District || ''); // Set City (e.g., Surat)
+        setState(postOffice.State || ''); // Set State (e.g., Gujarat)
+        setCountry(postOffice.Country || ''); // Set Country (e.g., India)
+        setError('');
+      } else {
+        setError('Invalid Pincode! Please enter a valid one.');
+        setArea('');
+        setCity('');
+        setState('');
+        setCountry('');
+      }
+    } catch (err) {
+      setError('Failed to fetch location details. Try again later.');
+    }
+  };
+
+  // Handle pincode input change
+  const handlePincodeChange = (e) => {
+    const inputPincode = e.target.value.trim();
+    setPincode(inputPincode);
+
+    if (inputPincode.length === 6) {
+      fetchLocationDetails(inputPincode);
+    } else {
+      setArea('');
+      setCity('');
+      setState('');
+      setCountry('');
+      setError('');
+    }
+  };
+
   const fetchCategory = async () => {
     try {
-        const response = await axios.get(`${backend_API}/category/getAllCategory`);
-        const sortedCategories = response.data.category.sort((a, b) =>
-            a.categoryName.localeCompare(b.categoryName)
-        );
+      const response = await axios.get(`${backend_API}/category/getAllCategory`);
+      const sortedCategories = response.data.category.sort((a, b) =>
+        a.categoryName.localeCompare(b.categoryName)
+      );
 
-        setCategories(sortedCategories);
-        console.log(sortedCategories, "sortedCategories");
+      setCategories(sortedCategories);
+      console.log(sortedCategories, "sortedCategories");
     }
     catch (error) {
-        console.error("Error fetching categories:", error);
+      console.error("Error fetching categories:", error);
     }
-}
-useEffect(() => {
+  }
+  useEffect(() => {
     fetchCategory();
-}, []);
+  }, []);
 
 
   const handleSubmit = async (e) => {
@@ -74,8 +119,8 @@ useEffect(() => {
       state,
       country,
       pincode
-    };   
-    const fullData = { name, email, phone, address: newAddress, businessCategory, businessName, businessAddress }; 
+    };
+    const fullData = { name, email, phone, address: newAddress, businessCategory, businessName, businessAddress };
     try {
       const response = await axios.post(`${backend_API}/auth/updateProfile`, fullData, {
         headers: {
@@ -146,139 +191,146 @@ useEffect(() => {
                         </label>
                       </div>
                       <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold "> Email</label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <MdAlternateEmail className='text-xl' />
-                      </label>
+                        <label className="block text-md font-medium p-2 text-bold "> Email</label>
+                        <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                          <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className=' w-100 outline-0 ' />
+                          <MdAlternateEmail className='text-xl' />
+                        </label>
                       </div>
                       <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Contact </label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="text"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <LuPhone className='text-xl' />
-                      </label>
+                        <label className="block text-md font-medium p-2 text-bold ">Contact </label>
+                        <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                          <input
+                            type="text"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className=' w-100 outline-0 ' />
+                          <LuPhone className='text-xl' />
+                        </label>
                       </div>
                       <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Address</label>
-                      <div className="col-12 d-flex flex-wrap">
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={area}
-                              onChange={(e) => setArea(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='area' />
-                            <FaRegAddressCard className='text-xl' />
+                        <label className="block text-md font-medium p-2 text-bold ">Address</label>
+                        <div className="col-12 d-flex flex-wrap">
+                          <div className="col-6">
+                            <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                              <input
+                                type="text"
+                                value={area}
+                                onChange={(e) => setArea(e.target.value)}
+                                className=' w-100 outline-0 ' placeholder='area' />
+                              <FaRegAddressCard className='text-xl' />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={city}
-                              onChange={(e) => setCity(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='city' />
-                            <FaRegAddressCard className='text-xl' />
+                          <div className="col-6">
+                            <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                              <input
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                className=' w-100 outline-0 ' placeholder='city' />
+                              <FaRegAddressCard className='text-xl' />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={state}
-                              onChange={(e) => setState(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='state' />
-                            <FaRegAddressCard className='text-xl' />
+                          <div className="col-6">
+                            <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                              <input
+                                type="text"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                                className=' w-100 outline-0 ' placeholder='state' />
+                              <FaRegAddressCard className='text-xl' />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 my-1'>
-                            <input
-                              type="text"
-                              value={country}
-                              onChange={(e) => setCountry(e.target.value)}
-                              className=' w-100 outline-0 ' placeholder='country' />
-                            <FaRegAddressCard className='text-xl' />
+                          <div className="col-6">
+                            <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 my-1'>
+                              <input
+                                type="text"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                className=' w-100 outline-0 ' placeholder='country' />
+                              <FaRegAddressCard className='text-xl' />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-6">
-                          <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                            <input
-                              type="text"
-                              value={pincode}
-                              onChange={(e) => setPincode(e.target.value)}
-                              className=' w-100 outline-0 bg-none' placeholder="pincode" />
-                            <FaRegAddressCard className='text-xl' />
+                          <div className="col-6">
+                            <div htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                              <input
+                                type="text"
+                                value={pincode}
+                                onChange={handlePincodeChange}
+                                maxLength="6"
+                                className=' w-100 outline-0 bg-none' placeholder="pincode" />
+                              <FaRegAddressCard className='text-xl' />
+                            </div>
+
                           </div>
 
                         </div>
-
-                      </div>
 
                       </div>
                     </div>
                     <div className="col-12 col-md-6 p-2 w-full">
-                    <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Name </label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
-                        <input
-                          type="text"
-                          value={businessName}
-                          onChange={(e) => setBusinessName(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <MdAlternateEmail className='text-xl' />
-                      </label>
+                      <div className='my-1'>
+                        <label className="block text-md font-medium p-2 text-bold ">Bussiness Name </label>
+                        <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2'>
+                          <input
+                            type="text"
+                            value={businessName}
+                            onChange={(e) => setBusinessName(e.target.value)}
+                            className=' w-100 outline-0 ' />
+                          <MdAlternateEmail className='text-xl' />
+                        </label>
                       </div>
                       <div className='my-1'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
-                      <div className="">
-                        <div className="border border-2 rounded-md p-2 bg-white">
-                          {businessCategory.length > 0 ? (
-                            businessCategory.map((category, i) => (
-                              <span
-                                key={++i}
-                                className="inline-block bg-orange text-white px-3 py-1 text-sm rounded-full mr-2 mb-2"
-                              >
-                                {category}
-                              </span>
-                            ))
-                          ) : (
-                            <span className="text-gray-400">Select categories</span>
+                        <label className="block text-md font-medium p-2 text-bold ">Bussiness Category</label>
+                        <div className="">
+                          {/* Display Selected Category */}
+                          <div className="border border-2 rounded-md p-2 bg-white"
+                            onClick={toggleDropdown}
+                          >
+                            {businessCategory.length > 0 ? (
+                             
+                                  <span className="inline-block px-3 text-black py-1  ">
+                                  {businessCategory}
+                                </span>
+
+                             
+                            ) : (
+                              <span className="text-gray-500 ps-3 py-1">Select a category</span>
+                            )}
+                          </div>
+
+                          {/* Dropdown Menu */}
+                          {isDropdownOpen && (
+                            <ul className="z-10 border border-gray-300 bg-white w-full mt-2 rounded-md  max-h-40 overflow-y-auto">
+                              {categories.map((category, i) => (
+                                <li
+                                  key={i}
+                                  className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.categoryName ? "bg-green-200" : ""
+                                    }`}
+                                  onClick={() => selectCategory(category.categoryName)}
+                                >
+                                  {category.categoryName}
+                                </li>
+                              ))}
+                            </ul>
                           )}
                         </div>
-                        <ul className=" z-10 border border-gray-300 bg-white w-full mt-2 rounded-md  max-h-40 overflow-y-auto">
-                          {categories.map((category, i) => (
-                            <li
-                              key={++i}
-                              className={`cursor-pointer px-4 py-2 hover:bg-orange hover:text-white ${businessCategory.includes(category.name) ? "bg-orange text-white" : ""
-                                }`}
-                              onClick={() => toggleSelection(category.categoryName)}
-                            >
-                              {category.categoryName}
-                            </li>
-                          ))}
-                        </ul>
                       </div>
-                      </div>
+                      
                       <div className='my-2'>
-                      <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
-                      <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
-                        <input
-                          type="text"
-                          value={businessAddress}
-                          onChange={(e) => setBusinessAddress(e.target.value)}
-                          className=' w-100 outline-0 ' />
-                        <FaRegAddressCard className='text-xl' />
-                      </label>
+                        <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
+                        <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>
+                          <input
+                            type="text"
+                            value={businessAddress}
+                            onChange={(e) => setBusinessAddress(e.target.value)}
+                            className=' w-100 outline-0 ' />
+                          <FaRegAddressCard className='text-xl' />
+                        </label>
                       </div>
                     </div>
                   </div>
