@@ -94,7 +94,7 @@ useEffect(()=>{
         <>
           <AdminNavbar/>
           <UserSideBar/>
-            <section className=''>
+            <section className='mt-32'>
                 <div className="container">
                     <div className="row">
                         <div className='d-flex'>
