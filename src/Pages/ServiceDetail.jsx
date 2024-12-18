@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import axios from 'axios';
+import AdminNavbar from '../admincomponents/AdminNavbar';
+import UserSideBar from '../components/UserSideBar';
 const backend_API = import.meta.env.VITE_API_URL; 
 
 const ServiceDetail = () => {
@@ -9,6 +11,7 @@ const ServiceDetail = () => {
     const loginData = JSON.parse(localStorage.getItem("Users"))
     // console.log(loginData,"LoginData");
     const [category,setCategory] = useState();
+    const [service, setService] = useState([]);
 
     const navigate = useNavigate();   
     const location = useLocation();
@@ -32,6 +35,8 @@ const ServiceDetail = () => {
                     return categoryMatch  // Both conditions must be true
                 });
             console.log(data,"filterdata");
+            setService(data);
+
             
 
         } catch (error) {
@@ -87,7 +92,8 @@ useEffect(()=>{
 
     return (
         <>
-          
+          <AdminNavbar/>
+          <UserSideBar/>
             <section className=''>
                 <div className="container">
                     <div className="row">
@@ -98,7 +104,7 @@ useEffect(()=>{
 
                         <div className="col-12 d-flex flex-wrap">
                             {
-                                profile.map((card, i) => {
+                                service.map((card, i) => {
                                     return (
                                         <div className="col-12 col-md-6 w-full col-lg-3 p-2 ">
                                             <div className="bg-white rounded-md overflow-hidden flex d-md-block w-full">
