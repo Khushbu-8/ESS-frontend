@@ -16,7 +16,7 @@ const  ServieceCategories = ({ categories }) => {
                     {
                         categories.map((item, index) => {
                             return (
-                                <div key={index} className="col py-2" style={{ cursor: "pointer" }} onClick={() => navigate(`/serviceDetail`, { state: item })}>
+                                <div key={index} className="col py-2" style={{ cursor: "pointer" }} onClick={() => navigate(`/serviceDetail`, { state: item.categoryName })}>
                                     <div className="border-0 w-100 h-100 text-center items-center justify-content-center rounded-md">
                                         <figure className='w-full m-0 p-2 '>
                                             <img className='img-fluid w-100 p-2 border-orange rounded-4 overflow-hidden' style={{ objectFit: "cover" }} src={item.image} alt={item.categoryName} />

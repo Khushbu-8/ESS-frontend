@@ -16,7 +16,7 @@ const ServiceDetail = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.state.categoryName, "catrgory");
+    console.log(location.state, "catrgorys");
     console.log(location.state, "catrgoryss");
 
 
@@ -43,7 +43,7 @@ const ServiceDetail = () => {
     };
     useEffect(() => {
         if (location.state && loggedInUser.address.city) {
-            const categoryName = location.state.categoryName;
+            const categoryName = location.state;
             setCategory(categoryName); // Set the category in state
             fetchData(categoryName, loggedInUser.address.city); // Fetch data with category and city
         }
