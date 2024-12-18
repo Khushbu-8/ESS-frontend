@@ -35,6 +35,7 @@ export default function App() {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin />} />
           {/* </Route> */}
           <Route path="/servises" element={ <Services/>} />
 
@@ -49,7 +50,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Admin Routes */}
-          <Route path="/admin" element={<Admin />} />
+         
           <Route path="/admin" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
           <Route path="/admin/card" element={<Card />} />
