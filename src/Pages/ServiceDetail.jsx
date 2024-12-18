@@ -9,37 +9,40 @@ const backend_API = import.meta.env.VITE_API_URL;
 const ServiceDetail = () => {
     const token = JSON.parse(localStorage.getItem('token'))
     const loggedInUser = JSON.parse(localStorage.getItem("Users"))
-    console.log(loggedInUser,"LoginData");
+    console.log(loggedInUser.address.city,"LoginData");
     const [category,setCategory] = useState();
     const [service, setService] = useState([]);
 
     const navigate = useNavigate();   
     const location = useLocation();
     console.log(location.state.categoryName,"catrgory");
-    const fetchData = async (cat) => {
+    
+    const fetchData = async (cat, loggedInUserCity) => {
         try {
           const response = await axios.get(`${backend_API}/auth/getAllUser`);
           const data = response.data.user;
-      console.log(data);
       
-          // Filter the users based on the business category
-           // Filter users where the `businessCategory` array includes `cat`
-    const filteredData = data.filter((user) => user.businessCategory?.includes(cat));
-    console.log(filteredData, "Filtered Data");
-        
+          // Filter users where `businessCategory` includes `cat` and `address.city` matches logged-in user's city
+          const filteredData = data.filter(
+            (user) =>
+              user.businessCategory?.includes(cat) && user.address?.city === loggedInUserCity
+          );
+      
+          console.log(filteredData, "Filtered Data");
+      
           // Update the state with the filtered data
           setService(filteredData);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       };
-    useEffect(() => {
-        if (location.state) {
+      useEffect(() => {
+        if (location.state && loggedInUser.address.city) {
           const categoryName = location.state.categoryName;
           setCategory(categoryName); // Set the category in state
-          fetchData(categoryName); // Fetch data for the specific category
+          fetchData(categoryName, loggedInUser.address.city); // Fetch data with category and city
         }
-      }, [location.state]);
+      }, [location.state, loggedInUser.address.city]);
 
     let profile = [{
         id: 1,
