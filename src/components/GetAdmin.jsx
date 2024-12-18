@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { FaUserAltSlash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
+const backend_API = import.meta.env.VITE_API_URL;
+
 const GetAdmin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const token = JSON.parse(localStorage.getItem('token'))
