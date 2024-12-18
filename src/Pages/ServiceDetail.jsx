@@ -4,6 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import axios from 'axios';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import UserSideBar from '../components/UserSideBar';
+import { HiDotsHorizontal } from "react-icons/hi";
 const backend_API = import.meta.env.VITE_API_URL;
 
 const ServiceDetail = () => {
