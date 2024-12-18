@@ -4,16 +4,23 @@ import { RiStarSFill } from "react-icons/ri";
 import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
-const backend_API = import.meta.env.BACKEND_API;
-import { categories } from '../ServiceCategory'
-// const backend_API = "https://ees-121-backend.vercel.app"
+// import { categories } from '../ServiceCategory'
+const backend_API = import.meta.env.VITE_API_URL; 
 
 
 const EditUser = () => {
+   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [city, setCity] = useState('');
+   const [pincode, setPincode] = useState('');
+
+    const [area, setArea] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [error, setError] = useState('');
+
   const [address, setAddress] = useState('');
 
   const [businessCategory, setBusinessCategory] = useState([]);
@@ -22,161 +29,27 @@ const EditUser = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const navigete = useNavigate()
-  // let categories = [
-  //   "A.C. SERVICE",
-  //   "ADVOCATE",
-  //   "ALUMINIUM WORKER",
-  //   "AUTO RICKSHAW",
-  //   "AUTO MOBILE & SALES",
-  //   "BABY SITTING",
-  //   "BAGGI (HORSE CART)",
-  //   "BANK SERVICE",
-  //   "BANQUET HALL",
-  //   "BATTERY SERVICE",
-  //   "BEAUTY PARLOUR",
-  //   "BIKE SERVICE",
-  //   "BROKER",
-  //   "BUSINESS CONSULTANT",
-  //   "BICYCLE",
-  //   "CAFE",
-  //   "CAR DECORATOR",
-  //   "CAR SERVICE",
-  //   "CAR WASHING",
-  //   "CAR WIRING",
-  //   "CARE TAKER",
-  //   "CARPENTER",
-  //   "CATERING",
-  //   "CCTV.CAMERA",
-  //   "CHAIR REPAIRING",
-  //   "CHARTERED ACCOUNTAT",
-  //   "CHILDREN WEAR",
-  //   "CLASSES",
-  //   "COMPUTER CLASSES",
-  //   "COMPUTER HARDWARE",
-  //   "COMPUTER SOFTWARE",
-  //   "COSMETIC STORE",
-  //   "COURIER SERVICE",
-  //   "DAIRY PRODUCT",
-  //   "DANCE CLASSES",
-  //   "DESIGNER / EDITOR",
-  //   "DHOLI",
-  //   "DIAMOND BUSINESS",
-  //   "DIGITAL MARKETING",
-  //   "DJ SOUND",
-  //   "DOCTOR",
-  //   "E - COMMERCE",
-  //   "EDUCATION",
-  //   "ELECTRICIAN",
-  //   "ELECTRONIC PRODUCT",
-  //   "EMPLOYEE",
-  //   "ENGINEER",
-  //   "EVENT MANAGEMENT",
-  //   "WELDING",
-  //   "FARMER",
-  //   "FASHION DESIGNER",
-  //   "FAST FOOD",
-  //   "FINANCIAL",
-  //   "FLEX BOARD HOARDING",
-  //   "FLOWER DECORATION",
-  //   "FREELANCER",
-  //   "FURNITURE",
-  //   "GAS CHULA SERVICE",
-  //   "GENERATOR SERVICE",
-  //   "GEYSER SERVICE",
-  //   "GLASS WORK",
-  //   "GOVT. PUBLIC SERVICE",
-  //   "GOVT. EMERGENCY SERVICE",
-  //   "GRUH UDHYOG",
-  //   "GYM",
-  //   "HEALTH CARE",
-  //   "HOME CLEANING",
-  //   "HOSPITAL",
-  //   "HOUSE WIFE",
-  //   "IMITATION JEWELLERY",
-  //   "INDUSTRIAL INSTRUMENT",
-  //   "INSURANCE",
-  //   "INTERIOR DESIGNER",
-  //   "INTERNET DEPARTMENT",
-  //   "INVERTER SERVICE",
-  //   "JOB PLACEMENT",
-  //   "JUICE CENTER",
-  //   "LABOUR",
-  //   "LAUNDRY",
-  //   "LIFT SERVICE",
-  //   "LIGHTING",
-  //   "MAID",
-  //   "MANDAP SERVICE",
-  //   "MANUFACTURING",
-  //   "MARKETING",
-  //   "MARRIAGE BUREAU",
-  //   "MEDICAL STORE",
-  //   "MEHNDI ARTIST",
-  //   "MEN'S WEAR",
-  //   "MOBILE & ACCESSORIES",
-  //   "MOTOR SERVICE",
-  //   "MOVERS & PACKER",
-  //   "NURSERY",
-  //   "ORCHESTRA",
-  //   "OTHER",
-  //   "OVEN SERVICE",
-  //   "PAINTER",
-  //   "PANDIT",
-  //   "PASSPORT AGENT",
-  //   "PEST CONTROL",
-  //   "PETCARE SERVICE",
-  //   "PHOTOGRAPHY",
-  //   "PHYSIOTHERAPIST",
-  //   "PLUMBER",
-  //   "PRINTING PRESS",
-  //   "R.O. SERVICE",
-  //   "REAL - ESTATE",
-  //   "REFRESHMENT",
-  //   "RESTAURANTS",
-  //   "RETIRED",
-  //   "RIDES",
-  //   "RTO AGENT",
-  //   "REFRIGERATOR SERVICE",
-  //   "SCRAP ( BHANGAR )",
-  //   "SECURITY SERVICE",
-  //   "SHOEMAKER ( MOCHI )",
-  //   "SHOP",
-  //   "SHUTTER REPAIR",
-  //   "SOCIAL WORKER",
-  //   "SOFA CLEANING",
-  //   "SOLAR PANEL",
-  //   "SOUND SYSTEM REPAIRING",
-  //   "SPOKEN ENGLISH CLASSES",
-  //   "SPORTS",
-  //   "STATIONERY",
-  //   "STOCK MARKET",
-  //   "STUDENT",
-  //   "STUDY CLASSES",
-  //   "SALON",
-  //   "TAXI",
-  //   "TEA CENTER",
-  //   "TELECOM DEPARTMENT",
-  //   "TEXTILE",
-  //   "TIFFIN SERVICE",
-  //   "TOUR & TRAVELERS",
-  //   "TAILOR",
-  //   "TOWING",
-  //   "TRADERS",
-  //   "TRANSPORT",
-  //   "TRAVEL AGENT",
-  //   "TUITION CLASS",
-  //   "T.V. SERVICE",
-  //   "TWO WHEELERS WIRING",
-  //   "TYRE PUNCTURE FIXING",
-  //   "VEGETABLES & FRUITS",
-  //   "VETER INARY DOCTOR",
-  //   "VISA CONSULTANCY & GUIDANCE",
-  //   "WASHING MACHINE SERVICE",
-  //   "WATER SUPPLIER",
-  //   "WEALTH MANAGEMENT",
-  //   "WOMEN WEAR",
-  //   "XEROX",
-  //   "YOGA CLASSES"
-  // ]
+  // console.log(location.state._id,"Edit Location");
+  
+
+  const fetchCategory = async () => {
+    try {
+        const response = await axios.get(`${backend_API}/category/getAllCategory`);
+        const sortedCategories = response.data.category.sort((a, b) =>
+            a.categoryName.localeCompare(b.categoryName)
+        );
+
+        setCategories(sortedCategories);
+        console.log(sortedCategories, "sortedCategories");
+    }
+    catch (error) {
+        console.error("Error fetching categories:", error);
+    }
+}
+useEffect(() => {
+    fetchCategory();
+}, []);
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -186,16 +59,63 @@ const EditUser = () => {
     setBusinessCategory(category); // Set selected category
     setIsDropdownOpen(false); // Close dropdown
   };
+
+  const fetchLocationDetails = async (pincode) => {
+    try {
+      const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+      const data = await response.json();
+      console.log(data);
+      
+
+      if (data[0].Status === 'Success') {
+        const postOffice = data[0].PostOffice[0]; // Get the first result
+        setArea(postOffice.Name || ''); // Set Area (e.g., Kamrej)
+        setCity(postOffice.District || ''); // Set City (e.g., Surat)
+        setState(postOffice.State || ''); // Set State (e.g., Gujarat)
+        setCountry(postOffice.Country || ''); // Set Country (e.g., India)
+        setError('');
+      } else {
+        setError('Invalid Pincode! Please enter a valid one.');
+        setArea('');
+        setCity('');
+        setState('');
+        setCountry('');
+      }
+    } catch (err) {
+      setError('Failed to fetch location details. Try again later.');
+    }
+  };
+  
+  // Handle pincode input change
+  const handlePincodeChange = (e) => {
+    const inputPincode = e.target.value.trim();
+    setPincode(inputPincode);
+
+    if (inputPincode.length === 6) {
+      fetchLocationDetails(inputPincode);
+    } else {
+      setArea('');
+      setCity('');
+      setState('');
+      setCountry('');
+      setError('');
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(location?.state?.adress, "Edit Id");
+    // console.log(location.state._id, "Edit Id");
     const newadd = {
-      city
+      area,
+      pincode,
+      city,
+      state,
+      country,
+      
     }
 
     try {
       const response = await axios.put(`${backend_API}/auth/UpdateUser`, {
-        id: location?.state?._id,
+        id: location.state._id,
         name: name,
         email: email,
         phone: phone,
@@ -229,6 +149,12 @@ const EditUser = () => {
     setName(location?.state?.name)
     setEmail(location?.state?.email)
     setPhone(location?.state?.phone)
+    setArea(location?.state?.address?.area)
+    setPincode(location?.state?.address?.pincode)
+    setCity(location?.state?.address?.city)
+    setState(location?.state?.address?.state)
+    setCountry(location?.state?.address?.country)
+   
     setAddress(location?.state?.address)
     setBusinessCategory(location?.state?.businessCategory || []),
       setBusinessName(location?.state?.businessName),
@@ -281,15 +207,56 @@ const EditUser = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium">Address</label>
+                <label className="block text-sm font-medium">Area</label>
                 <input
                   type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  value={area}
+                  onChange={(e) => setArea(e.target.value)}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   required
                 />
               </div>
+              <div>
+                <label className="block text-sm font-medium">Pincode</label>
+                <input
+                  type="text"
+                  value={pincode}
+                  onChange={handlePincodeChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">City</label>
+                <input
+                  type="text"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">state</label>
+                <input
+                  type="text"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Country</label>
+                <input
+                  type="text"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
+                />
+              </div>
+             
               <div className="w-full mt-10">
                 <label className="block text-sm font-medium">
                   Select Business Categories:
@@ -318,11 +285,10 @@ const EditUser = () => {
                       {categories.map((category, i) => (
                         <li
                           key={i}
-                          className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.name ? "bg-green-200" : ""
-                            }`}
-                          onClick={() => selectCategory(category.name)}
+                          className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.categoryName ? "bg-green-200" : "" }`}
+                          onClick={() => selectCategory(category.categoryName)}
                         >
-                          {category.name}
+                          {category.categoryName}
                         </li>
                       ))}
                     </ul>

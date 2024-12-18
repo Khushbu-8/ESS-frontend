@@ -17,17 +17,19 @@ const ServiceDetail = () => {
         try {
             const response = await axios.get(`${backend_API}/auth/getAllUser`);
             let data = response.data.user;
+            console.log(data);
+            
             data = data.filter((user) =>
                 {
                     // Check if the user's businessCategory matches the selected category
                     const categoryMatch = user.businessCategory.some((category) => category === cat);
         
-                    // Check if the user's address matches the logged-in user's address
-                    let loginAddress = loginData?.address?.city || ""; // Assuming 'loggedInUser' contains the logged-in user's data
-                    console.log(loginAddress,"datasss");
-                    const addressMatch = user.address?.city === loginAddress;
+                    // // Check if the user's address matches the logged-in user's address
+                    // let loginAddress = loginData?.address?.city() || ""; // Assuming 'loggedInUser' contains the logged-in user's data
+                    // console.log(loginAddress,"datasss");
+                    // const addressMatch = user.address?.city.toLowerCase() === loginAddress;
         
-                    return categoryMatch && addressMatch; // Both conditions must be true
+                    return categoryMatch  // Both conditions must be true
                 });
             console.log(data,"filterdata");
             
