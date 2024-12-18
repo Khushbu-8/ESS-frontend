@@ -311,7 +311,7 @@ const EditProfile = () => {
                                   key={i}
                                   className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.categoryName ? "bg-green-200" : ""
                                     }`}
-                                  onClick={() => selectCategory(category.categoryName)}
+                                  onClick={() => toggleSelection(category.categoryName)}
                                 >
                                   {category.categoryName}
                                 </li>
