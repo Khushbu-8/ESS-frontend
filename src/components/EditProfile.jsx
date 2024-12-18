@@ -15,7 +15,7 @@ import { CiEdit } from "react-icons/ci";
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 
-import { categories } from '../ServiceCategory'
+// import { categories } from '../ServiceCategory'
 const backend_API = import.meta.env.VITE_API_URL; 
 
 // const backend_API = "https://ees-121-backend.vercel.app"
@@ -34,6 +34,7 @@ const EditProfile = () => {
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
+   const [categories, setCategories] = useState([]);
   const location = useLocation();
   
   const navigete = useNavigate()
@@ -46,6 +47,24 @@ const EditProfile = () => {
   };
 
   const token = JSON.parse(localStorage.getItem('token'))
+  const fetchCategory = async () => {
+    try {
+        const response = await axios.get(`${backend_API}/category/getAllCategory`);
+        const sortedCategories = response.data.category.sort((a, b) =>
+            a.categoryName.localeCompare(b.categoryName)
+        );
+
+        setCategories(sortedCategories);
+        console.log(sortedCategories, "sortedCategories");
+    }
+    catch (error) {
+        console.error("Error fetching categories:", error);
+    }
+}
+useEffect(() => {
+    fetchCategory();
+}, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +75,7 @@ const EditProfile = () => {
       country,
       pincode
     };   
-    const fullData = { name, email, phone, address:newAddress, businessCategory, businessName, businessAddress }; 
+    const fullData = { name, email, phone, address: newAddress, businessCategory, businessName, businessAddress }; 
     try {
       const response = await axios.post(`${backend_API}/auth/updateProfile`, fullData, {
         headers: {
@@ -240,11 +259,11 @@ const EditProfile = () => {
                           {categories.map((category, i) => (
                             <li
                               key={++i}
-                              className={`cursor-pointer px-4 py-2 hover:bg-orange hover:text-white ${businessCategory.includes(category) ? "bg-orange text-white" : ""
+                              className={`cursor-pointer px-4 py-2 hover:bg-orange hover:text-white ${businessCategory.includes(category.name) ? "bg-orange text-white" : ""
                                 }`}
-                              onClick={() => toggleSelection(category)}
+                              onClick={() => toggleSelection(category.categoryName)}
                             >
-                              {category}
+                              {category.categoryName}
                             </li>
                           ))}
                         </ul>
