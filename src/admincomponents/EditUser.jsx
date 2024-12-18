@@ -5,21 +5,21 @@ import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Pages/Sidebar';
 // import { categories } from '../ServiceCategory'
-const backend_API = import.meta.env.VITE_API_URL; 
+const backend_API = import.meta.env.VITE_API_URL;
 
 
 const EditUser = () => {
-   const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-   const [pincode, setPincode] = useState('');
+  const [pincode, setPincode] = useState('');
 
-    const [area, setArea] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-    const [error, setError] = useState('');
+  const [area, setArea] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
+  const [error, setError] = useState('');
 
   const [address, setAddress] = useState('');
 
@@ -30,25 +30,25 @@ const EditUser = () => {
   const location = useLocation();
   const navigete = useNavigate()
   // console.log(location.state._id,"Edit Location");
-  
+
 
   const fetchCategory = async () => {
     try {
-        const response = await axios.get(`${backend_API}/category/getAllCategory`);
-        const sortedCategories = response.data.category.sort((a, b) =>
-            a.categoryName.localeCompare(b.categoryName)
-        );
+      const response = await axios.get(`${backend_API}/category/getAllCategory`);
+      const sortedCategories = response.data.category.sort((a, b) =>
+        a.categoryName.localeCompare(b.categoryName)
+      );
 
-        setCategories(sortedCategories);
-        console.log(sortedCategories, "sortedCategories");
+      setCategories(sortedCategories);
+      console.log(sortedCategories, "sortedCategories");
     }
     catch (error) {
-        console.error("Error fetching categories:", error);
+      console.error("Error fetching categories:", error);
     }
-}
-useEffect(() => {
+  }
+  useEffect(() => {
     fetchCategory();
-}, []);
+  }, []);
 
 
   const toggleDropdown = () => {
@@ -65,7 +65,7 @@ useEffect(() => {
       const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
       const data = await response.json();
       console.log(data);
-      
+
 
       if (data[0].Status === 'Success') {
         const postOffice = data[0].PostOffice[0]; // Get the first result
@@ -85,7 +85,7 @@ useEffect(() => {
       setError('Failed to fetch location details. Try again later.');
     }
   };
-  
+
   // Handle pincode input change
   const handlePincodeChange = (e) => {
     const inputPincode = e.target.value.trim();
@@ -105,25 +105,27 @@ useEffect(() => {
     e.preventDefault();
     // console.log(location.state._id, "Edit Id");
     const newadd = {
-      area,
-      pincode,
-      city,
-      state,
-      country,
-      
+      area: area,
+      pincode: pincode,
+      city: city,
+      state: state,
+      country: country,
+
     }
+    const fullData = {
+      id : location.state._id,
+      name:name,
+      email: email,
+      phone: phone,
+      address: newadd,
+      businessName: businessName,
+      businessCategory:businessCategory,
+      businessAddress: businessAddress,
+    };
+console.log(fullData,"edit full");
 
     try {
-      const response = await axios.put(`${backend_API}/auth/UpdateUser`, {
-        id: location.state._id,
-        name: name,
-        email: email,
-        phone: phone,
-        address: newadd,
-        businessCategory: businessCategory,
-        businessName: businessName,
-        businessAddress: businessAddress
-      }, {
+      const response = await axios.put(`${backend_API}/auth/UpdateUser`, fullData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -154,7 +156,7 @@ useEffect(() => {
     setCity(location?.state?.address?.city)
     setState(location?.state?.address?.state)
     setCountry(location?.state?.address?.country)
-   
+
     setAddress(location?.state?.address)
     setBusinessCategory(location?.state?.businessCategory || []),
       setBusinessName(location?.state?.businessName),
@@ -256,7 +258,7 @@ useEffect(() => {
                   required
                 />
               </div>
-             
+
               <div className="w-full mt-10">
                 <label className="block text-sm font-medium">
                   Select Business Categories:
@@ -285,7 +287,7 @@ useEffect(() => {
                       {categories.map((category, i) => (
                         <li
                           key={i}
-                          className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.categoryName ? "bg-green-200" : "" }`}
+                          className={`cursor-pointer px-4 py-2 hover:bg-green-200 ${businessCategory === category.categoryName ? "bg-green-200" : ""}`}
                           onClick={() => selectCategory(category.categoryName)}
                         >
                           {category.categoryName}

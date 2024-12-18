@@ -18,8 +18,8 @@ const  ServieceCategories = ({ categories }) => {
                             return (
                                 <div key={index} className="col " style={{ cursor: "pointer" }} onClick={() => navigate(`/serviceDetail`, { state: item })}>
                                     <div className="border-0 w-100 h-100 text-center items-center justify-content-center rounded-md">
-                                        <figure className='w-full m-0 p-4 '>
-                                            <img className='img-fluid w-100 p-3 border-orange rounded-4 overflow-hidden' style={{ objectFit: "cover" }} src={item.image} alt={item.categoryName} />
+                                        <figure className='w-full m-0 p-2 '>
+                                            <img className='img-fluid w-100 p-2 border-orange rounded-4 overflow-hidden' style={{ objectFit: "cover" }} src={item.image} alt={item.categoryName} />
                                         </figure>
                                         <h6 className='text-md text-capitalize'>{item.categoryName}</h6>
                                     </div>
