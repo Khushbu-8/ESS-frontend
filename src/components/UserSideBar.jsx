@@ -106,7 +106,7 @@ const UserSideBar = () => {
                   )
                 })
               }
-              <GetAdmin/>
+              {/* <GetAdmin/> */}
               <li className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
                 <Link onClick={handleLogout} className=' text-lg d-flex align-items-center'>
                   <span className='inline-block mr-2 text-xl '><FaPowerOff /></span>

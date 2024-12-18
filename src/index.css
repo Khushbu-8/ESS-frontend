@@ -36,6 +36,9 @@ ul{
 .bg-orange{
     background-color: var(--bg-primary)!important;
 }
+.bg-orange-100{
+    background-color: #ffd8ca!important;
+}
 
 .bg-green{
   background-color: var(--bg-secondary)!important;
@@ -90,6 +93,8 @@ input[type="file"] {
   display: none;
 }
 
+
+
 .box {
   display: -webkit-box;
   -webkit-line-clamp: 5; /* Number of lines that fit within the box */
@@ -114,7 +119,7 @@ input[type="file"] {
   width: 300px!important;
 }
 .offcanvas-body ul li:hover a{
-  color: #fff!important;
+  color: #fff;
 } 
 
 .Select{

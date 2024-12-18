@@ -1,0 +1,9 @@
+
+.adminsidbar ul li:hover{
+    background-color: #ffd8ca!important;
+    
+}
+.adminsidbar ul li:hover a{
+   
+    color:  #e92626!important;
+}

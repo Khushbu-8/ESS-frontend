@@ -20,6 +20,8 @@ import Senedrequest from "./components/Senedrequest";
 import Home from "./Pages/Home";
 import AllUsers from "./adminPages/AllUsers";
 import ManageCatagory from "./adminPages/ManageCatagory";
+import MangeAdmin from "./components/MangeAdmin";
+import Dashboard from "./adminPages/Dashboard";
 
 export default function App() {
 
@@ -30,13 +32,13 @@ export default function App() {
       <Router>
         <Routes>
           {/* protected route */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/admin" element={<Admin />} />
-          {/* </Route> */}
+            <Route path="/admin" element={<Dashboard />} />
+          </Route>
           <Route path="/servises" element={ <Services/>} />
 
           {/* work  */}
@@ -51,8 +53,9 @@ export default function App() {
 
           {/* Admin Routes */}
          
-          <Route path="/admin" element={<AllUsers />} />
+          <Route path="/admin/users" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
+          <Route path="/admin/manageAdmin" element={<MangeAdmin/>} />
           <Route path="/admin/card" element={<Card />} />
           <Route path="/admin/manageCategory" element={<ManageCatagory />} />
 

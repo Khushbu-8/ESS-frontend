@@ -57,7 +57,7 @@ const AdminHeader = () => {
 
     return (
         <>
-            <nav className={`  navbar-expand-lg bg-white w-full md:px-20  shadow-sm  px-4 py-2 z-20 fixed top-0  ${sticky ? "sticky-navbar shadow-md bg-white dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out" : " bg-base-100 "
+            <nav className={`navbar-expand-lg bg-white w-full md:px-20  shadow-sm  px-4 py-2 z-20 fixed top-0  ${sticky ? "sticky-navbar shadow-md bg-white dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out" : " bg-base-100 "
                 } `}>
                 {/* <nav class="navbar navbar-expand-lg bg-white"> */}
                 <div class="container-fluid px-3">
@@ -82,7 +82,7 @@ const AdminHeader = () => {
                             </div>
 
                             <div className="logo navbar-brand">
-                               <Link to={'/'}>
+                               <Link to={'/admin'}>
                                <img src={logo} width={80} alt="" />
                                </Link>
                             </div>

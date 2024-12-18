@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { FaCalendar, FaNetworkWired, FaPowerOff, FaUser, FaWallet } from 'react-icons/fa'
+import { FaAccessibleIcon, FaCalendar, FaDatabase, FaNetworkWired, FaPowerOff, FaSortAmountDown, FaSuperpowers, FaSupple, FaUser, FaWallet } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
+import '../AdminCss/dashboard.css'
+import { FaSquareDribbble } from 'react-icons/fa6'
 
 const backend_API = import.meta.env.VITE_API_URL; 
-// const backend_API = "https://ees-121-backend.vercel.app"
 
 const AdminSidebar = () => {
   const [profile, setProfile] = useState("");
@@ -16,15 +17,35 @@ const AdminSidebar = () => {
     const sidebarManu = [
         {
           id: 1,
-          title: 'AllUsers',
-          icon: <FaUser />,
+          title: 'Dashboard',
+          icon: <FaSortAmountDown />,
           path: '/admin',
         },
         {
           id: 2,
+          title: 'AllUsers',
+          icon: <FaUser />,
+          path: '/admin/users',
+        },
+        {
+          id: 3,
           title: 'Manage Category',
           icon: <FaCalendar />,
           path: '/admin/manageCategory',
+        },
+        
+        {
+          id: 4,
+          title: 'Manage Admin',
+          icon: <FaDatabase />,
+          path: '/admin/manageAdmin',
+        },
+        
+        {
+          id: 5,
+          title: 'Support',
+          icon: <FaSuperpowers />,
+          path: '/admin/support',
         },
         
        
@@ -68,12 +89,10 @@ const AdminSidebar = () => {
   <div className="d-flex  align-items-center p-3">
     
      <div className='w-full d-flex align-items-center gap-4'>
-     <div class="img w-[80px] h-[80px] rounded-lg border bg-red overflow-hidden d-flex">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
+     <div class="img w-[80px] h-[80px]  d-flex">
+          <Link to={"/admin"}>  <img src={logo} className='w-full h-full' /></Link>
           </div>
-          <div>
-          <h3>{profile.name}</h3>
-          </div>
+         
      </div>
        <div className=' d-flex justify-content-center'>
        <button  type="button" className="btn-close " data-bs-dismiss="offcanvas" aria-label="Close" />
@@ -81,15 +100,15 @@ const AdminSidebar = () => {
        </div>
   </div>
   <hr />
-  <div className="offcanvas-body p-0 p-2">
+  <div className="offcanvas-body adminsidbar p-0 p-3">
     <div>
       <ul classname="">
       {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' p-2 rounded hover:bg-orange hover:text-white focus:text-white'>
+                    <li key={++i} className=' p-2 rounded '>
                       <Link to={manu.path} className=' text-lg d-flex align-items-center'>
-                        <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
+                        <span className='inline-block mr-5 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>
                     </li>
                   )

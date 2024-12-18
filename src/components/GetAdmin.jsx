@@ -16,16 +16,16 @@ const GetAdmin = () => {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
-                      },
+                    },
                 });
-                console.log( response.data,"admin response");
+                console.log(response.data, "admin response");
                 alert("admin true")
-                // if (response.status === 200 && response.data.isAdmin) {
-                //     setIsAdmin(true);
-                // }
+                if (response.status === 200 && response.data.isAdmin) {
+                    setIsAdmin(true);
+                }
             } catch (error) {
                 console.error('Error checking admin access:', error);
-                // setIsAdmin(false);
+                setIsAdmin(false);
             }
         };
 
@@ -34,11 +34,14 @@ const GetAdmin = () => {
 
     return (
         <>
-            <li className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
-                <Link  className=' text-lg d-flex align-items-center'>
-                    <span className='inline-block mr-2 text-xl '><FaUserAltSlash /></span>
-                    Admin</Link>
-            </li>
+            {isAdmin && (
+                <li className=' p-2 rounded hover:bg-primary hover:text-white focus:text-white '>
+                    <Link to={'/admin'} className=' text-lg d-flex align-items-center'>
+                        <span className='inline-block mr-2 text-xl '><FaUserAltSlash /></span>
+                        Admin</Link>
+                </li>
+            )}
+
         </>
     )
 }
