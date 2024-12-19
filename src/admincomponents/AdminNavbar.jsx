@@ -62,7 +62,7 @@ const AdminNavbar = () => {
                 {/* <nav class="navbar navbar-expand-lg bg-white"> */}
                 <div class="container">
                     <div className="col-12 w-100 d-flex w-100 flex-wrap align-items-center">
-                        <div className="col-md-8 d-flex w-[60%] align-items-center">
+                        <div className="col-md-8 d-flex w-[50%] align-items-center">
                             <div className='w-full d-flex justify-content-between justify-content-lg-start  align-items-center'>
                                 <div class="dropdown d-flex d-lg-none">
                                     <button class=" " type="button" data-bs-toggle="dropdown" aria-expanded="false">
