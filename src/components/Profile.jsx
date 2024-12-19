@@ -7,7 +7,8 @@ import axios from 'axios';
 import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import { FaStar } from 'react-icons/fa';
-import BannerAdd from './BannerAdd';
+import BannerAdd from './ProfileBanner/BannerAdd';
+
 const backend_API = import.meta.env.VITE_API_URL; 
 
 

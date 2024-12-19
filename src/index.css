@@ -116,7 +116,7 @@ input[type="file"] {
   color: var(--bg-primary)!important;
 }
 .offcanvas{
-  width: 300px;
+  width: 300px!important;
 }
 .offcanvas-body ul li:hover a{
   color: #fff;
