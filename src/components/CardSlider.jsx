@@ -49,8 +49,10 @@ const CardSlider = () => {
         ],
     };
 
-    const handleImageClick = async(index) => {
-        // console.log(userId);
+    const handleImageClick = async(userId,index) => {
+        console.log(userId);
+
+       
         if (sliderRef.current) {
             sliderRef.current.slickGoTo(index);
             try {
