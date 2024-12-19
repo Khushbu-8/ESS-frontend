@@ -16,11 +16,11 @@ const AllBannners = () => {
                     'Authorization': `Bearer ${token}`
                 },
             });
-            const data = await response.data;
-            console.log(data,"Users banner");
+            const data = await response.data.banner;
+            // console.log(data,"Users banner");
             
-            // setBannerImage(data.banners)
-            console.log(data, "data Modal");
+            setBannerImage(data)
+
             if (response.status === 200) {
               
             }
@@ -38,8 +38,9 @@ const AllBannners = () => {
         <section className='mt-3'>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
-                        <div className="card" style={{ width: "18rem" }}>
+                   
+                    <div className="col-md-4 p-1">
+                        <div className="card">
                             <img src="https://plus.unsplash.com/premium_vector-1727480500630-fc174355eee9?w=352&dpr=1&h=367&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
                             className="card-img-top" alt="..."/>
 

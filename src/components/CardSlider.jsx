@@ -58,18 +58,17 @@ const CardSlider = () => {
             try {
                 const response = await axios.get(`${backend_API}/banner/getUserByBanner`, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                     params: {
                         userId, // Send the userId as a query parameter
                     },
                 });
                 const data = await response.data;
                 console.log(data);
-                
                 // setBannerImage(data.banners)
-                console.log(data, "data Modal");
+                console.log(data, "data Modal banner");
                 if (response.status === 200) {
                   
                 }
