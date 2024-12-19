@@ -62,20 +62,20 @@ const groupedCategories = chunkArray(categories, 10);
       <AdminNavbar />
       <UserSideBar />
 
-      <div className='mt-32'>
+      <div className='mt-24'>
         {
           auth ? <Card /> : <></>
         }
 
 
-        {/* <Card />  */}
+        {/* <Card />   */}
         <CardSlider />
         <div className=''>
             {groupedCategories.map((group, index) => (
-                <React.Fragment key={index}>
-                    <ServieceCategories categories={group} /> {/* Render the group of categories */}
-                    <Benner /> {/* Render the banner after each group */}
-                </React.Fragment>
+              <React.Fragment key={index}>
+                     <ServieceCategories categories={group} /> 
+                    <Benner /> 
+                </React.Fragment> 
             ))}
         </div>
      

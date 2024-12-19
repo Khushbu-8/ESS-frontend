@@ -18,7 +18,7 @@ const Services = () => {
         <div className='mt-32'>
 
           <SearchScreen />
-          {/* <ServiceDetail/> */}
+         
         </div>
 
     </>

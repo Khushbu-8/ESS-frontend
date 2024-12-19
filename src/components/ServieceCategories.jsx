@@ -12,7 +12,7 @@ const  ServieceCategories = ({ categories }) => {
       
         <section className='mt-2'>
             <div className="container">
-                <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
+                <div className="row row-cols-3 row-cols-lg-5 overflow-hidden">
                     {
                         categories.map((item, index) => {
                             return (

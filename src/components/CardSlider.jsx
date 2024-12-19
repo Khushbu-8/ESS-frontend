@@ -52,18 +52,21 @@ const CardSlider = () => {
     const handleImageClick = async(userId,index) => {
         console.log(userId);
         setClick(userId)
-
+       
         if (sliderRef.current) {
             sliderRef.current.slickGoTo(index);
-
             try {
                 const response = await axios.get(`${backend_API}/banner/getUserByBanner`, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        "Authorization": `Bearer ${token}`,
+                        Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+                    },
+                    params: {
+                        userId, // Send the userId as a query parameter
                     },
                 });
                 const data = await response.data;
+                console.log(data);
+                
                 // setBannerImage(data.banners)
                 console.log(data, "data Modal");
                 if (response.status === 200) {
@@ -76,19 +79,6 @@ const CardSlider = () => {
         }
 
     };
-
-    const images = [
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-        "https://img.freepik.com/premium-vector/corporate-business-flyer-design-brochure-cover-page-template_674761-4262.jpg?ga=GA1.1.897959581.1731651336&semt=ais_hybrid",
-
-    ];
- 
     const GetBanner = async() =>{
         try {
             const response = await axios.get(`${backend_API}/banner/getAllBanners`, {
@@ -97,6 +87,8 @@ const CardSlider = () => {
                 },
             });
             const data = await response.data;
+            console.log(data);
+            
             setBannerImage(data.banners)
             // console.log(data.banners , "data slider");
             if (response.status === 200) {

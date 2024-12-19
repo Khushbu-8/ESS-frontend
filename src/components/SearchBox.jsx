@@ -52,7 +52,7 @@ const SearchBox = () => {
     return (
         <>
 
-            <div className=' '>
+            <div className='w-full '>
                 {/* Search Box for Category */}
                 <form action="" onSubmit={handleSubmit} style={{position: 'relative'}} >
                     <div className="search-input border rounded-1 ps-3 pe-2  d-flex align-items-center">
