@@ -208,7 +208,7 @@ const SearchScreen = () => {
                         <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
                             {
                                 categories.map((user, i) => (
-                                    <div key={++i} className="col" style={{ cursor: "pointer" }} onClick={() => { auth ? handleItemClick(user.categoryName) : navigate('/login') }}>
+                                    <div key={++i} className="col" style={{ cursor: "pointer" }} onClick={() => navigate(`/serviceDetail`, { state: user.categoryName })}>
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
                                                 <img className='img-fluid w-100 border-orange rounded-4 p-1 overflow-hidden ' style={{ objectFit: "cover" }} src={user.image} >
