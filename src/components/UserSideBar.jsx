@@ -99,7 +99,7 @@ const UserSideBar = () => {
                 sidebarManu.map((manu, i) => {
                   return (
                     <li key={++i} className=' w-100  p-2 rounded hover:bg-orange hover:text-white focus:text-white'>
-                      <Link to={manu.path} className='w-100 text-lg d-flex justify-content-center align-items-center '>
+                      <Link to={manu.path} className='w-100 text-lg d-flex justify-content-center  justify-content-lg-start align-items-center '>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>
                     </li>
