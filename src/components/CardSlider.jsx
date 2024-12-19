@@ -6,7 +6,7 @@ import axios from 'axios';
 const backend_API = import.meta.env.VITE_API_URL; 
 
 const CardSlider = () => {
-    const [click, setClick] = useState()
+    const [BannerUser, setBannerUser] = useState([])
     const [BannerImage,setBannerImage] = useState([])
     const token = JSON.parse(localStorage.getItem('token'))
     const sliderRef = useRef(null);
@@ -49,10 +49,8 @@ const CardSlider = () => {
         ],
     };
 
-    const handleImageClick = async(userId,index) => {
-        console.log(userId);
-        setClick(userId)
-       
+    const handleImageClick = async(index) => {
+        // console.log(userId);
         if (sliderRef.current) {
             sliderRef.current.slickGoTo(index);
             try {
@@ -67,10 +65,10 @@ const CardSlider = () => {
                 });
                 const data = await response.data;
                 console.log(data);
-                // setBannerImage(data.banners)
-                console.log(data, "data Modal banner");
+                setBannerUser(data.banner)
+               
                 if (response.status === 200) {
-                  
+                    console.log(data, "data Modal banner");
                 }
             } catch (error) {
                 console.log(error);
@@ -142,7 +140,7 @@ const CardSlider = () => {
                     </div>
                 </div>
             </section>
-            <OfferModal click={click}/>
+            <OfferModal BannerUser={BannerUser}/>
         </>
     );
 };

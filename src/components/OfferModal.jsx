@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
 
-const OfferModal = ({click}) => {
+const OfferModal = ({BannerUser}) => {
   return (
    <>
    <section>
@@ -12,13 +12,13 @@ const OfferModal = ({click}) => {
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">View Offer  :{click}</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">View Offer</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div className="col-12">
                                             <div className="modalImg h-[100px] img-fluid w-full ">
-                                                <img src="https://media.istockphoto.com/id/1646520411/photo/banner-of-find-team-members-through-interviews-and-selection-with-recruitment-as-companies.jpg?s=612x612&w=0&k=20&c=5HUNb0ulqWoiUO7mqjTKCj9Dpu8XKoGzfwGYQHiSGbI=" className='h-full w-full ' alt="" />
+                                                <img src={BannerUser.imageUrl} className='h-full w-full ' alt="" />
                                             </div>
                                             <div className="ModalContent  pt-3 d-flex">
                                                 <div className="col-4 ">
