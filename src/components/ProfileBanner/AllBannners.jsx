@@ -41,8 +41,7 @@ const AllBannners = () => {
                    
                     <div className="col-md-4 p-1">
                         <div className="card">
-                            <img src="https://plus.unsplash.com/premium_vector-1727480500630-fc174355eee9?w=352&dpr=1&h=367&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
-                            className="card-img-top" alt="..."/>
+                            <img src={BannerImage.imageUrl} alt="..."/>
 
                         </div>
                     </div>
