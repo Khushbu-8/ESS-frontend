@@ -94,11 +94,11 @@ const UserSideBar = () => {
         <hr />
         <div className="offcanvas-body p-0 p-2">
           <div>
-            <ul classname="text-center text-lg-start">
+            <ul classname="">
               {
                 sidebarManu.map((manu, i) => {
                   return (
-                    <li key={++i} className=' p-2 rounded hover:bg-orange hover:text-white focus:text-white'>
+                    <li key={++i} className=' text-center text-lg-start p-2 rounded hover:bg-orange hover:text-white focus:text-white'>
                       <Link to={manu.path} className=' text-lg d-flex align-items-center'>
                         <span className='inline-block mr-2 text-xl'>{manu.icon}</span>
                         {manu.title}</Link>
