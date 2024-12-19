@@ -17,7 +17,7 @@ const AllBannners = () => {
                 },
             });
             const data = await response.data;
-            console.log(data);
+            console.log(data,"Users banner");
             
             // setBannerImage(data.banners)
             console.log(data, "data Modal");
@@ -35,7 +35,7 @@ const AllBannners = () => {
 
   return (
     <>
-        <section>
+        <section className='mt-3'>
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">
