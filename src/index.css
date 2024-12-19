@@ -271,5 +271,21 @@ input[type="file"] {
  }
  
 
- /*  */
+ /* card-banners */
+.card-banners{
+  position: relative;
+}
+.banner-Btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.card-banners:hover .banner-Btn{
+  opacity: 1; 
+  transition: all ease-in-out;
+
+}
+ /* card-banners end */
 

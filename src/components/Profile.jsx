@@ -49,7 +49,7 @@ const Profile = () => {
         <>
             <AdminNavbar />
             <UserSideBar />
-            <section className='mt-24 p-4 h-[550px]'>
+            <section className='mt-24 p-4'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
