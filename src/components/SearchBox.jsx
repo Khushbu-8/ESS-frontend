@@ -6,19 +6,15 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 const SearchBox = () => {
     const [search, setSearch] = useState('')
-    const [showList, setShowList] = useState(false);
+    const [suggestions, setSuggestions] = useState([]);
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate();
-    // const handleSearchChange = (e) => {
-    //     const value = e.target.value;
-    //     setSearch(value);
-    //     setShowList(!!value);
-    // };
+  
     const fetchCategory = async () => {
         try {
             const response = await axios.get(`${backend_API}/category/getAllCategory`);
             const data = response.data.category
-            console.log(data, "category");
+            // console.log(data, "category");
             setCategories(data);
 
         }
@@ -26,14 +22,29 @@ const SearchBox = () => {
             console.error("Error fetching categories:", error);
         }
     }
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        setSearch(value);
 
-    const hendleSubmit = (e) => {
+        // Filter suggestions
+        if (value.trim()) {
+            const filteredSuggestions = categories.filter((item) => item.categoryName.toLowerCase().includes(value.toLowerCase())).slice(0, 10); // Show only top 10 suggestions
+          setSuggestions(filteredSuggestions);
+        } else {
+            setSuggestions([]);
+        }
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(search);
-
-        navigate(`serviceDetail`, { state: search })
-
-    }
+        if (search.trim()) {
+          navigate(`/serviceDetail`,{state : search});
+        }
+      };
+      const handleSuggestionClick = (suggestion) => {
+        setSearch(suggestion);
+        navigate(`/serviceDetail`,{state : suggestion});
+      };
     useEffect(() => {
         fetchCategory()
     }, []);
@@ -43,13 +54,15 @@ const SearchBox = () => {
 
             <div className=' '>
                 {/* Search Box for Category */}
-                <form action="" onSubmit={hendleSubmit} >
+                <form action="" onSubmit={handleSubmit} style={{position: 'relative'}} >
                     <div className="search-input border rounded-1 ps-3 pe-2  d-flex align-items-center">
                         <input type="text"
                             value={search}
-                            onChange={(e) => setSearch(e.target.value)}
+                            onChange={handleInputChange}
                             // onFocus={() => search || setShowList(true)}
                             className="grow outline-none  bg-base-100 py-2 " placeholder="Search service" />
+
+
                         <button type='submit' className='p-1 rounded-1 btn-sm text-white bg-orange'>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +77,31 @@ const SearchBox = () => {
                         </button>
 
                     </div>
+                    {suggestions.length > 0 && (
+                        <ul className='rounded-2' style={{
+                                position: 'absolute',
+                                top: '50px',
+                                // left: 0,
+                                width: '100%',
+                                background: '#fff',
+                                border: '1px solid #ccc',
+                                // zIndex: 10,
+                            }}
+                        >
+                            {suggestions.map((suggestion, index) => (
+                                <li className='hover:bg-red-200'
+                                    key={index}
+                                    onClick={() => handleSuggestionClick(suggestion.categoryName)}
+                                    style={{
+                                        padding: '8px',
+                                        cursor: 'pointer',
+                                    }}
+                                >
+                                    {suggestion.categoryName}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
 
                 </form>
 

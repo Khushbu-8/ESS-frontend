@@ -22,23 +22,24 @@ import AllUsers from "./adminPages/AllUsers";
 import ManageCatagory from "./adminPages/ManageCatagory";
 import MangeAdmin from "./components/MangeAdmin";
 import Dashboard from "./adminPages/Dashboard";
+import GetAdmin from "./components/GetAdmin";
 
 export default function App() {
 
   return (
     <>
-      <div>
+ 
       <ToastContainer />
       <Router>
         <Routes>
           {/* protected route */}
-          <Route element={<ProtectedRoute />}>
+          {/* <Route element={<ProtectedRoute />}> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/admin" element={<Dashboard />} />
-          </Route>
+            {/* <Route path="/admin" element={<Dashboard />} /> */}
+          {/* </Route> */}
           <Route path="/servises" element={ <Services/>} />
 
           {/* work  */}
@@ -52,7 +53,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Admin Routes */}
-         
+          <Route path="/admin" element={<GetAdmin><Dashboard /></GetAdmin>} />
           <Route path="/admin/users" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
           <Route path="/admin/manageAdmin" element={<MangeAdmin/>} />
@@ -63,7 +64,7 @@ export default function App() {
         </Routes>
       </Router>
 
-      </div>
+  
     </>
   )
 }

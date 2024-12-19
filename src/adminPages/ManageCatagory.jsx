@@ -142,7 +142,7 @@ const ManageCatagory = () => {
                                     </div>
                                 </div>
 
-                                <div className="card-body">
+                                <div className="card-body overflow-x-auto">
                                     <table className="table text-capitalizes table-bordered">
                                         <thead>
                                             <tr>

@@ -9,20 +9,19 @@ const Services = () => {
 
 
   return (
-    <div>
-      <div>
-   <AdminNavbar/>
-   <UserSideBar/>
-  
-      
-     <div className='mt-32'>
+    <>
     
-    <SearchScreen/>
-    {/* <ServiceDetail/> */}
-     </div>
-      </div>
+        <AdminNavbar />
+        <UserSideBar />
 
-    </div>
+
+        <div className='mt-32'>
+
+          <SearchScreen />
+          {/* <ServiceDetail/> */}
+        </div>
+
+    </>
   )
 }
 
