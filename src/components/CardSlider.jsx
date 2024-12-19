@@ -58,7 +58,8 @@ const CardSlider = () => {
             try {
                 const response = await axios.get(`${backend_API}/banner/getUserByBanner`, {
                     headers: {
-                        Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
                     },
                     params: {
                         userId, // Send the userId as a query parameter

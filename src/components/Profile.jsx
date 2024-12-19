@@ -8,6 +8,7 @@ import UserSideBar from './UserSideBar';
 import AdminNavbar from '../admincomponents/AdminNavbar';
 import { FaStar } from 'react-icons/fa';
 import BannerAdd from './ProfileBanner/BannerAdd';
+import AllBannners from './ProfileBanner/AllBannners';
 
 const backend_API = import.meta.env.VITE_API_URL; 
 
@@ -48,7 +49,7 @@ const Profile = () => {
         <>
             <AdminNavbar />
             <UserSideBar />
-            <section className='my-24 p-4 h-[550px]'>
+            <section className='mt-24 p-4 h-[550px]'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -106,6 +107,8 @@ const Profile = () => {
                     </div>
                 </div>
             </section>
+
+            <AllBannners/>
 
         </>
     )
