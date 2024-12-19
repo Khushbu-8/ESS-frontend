@@ -95,12 +95,12 @@ const Card = () => {
                                             <p>{profile?.address?.area} {profile?.address?.city} {profile?.address?.state} {profile?.address?.country} {profile?.address?.pincode}</p>
                                         </div>
                                     </div>
-                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
+                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center">
 
-                                        <div className='text-sm p-2 '>
+                                        <div className='col-4 text-sm p-2 '>
                                             <h6 >Available</h6>
                                         </div>
-                                        <div className='p-2  d-flex justify-content-center'>
+                                        <div className='col-8 p-2  d-flex justify-content-center'>
                                             <div className="checkbox-con">
                                                 <input id="checkbox" type="checkbox" />
                                             </div>
