@@ -94,7 +94,7 @@ const UserSideBar = () => {
         <hr />
         <div className="offcanvas-body p-0 p-2">
           <div>
-            <ul classname="">
+            <ul classname="text-center text-lg-start">
               {
                 sidebarManu.map((manu, i) => {
                   return (
