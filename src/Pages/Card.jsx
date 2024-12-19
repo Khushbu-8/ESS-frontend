@@ -100,7 +100,7 @@ const Card = () => {
                                         <div className='col-4 text-sm p-2 '>
                                             <h6 >Available</h6>
                                         </div>
-                                        <div className='col-8 p-2  d-flex justify-content-center'>
+                                        <div className='col-8 p-2 '>
                                             <div className="checkbox-con">
                                                 <input id="checkbox" type="checkbox" />
                                             </div>
