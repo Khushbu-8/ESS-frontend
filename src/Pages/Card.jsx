@@ -69,8 +69,8 @@ const Card = () => {
                                 </div>
                                 <div className="mt col-12 col-lg-8  text-gray-700 sm:col-span-2 sm:mt-0">
                                     <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center text-start gap-5">
-                                        <div className='p-2 w-100'>
-                                            <h6 className='w-100'>Email</h6>
+                                        <div className='p-2 '>
+                                            <h6 className=''>Email</h6>
                                         </div>
                                         <div className='p-2 text-gray'>
                                             <p>{profile.email}</p>
@@ -79,7 +79,7 @@ const Card = () => {
                                     </div>
                                     <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
 
-                                        <div className='  p-2 '>
+                                        <div className=' p-2 '>
                                             <h6 >Contact</h6>
                                         </div>
                                         <div className='p-2 text-gray'>
