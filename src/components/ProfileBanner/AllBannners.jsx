@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
+const backend_API = import.meta.env.VITE_API_URL; 
+
+
 const AllBannners = () => {
      const [BannerImage,setBannerImage] = useState([])
         const token = JSON.parse(localStorage.getItem('token'))
