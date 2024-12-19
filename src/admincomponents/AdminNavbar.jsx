@@ -133,9 +133,9 @@ const AdminNavbar = () => {
                                                 clipRule="evenodd" />
                                         </svg>
                                     </button>
-                                    <div class="offcanvas offcanvas-top d-flex align-items-center justify-content-center w-full" style={{ width:"100%", height:"95px"}} tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                                    {/* <div class="offcanvas offcanvas-top d-flex align-items-center justify-content-center w-full" style={{width:'100%', height:"95px"}} tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                                 <SearchBox/>
-                                    </div>
+                                    </div> */}
 
                                 </div>
                                

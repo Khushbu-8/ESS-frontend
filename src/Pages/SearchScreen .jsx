@@ -23,8 +23,7 @@ const SearchScreen = () => {
     const [search, setSearch] = useState('')
     const navigate = useNavigate();
     const [searchResult, setSearchResult] = useState([])
-    const [showList, setShowList] = useState(true);
-    const [showListt, setShowListt] = useState(false);
+    
     const [selectedItem, setSelectedItem] = useState([]);
     const [filteredItem, setFilteredItem] = useState([]);
 
@@ -108,7 +107,7 @@ const SearchScreen = () => {
 
     const handleItemClick = (cat) => {
         setSearch(cat); // Update the search box with the selected value
-        setShowList(false);
+        // setShowList(false);
        
          // Hide the list
         let filtercat = [...searchResult]
@@ -176,9 +175,9 @@ const SearchScreen = () => {
                             </div>
                         </form>
                     </div>
-                    <div className='col-12 col-xl-3 p-3'>
-                        {/* Search Box for Address */}
-                        {/* <form action=""  >
+                    {/* <div className='col-12 col-xl-3 p-3'>
+                        Search Box for Address
+                        <form action=""  >
                             <div className="search-input border rounded-1 ps-3 pe-2 mb-2 d-flex align-items-center">
                                 <input type="text" placeholder="Search location "
                                     value={categoryFilter}
@@ -198,25 +197,17 @@ const SearchScreen = () => {
                                 </button>
 
                             </div>
-                        </form> */}
-                    </div>
+                        </form>
+                    </div> */}
                 </div>
             </div>
 
 
             <section>
                 <div className="container">
-
-                    {showList && (
                         <div className="row row-cols-3 row-cols-lg-5 g-lg-3">
-                            {categories
-                                .filter((user) =>
-                                    user.categoryName.toLowerCase().includes(search.toLowerCase())
-                                    // user.businessCategory.some((category) =>
-                                    //   category.toLowerCase().includes(search.toLowerCase())
-                                    // )
-                                )
-                                .map((user, i) => (
+                            {
+                                categories.map((user, i) => (
                                     <div key={++i} className="col" style={{ cursor: "pointer" }} onClick={() => { auth ? handleItemClick(user.categoryName) : navigate('/login') }}>
                                         <div className="border-0 w-100 h-100  text-center items-center rounded-md ">
                                             <figure className='w-full m-0 p-2 '>
@@ -230,9 +221,6 @@ const SearchScreen = () => {
                                     </div>
                                 ))}
                         </div>
-                    )}
-
-
                 </div>
             </section>
             {/* <ServiceDetail selectedItem ={selectedItem} handleItemCaregory = {handleItemCaregory} /> */}
@@ -241,7 +229,7 @@ const SearchScreen = () => {
                 <div className="container">
                     <div className="row">
 
-                        <div className="col-12 flex flex-wrap">
+                        {/* <div className="col-12 flex flex-wrap">
                             {
                                 filteredItem.length > 0 ? (
                                     filteredItem.map((user, i) => (
@@ -253,7 +241,7 @@ const SearchScreen = () => {
                             }
 
 
-                        </div>
+                        </div> */}
                         {/* <div className="col-12 flex flex-wrap">
                             {
                                 filteredItem.length > 0 ? (

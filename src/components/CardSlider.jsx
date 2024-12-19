@@ -117,7 +117,7 @@ const CardSlider = () => {
                 <div className="container">
                     <div className="row">
                         <div className="py-2">
-                            <h1 className="pt-6 text-2xl">Best Offer</h1>
+                            <h1 className=" text-2xl">Best Offer</h1>
                             <div className="wrapper">
                                 <Slider
                                     ref={sliderRef}

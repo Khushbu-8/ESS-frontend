@@ -33,13 +33,13 @@ export default function App() {
       <Router>
         <Routes>
           {/* protected route */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/serviceDetail" element={ <ServiceDetail/>} />
             <Route path="/profile" element={<Profile />} />
             {/* <Route path="/admin" element={<Dashboard />} /> */}
-          {/* </Route> */}
+          </Route>
           <Route path="/servises" element={ <Services/>} />
 
           {/* work  */}
@@ -53,12 +53,15 @@ export default function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Admin Routes */}
-          <Route path="/admin" element={<GetAdmin><Dashboard /></GetAdmin>} />
+         
+          <Route element={<GetAdmin/>}>
+          <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
           <Route path="/admin/manageAdmin" element={<MangeAdmin/>} />
           <Route path="/admin/card" element={<Card />} />
           <Route path="/admin/manageCategory" element={<ManageCatagory />} />
+          </Route>
 
 
         </Routes>
