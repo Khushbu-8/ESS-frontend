@@ -6,7 +6,7 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 // const backend_API = "https://ees-121-backend.vercel.app"
 
-const SearchResult = ({user,token,handleItemCaregory}) => {
+const SearchResult = ({user,token}) => {
     const [requestSent, setRequestSent] = useState(false);
     const sendRequest = async (userId) => {
         console.log(userId);
@@ -42,7 +42,7 @@ const SearchResult = ({user,token,handleItemCaregory}) => {
     return (
 
         <>
-            <div  className="col-12 col-md-6 col-xl-3 p-2" onClick={() => handleItemCaregory(user.businessCategory)} style={{ cursor: "pointer" }}>
+            <div  className="col-12 col-md-6 col-xl-3 p-2" style={{ cursor: "pointer" }}>
                 <div className="card border-0 bg-base-100 shadow-xl" >
                     <div className='d-flex justify-content-between'>
                         <figure className='rounded-md m-3'>
