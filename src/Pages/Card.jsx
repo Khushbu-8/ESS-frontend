@@ -68,30 +68,30 @@ const Card = () => {
                                    </div>
                                 </div>
                                 <div className="mt col-12 col-lg-8  text-gray-700 sm:col-span-2 sm:mt-0">
-                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center text-start gap-5">
-                                        <div className='p-2 '>
+                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center text-start ">
+                                        <div className='col-4 p-2 '>
                                             <h6 className=''>Email</h6>
                                         </div>
-                                        <div className='p-2 text-gray'>
-                                            <p>{profile.email}</p>
+                                        <div className='col-8 p-2 text-gray'>
+                                            <p>  {profile.email}</p>
                                         </div>
 
                                     </div>
-                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
+                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center ">
 
-                                        <div className=' p-2 '>
+                                        <div className='col-4 p-2 '>
                                             <h6 >Contact</h6>
                                         </div>
-                                        <div className='p-2 text-gray'>
+                                        <div className='col-8 p-2 text-gray'>
                                             <p>{profile.phone}</p>
                                         </div>
 
                                     </div>
-                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center gap-5">
-                                        <div className='  p-2 '>
+                                    <div className=" p-2 shadow-xl mb-1 bg-white d-flex align-items-center ">
+                                        <div className='col-4  p-2 '>
                                             <h6 >Address</h6>
                                         </div>
-                                        <div className='p-2  text-gray'>
+                                        <div className='col-8 p-2  text-gray'>
                                             <p>{profile?.address?.area} {profile?.address?.city} {profile?.address?.state} {profile?.address?.country} {profile?.address?.pincode}</p>
                                         </div>
                                     </div>
