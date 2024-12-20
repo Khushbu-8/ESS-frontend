@@ -17,7 +17,8 @@ const Recievedrequest = ({recievedRequest}) => {
         setRequestAccept(true)
 
       }
-
+ console.log(recievedRequest, "recieved");
+ 
     return (
         <>
             <section>
@@ -71,6 +72,8 @@ const Recievedrequest = ({recievedRequest}) => {
                                                     
                                                     </Link>)
                                                     } */}
+
+                                                    
                                                     <Link className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange '>
                                                         cancel
                                                     </Link>
