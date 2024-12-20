@@ -6,54 +6,10 @@ import acService from '../../public/service-icons/ac service.png'
 
 const backend_API = import.meta.env.VITE_API_URL; 
 
-// const backend_API = "https://ees-121-backend.vercel.app"
-
 
 const Recievedrequest = ({recievedRequest}) => {
     const token = JSON.parse(localStorage.getItem('token'))
-    // const [recievedRequest,setRecievedRequest] = useState([])
-    //   const [requestAccept, setRequestAccept] = useState(false);
- 
-    const naviget = useNavigate()
-
-    // const requests = [
-    //     {
-    //         id: 1,
-    //         name: "Sended Request",
-    //         path: "/reciecedrequest"
-    //     },
-    //     {
-    //         id: 1,
-    //         name: "Resived Request"
-    //     },
-    // ]
-
-    // const fetchUserRequests = async () => {
-    //     try {
-    //       const response = await axios.get(`${backend_API}/request/getUserRequests`, {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${token}`
-    //         },
-    //     });
-    //     const recieve = await response.data.receivedRequests;
-    //     setRecievedRequest(recieve)
-    //     console.log(recieve, "reciev");
-    //       if (response.status === 200) {  
-    //         console.log("Requests fetched successfully:", response.data.receivedRequests);        
-    //       } else {
-    //         console.error("Failed to fetch requests:", response.data.message);
-    //         return null;
-    //       }
-    //     } catch (error) {
-    //       console.error("Error fetching user requests:", error);
-    //       alert("Failed to fetch user requests. Please try again.");
-    //       return null;
-    //     }
-    //   };
-    //   useEffect(()=>{
-    //     fetchUserRequests();
-    //   },[])
+    const naviget = useNavigate()   
 
       const hendleAccept = (id) =>{
 

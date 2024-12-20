@@ -8,34 +8,7 @@ import acService from '../../public/service-icons/ac service.png'
 const Senedrequest = ({sendedRequest}) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
-    // const [sendedRequest, setSendedRequest] = useState([]);
-
-    // useEffect(() => {
-    //     const FethProfile = () => {
-    //         let LoginData = JSON.parse(localStorage.getItem("Users"))
-    //         setSendedRequest(LoginData.sended_requests
-    //             )
-    //     }
-    //     FethProfile()
-
-    // }, [])
-
 console.log(sendedRequest,"sended");
-
-
-    // const requests = [
-    //     {
-    //         id: 1,
-    //         name: "Sended Request",
-    //         path: "/work/sendrequest"
-    //     },
-    //     {
-    //         id: 1,
-    //         name: "Resived Request",
-    //         path: "/work"
-    //     },
-    // ]
-
     const cancleRequest = async() => {
 
     }
@@ -44,27 +17,7 @@ console.log(sendedRequest,"sended");
         <>
             <AdminNavbar />
             <UserSideBar />
-            <div className='mt-32'>
-                {/* <section>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 d-flex gap-3">
-                                {
-                                    requests.map((req, i) => {
-                                        return (
-                                            <div className="receivReqBtn">
-                                                <Link to={req.path} className='btn btn-success rounded-0 text-white'>
-                                                    {req.name}
-                                                </Link>
-                                            </div>
-                                        )
-                                    })
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-                </section> */}
+            <div className='mt-2'>
                 <section>
                     <div className="container">
                         <div className="row">

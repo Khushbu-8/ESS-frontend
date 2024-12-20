@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Senedrequest from '../components/Senedrequest'
 
-const backend_API = import.meta.env.VITE_API_URL; 
+const backend_API = import.meta.env.VITE_API_URL;
 
 const Work = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-     const [recievedRequest,setRecievedRequest] = useState([])
-      const [sendedRequest, setSendedRequest] = useState([]);
-      const [currentRequest, setCurrentRequest] = useState('');
+    const [recievedRequest, setRecievedRequest] = useState([])
+    const [sendedRequest, setSendedRequest] = useState([]);
+    const [currentRequest, setCurrentRequest] = useState('');
     const requests = [
         {
             id: 1,
@@ -26,52 +26,52 @@ const Work = () => {
             // path : "/work"
         },
     ]
- const hendleRequest = (req) =>{
-    console.log(req);
-    setCurrentRequest(req); 
-    
-      
- }
-    
+    const hendleRequest = (req) => {
+        console.log(req);
+        setCurrentRequest(req);
+
+
+    }
+
     const fetchUserRequests = async () => {
         try {
-          const response = await axios.get(`${backend_API}/request/getUserRequests`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        });
-        const all = await response.data;
-        const recieve = await response.data.receivedRequests;
-        const sended = await response.data.sendedRequests;
-        // setRecievedRequest(recieve)
-        console.log(all, "All reuestss");
-        console.log(recieve, "reciev reuestss");
-        console.log(sended, "sended reuestss");
-        setSendedRequest(sended)
-        setRecievedRequest(recieve)
-          if (response.status === 200) {  
-            // console.log("Requests fetched successfully:", response.data.receivedRequests);        
-          } else {
-            console.error("Failed to fetch requests:", response.data.message);
-            return null;
-          }
+            const response = await axios.get(`${backend_API}/request/getUserRequests`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const all = await response.data;
+            const recieve = await response.data.receivedRequests;
+            const sended = await response.data.sendedRequests;
+            // setRecievedRequest(recieve)
+            console.log(all, "All reuestss");
+            console.log(recieve, "reciev reuestss");
+            console.log(sended, "sended reuestss");
+            setSendedRequest(sended)
+            setRecievedRequest(recieve)
+            if (response.status === 200) {
+                // console.log("Requests fetched successfully:", response.data.receivedRequests);        
+            } else {
+                console.error("Failed to fetch requests:", response.data.message);
+                return null;
+            }
         } catch (error) {
-          console.error("Error fetching user requests:", error);
-          alert("Failed to fetch user requests. Please try again.");
-          return null;
+            console.error("Error fetching user requests:", error);
+            alert("Failed to fetch user requests. Please try again.");
+            return null;
         }
-      };
-      useEffect(()=>{
+    };
+    useEffect(() => {
         fetchUserRequests();
-      },[])
+    }, [])
 
     return (
         <>
             <AdminNavbar />
             <UserSideBar />
             <div className='mt-32'>
-            <section>
+                <section>
                     <div className="container">
                         <div className="row">
                             <div className="col-12 d-flex gap-3">
@@ -79,8 +79,8 @@ const Work = () => {
                                 {
                                     requests.map((req, i) => {
                                         return (
-                                            <div key={i} className="receivReqBtn" onClick={ () => hendleRequest(req.name)}>
-                                                <Link   className={`btn btn-success rounded-0 text-white`}>
+                                            <div key={i} className="receivReqBtn" onClick={() => hendleRequest(req.name)}>
+                                                <Link className={`btn btn-success rounded-0 text-white`}>
                                                     {req.name}
                                                 </Link>
                                             </div>
@@ -93,12 +93,15 @@ const Work = () => {
                     </div>
                 </section>
                 <div className="container mt-4">
+
                     {/* Render based on current request type */}
-                    {currentRequest === "Sended Request" && (
-                        <Senedrequest sendedRequest={sendedRequest} />
-                    )}
-                    {currentRequest === "Received Request" && (
+                    {/* {currentRequest === "Sended Request" && (
+                        
+                    )} */}
+                    {currentRequest === "Received Request" ? (
                         <Recievedrequest recievedRequest={recievedRequest} />
+                    ) : (
+                        <Senedrequest sendedRequest={sendedRequest} />
                     )}
                 </div>
                 {/* <Senedrequest sendedRequest= {sendedRequest}/>    */}
