@@ -4,12 +4,36 @@ import { Link } from 'react-router-dom'
 import AdminNavbar from '../admincomponents/AdminNavbar'
 import UserSideBar from './UserSideBar'
 import acService from '../../public/service-icons/ac service.png'
+import axios from 'axios'
+
+const backend_API = import.meta.env.VITE_API_URL;
 
 const Senedrequest = ({sendedRequest}) => {
+    
     const token = JSON.parse(localStorage.getItem('token'))
+    const cancleRequest = async(senderId) => {
 
-console.log(sendedRequest,"sended");
-    const cancleRequest = async() => {
+        try {
+            const response = await axios.get(`${backend_API}/request/getUserRequests`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                data : {senderId}
+            });
+           alert("Requests cansel successfully:")
+            if (response.status === 200) {
+                console.log("Requests Cancle successfully:", response.data);        
+            } else {
+                console.error("Failed to cancle requests:", response.data.message);
+                return null;
+            }
+        } catch (error) {
+            console.error("Error cancel user requests:", error);
+            alert("Failed to cancle user requests. Please try again.");
+            return null;
+        }
+        
 
     }
 
