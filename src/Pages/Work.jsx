@@ -11,15 +11,13 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 const Work = () => {
     const token = JSON.parse(localStorage.getItem('token'))
-
-     const [AllRequest,setAllRequest] = useState([])
      const [recievedRequest,setRecievedRequest] = useState([])
       const [sendedRequest, setSendedRequest] = useState([]);
-
+      const [currentRequest, setCurrentRequest] = useState('');
     const requests = [
         {
             id: 1,
-            name: "sendedRequest",
+            name: "Sended Request",
             // path : "/work/sendrequest"
         },
         {
@@ -30,9 +28,9 @@ const Work = () => {
     ]
  const hendleRequest = (req) =>{
     console.log(req);
+    setCurrentRequest(req); 
     
-        // let data = AllRequest.filter((val) => val.sendedRequest === req)
-        // setSendedRequest(data)
+      
  }
     
     const fetchUserRequests = async () => {
@@ -50,7 +48,8 @@ const Work = () => {
         console.log(all, "All reuestss");
         console.log(recieve, "reciev reuestss");
         console.log(sended, "sended reuestss");
-        setAllRequest(all)
+        setSendedRequest(sended)
+        setRecievedRequest(recieve)
           if (response.status === 200) {  
             // console.log("Requests fetched successfully:", response.data.receivedRequests);        
           } else {
@@ -93,7 +92,16 @@ const Work = () => {
                         </div>
                     </div>
                 </section>
-                <Senedrequest sendedRequest= {sendedRequest}/>   
+                <div className="container mt-4">
+                    {/* Render based on current request type */}
+                    {currentRequest === "Sended Request" && (
+                        <Senedrequest sendedRequest={sendedRequest} />
+                    )}
+                    {currentRequest === "Received Request" && (
+                        <Recievedrequest recievedRequest={recievedRequest} />
+                    )}
+                </div>
+                {/* <Senedrequest sendedRequest= {sendedRequest}/>    */}
                 {/* <Recievedrequest /> */}
                 {/* <AllRequests/> */}
             </div>
