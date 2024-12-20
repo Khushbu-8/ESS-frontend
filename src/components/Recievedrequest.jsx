@@ -13,12 +13,11 @@ const Recievedrequest = ({ recievedRequest }) => {
 
     const handleAcceptRequest = async(senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/receivedRequest`,{
+            const response = await axios.post(`${backend_API}/request/receivedRequest`,{ senderId : senderId },{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                data : {senderId}
             });
            alert("Requests Accept successfully:")
             if (response.status === 200) {
@@ -39,12 +38,11 @@ const Recievedrequest = ({ recievedRequest }) => {
     }
     const cancleRequest = async(senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/cancelRequest`, {
+            const response = await axios.post(`${backend_API}/request/cancelRequest`,{ senderId : senderId }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
-                },
-                data : {senderId}
+                }
             });
            alert("Requests cansel successfully:")
             if (response.status === 200) {
