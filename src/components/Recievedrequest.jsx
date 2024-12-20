@@ -11,8 +11,8 @@ const backend_API = import.meta.env.VITE_API_URL;
 
 const Recievedrequest = ({recievedRequest}) => {
     const token = JSON.parse(localStorage.getItem('token'))
-    const [recievedRequest,setRecievedRequest] = useState([])
-      const [requestAccept, setRequestAccept] = useState(false);
+    // const [recievedRequest,setRecievedRequest] = useState([])
+    //   const [requestAccept, setRequestAccept] = useState(false);
  
     const naviget = useNavigate()
 
