@@ -13,9 +13,8 @@ const Senedrequest = ({sendedRequest}) => {
 
     const token = JSON.parse(localStorage.getItem('token'))
     const cancleRequest = async(senderId) => {
-
         try {
-            const response = await axios.post(`${backend_API}/request/getUserRequests`, {
+            const response = await axios.post(`${backend_API}/request/cancelRequest`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

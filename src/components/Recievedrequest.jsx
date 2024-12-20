@@ -38,7 +38,6 @@ const Recievedrequest = ({ recievedRequest }) => {
 
     }
     const cancleRequest = async(senderId) => {
-
         try {
             const response = await axios.get(`${backend_API}/request/cancelRequest`, {
                 headers: {
@@ -120,8 +119,8 @@ const Recievedrequest = ({ recievedRequest }) => {
 
 
 
-                                                            <Link onClick={() => handleAcceptRequest(receive._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
-                                                                Accept
+                                                                <Link onClick={() => handleAcceptRequest(receive._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                                    Accept
                                                             </Link>
 
                                                             <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
