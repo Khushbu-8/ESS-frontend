@@ -119,11 +119,11 @@ const Recievedrequest = ({ recievedRequest }) => {
 
 
 
-                                                                <Link onClick={() => handleAcceptRequest(receive._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                                <Link onClick={() => handleAcceptRequest(receive.user._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                                     Accept
                                                             </Link>
 
-                                                            <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                            <Link onClick={() => cancleRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                                 cancle
                                                             </Link>
 
