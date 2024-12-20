@@ -35,11 +35,13 @@ const Work = () => {
                 'Authorization': `Bearer ${token}`
             },
         });
+        const all = await response.data;
         const recieve = await response.data.receivedRequests;
         const sended = await response.data.sendedRequests;
         // setRecievedRequest(recieve)
+        console.log(all, "All reuestss");
         console.log(recieve, "reciev reuestss");
-        console.log(sended, "reciev reuestss");
+        console.log(sended, "sended reuestss");
           if (response.status === 200) {  
             // console.log("Requests fetched successfully:", response.data.receivedRequests);        
           } else {
