@@ -13,7 +13,7 @@ const Recievedrequest = ({ recievedRequest }) => {
 
     const handleAcceptRequest = async(senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/receivedRequest`, {
+            const response = await axios.post(`${backend_API}/request/receivedRequest`,{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -39,7 +39,7 @@ const Recievedrequest = ({ recievedRequest }) => {
     }
     const cancleRequest = async(senderId) => {
         try {
-            const response = await axios.get(`${backend_API}/request/cancelRequest`, {
+            const response = await axios.post(`${backend_API}/request/cancelRequest`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
