@@ -16,7 +16,7 @@ const Senedrequest = ({sendedRequest}) => {
     
     const cancleRequest = async(senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/cancelRequest`, { senderId }, // Request payload
+            const response = await axios.post(`${backend_API}/request/cancelRequest`, { senderId : senderId }, // Request payload
                 {
                     headers: {
                         "Content-Type": "application/json",
