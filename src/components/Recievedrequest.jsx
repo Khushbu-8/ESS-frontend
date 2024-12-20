@@ -115,21 +115,21 @@ const Recievedrequest = ({ recievedRequest }) => {
                                                     </Link>)
                                                     } */}
 
-                                                            <Link  className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                            <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                                 {receive.status}
                                                             </Link>
-
-                                                            <Link onClick={() => handleAcceptRequest(receive.user._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
-                                                                Accept
-                                                            </Link>
-
+                                                            {
+                                                                receive.status === "received" ? (
+                                                                    <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                                        Contect Now
+                                                                    </Link>
+                                                                ) : (<Link onClick={() => cancleRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                                    Accept
+                                                                </Link>)
+                                                            }
                                                             <Link onClick={() => cancleRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                                 cancle
                                                             </Link>
-
-                                                            {/* <Link className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange '>
-                                                                cancel
-                                                            </Link> */}
                                                         </div>
 
                                                     </div>
