@@ -40,7 +40,7 @@ const Recievedrequest = ({ recievedRequest }) => {
     const cancleRequest = async(senderId) => {
 
         try {
-            const response = await axios.post(`${backend_API}/request/cancelRequest`, {
+            const response = await axios.get(`${backend_API}/request/cancelRequest`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
