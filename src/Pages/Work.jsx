@@ -22,7 +22,7 @@ const Work = () => {
         },
         {
             id: 1,
-            name: "Resived Request",
+            name: "Received Request",
             // path : "/work"
         },
     ]
