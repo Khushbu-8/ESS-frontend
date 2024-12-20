@@ -19,8 +19,10 @@ const Senedrequest = ({sendedRequest}) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                data : {senderId}
+                data : {senderId},
             });
+            console.log(response.data);
+            
            alert("Requests cansel successfully:")
             if (response.status === 200) {
                 console.log("Requests Cancle successfully:", response.data);        
@@ -36,11 +38,7 @@ const Senedrequest = ({sendedRequest}) => {
         
 
     }
-    useEffect(() => {
-        if(sendedRequest){
-           setStatus(sendedRequest.status)
-        }
-    },[sendedRequest])
+
     console.log(status,"status");
      console.log(sendedRequest,"sended status");
      
