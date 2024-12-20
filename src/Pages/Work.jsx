@@ -6,7 +6,10 @@ import AllRequests from './AllRequests'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+const backend_API = import.meta.env.VITE_API_URL; 
+
 const Work = () => {
+    const token = JSON.parse(localStorage.getItem('token'))
      const [recievedRequest,setRecievedRequest] = useState([])
       const [sendedRequest, setSendedRequest] = useState([]);
 
