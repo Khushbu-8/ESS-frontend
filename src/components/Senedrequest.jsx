@@ -16,16 +16,16 @@ const Senedrequest = ({sendedRequest}) => {
     
     const cancleRequest = async(senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/cancelRequest`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                data : {senderId},
-            });
+            const response = await axios.post(`${backend_API}/request/cancelRequest`, { senderId }, // Request payload
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
             console.log(response.data);
             
-           alert("Requests cansel successfully:")
+           alert("Requests cancle successfully:")
             if (response.status === 200) {
                 console.log("Requests Cancle successfully:", response.data);        
             } else {
