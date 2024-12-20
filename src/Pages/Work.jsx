@@ -70,7 +70,7 @@ const Work = () => {
         <>
             <AdminNavbar />
             <UserSideBar />
-            <div className='mt-32'>
+            <div className='mt-36'>
                 <section>
                     <div className="container">
                         <div className="row">
