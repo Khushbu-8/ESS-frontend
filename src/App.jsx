@@ -54,14 +54,14 @@ export default function App() {
 
           {/* Admin Routes */}
          
-          {/* <Route element={<GetAdmin/>}> */}
+          <Route element={<GetAdmin/>}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<AllUsers />} />
           <Route path="/admin/editUser" element={<EditUser />} />
           <Route path="/admin/manageAdmin" element={<MangeAdmin/>} />
           <Route path="/admin/card" element={<Card />} />
           <Route path="/admin/manageCategory" element={<ManageCatagory />} />
-          {/* </Route> */}
+          </Route>
 
 
         </Routes>

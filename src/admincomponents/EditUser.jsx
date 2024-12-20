@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { RiStarSFill } from "react-icons/ri";
 import axios from 'axios';
 import AdminNavbar from './AdminNavbar';
-import Sidebar from '../Pages/Sidebar';
-// import { categories } from '../ServiceCategory'
 const backend_API = import.meta.env.VITE_API_URL;
 
 
@@ -29,7 +27,7 @@ const EditUser = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const navigete = useNavigate()
-  // console.log(location.state._id,"Edit Location");
+  console.log(location.state._id, "Edit id");
 
 
   const fetchCategory = async () => {
@@ -104,25 +102,25 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(location.state._id, "Edit Id");
-    const newadd = {
-      area: area,
-      pincode: pincode,
-      city: city,
-      state: state,
-      country: country,
-
-    }
-    const fullData = {
-      id : location.state._id,
-      name:name,
-      email: email,
-      phone: phone,
-      address: newadd,
-      businessName: businessName,
-      businessCategory:businessCategory,
-      businessAddress: businessAddress,
+    const newAddress = {
+      area,
+      city,
+      state,
+      country,
+      pincode
     };
-console.log(fullData,"edit full");
+    const fullData = {  userId : location.state._id, name, email, phone, address: newAddress, businessCategory, businessName, businessAddress };
+    // const fullData = {
+    //   id: location.state._id,
+    //   name: name,
+    //   email: email,
+    //   phone: phone,
+    //   address: newadd,
+    //   businessName: businessName,
+    //   businessCategory: businessCategory,
+    //   businessAddress: businessAddress,
+    // };
+    console.log(fullData, "edit full");
 
     try {
       const response = await axios.put(`${backend_API}/auth/UpdateUser`, fullData, {
@@ -147,21 +145,23 @@ console.log(fullData,"edit full");
     }
 
   };
-  useEffect(() => {
-    setName(location?.state?.name)
-    setEmail(location?.state?.email)
-    setPhone(location?.state?.phone)
-    setArea(location?.state?.address?.area)
-    setPincode(location?.state?.address?.pincode)
-    setCity(location?.state?.address?.city)
-    setState(location?.state?.address?.state)
-    setCountry(location?.state?.address?.country)
+ 
+    useEffect(() => {
+      setName(location?.state?.name)
+      setEmail(location?.state?.email)
+      setPhone(location?.state?.phone)
+      setArea(location?.state?.address?.area)
+      setCity(location?.state?.address?.city)
+      setState(location?.state?.address?.state)
+      setCountry(location?.state?.address?.country)
+      setPincode(location?.state?.address?.pincode)
+      setAddress(location?.state?.address || {})
+      setBusinessCategory(location?.state?.businessCategory || []),
+        setBusinessName(location?.state?.businessName),
+        setBusinessAddress(location?.state?.businessAddress)
+    }, [location?.state])
 
-    setAddress(location?.state?.address)
-    setBusinessCategory(location?.state?.businessCategory || []),
-      setBusinessName(location?.state?.businessName),
-      setBusinessAddress(location?.state?.businessAddress)
-  }, [location?.state])
+
 
   return (
     <>

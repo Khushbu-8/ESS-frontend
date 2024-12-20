@@ -80,9 +80,7 @@ const ManageCatagory = () => {
             alert("Failed to delete category. Check console for more details.");
         }
     }
-    const hendelEdit = (categorysingle) =>{
-        console.log(categorysingle);
-        
+    const hendelEdit = (categorysingle) =>{ 
         setEditCategory(categorysingle)
     }
     return (
@@ -96,9 +94,9 @@ const ManageCatagory = () => {
                             <div className="card">
                                 <div className="card-header d-flex justify-content-between align-items-center">
                                     <h4>Manage Catagory</h4>
-                                    <button className="btn bg-blue  text-white " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Catagory</button>
+                                    <button className="btn bg-blue  text-white " data-bs-toggle="modal" data-bs-target="#exampleModalE">Add Catagory</button>
                                 </div>
-                                <div className="modal fade " id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal fade " id="exampleModalE" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div className="modal-dialog modal-dialog-centered">
                                         <div className="modal-content">
                                             <div className="modal-header">
@@ -173,8 +171,52 @@ const ManageCatagory = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                                <EditCategory editcategory={editcategory} />
-                                        
+                               
+                                <div className="modal fade " id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div className="modal-dialog modal-dialog-centered">
+                                         <EditCategory editcategory={editcategory} />
+                                        {/* <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Category</h1>
+                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                            </div>
+                                            <div className="modal-body">
+                                                <form onSubmit={handleSubmit} enctype="multipart/form-data">
+                                                    <div className="mb-3">
+                                                        <label htmlFor="recipient-name" className="col-form-label">Category Name:</label>
+                                                        <input type="text" className="form-control" placeholder='Category Name' value={categoryName}
+                                                            onChange={(e) => setCategoryName(e.target.value)} />
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <div className='' >
+                                                            <label htmlFor="recipient-name" className="col-form-label">Category Image:</label>
+                                                            <label for="file-upload" class=" btn d-inline-block border border-orange d-flex justify-content-start align-items-center  ">
+                                                                Catgory Image
+                                                            </label>
+                                                            <input
+                                                                type="file"
+                                                                id="file-upload"
+                                                                name="categoryImg"
+                                                                onChange={(e) => {
+                                                                    const file = e.target.files[0];
+                                                                    setCategoryImg(file);
+                                                                    setPreview(URL.createObjectURL(file))
+                                                                }}
+                                                            />
+                                                            {preview && <img src={preview} alt="Preview" width="100" />}
+                                                        </div>
+                                                    </div>
+                                                    <div className="modal-footer">
+                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" className="btn btn-primary"> Add</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div> */}
+                                    </div>
+                                </div>
+
                               
 
                             </div>

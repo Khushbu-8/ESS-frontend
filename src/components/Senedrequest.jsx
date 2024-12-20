@@ -36,6 +36,9 @@ console.log(sendedRequest,"sended");
         },
     ]
 
+    const cancleRequest = async() => {
+
+    }
 
     return (
         <>
@@ -46,7 +49,6 @@ console.log(sendedRequest,"sended");
                     <div className="container">
                         <div className="row">
                             <div className="col-12 d-flex gap-3">
-
                                 {
                                     requests.map((req, i) => {
                                         return (
@@ -108,8 +110,8 @@ console.log(sendedRequest,"sended");
                                                     {/* <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
                                                     <FaPhone /> Contect Now
                                                     </Link> */}
-                                                    <Link className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange '>
-                                                        cancel
+                                                    <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                       cancle
                                                     </Link>
                                                    
                                                    
