@@ -11,17 +11,17 @@ const Recievedrequest = ({ recievedRequest }) => {
     const token = JSON.parse(localStorage.getItem('token'))
     const naviget = useNavigate()
 
-    const handleAcceptRequest = async(senderId) => {
+    const handleAcceptRequest = async (senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/receivedRequest`,{ senderId : senderId },{
+            const response = await axios.post(`${backend_API}/request/receivedRequest`, { senderId: senderId }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
             });
-           alert("Requests Accept successfully:")
+            alert("Requests Accept successfully:")
             if (response.status === 200) {
-                console.log("Requests Accept successfully:", response.data);        
+                console.log("Requests Accept successfully:", response.data);
             } else {
                 console.error("Failed to Accept requests:", response.data.message);
                 return null;
@@ -31,22 +31,22 @@ const Recievedrequest = ({ recievedRequest }) => {
             alert("Failed to Accept user requests. Please try again.");
             return null;
         }
-        
 
-      
+
+
 
     }
-    const cancleRequest = async(senderId) => {
+    const cancleRequest = async (senderId) => {
         try {
-            const response = await axios.post(`${backend_API}/request/cancelRequest`,{ senderId : senderId }, {
+            const response = await axios.post(`${backend_API}/request/cancelRequest`, { senderId: senderId }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
-           alert("Requests cansel successfully:")
+            alert("Requests cansel successfully:")
             if (response.status === 200) {
-                console.log("Requests Cancle successfully:", response.data);        
+                console.log("Requests Cancle successfully:", response.data);
             } else {
                 console.error("Failed to cancle requests:", response.data.message);
                 return null;
@@ -56,7 +56,7 @@ const Recievedrequest = ({ recievedRequest }) => {
             alert("Failed to cancle user requests. Please try again.");
             return null;
         }
-        
+
 
     }
     console.log(recievedRequest, "recieved");
@@ -115,10 +115,12 @@ const Recievedrequest = ({ recievedRequest }) => {
                                                     </Link>)
                                                     } */}
 
+                                                            <Link  className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                                {receive.status}
+                                                            </Link>
 
-
-                                                                <Link onClick={() => handleAcceptRequest(receive.user._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
-                                                                    Accept
+                                                            <Link onClick={() => handleAcceptRequest(receive.user._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                                Accept
                                                             </Link>
 
                                                             <Link onClick={() => cancleRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
