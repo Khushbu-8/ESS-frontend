@@ -102,7 +102,7 @@ const SearchResult = ({user,token}) => {
                             {
                                 !requestSent ? (<button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
-                                </button>) : (<button  className='btn btn-success' onClick={() => cancleRequest(receive._id)} >
+                                </button>) : (<button  className='btn btn-success' onClick={() => cancleRequest(user._id)} >
                                     cancel
                                 </button>)
                             }
