@@ -20,12 +20,12 @@ const Work = () => {
         {
             id: 1,
             name: "sendedRequest",
-            path : "/work/sendrequest"
+            // path : "/work/sendrequest"
         },
         {
             id: 1,
             name: "Resived Request",
-            path : "/work"
+            // path : "/work"
         },
     ]
  const hendleRequest = (req) =>{
@@ -81,7 +81,7 @@ const Work = () => {
                                     requests.map((req, i) => {
                                         return (
                                             <div key={i} className="receivReqBtn" onClick={ () => hendleRequest(req.name)}>
-                                                <Link to={req.path}  className={`btn btn-success rounded-0 text-white`}>
+                                                <Link   className={`btn btn-success rounded-0 text-white`}>
                                                     {req.name}
                                                 </Link>
                                             </div>
