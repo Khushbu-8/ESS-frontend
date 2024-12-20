@@ -38,7 +38,31 @@ const SearchResult = ({user,token}) => {
         }
       };
     
+      const cancleRequest = async(senderId) => {
 
+        try {
+            const response = await axios.get(`${backend_API}/request/getUserRequests`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                data : {senderId}
+            });
+           alert("Requests cansel successfully:")
+            if (response.status === 200) {
+                console.log("Requests Cancle successfully:", response.data);        
+            } else {
+                console.error("Failed to cancle requests:", response.data.message);
+                return null;
+            }
+        } catch (error) {
+            console.error("Error cancel user requests:", error);
+            alert("Failed to cancle user requests. Please try again.");
+            return null;
+        }
+        
+
+    }
 
     return (
 
@@ -78,7 +102,7 @@ const SearchResult = ({user,token}) => {
                             {
                                 !requestSent ? (<button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
-                                </button>) : (<button className='btn btn-success'>
+                                </button>) : (<button  className='btn btn-success' onClick={() => cancleRequest(receive._id)} >
                                     cancel
                                 </button>)
                             }
