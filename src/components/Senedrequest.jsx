@@ -5,36 +5,36 @@ import AdminNavbar from '../admincomponents/AdminNavbar'
 import UserSideBar from './UserSideBar'
 import acService from '../../public/service-icons/ac service.png'
 
-const Senedrequest = () => {
+const Senedrequest = ({sendedRequest}) => {
     const token = JSON.parse(localStorage.getItem('token'))
 
-    const [sendedRequest, setSendedRequest] = useState([]);
+    // const [sendedRequest, setSendedRequest] = useState([]);
 
-    useEffect(() => {
-        const FethProfile = () => {
-            let LoginData = JSON.parse(localStorage.getItem("Users"))
-            setSendedRequest(LoginData.sended_requests
-                )
-        }
-        FethProfile()
+    // useEffect(() => {
+    //     const FethProfile = () => {
+    //         let LoginData = JSON.parse(localStorage.getItem("Users"))
+    //         setSendedRequest(LoginData.sended_requests
+    //             )
+    //     }
+    //     FethProfile()
 
-    }, [])
+    // }, [])
 
 console.log(sendedRequest,"sended");
 
 
-    const requests = [
-        {
-            id: 1,
-            name: "Sended Request",
-            path: "/work/sendrequest"
-        },
-        {
-            id: 1,
-            name: "Resived Request",
-            path: "/work"
-        },
-    ]
+    // const requests = [
+    //     {
+    //         id: 1,
+    //         name: "Sended Request",
+    //         path: "/work/sendrequest"
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Resived Request",
+    //         path: "/work"
+    //     },
+    // ]
 
     const cancleRequest = async() => {
 
@@ -45,7 +45,7 @@ console.log(sendedRequest,"sended");
             <AdminNavbar />
             <UserSideBar />
             <div className='mt-32'>
-                <section>
+                {/* <section>
                     <div className="container">
                         <div className="row">
                             <div className="col-12 d-flex gap-3">
@@ -64,7 +64,7 @@ console.log(sendedRequest,"sended");
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 <section>
                     <div className="container">
                         <div className="row">

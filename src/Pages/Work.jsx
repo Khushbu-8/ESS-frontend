@@ -5,18 +5,21 @@ import Recievedrequest from '../components/Recievedrequest'
 import AllRequests from './AllRequests'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Senedrequest from '../components/Senedrequest'
 
 const backend_API = import.meta.env.VITE_API_URL; 
 
 const Work = () => {
     const token = JSON.parse(localStorage.getItem('token'))
+
+     const [AllRequest,setAllRequest] = useState([])
      const [recievedRequest,setRecievedRequest] = useState([])
       const [sendedRequest, setSendedRequest] = useState([]);
 
     const requests = [
         {
             id: 1,
-            name: "Sended Request",
+            name: "sendedRequest",
             path : "/work/sendrequest"
         },
         {
@@ -25,7 +28,12 @@ const Work = () => {
             path : "/work"
         },
     ]
-
+ const hendleRequest = (req) =>{
+    console.log(req);
+    
+        let data = AllRequest.filter((val) => val.sendedRequest === req)
+        setSendedRequest(data)
+ }
     
     const fetchUserRequests = async () => {
         try {
@@ -42,6 +50,7 @@ const Work = () => {
         console.log(all, "All reuestss");
         console.log(recieve, "reciev reuestss");
         console.log(sended, "sended reuestss");
+        setAllRequest(all)
           if (response.status === 200) {  
             // console.log("Requests fetched successfully:", response.data.receivedRequests);        
           } else {
@@ -71,8 +80,8 @@ const Work = () => {
                                 {
                                     requests.map((req, i) => {
                                         return (
-                                            <div className="receivReqBtn">
-                                                <Link to={req.path} className={`btn btn-success rounded-0 text-white`}>
+                                            <div key={i} className="receivReqBtn" onClick={ () => hendleRequest(req.name)}>
+                                                <Link to={req.path}  className={`btn btn-success rounded-0 text-white`}>
                                                     {req.name}
                                                 </Link>
                                             </div>
@@ -84,7 +93,7 @@ const Work = () => {
                         </div>
                     </div>
                 </section>
-                {/* <Senedrequest/>    */}
+                <Senedrequest sendedRequest= {sendedRequest}/>   
                 {/* <Recievedrequest /> */}
                 {/* <AllRequests/> */}
             </div>
