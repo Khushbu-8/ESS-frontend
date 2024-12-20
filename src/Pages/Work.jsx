@@ -31,8 +31,8 @@ const Work = () => {
  const hendleRequest = (req) =>{
     console.log(req);
     
-        let data = AllRequest.filter((val) => val.sendedRequest === req)
-        setSendedRequest(data)
+        // let data = AllRequest.filter((val) => val.sendedRequest === req)
+        // setSendedRequest(data)
  }
     
     const fetchUserRequests = async () => {
