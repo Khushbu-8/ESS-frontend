@@ -20,8 +20,9 @@ const SearchResult = ({user,token}) => {
                   'Authorization': `Bearer ${token}`
                 },
               });
+              let data = response.data.sender.sended_request;
               console.log(response.data.sender.sended_requests,"sended status")
-
+            //   setRequestSent(data)
               
     
           if (response.status === 200) {
@@ -68,18 +69,18 @@ const SearchResult = ({user,token}) => {
                         </div>
 
                         <div>
-                        <button className='btn btn-success' onClick={() => sendRequest(user._id)}>
+                        {/* <button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
-                                </button>
+                                </button> */}
     
-{/* 
+
                             {
                                 !requestSent ? (<button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
                                 </button>) : (<button className='btn btn-success'>
                                     cancel
                                 </button>)
-                            } */}
+                            }
 
                         </div>
 
