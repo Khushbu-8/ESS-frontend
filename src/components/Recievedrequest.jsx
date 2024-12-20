@@ -123,7 +123,7 @@ const Recievedrequest = ({ recievedRequest }) => {
                                                                     <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                                         Contect Now
                                                                     </Link>
-                                                                ) : (<Link onClick={() => cancleRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                                ) : (<Link onClick={() => handleAcceptRequest(receive.user._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                                     Accept
                                                                 </Link>)
                                                             }
