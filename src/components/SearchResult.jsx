@@ -48,6 +48,7 @@ const SearchResult = ({user,token}) => {
                 },
                 data : {senderId}
             });
+            console.log("Requests Cancle successfully:", response.data.sendRequest);  
            alert("Requests cansel successfully:")
             if (response.status === 200) {
                 console.log("Requests Cancle successfully:", response.data);        

@@ -41,13 +41,17 @@ const Work = () => {
                     'Authorization': `Bearer ${token}`
                 },
             });
+            const all = await response.data;
             const recieve = await response.data.receivedRequests;
             const sended = await response.data.sendedRequests;
-
+            // setRecievedRequest(recieve)
+            console.log(all, "All reuestss");
+            console.log(recieve, "reciev reuestss");
+            console.log(sended, "sended reuestss");
             setSendedRequest(sended)
             setRecievedRequest(recieve)
             if (response.status === 200) {
-                console.log("Requests fetched successfully:", response.data);        
+                // console.log("Requests fetched successfully:", response.data.receivedRequests);        
             } else {
                 console.error("Failed to fetch requests:", response.data.message);
                 return null;
@@ -95,6 +99,7 @@ const Work = () => {
                         <Senedrequest sendedRequest={sendedRequest} />
                     )}
                 </div>
+
             </div>
         </>
     )
