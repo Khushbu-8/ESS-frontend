@@ -37,6 +37,31 @@ const Recievedrequest = ({ recievedRequest }) => {
       
 
     }
+    const cancleRequest = async(senderId) => {
+
+        try {
+            const response = await axios.post(`${backend_API}/request/getUserRequests`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                data : {senderId}
+            });
+           alert("Requests cansel successfully:")
+            if (response.status === 200) {
+                console.log("Requests Cancle successfully:", response.data);        
+            } else {
+                console.error("Failed to cancle requests:", response.data.message);
+                return null;
+            }
+        } catch (error) {
+            console.error("Error cancel user requests:", error);
+            alert("Failed to cancle user requests. Please try again.");
+            return null;
+        }
+        
+
+    }
     console.log(recievedRequest, "recieved");
 
     return (
