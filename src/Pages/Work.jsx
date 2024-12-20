@@ -92,7 +92,7 @@ const Work = () => {
                         </div>
                     </div>
                 </section>
-                <div className="container mt-4">
+                <div className="mt-4">
 
                     {/* Render based on current request type */}
                     {currentRequest === "Received Request" ? (
