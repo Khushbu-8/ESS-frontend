@@ -15,7 +15,7 @@ const Senedrequest = ({sendedRequest}) => {
     const cancleRequest = async(senderId) => {
 
         try {
-            const response = await axios.get(`${backend_API}/request/getUserRequests`, {
+            const response = await axios.post(`${backend_API}/request/getUserRequests`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
