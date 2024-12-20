@@ -95,14 +95,15 @@ const Senedrequest = ({sendedRequest}) => {
                                                    {/* after accept */}
                                                     {/* <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
                                                     <FaPhone /> Contect Now
-                                                    </Link> */}
-                                                    <Link   className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                    </Link> */} 
+                                                   
+                                                    {/* <Link   className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                        {receive.status}
-                                                    </Link>
+                                                    </Link> */}
 
                                                     {
                                                        receive.status  === "canceled" ? (
-                                                            <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                            <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                             Contect Now
                                                          </Link>
                                                         ) : ( <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
