@@ -12,6 +12,8 @@ const Senedrequest = ({sendedRequest}) => {
     const [status, setStatus] = useState('');
 
     const token = JSON.parse(localStorage.getItem('token'))
+    console.log(token , "token in sendreq");
+    
     const cancleRequest = async(senderId) => {
         try {
             const response = await axios.post(`${backend_API}/request/cancelRequest`, {
