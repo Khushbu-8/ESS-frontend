@@ -7,7 +7,7 @@ const backend_API = import.meta.env.VITE_API_URL;
 // const backend_API = "https://ees-121-backend.vercel.app"
 
 const SearchResult = ({user,token}) => {
-    const [requestSent, setRequestSent] = useState([]);
+    const [requestSent, setRequestSent] = useState(false);
     const sendRequest = async (userId) => {
         console.log(userId);
         
@@ -20,13 +20,12 @@ const SearchResult = ({user,token}) => {
                   'Authorization': `Bearer ${token}`
                 },
               });
-              console.log(response.data.sended_requests.status,"sended res")
+              console.log(response.data,"sended res")
               
     
           if (response.status === 200) {
             alert("Request Sent Successfully!");
-            console.log(response.data,"sended res")
-             setRequestSent(response.data); // Update state to show Cancel button  
+             setRequestSent(true); // Update state to show Cancel button  
             
             
           } else {
@@ -38,32 +37,7 @@ const SearchResult = ({user,token}) => {
         }
       };
     
-      const cancleRequest = async(senderId) => {
 
-        try {
-            const response = await axios.get(`${backend_API}/request/getUserRequests`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                data : {senderId}
-            });
-            console.log("Requests Cancle successfully:", response.data.sendRequest);  
-           alert("Requests cansel successfully:")
-            if (response.status === 200) {
-                console.log("Requests Cancle successfully:", response.data);        
-            } else {
-                console.error("Failed to cancle requests:", response.data.message);
-                return null;
-            }
-        } catch (error) {
-            console.error("Error cancel user requests:", error);
-            alert("Failed to cancle user requests. Please try again.");
-            return null;
-        }
-        
-
-    }
 
     return (
 
@@ -93,20 +67,18 @@ const SearchResult = ({user,token}) => {
                         </div>
 
                         <div>
-                        {/* <button className='btn btn-success' onClick={() => sendRequest(user._id)}>
+                        <button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
-                                </button> */}
-    {
-
-    }
-
+                                </button>
+    
+{/* 
                             {
                                 !requestSent ? (<button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
-                                </button>) : (<button  className='btn btn-success' onClick={() => cancleRequest(user._id)} >
+                                </button>) : (<button className='btn btn-success'>
                                     cancel
                                 </button>)
-                            }
+                            } */}
 
                         </div>
 

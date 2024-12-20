@@ -92,12 +92,9 @@ const Work = () => {
                         </div>
                     </div>
                 </section>
-                <div className=" mt-4">
+                <div className="container mt-4">
 
                     {/* Render based on current request type */}
-                    {/* {currentRequest === "Sended Request" && (
-                        
-                    )} */}
                     {currentRequest === "Received Request" ? (
                         <Recievedrequest recievedRequest={recievedRequest} />
                     ) : (
