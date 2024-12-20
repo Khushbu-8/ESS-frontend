@@ -42,6 +42,8 @@ const Senedrequest = ({sendedRequest}) => {
            setStatus(sendedRequest.status)
         }
     },[sendedRequest])
+    console.log(status,"status");
+    
 
     return (
         <>
