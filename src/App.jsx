@@ -10,7 +10,6 @@ import Admin from "./Pages/Admin"
 
 import EditUser from "./admincomponents/EditUser"
 import SearchScreen from "./Pages/SearchScreen "
-
 import ServiceDetail from "./Pages/ServiceDetail";
 import Card from "./Pages/Card";
 import Services from "./Pages/Services";
@@ -52,8 +51,7 @@ export default function App() {
           <Route path="/registernext" element={<RegisterNextPage />} />
           <Route path="/login" element={<Login />} />
 
-          {/* Admin Routes */}
-         
+          {/* Admin Routes */}         
           <Route element={<GetAdmin/>}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<AllUsers />} />

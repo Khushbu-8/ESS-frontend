@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../../public/ess-121.png"
 import axios from 'axios'
 import GetAdmin from './GetAdmin'
+import Logout from './Logout'
 
 const backend_API = import.meta.env.VITE_API_URL;
 
@@ -112,6 +113,7 @@ const UserSideBar = () => {
                   <span className='inline-block mr-2 text-xl '><FaPowerOff /></span>
                   Logout</Link>
               </li>
+              <Logout/>
               
             </ul>
           </div>
