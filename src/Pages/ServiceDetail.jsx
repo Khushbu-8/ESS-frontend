@@ -129,7 +129,6 @@ const ServiceDetail = () => {
                     <div className="row">
                         <div className='d-flex'>
                             <h3 className='py-4 px-3'>Servies Detaile </h3>
-
                         </div>
 
                         <div className="col-12 d-flex flex-wrap">
@@ -141,10 +140,7 @@ const ServiceDetail = () => {
                                 ) : (
                                     <h4>No item Found</h4>
                                 )
-                            }
-                            
-
-
+                            }       
                         </div>
                     </div>
                 </div>

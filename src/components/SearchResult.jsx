@@ -7,7 +7,7 @@ const backend_API = import.meta.env.VITE_API_URL;
 // const backend_API = "https://ees-121-backend.vercel.app"
 
 const SearchResult = ({user,token}) => {
-    const [requestSent, setRequestSent] = useState(false);
+    const [requestSent, setRequestSent] = useState([]);
     const sendRequest = async (userId) => {
         console.log(userId);
         
@@ -20,12 +20,13 @@ const SearchResult = ({user,token}) => {
                   'Authorization': `Bearer ${token}`
                 },
               });
-              console.log(response.data,"sended res")
+              console.log(response.data.sended_requests.status,"sended res")
               
     
           if (response.status === 200) {
             alert("Request Sent Successfully!");
-             setRequestSent(true); // Update state to show Cancel button  
+            console.log(response.data,"sended res")
+             setRequestSent(response.data); // Update state to show Cancel button  
             
             
           } else {
@@ -70,6 +71,10 @@ const SearchResult = ({user,token}) => {
                         {/* <button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now
                                 </button> */}
+    {
+
+    }
+
                             {
                                 !requestSent ? (<button className='btn btn-success' onClick={() => sendRequest(user._id)}>
                                     Contect Now

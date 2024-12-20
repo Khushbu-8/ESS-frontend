@@ -109,10 +109,7 @@ const Senedrequest = ({sendedRequest}) => {
                                                         ) : ( <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                         cancle
                                                      </Link>)
-                                                    }
-                                                   
-                                                                                                     
-                                                   
+                                                    }                                                                                                                        
                                                 </div>
         
                                                </div>
