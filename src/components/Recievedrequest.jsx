@@ -115,9 +115,9 @@ const Recievedrequest = ({ recievedRequest }) => {
                                                     </Link>)
                                                     } */}
 
-                                                            <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                            {/* <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                                 {receive.status}
-                                                            </Link>
+                                                            </Link> */}
                                                             {
                                                                 receive.status === "received" ? (
                                                                     <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >

@@ -20,7 +20,8 @@ const SearchResult = ({user,token}) => {
                   'Authorization': `Bearer ${token}`
                 },
               });
-              console.log(response.data,"sended res")
+              console.log(response.data.sender.sended_requests.status,"sended status")
+
               
     
           if (response.status === 200) {
