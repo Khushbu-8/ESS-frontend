@@ -43,7 +43,8 @@ const Senedrequest = ({sendedRequest}) => {
         }
     },[sendedRequest])
     console.log(status,"status");
-    
+     console.log(sendedRequest.status,"sended status");
+     
 
     return (
         <>
