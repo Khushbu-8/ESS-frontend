@@ -9,6 +9,7 @@ import axios from 'axios'
 const backend_API = import.meta.env.VITE_API_URL;
 
 const Senedrequest = ({sendedRequest}) => {
+    const [status, setStatus] = useState('');
 
     const token = JSON.parse(localStorage.getItem('token'))
     const cancleRequest = async(senderId) => {
@@ -36,6 +37,11 @@ const Senedrequest = ({sendedRequest}) => {
         
 
     }
+    useEffect(() => {
+        if(sendedRequest){
+           setStatus(sendedRequest.status)
+        }
+    },[sendedRequest])
 
     return (
         <>
@@ -82,7 +88,7 @@ const Senedrequest = ({sendedRequest}) => {
                                                 <h6 className='pt-2'></h6>
                                                 <p className='d-flex align-items-center gap-1' ><FaLocationDot/> { receive.user.address.area} </p>
         
-                                                <div className='pt-2 d-flex flex-column flex-md-row gap-3  justify-content-between align-items-start w-100 flex-md-row'>
+                                                <div className='pt-2 d-flex   gap-2  justify-content-between align-items-start w-100 flex-md-row'>
                                                    {/* after accept */}
                                                     {/* <Link className='btn p-0  pt-2 gap-2  d-flex align-items-center  rounded-1 text-semibold text-success '>
                                                     <FaPhone /> Contect Now
@@ -90,9 +96,17 @@ const Senedrequest = ({sendedRequest}) => {
                                                     <Link   className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
                                                        {receive.status}
                                                     </Link>
-                                                    <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
-                                                       cancle
-                                                    </Link>
+
+                                                    {
+                                                        status === "canceled" ? (
+                                                            <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
+                                                            Contect Now
+                                                         </Link>
+                                                        ) : ( <Link onClick={() => cancleRequest(receive._id)} className='btn pt-2  w-50  border-orange rounded-1 text-semibold text-orange btn-outline-orange' >
+                                                        cancle
+                                                     </Link>)
+                                                    }
+                                                   
                                                                                                      
                                                    
                                                 </div>
