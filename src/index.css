@@ -170,7 +170,7 @@ input[type="file"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.9);
+  transform: scale(0.8);
   transition: all 0.4s ease-in-out;
 }
 
@@ -195,7 +195,7 @@ input[type="file"] {
   z-index: 5;
 }
 .slick-next{
-  right: -5px;
+  right: -9px;
   top: 150px;
 }
 .slick-prev{
@@ -203,7 +203,7 @@ input[type="file"] {
   top: 150px;
 }
 .slick-next:before, .slick-prev:before{
-  color: #000;
+  color: #00a455;
   font-size: 26px;
 }
 /* slic slider Card  end*/

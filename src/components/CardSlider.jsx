@@ -5,9 +5,9 @@ import OfferModal from './OfferModal';
 import axios from 'axios';
 const backend_API = import.meta.env.VITE_API_URL; 
 
-const CardSlider = () => {
+const CardSlider = ({BannerImage,setBannerImage}) => {
     const [BannerUser, setBannerUser] = useState([])
-    const [BannerImage,setBannerImage] = useState([])
+   
     const token = JSON.parse(localStorage.getItem('token'))
     const sliderRef = useRef(null);
     const settings = {
@@ -25,7 +25,7 @@ const CardSlider = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 5,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true,
@@ -34,7 +34,7 @@ const CardSlider = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     initialSlide: 2,
                 },
@@ -110,25 +110,25 @@ const CardSlider = () => {
                     <div className="row">
                         <div className="py-2">
                             <h1 className=" text-2xl">Best Offer</h1>
-                            <div className="wrapper">
+                            <div className="h-100 wraper">
                                 <Slider
                                     ref={sliderRef}
-                                    className="center-slider h-[100%]"
+                                    className="center-slider"
                                     {...settings}
                                 >
                                     {BannerImage.length > 0 ? (
                                         BannerImage.map((image, index) => (
                                             <div
                                                 key={index}
-                                                className="rounded-sm h-[100%] overflow-hidden"
+                                                className="rounded-sm h-100 "
                                                 onClick={() => handleImageClick(image.userId , index)}
                                                 data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             >
-                                                <figure className="overflow-hidden  img-flued ">
+                                                <figure className="m-0 h-100 ">
                                                     <img
-                                                        className=" w-full h-full"
+                                                        className="img-flued h-[200px]"
                                                         src={image.imageUrl}
-                                                        
+                                                        style={{objectFit: "cover"}}
                                                     />
                                                 </figure>
                                             </div>
