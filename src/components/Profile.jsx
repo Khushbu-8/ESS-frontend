@@ -30,7 +30,7 @@ const Profile = () => {
             setProfile(data.user)
             console.log(data.user, "data profile");
             if (response.status === 200) {
-                localStorage.setItem("Users", JSON.stringify(data.user))
+                // localStorage.setItem("Users", JSON.stringify(data.user))
                 navigate('/profile')
                 console.log("profile Successful...");
             }
@@ -43,7 +43,6 @@ const Profile = () => {
     useEffect(() => {
         fetchData()
     }, [])
-
 
     return (
         <>
@@ -61,7 +60,7 @@ const Profile = () => {
 
                                     <div className="avatar">
                                         <div className=" position-absolute top-[100px] start-[50px] overflow-hidden ring-green ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
-                                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                            <img src={profile.profilePic || "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"} />
                                         </div>
                                     </div>
                                 </div>

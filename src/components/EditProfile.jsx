@@ -34,7 +34,9 @@ const EditProfile = () => {
   const [businessCategory, setBusinessCategory] = useState([]);
   const [businessName, setBusinessName] = useState('');
   const [businessAddress, setBusinessAddress] = useState('');
-   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [profilePic, setProfilePic] = useState(null); // Actual file object
+const [profilePicPreview, setProfilePicPreview] = useState(null); // Blob URL for preview
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const location = useLocation();
 
@@ -63,7 +65,7 @@ const EditProfile = () => {
         setCity(postOffice.District || ''); // Set City (e.g., Surat)
         setState(postOffice.State || ''); // Set State (e.g., Gujarat)
         setCountry(postOffice.Country || ''); // Set Country (e.g., India)
-       
+
       } else {
         setError('Invalid Pincode! Please enter a valid one.');
         setArea('');
@@ -100,7 +102,7 @@ const EditProfile = () => {
       );
 
       setCategories(sortedCategories);
-      console.log(sortedCategories, "sortedCategories");
+      // console.log(sortedCategories, "sortedCategories");
     }
     catch (error) {
       console.error("Error fetching categories:", error);
@@ -110,6 +112,15 @@ const EditProfile = () => {
     fetchCategory();
   }, []);
 
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const blobUrl = URL.createObjectURL(file);
+      console.log(blobUrl)
+      setProfilePic(file); // Save the file object to send to the backend
+      setProfilePicPreview(blobUrl); 
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,15 +131,29 @@ const EditProfile = () => {
       country,
       pincode
     };
-    const fullData = { name, email, phone, address: newAddress, businessCategory, businessName, businessAddress };
+    // const fullData = { name, email, phone, address: newAddress, businessCategory, businessName, businessAddress };
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('address', JSON.stringify({ area, city, state, country, pincode }));
+    formData.append('businessCategory', businessCategory);
+    formData.append('businessName', businessName);
+    formData.append('businessAddress', businessAddress);
+    // Add the actual file to FormData
+  if (profilePic) {
+    formData.append('image', profilePic);
+  }
     try {
-      const response = await axios.post(`${backend_API}/auth/updateProfile`, fullData, {
+      const response = await axios.post(`${backend_API}/auth/updateProfile`, formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         },
       });
       const data = await response.data;
+      console.log(data.message ,"adited data");
       setProfile(data)
       if (response.status === 200) {
         console.log("Profile Updated Successfully");
@@ -137,8 +162,11 @@ const EditProfile = () => {
 
     } catch (error) {
       console.log(error);
+      // console.log(response.data.message);
+      
       return false;
     }
+
 
   };
   useEffect(() => {
@@ -160,7 +188,7 @@ const EditProfile = () => {
     <>
       <AdminNavbar />
       <UserSideBar />
-      <section className='pt-32'>
+      <section className='pt-40'>
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -169,12 +197,28 @@ const EditProfile = () => {
                 <form action="" onSubmit={handleSubmit} className=' p-3'>
 
                   <div className='profilepic d-flex justify-content-between'>
-                    <figure className='rounded-md m-3'>
-                      <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" >
-
-                      </img>
-                    </figure>
-                    <span className='bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center '><HiDotsHorizontal /></span>
+                    <label htmlFor="profilePictureInput" className='rounded-md m-3 cursor-pointer'>
+                      <img
+                        src={profilePicPreview || "https://img.daisyui.com/images/profile/demo/2@94.webp"}
+                        alt="Profile"
+                        className="rounded-md w-[100px]"
+                         
+                      />
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleProfilePictureChange}
+                      className="hidden"
+                      name='image'
+                      id="profilePictureInput"
+                    />
+                    <label
+                     
+                      className="cursor-pointer bg-white rounded-full m-2 shadow-xl w-[30px] h-[30px] d-flex align-items-center justify-content-center"
+                    >
+                      <HiDotsHorizontal />
+                    </label>
                   </div>
                   <div className='form-detaile d-flex flex-wrap w-full py-2 d-flex'>
 
@@ -292,12 +336,12 @@ const EditProfile = () => {
                             onClick={toggleDropdown}
                           >
                             {businessCategory.length > 0 ? (
-                             
-                                  <span className="inline-block px-3 text-black py-1  ">
-                                  {businessCategory}
-                                </span>
 
-                             
+                              <span className="inline-block px-3 text-black py-1  ">
+                                {businessCategory}
+                              </span>
+
+
                             ) : (
                               <span className="text-gray-500 ps-3 py-1">Select a category</span>
                             )}
@@ -320,7 +364,7 @@ const EditProfile = () => {
                           )}
                         </div>
                       </div>
-                      
+
                       <div className='my-2'>
                         <label className="block text-md font-medium p-2 text-bold ">Bussiness Address</label>
                         <label htmlFor="" className='d-flex align-items-center border border-2 rounded-md p-2 m-1'>

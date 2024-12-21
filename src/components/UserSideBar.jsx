@@ -81,7 +81,7 @@ const UserSideBar = () => {
 
           <div className='w-full d-flex align-items-center gap-4'>
             <div class="img w-[80px] h-[80px] rounded-lg border bg-red overflow-hidden d-flex">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
+              <img src={profile.profilePic || "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"} className='w-full h-full' />
             </div>
             <div>
               <h3>{profile.name}</h3>

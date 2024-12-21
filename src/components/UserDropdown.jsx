@@ -46,7 +46,7 @@ function UserDropdown() {
       <div className="dropdown dropstart rounded-lg m-3 border bg-red">
         <div  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
           <div class="img w-[60px] h-[50px] rounded-lg border bg-red overflow-hidden">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" className='w-full h-full' />
+            <img src={profile.profilePic || "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"} className='w-full h-full' />
           </div>
         </div>
        
