@@ -54,7 +54,7 @@ const UserSideBar = () => {
       setProfile(data.user)
       console.log(data, "data sidebar");
       if (response.status === 200) {
-        localStorage.setItem("Users", JSON.stringify(data.user))
+        // localStorage.setItem("Users", JSON.stringify(data.user))
         console.log("profile Successful...");
       }
     } catch (error) {

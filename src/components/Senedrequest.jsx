@@ -100,7 +100,7 @@ const Senedrequest = ({sendedRequest}) => {
                                                     </Link> */}
 
                                                     {
-                                                       receive.status  === "received" ? (
+                                                       receive.status  === "canceled" ? (
                                                             <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                             Contect Now
                                                          </Link>
