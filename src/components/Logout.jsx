@@ -14,7 +14,7 @@ const Logout = () => {
       const response = await axios.get(`${backend_API}/auth/logout`, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          // 'Authorization': `Bearer ${token}`
         },
       });
       const data = await response.data;

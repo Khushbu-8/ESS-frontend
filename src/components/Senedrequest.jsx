@@ -12,7 +12,7 @@ const Senedrequest = ({sendedRequest}) => {
     const [status, setStatus] = useState('');
 
     const token = JSON.parse(localStorage.getItem('token'))
-    console.log(token , "token in sendreq");
+    // console.log(token , "token in sendreq");
     
     const cancleRequest = async(senderId) => {
         try {
@@ -100,7 +100,7 @@ const Senedrequest = ({sendedRequest}) => {
                                                     </Link> */}
 
                                                     {
-                                                       receive.status  === "canceled" ? (
+                                                       receive.status  === "received" ? (
                                                             <Link className='btn pt-2  w-50  border-green rounded-1 text-semibold text-green btn-outline-orange' >
                                                             Contect Now
                                                          </Link>
